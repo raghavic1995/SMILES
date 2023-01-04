@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MainObjectivesoftheMeeting__c</fullName>
+    <externalId>false</externalId>
+    <label>Main Objectives of the Meeting</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Budget / Forecast</fullName>
+                <default>false</default>
+                <label>Budget/Forecast</label>
+            </value>
+            <value>
+                <fullName>Close the loop</fullName>
+                <default>false</default>
+                <label>Close the loop</label>
+            </value>
+            <value>
+                <fullName>Commercial - Contract Negotiation</fullName>
+                <default>false</default>
+                <label>Commercial - Contract/Price Negotiation</label>
+            </value>
+            <value>
+                <fullName>Commercial - New sales</fullName>
+                <default>false</default>
+                <label>Commercial - New sales</label>
+            </value>
+            <value>
+                <fullName>Commercial - Renewal</fullName>
+                <default>false</default>
+                <label>Commercial - Renewal</label>
+            </value>
+            <value>
+                <fullName>Competition Threat</fullName>
+                <default>false</default>
+                <label>Competition Threat</label>
+            </value>
+            <value>
+                <fullName>Complaint/Supply Issues</fullName>
+                <default>false</default>
+                <label>Complaint/Supply Issues</label>
+            </value>
+            <value>
+                <fullName>Courtesy</fullName>
+                <default>false</default>
+                <label>Courtesy</label>
+            </value>
+            <value>
+                <fullName>CSR &amp; Sustainability</fullName>
+                <default>false</default>
+                <label>CSR &amp; Sustainability</label>
+            </value>
+            <value>
+                <fullName>Digital / Industry 4.0 topics</fullName>
+                <default>false</default>
+                <label>Digital / Industry 4.0 topics</label>
+            </value>
+            <value>
+                <fullName>Financial / Payments</fullName>
+                <default>false</default>
+                <label>Financial/Payments</label>
+            </value>
+            <value>
+                <fullName>Logistics</fullName>
+                <default>false</default>
+                <label>Logistics</label>
+            </value>
+            <value>
+                <fullName>Market Education</fullName>
+                <default>false</default>
+                <label>Market Education</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>NPD / New Idea</fullName>
+                <default>false</default>
+                <label>NPD / New Idea</label>
+            </value>
+            <value>
+                <fullName>Project Service</fullName>
+                <default>false</default>
+                <label>Project Service</label>
+            </value>
+            <value>
+                <fullName>Safety</fullName>
+                <default>false</default>
+                <label>Safety</label>
+            </value>
+            <value>
+                <fullName>Technical Service</fullName>
+                <default>false</default>
+                <label>Technical Service</label>
+            </value>
+            <value>
+                <fullName>Preparation before Negotiation</fullName>
+                <default>false</default>
+                <label>Preparation before Negotiation</label>
+            </value>
+            <value>
+                <fullName>Budget - Forecast</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Budget - Forecast</label>
+            </value>
+            <value>
+                <fullName>CSR</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CSR</label>
+            </value>
+            <value>
+                <fullName>Commercial_Contract-Price Negotiation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Commercial_Contract-Price Negotiation</label>
+            </value>
+            <value>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complaint</label>
+            </value>
+            <value>
+                <fullName>Complaint - Supply Issues</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Complaint - Supply Issues</label>
+            </value>
+            <value>
+                <fullName>Financial - Payments</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Financial - Payments</label>
+            </value>
+            <value>
+                <fullName>NPD</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NPD</label>
+            </value>
+            <value>
+                <fullName>Supply issue</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Supply issue</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>
