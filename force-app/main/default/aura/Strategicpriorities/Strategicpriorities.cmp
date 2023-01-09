@@ -1,0 +1,182 @@
+<aura:component controller="Strategicpriorities"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="KAS1" type ="string" />
+    <aura:attribute name="KAS2" type="string" />
+    <aura:attribute name="KAS3" type="string" />
+    <aura:attribute name="KAS4" type="string" />
+    <aura:attribute name="KAS5" type="string" />
+    
+    <aura:attribute name="IS1" type="string" />
+    <aura:attribute name="IS2" type="string" />
+    <aura:attribute name="IS3" type="string" />
+    <aura:attribute name="IS4" type="string" />
+    <aura:attribute name="IS5" type="string" />
+    
+    <aura:attribute name="ww1" type="string" />
+    <aura:attribute name="ww2" type="string" />
+    <aura:attribute name="ww3" type="string" />
+    <aura:attribute name="ww4" type="string" />
+    <aura:attribute name="ww5" type="string" />
+    
+    <aura:attribute name="ReadOnlyPermission" type="boolean" />
+    <aura:attribute name="disablePermission" type="boolean" default="true" />
+    <aura:attribute name="Ids" type="Account_Plan_Priorities__c[]"  />
+    <aura:attribute name="Recordtobeinsert" type="Account_Plan_Priorities__c[]"  />
+    
+    
+    <aura:attribute name="Recordlist1" type="Account_Plan_Priorities__c[]"  />
+    <aura:attribute name="Recordlist2" type="Account_Plan_Priorities__c[]"  />
+    <aura:attribute name="Recordlist3" type="Account_Plan_Priorities__c[]"  />
+    <aura:attribute name="Recordlist4" type="Account_Plan_Priorities__c[]"  />
+    <aura:attribute name="Recordlist5" type="Account_Plan_Priorities__c[]"  />
+    
+    <aura:attribute name="recordId" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="slds-box buttonaligment" >
+        <div class="c-container ">
+            <ui:message title="Instructions:" severity="warning" >
+                The Key Account Strategy inputs are feeded from the top 5 Priorities of the Key Account from tab: Strategic priorities and Imerys fit, please make your edits within that tab.
+            </ui:message>
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem padding="around-small" size="12">
+                    <lightning:layout class = "Alignment" >
+                        <lightning:layoutItem padding="around-small" size="3">
+                            <div class="page-section page-right">
+                                <b class = "clr"> Key Account Strategy</b> 
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <ui:inputTextArea aura:id = "KAS1" value = "{!v.KAS1}"   disabled = "{!v.disablePermission}" />  
+                                <br></br>
+                                <br></br>
+                                <ui:inputTextArea aura:id = "KAS2" value = "{!v.KAS2}"  disabled = "{!v.disablePermission}" /> 
+                                <br></br>
+                                <br></br>
+                                <ui:inputTextArea aura:id = "KAS3" value = "{!v.KAS3}"  disabled = "{!v.disablePermission}" />
+                                <br></br>
+                                <br></br>
+                                <ui:inputTextArea aura:id = "KAS4" value = "{!v.KAS4}"  disabled = "{!v.disablePermission}" />
+                                <br></br>
+                                <br></br>
+                                <ui:inputTextArea aura:id = "KAS5" value = "{!v.KAS5}"   disabled = "{!v.disablePermission}" /> 
+                            </div>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="around-small"  > 
+                            <div class="page-section page-main">
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                
+                                <lightning:icon iconName="utility:dash" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                
+                                <lightning:icon iconName="utility:dash" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon iconName="utility:dash" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon iconName="utility:dash" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon iconName="utility:dash" />
+                                
+                            </div>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="around-small" size="3">
+                            <div class="page-section page-main">
+                                <b class = "clr"> Imerys Strategy  </b>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <ui:inputTextArea aura:id ="IS1" value = "{!v.IS1}"  maxlength="150" disabled = "{!v.ReadOnlyPermission}" /> 
+                                <br></br>
+                                <br></br>
+                                <ui:inputTextArea aura:id ="IS2" value = "{!v.IS2}"  maxlength="150" disabled = "{!v.ReadOnlyPermission}" />
+                                <br></br>
+                                <br></br>
+                                
+                                <ui:inputTextArea aura:id ="IS3"  value = "{!v.IS3}" maxlength="150" disabled = "{!v.ReadOnlyPermission}" /> 
+                                <br></br>
+                                <br></br>
+                                
+                                <ui:inputTextArea aura:id ="IS4" value = "{!v.IS4}"  maxlength="150" disabled = "{!v.ReadOnlyPermission}" /> 
+                                <br></br>
+                                <br></br>
+                                
+                                <ui:inputTextArea  aura:id ="IS5"  value = "{!v.IS5}" maxlength="150" disabled = "{!v.ReadOnlyPermission}" />
+                            </div>
+                        </lightning:layoutItem>
+                        
+                        <lightning:layoutItem padding="around-small"  > 
+                            <div class="page-section page-main">
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon iconName="utility:right" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon iconName="utility:right" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon iconName="utility:right" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon iconName="utility:right" />
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <lightning:icon  iconName="utility:right" />
+                            </div>
+                        </lightning:layoutItem> 
+                        
+                        <lightning:layoutItem padding="around-small" size="3" > 
+                            <b class = "clr">Win - Win Strategic Initiatives</b>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <ui:inputTextArea aura:id = "ww1" value = "{!v.ww1}" maxlength="150" disabled = "{!v.ReadOnlyPermission}"  /> 
+                            <br></br>
+                            <br></br>
+                            
+                            <ui:inputTextArea aura:id = "ww2" value = "{!v.ww2}" maxlength="150" disabled = "{!v.ReadOnlyPermission}" /> 
+                            <br></br>
+                            <br></br>
+                            
+                            <ui:inputTextArea aura:id = "ww3" value = "{!v.ww3}" maxlength="150" disabled = "{!v.ReadOnlyPermission}" />
+                            <br></br>
+                            <br></br>
+                            <ui:inputTextArea aura:id = "ww4" value = "{!v.ww4}" maxlength="150" disabled = "{!v.ReadOnlyPermission}" /> 
+                            <br></br>
+                            <br></br>
+                            <ui:inputTextArea aura:id = "ww5" value = "{!v.ww5}" maxlength="150" disabled = "{!v.ReadOnlyPermission}" /> 
+                        </lightning:layoutItem> 
+                    </lightning:layout>            
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+        <div  class= "buttonaligment clr" >
+            <lightning:button variant="brand-outline" label="Save" title="Primary action" onclick="{!c.SubmithandleClick}" disabled = "{!v.ReadOnlyPermission}" class="slds-m-left_x-small"></lightning:button>
+        </div>  
+    </div>
+    
+</aura:component>
