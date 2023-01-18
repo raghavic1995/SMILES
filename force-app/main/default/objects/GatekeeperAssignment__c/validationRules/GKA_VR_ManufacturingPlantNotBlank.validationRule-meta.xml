@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GKA_VR_ManufacturingPlantNotBlank</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+
+ISBLANK( ImerysManufacturingPlant__c ), 
+
+(ISPICKVAL(Object__c, &apos;Complaint&apos;)),
+
+$User.ByPassValidationRule__c = FALSE
+)</errorConditionFormula>
+    <errorMessage>Imerys Manufacturing Plant cannot be blank</errorMessage>
+</ValidationRule>
