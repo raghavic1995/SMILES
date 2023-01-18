@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IP_IPRODCompactlayout</fullName>
+    <fields>Name</fields>
+    <fields>New_Product_Type_1__c</fields>
+    <fields>New_Product_Type_2__c</fields>
+    <fields>ImerysManufacturingPlant__c</fields>
+    <fields>Inactive__c</fields>
+    <label>IP_IPRODCompactlayout</label>
+</CompactLayout>
