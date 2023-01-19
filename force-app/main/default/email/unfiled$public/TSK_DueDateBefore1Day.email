@@ -1,0 +1,7 @@
+Hi {!Task.TaskAssignedToName__c},
+
+This is to remind you that the task assigned to you by {!Task.CreatedBy}, is due on {!Task.ActivityDate}. Please make sure to close it before tomorrow!
+
+Click here {!Task.Link} to view your task.
+
+Thanks.
