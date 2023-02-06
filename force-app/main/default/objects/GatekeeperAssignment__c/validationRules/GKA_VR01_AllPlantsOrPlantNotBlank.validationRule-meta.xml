@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GKA_VR01_AllPlantsOrPlantNotBlank</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+
+ISBLANK( Imerys_Site_Dispatch__c ), 
+
+(ISPICKVAL(Object__c, &apos;Sample&apos;)),
+
+$User.ByPassValidationRule__c = FALSE
+)</errorConditionFormula>
+    <errorMessage>Dispatch Site cannot be blank</errorMessage>
+</ValidationRule>
