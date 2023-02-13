@@ -2,7 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CSE_VR57_CorrectiveActionMandatory</fullName>
     <active>true</active>
-    <errorConditionFormula>ISPICKVAL( BusinessArea__c , &apos;HTS&apos;) 
+    <errorConditionFormula>ISPICKVAL( BusinessArea__c , &apos;HTS&apos;)
 &amp;&amp;
 (RecordType.DeveloperName = &apos;CSE_Complaint&apos; || RecordType.DeveloperName = &apos;Complaint_After_Creation_New&apos;)
 &amp;&amp;
@@ -10,7 +10,7 @@ Tech_NoOfCorrectiveAction__c =0
 &amp;&amp;
 $User.ByPassValidationRule__c = FALSE
 &amp;&amp;
-(OR(ISPICKVAL( Status , &apos;Draft Creation&apos;),ISPICKVAL( Status , &apos;Registration&apos;),ISPICKVAL( Status , &apos;Investigation&apos;)))
+(ISPICKVAL(Status , &apos;Report to Customer&apos;) || ISPICKVAL( Status , &apos;Follow-Up&apos;) || ISPICKVAL( Status , &apos;Closed&apos;))
 &amp;&amp;
 ISPICKVAL(IsComplaintJustified__c ,&apos;Justified&apos;)</errorConditionFormula>
     <errorMessage>Since the complaint is &apos;Justified&apos;, you need to create a Corrective action</errorMessage>
