@@ -1,0 +1,7 @@
+Hi {!Task.TaskAssignedToName__c},
+
+This is to remind you that the task assigned to you by {!Task.CreatedBy}, is still open and overdue by 3 days from {!Task.ActivityDate}.
+
+Click here {!Task.Link} to view your task.
+
+Thanks.
