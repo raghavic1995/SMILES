@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Credit_Note_Queue_Member_Notify</name>
         <label>Credit Note Queue Member Notify</label>
-        <locationX>616</locationX>
-        <locationY>1262</locationY>
+        <locationX>570</locationX>
+        <locationY>960</locationY>
         <actionName>Case.Credit_Note_Queue_Member_Notify</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -21,8 +21,8 @@
     <actionCalls>
         <name>Open_Case</name>
         <label>Open Case</label>
-        <locationX>616</locationX>
-        <locationY>1502</locationY>
+        <locationX>560</locationX>
+        <locationY>1225</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -47,29 +47,10 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
-        <name>open_url</name>
-        <label>open url</label>
-        <locationX>484</locationX>
-        <locationY>1046</locationY>
-        <actionName>c:OpenURL</actionName>
-        <actionType>component</actionType>
-        <connector>
-            <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>url</name>
-            <value>
-                <elementReference>openurllistview</elementReference>
-            </value>
-        </inputParameters>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </actionCalls>
-    <actionCalls>
         <name>postToChatter</name>
         <label>postToChatter</label>
-        <locationX>616</locationX>
-        <locationY>1382</locationY>
+        <locationX>543</locationX>
+        <locationY>1084</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -116,28 +97,28 @@
         </value>
     </choices>
     <decisions>
-        <name>If_creator_is_user</name>
-        <label>If creator is user</label>
-        <locationX>616</locationX>
-        <locationY>806</locationY>
+        <name>Invoice_Exist</name>
+        <label>Invoice Exist</label>
+        <locationX>225</locationX>
+        <locationY>836</locationY>
         <defaultConnector>
-            <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
+            <targetReference>Create_Case_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>creator_is_user</name>
+            <name>Exist</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>frmQueueOwner</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <leftValueReference>varInvoiceInfoId</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <elementReference>getUser.CreatedBy.Id</elementReference>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>xyz</targetReference>
+                <targetReference>Warning</targetReference>
             </connector>
-            <label>creator is user</label>
+            <label>Exist</label>
         </rules>
     </decisions>
     <dynamicChoiceSets>
@@ -245,7 +226,7 @@
 &quot;Type : &quot;&amp;{!getTypeAndSubType.Master__c}&amp;{!constantLineBreak}&amp;
 &quot;Sub-Type : &quot;&amp;{!getTypeAndSubType.Slave__c}&amp;{!constantLineBreak}&amp;
 &quot;Requested Credit Amount :  &quot;&amp; TEXT({!Requested_Credit_Amount})&amp;{!constantLineBreak}&amp;
-&quot;Description :  &quot;&amp; {!frmRichTextValue}&amp;{!constantLineBreak}</expression>
+&quot;Description :  &quot;&amp; {!Description}&amp;{!constantLineBreak}</expression>
     </formulas>
     <formulas>
         <name>frmQueueOwner</name>
@@ -264,9 +245,9 @@
         <expression>LEFT(TRIM({!Description}),4000)</expression>
     </formulas>
     <formulas>
-        <name>openurllistview</name>
+        <name>frmUserOrAccountManagerId</name>
         <dataType>String</dataType>
-        <expression>HYPERLINK(&quot;https://imeryscrm--training.lightning.force.com/imeryscrm--training.lightning.force.com/lightning/o/Case/list?filterName=Recent&quot; , &quot;_self&quot;)</expression>
+        <expression>If(ISBLANK({!getAccountManager.AccountManager__c}),{!$User.Id},{!getAccountManager.AccountManager__c})</expression>
     </formulas>
     <interviewLabel>Flow - Create Credit Note {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Credit Request</label>
@@ -292,12 +273,18 @@
     <recordCreates>
         <name>Create_Case_0</name>
         <label>Create Case</label>
-        <locationX>616</locationX>
-        <locationY>686</locationY>
+        <locationX>584</locationX>
+        <locationY>837</locationY>
         <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
         <connector>
-            <targetReference>If_creator_is_user</targetReference>
+            <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
         </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>getCase.AccountId</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Account__c</field>
             <value>
@@ -311,6 +298,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>CSAccountManager__c</field>
+            <value>
+                <elementReference>frmUserOrAccountManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>ClaimedAmount__c</field>
             <value>
                 <elementReference>Requested_Credit_Amount</elementReference>
@@ -319,19 +312,13 @@
         <inputAssignments>
             <field>Comments</field>
             <value>
-                <elementReference>frmRichTextValue</elementReference>
+                <elementReference>Description</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>ContactId</field>
             <value>
                 <elementReference>getCase.ContactId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Credit_Rebill__c</field>
-            <value>
-                <elementReference>RequestedCreditRebill</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -365,6 +352,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>InvoiceNumber__c</field>
+            <value>
+                <elementReference>getCase.InvoiceNumber__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Liability_Amount__c</field>
             <value>
                 <elementReference>getCase.Liability_Amount__c</elementReference>
@@ -373,7 +366,7 @@
         <inputAssignments>
             <field>N_1__c</field>
             <value>
-                <elementReference>$User.ManagerId</elementReference>
+                <elementReference>getUser.ManagerId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -431,6 +424,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Rebill_Amount__c</field>
+            <value>
+                <elementReference>Rebill_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Rebill_Needed__c</field>
             <value>
                 <elementReference>Is_Rebill</elementReference>
@@ -481,9 +480,37 @@
         <object>Case</object>
     </recordCreates>
     <recordLookups>
+        <name>getAccountManager</name>
+        <label>getAccountManager</label>
+        <locationX>584</locationX>
+        <locationY>597</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>getUser</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountName__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>getCase.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>BusinessArea__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>getCase.BusinessArea__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Relationship__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>getCase</name>
         <label>getCase</label>
-        <locationX>616</locationX>
+        <locationX>584</locationX>
         <locationY>206</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -502,13 +529,50 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>getTypeAndSubType</name>
-        <label>getTypeAndSubType</label>
-        <locationX>616</locationX>
-        <locationY>446</locationY>
+        <name>getInvoiceInfo</name>
+        <label>getInvoiceInfo</label>
+        <locationX>368</locationX>
+        <locationY>698</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>getUser</targetReference>
+            <targetReference>Invoice_Exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>InvoiceNumber__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>getCase.InvoiceNumber__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>frmRecordType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Credit_Note</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>InvoiceNumber__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <outputAssignments>
+            <assignToReference>varInvoiceInfoId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>getTypeAndSubType</name>
+        <label>getTypeAndSubType</label>
+        <locationX>584</locationX>
+        <locationY>477</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>getAccountManager</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -525,18 +589,18 @@
     <recordLookups>
         <name>getUser</name>
         <label>getUser</label>
-        <locationX>616</locationX>
-        <locationY>566</locationY>
+        <locationX>584</locationX>
+        <locationY>722</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Create_Case_0</targetReference>
+            <targetReference>getInvoiceInfo</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$User.Id</elementReference>
+                <elementReference>frmUserOrAccountManagerId</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -547,8 +611,8 @@
     <screens>
         <name>scrRequest</name>
         <label>scrRequest</label>
-        <locationX>616</locationX>
-        <locationY>326</locationY>
+        <locationX>583</locationX>
+        <locationY>344</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -652,6 +716,27 @@
                     <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
+                <fields>
+                    <name>Rebill_Amount</name>
+                    <dataType>Currency</dataType>
+                    <defaultValue>
+                        <numberValue>0.0</numberValue>
+                    </defaultValue>
+                    <fieldText>Rebill Amount</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                    <scale>0</scale>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Is_Rebill</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <booleanValue>true</booleanValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
                 <inputParameters>
                     <name>width</name>
                     <value>
@@ -686,43 +771,41 @@
         </fields>
         <fields>
             <name>Description</name>
+            <defaultValue>
+                <stringValue>{!getCase.Description__c}</stringValue>
+            </defaultValue>
             <fieldText>Description</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;Description is too long (max 4000 characters)&lt;/p&gt;</errorMessage>
+                <formulaExpression>IF(LEN({!Description})&lt;=4000,TRUE,FALSE)</formulaExpression>
+            </validationRule>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>xyz</name>
-        <label>xyz</label>
-        <locationX>484</locationX>
-        <locationY>926</locationY>
-        <allowBack>false</allowBack>
+        <name>Warning</name>
+        <label>Warning</label>
+        <locationX>368</locationX>
+        <locationY>985</locationY>
+        <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>open_url</targetReference>
+            <targetReference>Create_Case_0</targetReference>
         </connector>
         <fields>
-            <name>messagetouser</name>
-            <fieldText>&lt;p&gt;Thank you for the effort. Your request is being processed 😊&lt;/p&gt;</fieldText>
+            <name>WarningText</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(244, 13, 13);&quot;&gt;Invoice Number has been used for other Credit note!&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
-        <fields>
-            <name>closetab</name>
-            <extensionName>c:CloseTab</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <nextOrFinishButtonLabel>Done</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>490</locationX>
+        <locationX>458</locationX>
         <locationY>48</locationY>
         <connector>
             <targetReference>getCase</targetReference>
@@ -782,14 +865,6 @@
         <objectType>Invoice__c</objectType>
     </variables>
     <variables>
-        <name>RequestedCreditRebill</name>
-        <dataType>Currency</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <scale>2</scale>
-    </variables>
-    <variables>
         <name>varAccountManagerId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -798,6 +873,13 @@
     </variables>
     <variables>
         <name>varCriticalityAssessment</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varInvoiceInfoId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
