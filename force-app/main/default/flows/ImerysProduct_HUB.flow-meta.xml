@@ -1,0 +1,1892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <name>Check_Condition</name>
+        <label>Check Condition</label>
+        <locationX>5858</locationX>
+        <locationY>311</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Americas1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Americas</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Americas2</targetReference>
+            </connector>
+            <label>Americas</label>
+        </rules>
+        <rules>
+            <name>Australia_NewZealand</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>AusNewZealand</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Australia_New_Zealand</targetReference>
+            </connector>
+            <label>Australia &amp; NewZealand</label>
+        </rules>
+        <rules>
+            <name>Carbonate_splties</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Carbonatesplties</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Carbonate_splties1</targetReference>
+            </connector>
+            <label>Carbonate splties</label>
+        </rules>
+        <rules>
+            <name>Central_Europe</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>CentralEurope</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Central_Europe1</targetReference>
+            </connector>
+            <label>Central Europe</label>
+        </rules>
+        <rules>
+            <name>China1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>China</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Chinas</targetReference>
+            </connector>
+            <label>China</label>
+        </rules>
+        <rules>
+            <name>Europe_CAC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>EuropeCAC</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Europe_CAC1</targetReference>
+            </connector>
+            <label>Europe CAC</label>
+        </rules>
+        <rules>
+            <name>Europe_Fusion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>EuropeFusion</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Europe_Fusion1</targetReference>
+            </connector>
+            <label>Europe Fusion</label>
+        </rules>
+        <rules>
+            <name>Europe_Refractory</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>EuropeRefractory</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Europe_Refractory1</targetReference>
+            </connector>
+            <label>Europe Refractory</label>
+        </rules>
+        <rules>
+            <name>Ex_Imerys</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>ExImerys</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ex_Imerys1</targetReference>
+            </connector>
+            <label>Ex-Imerys</label>
+        </rules>
+        <rules>
+            <name>Graphite_Carbon</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>GraphiteCarbon</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Graphite_Carbon1</targetReference>
+            </connector>
+            <label>Graphite &amp; Carbon</label>
+        </rules>
+        <rules>
+            <name>Greater_China</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>GreaterChina</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Greater_China1</targetReference>
+            </connector>
+            <label>Greater China</label>
+        </rules>
+        <rules>
+            <name>HUB_SC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>HUBSC</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>HUB_SC1</targetReference>
+            </connector>
+            <label>HUB_SC</label>
+        </rules>
+        <rules>
+            <name>India_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>India1</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>India_11</targetReference>
+            </connector>
+            <label>India 1</label>
+        </rules>
+        <rules>
+            <name>India_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>India2</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>India_21</targetReference>
+            </connector>
+            <label>India 2</label>
+        </rules>
+        <rules>
+            <name>Italy1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Italy</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Italy2</targetReference>
+            </connector>
+            <label>Italy</label>
+        </rules>
+        <rules>
+            <name>Japan1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Japan</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Japan2</targetReference>
+            </connector>
+            <label>Japan</label>
+        </rules>
+        <rules>
+            <name>Mexico</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Mexico1</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mexico2</targetReference>
+            </connector>
+            <label>Mexico</label>
+        </rules>
+        <rules>
+            <name>Middle_East_India</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>MiddleEastIndia</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Middle_East_India1</targetReference>
+            </connector>
+            <label>Middle East &amp; India</label>
+        </rules>
+        <rules>
+            <name>Milos1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Milos</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Milos2</targetReference>
+            </connector>
+            <label>Milos</label>
+        </rules>
+        <rules>
+            <name>Nordics</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Nordics1</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Nordics2</targetReference>
+            </connector>
+            <label>Nordics</label>
+        </rules>
+        <rules>
+            <name>North_America</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>NorthAmerica</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>North_America1</targetReference>
+            </connector>
+            <label>North America</label>
+        </rules>
+        <rules>
+            <name>North_France</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>NorthFrance</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>North_France1</targetReference>
+            </connector>
+            <label>North France</label>
+        </rules>
+        <rules>
+            <name>Oberhausen1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Oberhausen</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Oberhausen2</targetReference>
+            </connector>
+            <label>Oberhausen</label>
+        </rules>
+        <rules>
+            <name>SE_Europe</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SEEurope</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SE_Europe1</targetReference>
+            </connector>
+            <label>SE Europe</label>
+        </rules>
+        <rules>
+            <name>Sezanne1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Sezanne</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sezanne2</targetReference>
+            </connector>
+            <label>Sezanne</label>
+        </rules>
+        <rules>
+            <name>South_Africa</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SouthAfrica</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>South_Africa1</targetReference>
+            </connector>
+            <label>South Africa</label>
+        </rules>
+        <rules>
+            <name>South_East_Asia_Malaysia_Vietnam</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SouthEastAsiaMalaysiaVietnam</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SEA_Malaysia_Vietnam</targetReference>
+            </connector>
+            <label>South East Asia Malaysia &amp; Vietnam</label>
+        </rules>
+        <rules>
+            <name>South_France</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SouthFrance</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>South_France1</targetReference>
+            </connector>
+            <label>South France</label>
+        </rules>
+        <rules>
+            <name>South_West_Asia</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SouthWestAsia</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>South_West_Asia1</targetReference>
+            </connector>
+            <label>South-West Asia</label>
+        </rules>
+        <rules>
+            <name>Spain_IKF</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SpainIKF</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Spain_IKF1</targetReference>
+            </connector>
+            <label>Spain &amp; IKF</label>
+        </rules>
+        <rules>
+            <name>Sylacauga</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>US - Sylacauga</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sylacauga1</targetReference>
+            </connector>
+            <label>Sylacauga</label>
+        </rules>
+        <rules>
+            <name>Talc1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Talc</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Talc2</targetReference>
+            </connector>
+            <label>Talc</label>
+        </rules>
+        <rules>
+            <name>UK</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>UK1</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Uk2</targetReference>
+            </connector>
+            <label>UK</label>
+        </rules>
+        <rules>
+            <name>US_Middle_Georgia</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>USMiddleGeorgia</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>US_Clays</targetReference>
+            </connector>
+            <label>US Middle Georgia</label>
+        </rules>
+        <rules>
+            <name>US_North_Georgia</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>USNorthGeorgia</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>US_South_Wollastonite</targetReference>
+            </connector>
+            <label>US North Georgia</label>
+        </rules>
+        <rules>
+            <name>US_West</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>USWest</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>US_Canada_West</targetReference>
+            </connector>
+            <label>US West</label>
+        </rules>
+        <rules>
+            <name>US_East_Canada</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>USEastCanada</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>US_Canada_East</targetReference>
+            </connector>
+            <label>US East &amp; Canada</label>
+        </rules>
+        <rules>
+            <name>Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Blank1</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Blank2</targetReference>
+            </connector>
+            <label>Blank</label>
+        </rules>
+        <rules>
+            <name>Greek_Bauxite</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>GreekBauxite</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Greek_Bauxite1</targetReference>
+            </connector>
+            <label>Greek Bauxite</label>
+        </rules>
+        <rules>
+            <name>South_America</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SouthAmerica</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>South_America1</targetReference>
+            </connector>
+            <label>South America</label>
+        </rules>
+        <rules>
+            <name>South_East_Asia_Indonesia_Thailand</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SouthEastAsiaIndonesiaThailand</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SEA_Thailand</targetReference>
+            </connector>
+            <label>South East Asia, Indonesia &amp; Thailand</label>
+        </rules>
+        <rules>
+            <name>East_Asia</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>EastAsia</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>East_Asia1</targetReference>
+            </connector>
+            <label>East Asia</label>
+        </rules>
+        <rules>
+            <name>German_Eastern_Europe</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>GermanEasternEurope</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>German_Eastern_Europe1</targetReference>
+            </connector>
+            <label>German - Eastern Europe</label>
+        </rules>
+        <rules>
+            <name>US_Ball_Clay</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>USBallClay</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>US_Ball_Clay1</targetReference>
+            </connector>
+            <label>US Ball Clay</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>Americas</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;BR - Guaratingueta&quot;,&quot;BR - Guaratingueta&quot;,
+&quot;US - Aberdeen&quot;,&quot;US - Aberdeen&quot;,
+&quot;US - Birmingham&quot;,&quot;US - Birmingham&quot;,
+&quot;US - Cincinnati&quot;,&quot;US - Cincinnati&quot;,
+&quot;US - Niagara Falls (SCF)&quot;,&quot;US - Niagara Falls (SCF)&quot;,
+&quot;US - Waterloo&quot;,&quot;US - Waterloo&quot;,
+&quot;US - Colony&quot;,&quot;US - Colony&quot;,
+&quot;US - Montana&quot;,&quot;US - Montana&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>AusNewZealand</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;AU - DAVCO&quot;,&quot;AU - DAVCO&quot;,
+&quot;AU - Phil O&apos;Brien&quot;,&quot;AU - Phil O&apos;Brien&quot;,
+&quot;AU - Pittong&quot;,&quot;AU - Pittong&quot;,
+&quot;AU - Shinagawa&quot;,&quot;AU - Shinagawa&quot;,
+&quot;AU - Three Springs&quot;,&quot;AU - Three Springs&quot;,
+&quot;NZ - ICNZ - New Zealand&quot;,&quot;NZ - ICNZ - New Zealand&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Blank1</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;AS - Expansion&quot;,&quot;AS - Expansion&quot;,
+&quot;BE - Elementis&quot;,&quot;BE - Elementis&quot;,
+&quot;BR - Hagen&quot;,&quot;BR - Hagen&quot;,
+&quot;CN - CMP&quot;,&quot;CN - CMP&quot;,
+&quot;CN - Cryo&quot;,&quot;CN - Cryo&quot;,
+&quot;CN - Expansion&quot;,&quot;CN - Expansion&quot;,
+&quot;DE - Dornburg&quot;,&quot;DE - Dornburg&quot;,
+&quot;DE - Eisenberg&quot;,&quot;DE - Eisenberg&quot;,
+&quot;DE - Emsdetten Cirkel&quot;,&quot;DE - Emsdetten Cirkel&quot;,
+&quot;DE - Hamburg&quot;,&quot;DE - Hamburg&quot;,
+&quot;DE - Iko&quot;,&quot;DE - Iko&quot;,
+&quot;DE - Krefeld APJ (bentonite)&quot;,&quot;DE - Krefeld APJ (bentonite)&quot;,
+&quot;DE - Liebenau Thermoputz (perlite)&quot;,&quot;DE - Liebenau Thermoputz (perlite)&quot;,
+&quot;DE - Wörth&quot;,&quot;DE - Wörth&quot;,
+&quot;DE - Zietzschmann&quot;,&quot;DE - Zietzschmann&quot;,
+&quot;EU - Resale&quot;,&quot;EU - Resale&quot;,
+&quot;ID - Cilegon&quot;,&quot;ID - Cilegon&quot;,
+&quot;FR - Iko&quot;,&quot;FR - Iko&quot;,
+&quot;FR - LTS Le Treport&quot;,&quot;FR - LTS Le Treport&quot;,
+&quot;IN - BOP India&quot;,&quot;IN - BOP India&quot;,
+&quot;IN - Cilegon&quot;,&quot;IN - Cilegon&quot;,
+&quot;NL - Vendaam&quot;,&quot;NL - Vendaam&quot;,
+&quot;NL - Vlaardingen&quot;,&quot;NL - Vlaardingen&quot;,
+&quot;Not Assigned&quot;, &quot;Not Assigned&quot;,
+&quot;US - Dry Branch Kaolin&quot;,&quot;US - Dry Branch Kaolin&quot;,
+&quot;US - ITC Atlanta&quot;,&quot;US - ITC Atlanta&quot;,
+&quot;US - Kyanite Mining Corp&quot;,&quot;US - Kyanite Mining Corp&quot;,
+&quot;US - Newell&quot;,&quot;US - Newell&quot;,
+&quot;US - TQC - Spruce Pine&quot;,&quot;US - TQC - Spruce Pine&quot;,
+&quot;US - Trade&quot;,&quot;US - Trade&quot;,
+&quot;US - Wrens&quot;,&quot;US - Wrens&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Carbonatesplties</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;BE - Lixhe&quot;,&quot;BE - Lixhe&quot;,
+&quot;DE - Rheinberg&quot;,&quot;DE - Rheinberg&quot;,
+&quot;FR - Salin De Giraud&quot;,&quot;FR - Salin De Giraud&quot;,
+&quot;GB - Beverley&quot;,&quot;GB - Beverley&quot;,
+&quot;GB - Lostock&quot;,&quot;GB - Lostock&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>CentralEurope</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;AT - Oberfeistritz&quot;,&quot;AT - Oberfeistritz&quot;,
+&quot;AT - Weisskirchen&quot;,&quot;AT - Weisskirchen&quot;,
+&quot;BE - Gent&quot;,&quot;BE - Gent&quot;,
+&quot;CZ - ITWCZ - Karlovy Vary&quot;,&quot;CZ - ITWCZ - Karlovy Vary&quot;,
+&quot;DE - ITWD - Neustadt&quot;, &quot;DE - ITWD - Neustadt&quot;,
+&quot;DE - ITWD - Schmelitz&quot;,&quot;DE - ITWD - Schmelitz&quot;,
+&quot;DE - ITWD - Selb&quot;,&quot;DE - ITWD - Selb&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>China</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;CN - Guiyang - Guizhou&quot;,&quot;CN - Guiyang - Guizhou&quot;,
+&quot;CN - Shawen (Yindu)&quot;,&quot;CN - Shawen (Yindu)&quot;,
+&quot;CN - Shengton (GW)&quot;,&quot;CN - Shengton (GW)&quot;,
+&quot;CN - Tianjin (Teda)&quot;,&quot;CN - Tianjin (Teda)&quot;,
+&quot;CN - Yilong&quot;,&quot;CN - Yilong&quot;,
+&quot;CN - Yingkou&quot;,&quot;CN - Yingkou&quot;,
+&quot;CN - Zhejiang&quot;,&quot;CN - Zhejiang&quot;,
+&quot;CN - Zhengzou (GW)&quot;,&quot;CN - Zhengzou (GW)&quot;,
+&quot;CN - Zibo&quot;,&quot;CN - Zibo&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>EastAsia</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;CN - Jianping&quot;,&quot;CN - Jianping&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>EuropeCAC</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;BE - Blicquy (ADB)&quot;,&quot;BE - Blicquy (ADB)&quot;,
+&quot;DE - Borregaard (PER)&quot;,&quot;DE - Borregaard (PER)&quot;,
+&quot;DE - Clariant (PER)&quot;,&quot;DE - Clariant (PER)&quot;,
+&quot;DE - Dr Ludwig&quot;,&quot;DE - Dr Ludwig&quot;,
+&quot;DE - Inprotec (PER)&quot;,&quot;DE - Inprotec (PER)&quot;,
+&quot;DE - MineralWerk Hamm&quot;,&quot;DE - MineralWerk Hamm&quot;,
+&quot;DE - Poraver&quot;, &quot;DE - Poraver&quot;,
+&quot;DE - Rywa&quot;,&quot;DE - Rywa&quot;,
+&quot;DE - Saint Gobain Formula&quot;,&quot;DE - Saint Gobain Formula&quot;,
+&quot;FR - Dunkerque&quot;,&quot;FR - Dunkerque&quot;,
+&quot;FR - Extracthive&quot;,&quot;FR - Extracthive&quot;,
+&quot;FR - Fos sur mer&quot;,&quot;FR - Fos sur mer&quot;,
+&quot;FR - HD Distribution&quot;,&quot;FR - HD Distribution&quot;,
+&quot;FR - Hepha&quot;,&quot;FR - Hepha&quot;,
+&quot;FR - Lafarge Ciment Cruas&quot;,&quot;FR - Lafarge Ciment Cruas&quot;,
+&quot;FR - Lafarge Ciment Le Teil&quot;,&quot;FR - Lafarge Ciment Le Teil&quot;,
+&quot;FR - Le Teil&quot;,&quot;FR - Le Teil&quot;,
+&quot;FR - Ouvrie&quot;, &quot;FR - Ouvrie&quot;,
+&quot;FR - Plessiet&quot;, &quot;FR - Plessiet&quot;,
+&quot;FR - STIM&quot;, &quot;FR - STIM&quot;,
+&quot;FR - TFC&quot;, &quot;FR - TFC&quot;,
+&quot;FR - Vera Chimie&quot;,&quot;FR - Vera Chimie&quot;,
+&quot;GB - West Thurrock&quot;,&quot;GB - West Thurrock&quot;,
+&quot;IT - Vimark&quot;,&quot;IT - Vimark&quot;,
+&quot;SE - Peramin&quot;,&quot;SE - Peramin&quot;,
+&quot;SE - Perstorp&quot;,&quot;SE - Perstorp&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>EuropeFusion</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;AT - Villach&quot;,&quot;AT - Villach&quot;,
+&quot;AT - Villach - ITC&quot;,&quot;AT - Villach - ITC&quot;,
+&quot;DE - Dortmund&quot;,&quot;DE - Dortmund&quot;,
+&quot;DE - Laufenburg&quot;,&quot;DE - Laufenburg&quot;,
+&quot;DE - Laufenburg - Micro&quot;,&quot;DE - Laufenburg - Micro&quot;,
+&quot;DE - Murg&quot;,&quot;DE - Murg&quot;,
+&quot;DE - Teutschenthal&quot;,&quot;DE - Teutschenthal&quot;,
+&quot;DE - Zschornewitz&quot;,&quot;DE - Zschornewitz&quot;,
+&quot;IT - Domodossola&quot;,&quot;IT - Domodossola&quot;,
+&quot;SI - Ruse&quot;,&quot;SI - Ruse&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>EuropeRefractory</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;DE - Andernach&quot;,&quot;DE - Andernach&quot;,
+&quot;FR - Beyrede&quot;,&quot;FR - Beyrede&quot;,
+&quot;FR - Clerac&quot;,&quot;FR - Clerac&quot;,
+&quot;FR - Glomel&quot;,&quot;FR - Glomel&quot;,
+&quot;HU - Egyhazaskeszo&quot;,&quot;HU - Egyhazaskeszo&quot;,
+&quot;UA - VKV&quot;,&quot;UA - VKV&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>ExImerys</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;FR - Axat&quot;,&quot;FR - Axat&quot;,
+&quot;AT - Ebensee&quot;,&quot;AT - Ebensee&quot;,
+&quot;DE - Landshut&quot;,&quot;DE - Landshut&quot;,
+&quot;FR - ICF - Feldspaths du Morvan&quot;,&quot;FR - ICF - Feldspaths du Morvan&quot;,
+&quot;GB - Hull&quot;,&quot;GB - Hull&quot;,
+&quot;IT - Ravenna&quot;,&quot;IT - Ravenna&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>GermanEasternEurope</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;DE - Mannheim&quot;,&quot;DE - Mannheim&quot;,
+&quot;DE - Marl Brassert&quot;,&quot;DE - Marl Brassert&quot;,
+&quot;DE - Marl Sinsen&quot;,&quot;DE - Marl Sinsen&quot;,
+&quot;DE - Oberhausen&quot;,&quot;DE - Oberhausen&quot;,
+&quot;DE - Oelsnitz&quot;,&quot;DE - Oelsnitz&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>GraphiteCarbon</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;BE - Willebroek&quot;,&quot;BE - Willebroek&quot;,
+&quot;CA - LDI&quot;,&quot;CA - LDI&quot;,
+&quot;CA - Terrebonne&quot;,&quot;CA - Terrebonne&quot;,
+&quot;CH - Bodio&quot;,&quot;CH - Bodio&quot;,
+&quot;JP - Kitakyushu&quot;,&quot;JP - Kitakyushu&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>GreaterChina</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;CN - Linjiang&quot;,&quot;CN - Linjiang&quot;,
+&quot;CN - Yueyang&quot;,&quot;CN - Yueyang&quot;,
+&quot;CN - Qingyang&quot;,&quot;CN - Qingyang&quot;,
+&quot;CN - Henan&quot;,&quot;CN - Henan&quot;,
+&quot;CN - Wuhu&quot;,&quot;CN - Wuhu&quot;,
+&quot;TN - Kaoshiung&quot;,&quot;TN - Kaoshiung&quot;,
+
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>GreekBauxite</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;GR - Agia Marina&quot;,&quot;GR - Agia Marina&quot;,
+&quot;GR - Itea&quot;,&quot;GR - Itea&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>HUBSC</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;BE - IMB - Valdo&quot;,&quot;BE - IMB - Valdo&quot;,
+&quot;FR - Emaux&quot;,&quot;FR - Emaux&quot;,
+&quot;FR - Quessoy&quot;,&quot;FR - Quessoy&quot;,
+&quot;FR - Wissembourg&quot;,&quot;FR - Wissembourg&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>India1</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;IN - Mehsana&quot;,&quot;IN - Mehsana&quot;,
+&quot;IN - Bhigwan&quot;,&quot;IN - Bhigwan&quot;,
+&quot;IN - Alwar&quot;,&quot;IN - Alwar&quot;,
+&quot;IN - Balasore&quot;,&quot;IN - Balasore&quot;,
+&quot;IN - Silvassa&quot;,&quot;IN - Silvassa&quot;,
+&quot;IN - Amritsar&quot;,&quot;IN - Amritsar&quot;,
+&quot;IN - Badhrachalam&quot;,&quot;IN - Badhrachalam&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>India2</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;IN - ICI - Nadiad&quot;,&quot;IN - ICI - Nadiad&quot;,
+&quot;IN - ICI - Kadthal&quot;,&quot;IN - ICI - Kadthal&quot;,
+&quot;IN - Wankaner (EMS)&quot;,&quot;IN - Wankaner (EMS)&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Italy</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;IT - Avezzano&quot;,&quot;IT - Avezzano&quot;,
+&quot;IT - Corsico&quot;,&quot;IT - Corsico&quot;,
+&quot;IT - Gran Bianco&quot;,&quot;IT - Gran Bianco&quot;,
+&quot;IT - ICIT - Modena&quot;,&quot;IT - ICIT - Modena&quot;,
+&quot;IT - ICIT - Spica&quot;,&quot;IT - ICIT - Spica&quot;,
+&quot;IT - Malanaggio&quot;,&quot;IT - Malanaggio&quot;,
+&quot;IT - Sardinia&quot;,&quot;IT - Sardinia&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Japan</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;JP - Niigata&quot;,&quot;JP - Niigata&quot;,
+&quot;JP - Miyagi&quot;,&quot;JP - Miyagi&quot;,
+&quot;JP - Suzuka&quot;,&quot;JP - Suzuka&quot;,
+&quot;JP - Tomakomai&quot;,&quot;JP - Tomakomai&quot;,
+&quot;JP - Fuji&quot;,&quot;JP - Fuji&quot;,
+&quot;JP - Yatsushiro&quot;,&quot;JP - Yatsushiro&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Mexico1</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;MX - Cuautitlan&quot;,&quot;MX - Cuautitlan&quot;,
+&quot;MX - Hermosillo&quot;,&quot;MX - Hermosillo&quot;,
+&quot;MX - KTM - Dolores&quot;,&quot;MX - KTM - Dolores&quot;,
+&quot;MX - KTM - Dolores TP&quot;,&quot;MX - KTM - Dolores TP&quot;,
+&quot;MX - KTM - Monterrey&quot;,&quot;MX - KTM - Monterrey&quot;,
+&quot;MX - KTM - Monterrey TP&quot;,&quot;MX - KTM - Monterrey TP&quot;,
+&quot;MX - Zacoalco&quot;,&quot;MX - Zacoalco&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>MiddleEastIndia</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;BA - Bahrain&quot;,&quot;BA - Bahrain&quot;,
+&quot;IN - Vizag&quot;,&quot;IN - Vizag&quot;,
+&quot;SA - Rabigh&quot;,&quot;SA - Rabigh&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Milos</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name},
+&quot;GR - Milos - Tsigrado&quot;,&quot;GR - Milos - Tsigrado&quot;,
+&quot;GR - Milos - Voudia&quot;,&quot;GR - Milos - Voudia&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Nordics1</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;DK - Fur&quot;,&quot;DK - Fur&quot;,
+&quot;DK - Mors&quot;,&quot;DK - Mors&quot;,
+&quot;FI - Sunila&quot;,&quot;FI - Sunila&quot;,
+&quot;SE - CALD - Gävle&quot;,&quot;SE - CALD - Gävle&quot;,
+&quot;SE - Husum&quot;,&quot;SE - Husum&quot;,
+&quot;SE - Tunadal&quot;,&quot;SE - Tunadal&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>NorthAmerica</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;US - Andersonville&quot;,&quot;US - Andersonville&quot;,
+&quot;US - Greeneville&quot;,&quot;US - Greeneville&quot;,
+&quot;US - Norfolk&quot;,&quot;US - Norfolk&quot;,
+&quot;US - Niagara Falls (FM)&quot;,&quot;US - Niagara Falls (FM)&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>NorthFrance</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;FR - A&amp;J - Trading&quot;,&quot;FR - A&amp;J - Trading&quot;,
+&quot;FR - A&amp;J - Trelaze&quot;,&quot;FR - A&amp;J - Trelaze&quot;,
+&quot;FR - ICF - Beaujard&quot;,&quot;FR - ICF - Beaujard&quot;,
+&quot;FR - ICF - Beaulon&quot;,&quot;FR - ICF - Beaulon&quot;,
+&quot;FR - ICF - Beauvoir&quot;,&quot;FR - ICF - Beauvoir&quot;,
+&quot;FR - ICF - Brittany (Ploemeur)&quot;,&quot;FR - ICF - Brittany (Ploemeur)&quot;,
+&quot;FR - ICF - Feldspaths de Montebras&quot;,&quot;FR - ICF - Feldspaths de Montebras&quot;,
+&quot;FR - ICF - Nancay&quot;,&quot;FR - ICF - Nancay&quot;,
+&quot;FR - ICF - Neuvy&quot;,&quot;FR - ICF - Neuvy&quot;,
+&quot;FR - ICF - Tournon st Martin&quot;,&quot;FR - ICF - Tournon st Martin&quot;,
+&quot;FR - ICF - Trading&quot;,&quot;FR - ICF - Trading&quot;,
+&quot;FR - Murat&quot;,&quot;FR - Murat&quot;,
+&quot;FR - Villers&quot;,&quot;FR - Villers&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Oberhausen</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;DE - Mengerskirchen&quot;,&quot;DE - Mengerskirchen&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SEEurope</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;BG - Kardzhali&quot;,&quot;BG - Kardzhali&quot;,
+&quot;EG - ICE - Egypt&quot;,&quot;EG - ICE - Egypt&quot;,
+&quot;TR - Dikili&quot;,&quot;TR - Dikili&quot;,
+&quot;TR - ICT - Turkey&quot;,&quot;TR - ICT - Turkey&quot;,
+&quot;UA - DBK - Donbasskeramica&quot;,&quot;UA - DBK - Donbasskeramica&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Sezanne</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;FR - Abbeville&quot;,&quot;FR - Abbeville&quot;,
+&quot;FR - Montoir De Bretagne&quot;,&quot;FR - Montoir De Bretagne&quot;,
+&quot;IT - Cosseria&quot;,&quot;IT - Cosseria&quot;,
+&quot;TR - Karabiga&quot;,&quot;TR - Karabiga&quot;,
+&quot;IT - Genua&quot;,&quot;IT - Genua&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SouthAfrica</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;HU - Bentonite&quot;,&quot;HU - Bentonite&quot;,
+&quot;ZA - Annesley&quot;,&quot;ZA - Annesley&quot;,
+&quot;ZA - Apiesdoring&quot;,&quot;ZA - Apiesdoring&quot;,
+&quot;ZA - Cape Bentonite&quot;,&quot;ZA - Cape Bentonite&quot;,
+&quot;ZA - Cyferfontein&quot;,&quot;ZA - Cyferfontein&quot;,
+&quot;ZA - Krugerpost&quot;,&quot;ZA - Krugerpost&quot;,
+&quot;ZA - Olifantsfontain&quot;,&quot;ZA - Olifantsfontain&quot;,
+&quot;ZA - Refmin&quot;,&quot;ZA - Refmin&quot;,
+&quot;ZA - Richard&apos;s Bay&quot;,&quot;ZA - Richard&apos;s Bay&quot;,
+&quot;ZA - Thabazimbi&quot;,&quot;ZA - Thabazimbi&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SouthAmerica</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;AR - Capitan Bermudez&quot;,&quot;AR - Capitan Bermudez&quot;,
+&quot;AR - Ledesma&quot;,&quot;AR - Ledesma&quot;,
+&quot;BR - Bras Cubas&quot;,&quot;BR - Bras Cubas&quot;,
+&quot;BR - Cachoeiro 1&quot;,&quot;BR - Cachoeiro 1&quot;,
+&quot;BR - Cachoeiro 3&quot;,&quot;BR - Cachoeiro 3&quot;,
+&quot;BR - Campinas&quot;,&quot;BR - Campinas&quot;,
+&quot;BR - Capim&quot;,&quot;BR - Capim&quot;,
+&quot;BR - Suzano&quot;,&quot;BR - Suzano&quot;,
+&quot;BR - ICB - Rio Claro&quot;,&quot;BR - ICB - Rio Claro&quot;,
+&quot;BR - Limeira&quot;,&quot;BR - Limeira&quot;,
+&quot;BR - Mogi das Cruzes&quot;,&quot;BR - Mogi das Cruzes&quot;,
+&quot;BR - Paulinia&quot;,&quot;BR - Paulinia&quot;,
+&quot;BR - Pirai&quot;,&quot;BR - Pirai&quot;,
+&quot;BR - Salto&quot;,&quot;BR - Salto&quot;,
+&quot;CL - Arica&quot;,&quot;CL - Arica&quot;,
+&quot;CL - Santiago&quot;,&quot;CL - Santiago&quot;,
+&quot;AR - Tucuman&quot;,&quot;AR - Tucuman&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SouthEastAsiaIndonesiaThailand</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;ITH - ICTH - MRD (Ranong)&quot;,&quot;TH - ICTH - MRD (Ranong)&quot;,
+&quot;TH - ICTH - MRDECC (Lampang)&quot;,&quot;TH - ICTH - MRDECC (Lampang)&quot;,
+&quot;TH - IMT&quot;,&quot;TH - IMT&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SouthEastAsiaMalaysiaVietnam</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;MY - Ipoh 1&quot;,&quot;MY - Ipoh 1&quot;,
+&quot;MY - Ipoh 2&quot;,&quot;MY - Ipoh 2&quot;,
+&quot;VN - YBB&quot;,&quot;VN - YBB&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SouthFrance</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;FR - ICF - FDS Lansac/Salvezines&quot;,&quot;FR - ICF - FDS Lansac/Salvezines&quot;,
+&quot;FR - ICF - QDO&quot;,&quot;FR - ICF - QDO&quot;,
+&quot;FR - ICF - QSL&quot;,&quot;FR - ICF - QSL&quot;,
+&quot;FR - ITWF - Aixe&quot;,&quot;FR - ITWF - Aixe&quot;,
+&quot;FR - ITWF - Chateauvieux&quot;,&quot;FR - ITWF - Chateauvieux&quot;,
+&quot;FR - ITWF - Marcognac&quot;,&quot;FR - ITWF - Marcognac&quot;,
+&quot;FR - ITWF - Juriol&quot;,&quot;FR - ITWF - Juriol&quot;,
+&quot;FR - ITWF - Marcognac&quot;,&quot;FR - ITWF - Marcognac&quot;,
+&quot;FR - Luzenac&quot;,&quot;FR - Luzenac&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SouthWestAsia</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;IN - CALD - Dharuhera&quot;,&quot;IN - CALD - Dharuhera&quot;,
+&quot;IN - Durgapur&quot;,&quot;IN - Durgapur&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>SpainIKF</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;ES - Alicante&quot;,&quot;ES - Alicante&quot;,
+&quot;ES - El Ejido&quot;,&quot;ES - El Ejido&quot;,
+&quot;ES - IKFE - Lomba&quot;,&quot;ES - IKFE - Lomba&quot;,
+&quot;ES - Mijas&quot;,&quot;ES - Mijas&quot;,
+&quot;ES - Rubi&quot;,&quot;ES - Rubi&quot;,
+&quot;FR - La Mothe Achard&quot;,&quot;FR - La Mothe Achard&quot;,
+&quot;HU - IKFH - Apta&quot;,&quot;HU - IKFH - Apta&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Talc</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;US - Houston&quot;,&quot;US - Houston&quot;,
+&quot;US - Ludlow&quot;,&quot;US - Ludlow&quot;,
+&quot;US - Sappington&quot;,&quot;US - Sappington&quot;,
+&quot;US - Three Forks&quot;,&quot;US - Three Forks&quot;,
+&quot;US - Yellowstone&quot;,&quot;US - Yellowstone&quot;,
+&quot;CA - Penhorwood&quot;,&quot;CA - Penhorwood&quot;,
+&quot;CA - Timmins&quot;,&quot;CA - Timmins&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>UK1</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;GB - Castleford&quot;,&quot;GB - Castleford&quot;,
+&quot;GB - Cliffe Vale&quot;,&quot;GB - Cliffe Vale&quot;,
+&quot;GB - Gothers&quot;,&quot;GB - Gothers&quot;,
+&quot;GB - IML - Devon&quot;,&quot;GB - IML - Devon&quot;,
+&quot;GB - IML - Dorset&quot;,&quot;GB - IML - Dorset&quot;,
+&quot;GB - IML - Treviscoe&quot;,&quot;GB - IML - Treviscoe&quot;,
+&quot;GB - Lee Moor HK3&quot;,&quot;GB - Lee Moor HK3&quot;,
+&quot;GB - Lee Moor Polarite&quot;,&quot;GB - Lee Moor Polarite&quot;,
+&quot;GB - Par Emc&quot;,&quot;GB - Par Emc&quot;,
+&quot;GB - Par Moor&quot;,&quot;GB - Par Moor&quot;,
+&quot;GB - Par Opacilite&quot;,&quot;GB - Par Opacilite&quot;,
+&quot;GB - Parkandillick Buell&quot;,&quot;GB - Parkandillick Buell&quot;,
+&quot;GB - PKC&quot;,&quot;GB - PKC&quot;,
+&quot;GB - Trelavour Bagging&quot;,&quot;GB - Trelavour Bagging&quot;,
+&quot;GB - Western Area CC&quot;,&quot;GB - Western Area CC&quot;,
+&quot;GB - Par Moor Clays&quot;,&quot;GB - Par Moor Clays&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>USBallClay</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;US - KTC - CRN&quot;,&quot;US - KTC - CRN&quot;,
+&quot;US - KTC - GLS&quot;,&quot;US - KTC - GLS&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>USEastCanada</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;CA - Suzorite&quot;,&quot;CA - Suzorite&quot;,
+&quot;US - Vicksburg&quot;,&quot;US - Vicksburg&quot;,
+&quot;US - Bennettsville&quot;,&quot;US - Bennettsville&quot;,
+&quot;US - Canton&quot;,&quot;US - Canton&quot;,
+&quot;US - Canton Fiberlean&quot;,&quot;US - Canton Fiberlean&quot;,
+&quot;US - Kings Mountain&quot;,&quot;US - Kings Mountain&quot;,
+&quot;US - La Porte&quot;,&quot;US - La Porte&quot;,
+&quot;US - Lake Wales&quot;,&quot;US - Lake Wales&quot;,
+&quot;US - Quincy FL&quot;,&quot;US - Quincy FL&quot;,
+&quot;US - Somerset&quot;,&quot;US - Somerset&quot;,
+&quot;US - Youngsville&quot;,&quot;US - Youngsville&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>USMiddleGeorgia</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;US - KTC - SND&quot;,&quot;US - KTC - SND&quot;,
+&quot;US - MGK - PP&quot;,&quot;US - MGK - PP&quot;,
+&quot;US - MGK - SCP&quot;,&quot;US - MGK - SCP&quot;,
+&quot;US - KTC - LNG&quot;,&quot;US - KTC - LNG&quot;,
+
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>USNorthGeorgia</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;US - Sahuarita&quot;,&quot;US - Sahuarita&quot;,
+&quot;US - Marble Hill&quot;,&quot;US - Marble Hill&quot;,
+&quot;US - Polycor&quot;,&quot;US - Polycor&quot;,
+&quot;US - Willsboro&quot;,&quot;US - Willsboro&quot;,
+&quot;US - Whitestone&quot;,&quot;US - Whitestone&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>USWest</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.ImerysManufacturingPlant__r.Name} ,
+&quot;US - Antonito&quot;,&quot;US - Antonito&quot;,
+&quot;US - Escondido&quot;,&quot;US - Escondido&quot;,
+&quot;US - Fernley&quot;,&quot;US - Fernley&quot;,
+&quot;US - Green River&quot;,&quot;US - Green River&quot;,
+&quot;US - Klamath Falls&quot;,&quot;US - Klamath Falls&quot;,
+&quot;US - Lakeview&quot;,&quot;US - Lakeview&quot;,
+&quot;US - Lompoc Celpure&quot;,&quot;US - Lompoc Celpure&quot;,
+&quot;US - Lompoc Powder Mill&quot;,&quot;US - Lompoc Powder Mill&quot;,
+&quot;US - Lompoc Resale&quot;,&quot;US - Lompoc Resale&quot;,
+&quot;US - Lompoc Silicates&quot;,&quot;US - Lompoc Silicates&quot;,
+&quot;US - Lompoc Specialties&quot;,&quot;US - Lompoc Specialties&quot;,
+&quot;US - Quincy WA&quot;,&quot;US - Quincy WA&quot;,
+&quot;US - Superior&quot;,&quot;US - Superior&quot;,
+&quot;US - Urbana Fiber Cel&quot;,&quot;US - Urbana Fiber Cel&quot;,
+&quot;0&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>ImerysProduct_HUB {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ImerysProduct_HUB</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Americas2</name>
+        <label>Americas</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Americas</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Australia_New_Zealand</name>
+        <label>Australia &amp; New Zealand</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>ANZ</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Blank2</name>
+        <label>Blank</label>
+        <locationX>9818</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Carbonate_splties1</name>
+        <label>Carbonate splties</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Carbonate splties</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Central_Europe1</name>
+        <label>Central Europe</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Central Europe</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Chinas</name>
+        <label>China</label>
+        <locationX>1106</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>China</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>East_Asia1</name>
+        <label>East Asia</label>
+        <locationX>10874</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>East Asia</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Europe_CAC1</name>
+        <label>Europe CAC</label>
+        <locationX>1370</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Europe CAC</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Europe_Fusion1</name>
+        <label>Europe Fusion</label>
+        <locationX>1634</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Europe Fusion</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Europe_Refractory1</name>
+        <label>Europe Refractory</label>
+        <locationX>1898</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Europe Refractory</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Ex_Imerys1</name>
+        <label>Ex-Imerys</label>
+        <locationX>2162</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Ex-Imerys</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>German_Eastern_Europe1</name>
+        <label>German - Eastern Europe</label>
+        <locationX>11138</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>German - Eastern Europe</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Graphite_Carbon1</name>
+        <label>Graphite &amp; Carbon</label>
+        <locationX>2426</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Graphite &amp; Carbon</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Greater_China1</name>
+        <label>Greater China</label>
+        <locationX>2690</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Greater China</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Greek_Bauxite1</name>
+        <label>Greek Bauxite</label>
+        <locationX>10082</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Greek Bauxite</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>HUB_SC1</name>
+        <label>HUB_SC</label>
+        <locationX>2954</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>HUB_SC</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>India_11</name>
+        <label>India 1</label>
+        <locationX>3218</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>India 1</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>India_21</name>
+        <label>India 2</label>
+        <locationX>3482</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>India 2</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Italy2</name>
+        <label>Italy</label>
+        <locationX>3746</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Italy</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Japan2</name>
+        <label>Japan</label>
+        <locationX>4010</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Japan</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Mexico2</name>
+        <label>Mexico</label>
+        <locationX>4274</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Mexico</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Middle_East_India1</name>
+        <label>Middle East &amp; India</label>
+        <locationX>4538</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Middle East &amp; India</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Milos2</name>
+        <label>Milos</label>
+        <locationX>4802</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Milos</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Nordics2</name>
+        <label>Nordics</label>
+        <locationX>5066</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Nordics</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>North_America1</name>
+        <label>North America</label>
+        <locationX>5330</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>North America</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>North_France1</name>
+        <label>North France</label>
+        <locationX>5594</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>North France</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Oberhausen2</name>
+        <label>Oberhausen</label>
+        <locationX>5858</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Oberhausen</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>SE_Europe1</name>
+        <label>SE Europe</label>
+        <locationX>6122</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>SE Europe</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>SEA_Malaysia_Vietnam</name>
+        <label>SEA - Malaysia &amp; Vietnam</label>
+        <locationX>6914</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>SEA - Malaysia &amp; Vietnam</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>SEA_Thailand</name>
+        <label>SEA - Thailand</label>
+        <locationX>10610</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>SEA - Thailand</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Sezanne2</name>
+        <label>Sezanne</label>
+        <locationX>6386</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Sezanne</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>South_Africa1</name>
+        <label>South Africa</label>
+        <locationX>6650</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>South Africa</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>South_America1</name>
+        <label>South America</label>
+        <locationX>10346</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>South America</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>South_France1</name>
+        <label>South France</label>
+        <locationX>7178</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>South France</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>South_West_Asia1</name>
+        <label>South-West Asia</label>
+        <locationX>7442</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>South-West Asia</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Spain_IKF1</name>
+        <label>Spain &amp; IKF</label>
+        <locationX>7706</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Spain &amp; IKF</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Sylacauga1</name>
+        <label>Sylacauga</label>
+        <locationX>7970</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>US Sylacauga</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Talc2</name>
+        <label>Talc</label>
+        <locationX>8234</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>Talc</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Uk2</name>
+        <label>Uk</label>
+        <locationX>8498</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>UK</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>US_Ball_Clay1</name>
+        <label>US Ball Clay</label>
+        <locationX>11402</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>US Ball Clay</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>US_Canada_East</name>
+        <label>US &amp; Canada East</label>
+        <locationX>9554</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>US &amp; Canada East</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>US_Canada_West</name>
+        <label>US &amp; Canada West</label>
+        <locationX>9290</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>US &amp; Canada West</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>US_Clays</name>
+        <label>US Clays</label>
+        <locationX>8762</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>US Clays</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>US_South_Wollastonite</name>
+        <label>US South &amp; Wollastonite</label>
+        <locationX>9026</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>HUB__c</field>
+            <value>
+                <stringValue>US South &amp; Wollastonite</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>5732</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Condition</targetReference>
+        </connector>
+        <object>Product2</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

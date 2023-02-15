@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <name>BE_Willebroek</name>
+        <label>BE - Willebroek</label>
+        <locationX>710</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>BE_Willebroek1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BE - Willebroek</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_BE_Willebroek</targetReference>
+            </connector>
+            <label>BE - Willebroek</label>
+        </rules>
+        <rules>
+            <name>CA_LDI</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CA - LDI</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CA_LDI1</targetReference>
+            </connector>
+            <label>CA - LDI</label>
+        </rules>
+        <rules>
+            <name>CA_Terrebonne</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CA - Terrebonne</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CA_Terrebonne1</targetReference>
+            </connector>
+            <label>CA - Terrebonne</label>
+        </rules>
+        <rules>
+            <name>CH_Bodio</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CH - Bodio</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CH_Bodio1</targetReference>
+            </connector>
+            <label>CH - Bodio</label>
+        </rules>
+        <rules>
+            <name>JP_Kitakyushu</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ImerysManufacturingPlant__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>JP - Kitakyushu</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>JP_Kitakyushu1</targetReference>
+            </connector>
+            <label>JP - Kitakyushu</label>
+        </rules>
+    </decisions>
+    <description>Used to update Region For Plant</description>
+    <environments>Default</environments>
+    <interviewLabel>Update Manufacturing Plant {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Manufacturing Plant</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>CA_LDI1</name>
+        <label>CA - LDI</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>ManufacturingPlant__c</field>
+            <value>
+                <stringValue>CA - LDI</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>CA_Terrebonne1</name>
+        <label>CA - Terrebonne</label>
+        <locationX>578</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>ManufacturingPlant__c</field>
+            <value>
+                <stringValue>CA - Terrebonne</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>CH_Bodio1</name>
+        <label>CH - Bodio</label>
+        <locationX>842</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>ManufacturingPlant__c</field>
+            <value>
+                <stringValue>CH - Bodio</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>JP_Kitakyushu1</name>
+        <label>JP - Kitakyushu</label>
+        <locationX>1106</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>ManufacturingPlant__c</field>
+            <value>
+                <stringValue>JP - Kitakyushu</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_BE_Willebroek</name>
+        <label>Update BE - Willebroek</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>ManufacturingPlant__c</field>
+            <value>
+                <stringValue>BE - Willebroek</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>584</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>BE_Willebroek</targetReference>
+        </connector>
+        <object>Product2</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

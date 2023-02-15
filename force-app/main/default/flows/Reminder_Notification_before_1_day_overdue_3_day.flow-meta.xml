@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Overdue_3_Email_Notification</name>
+        <label>Overdue 3 Email Notification</label>
+        <locationX>50</locationX>
+        <locationY>408</locationY>
+        <actionName>Task.TSK_OverdueBy3Days</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>X1_day</name>
+        <label>1 day</label>
+        <locationX>578</locationX>
+        <locationY>408</locationY>
+        <actionName>Task.TSK_DueDateBefore1Day</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Checking_record_Reminder_date</name>
+        <label>Checking record Reminder date</label>
+        <locationX>182</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>remider_date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ReminderDateTime</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>today</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Overdue_3_Email_Notification</targetReference>
+            </connector>
+            <label>remider date</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>X1_day_before</name>
+        <label>1 day before</label>
+        <locationX>710</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>X1_day1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Due_Date__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>today</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X1_day</targetReference>
+            </connector>
+            <label>1 day</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>CalculatedDate</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Record.ReminderDateTime} + 3</expression>
+    </formulas>
+    <formulas>
+        <name>CalculateReminder</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Record.ReminderDateTime} - 1</expression>
+    </formulas>
+    <formulas>
+        <name>today</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Reminder Notification before 1 day &amp; overdue 3 day {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reminder Notification before 1 day &amp; overdue 3 day</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsReminderSet</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>overdue_by_3_days</name>
+            <connector>
+                <targetReference>Checking_record_Reminder_date</targetReference>
+            </connector>
+            <label>overdue by 3 days</label>
+            <offsetNumber>3</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>ReminderDateTime</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Before_1_day</name>
+            <connector>
+                <targetReference>X1_day_before</targetReference>
+            </connector>
+            <label>Before 1 day</label>
+            <offsetNumber>-1</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>ReminderDateTime</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

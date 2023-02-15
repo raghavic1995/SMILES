@@ -1,0 +1,68 @@
+<aura:component implements='force:hasRecordId,flexipage:availableForRecordHome' controller='AP_ActionListTaskTableController'>
+    <aura:attribute name="ActionPlanList" type="Account_Plan__c[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}" />
+    <div class="slds-float_right">
+        <lightning:button label="New Task"  variant="brand"  onclick="{!c.newTask }" disabled = "{!v.haspermission}"/>
+       
+    </div>
+    <br></br>
+    <br></br>
+    
+    
+     <ui:message title="Instructions:" severity="warning" >
+         To populate the action list, please created a task under Activity > New Task. Refresh the page to see the the new task as a row within the action list. Any changes made to the task will be reflected in the table below.     
+    </ui:message>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate" title="File Name">Subject</div>
+                </th>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate" title="File Name">Due Date</div>
+                </th>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate" title="File Name">Name</div>
+                </th>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate" title="File Name">Status</div>
+                </th>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate" title="File Name">Priority</div>
+                </th>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate" title="File Name">Requester Comments</div>
+                </th>
+                
+            </tr>
+        </thead>
+        <aura:iteration  items="{!v.ActionPlanList}" var="ap">
+            <tbody>
+                <td data-label="File Name">
+                    <div class="slds-truncate" title="File Name">{!ap.Subject}</div>  
+                </td>
+                <td data-label="File Name">
+                    <div class="slds-truncate" title="File Name">{!ap.ActivityDate}</div>  
+                </td>
+                <td data-label="File Name">
+                    <div class="slds-truncate" title="File Name">{!ap.Owner.Name}</div>  
+                </td>
+                  <td data-label="File Name">
+                    <div class="slds-truncate" title="File Name">{!ap.Status}</div>  
+                </td>
+                
+                <td data-label="File Name">
+                    <div class="slds-truncate" title="File Name">{!ap.Priority}</div>  
+                </td>
+                
+                <td data-label="File Name">
+                    <div class="slds-truncate" title="File Name">{!ap.Feedback__c}</div>  
+                </td>
+                
+              
+                
+            </tbody>
+        </aura:iteration>
+    </table>
+    
+</aura:component>
