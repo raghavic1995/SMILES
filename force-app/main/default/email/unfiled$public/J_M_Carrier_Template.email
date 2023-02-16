@@ -1,0 +1,10 @@
+A new entry was made to the {!Case.Account} Shipping Log:
+
+Customer Name : {!Case.Account}
+Carrier Name : {!Case.Carrier__c}
+Type : {!Case.Type__c}
+Date and Time : {!Case.CreatedDate}
+Creator : {!Case.OwnerFullName}
+
+
+Thank you!
