@@ -3,8 +3,8 @@
     <actionCalls>
         <name>dfgd</name>
         <label>sgdfgd</label>
-        <locationX>616</locationX>
-        <locationY>2174</locationY>
+        <locationX>2189</locationX>
+        <locationY>2190</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -32,8 +32,8 @@
     <assignments>
         <name>assign_collections</name>
         <label>assign collections</label>
-        <locationX>616</locationX>
-        <locationY>206</locationY>
+        <locationX>1383</locationX>
+        <locationY>196</locationY>
         <assignmentItems>
             <assignToReference>colTextLabels</assignToReference>
             <operator>Add</operator>
@@ -119,7 +119,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>getCurrentAccount</targetReference>
+            <targetReference>Contact_Account</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -203,10 +203,60 @@
         </value>
     </choices>
     <decisions>
+        <name>Check_Contact</name>
+        <label>Check Contact?</label>
+        <locationX>1195</locationX>
+        <locationY>651</locationY>
+        <defaultConnector>
+            <targetReference>createCase</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Contact</targetReference>
+            </connector>
+            <label>No Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Contact_0</name>
+        <label>Check Contact_0</label>
+        <locationX>1966</locationX>
+        <locationY>774</locationY>
+        <defaultConnector>
+            <targetReference>createCase_0_0_0_0_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Contact_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Contact_V1</targetReference>
+            </connector>
+            <label>No Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>check_Request_Type</name>
         <label>check Request Type</label>
-        <locationX>616</locationX>
-        <locationY>1382</locationY>
+        <locationX>1378</locationX>
+        <locationY>1169</locationY>
         <defaultConnector>
             <targetReference>eerzerz</targetReference>
         </defaultConnector>
@@ -228,56 +278,93 @@
         </rules>
     </decisions>
     <decisions>
-        <name>For_no_contacts</name>
-        <label>For no contacts</label>
-        <locationX>616</locationX>
-        <locationY>686</locationY>
+        <name>Contact_Account</name>
+        <label>Contact/Account</label>
+        <locationX>1599</locationX>
+        <locationY>247</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>003</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>getCurrentContact</targetReference>
+            </connector>
+            <label>If Contact</label>
+        </rules>
+        <rules>
+            <name>If_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>001</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>getCurrentAccount</targetReference>
+            </connector>
+            <label>If Account</label>
+        </rules>
+        <rules>
+            <name>If_Visit_Call_Report</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>a08</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>getCurrentVR</targetReference>
+            </connector>
+            <label>If Visit &amp; Call Report</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Create_New_Complaint</name>
+        <label>Create New Complaint?</label>
+        <locationX>1811</locationX>
+        <locationY>611</locationY>
         <defaultConnector>
-            <targetReference>scrNewSustainabilityCase_0_0</targetReference>
+            <targetReference>Create_Case_and_VR_Relationship_0_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>No_Contacts</name>
+            <name>Create_New</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>varContactId</leftValueReference>
+                <leftValueReference>CaseReference.selectedValue</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Create_Contact</targetReference>
+                <targetReference>scrNewSustainabilityCase_0_0_0_0_0_0_0</targetReference>
             </connector>
-            <label>No Contacts</label>
-        </rules>
-        <rules>
-            <name>Contact_present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>varContactId</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>scrNewSustainabilityCase_0_0</targetReference>
-            </connector>
-            <label>Contact present</label>
+            <label>Create New</label>
         </rules>
     </decisions>
     <decisions>
         <name>sqdqsfq</name>
         <label>sqdqsfq</label>
-        <locationX>462</locationX>
-        <locationY>1622</locationY>
+        <locationX>592</locationX>
+        <locationY>1227</locationY>
         <defaultConnector>
             <targetReference>eerzerz</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Yes</name>
+            <name>If_RAC</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>varSelectedLabel</leftValueReference>
@@ -286,10 +373,105 @@
                     <stringValue>Yes</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>Business_Area</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>RAC</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
-                <targetReference>Escalate_Case</targetReference>
+                <targetReference>get_Queue</targetReference>
             </connector>
-            <label>Yes</label>
+            <label>If RAC</label>
+        </rules>
+        <rules>
+            <name>If_PMEMEA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedLabel</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Business_Area</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PM EMEA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_PMEMEA_queue</targetReference>
+            </connector>
+            <label>If PMEMEA</label>
+        </rules>
+        <rules>
+            <name>If_PMA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedLabel</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Business_Area</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PM AMERICAS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_PMA_queue</targetReference>
+            </connector>
+            <label>If PMA</label>
+        </rules>
+        <rules>
+            <name>If_HTS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedLabel</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Business_Area</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>HTS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_HTS_queue</targetReference>
+            </connector>
+            <label>If HTS</label>
+        </rules>
+        <rules>
+            <name>If_APAC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedLabel</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Business_Area</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PM APAC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_APAC_queue</targetReference>
+            </connector>
+            <label>If APAC</label>
         </rules>
     </decisions>
     <dynamicChoiceSets>
@@ -323,6 +505,36 @@
         <object xsi:nil="true"/>
         <picklistField>Sustainability_request__c</picklistField>
         <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>ComRecType</name>
+        <dataType>String</dataType>
+        <displayField>Id</displayField>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012580000006Jb8</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0121i000000Lvik</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <valueField>Id</valueField>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Job_Type</name>
+        <dataType>Multipicklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>JobDepartment__c</picklistField>
+        <picklistObject>Contact</picklistObject>
     </dynamicChoiceSets>
     <environments>Default</environments>
     <formulas>
@@ -372,10 +584,56 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
+        <name>Create_Case_and_VR_Relationship_0</name>
+        <label>Create Case and VR Relationship</label>
+        <locationX>1932</locationX>
+        <locationY>1028</locationY>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ComplaintReference__c</field>
+            <value>
+                <elementReference>varNewCaseId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NoofVisitReport__c</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CaseVisitReportRelationship__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Case_and_VR_Relationship_0_0</name>
+        <label>Create Case and VR Relationship</label>
+        <locationX>1807</locationX>
+        <locationY>994</locationY>
+        <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ComplaintReference__c</field>
+            <value>
+                <elementReference>CaseReference.selectedValue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NoofVisitReport__c</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CaseVisitReportRelationship__c</object>
+    </recordCreates>
+    <recordCreates>
         <name>createCase</name>
         <label>createCase</label>
-        <locationX>616</locationX>
-        <locationY>1142</locationY>
+        <locationX>1127</locationX>
+        <locationY>824</locationY>
         <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
         <connector>
             <targetReference>scrNewSustainabilityCase_0</targetReference>
@@ -401,7 +659,7 @@
         <inputAssignments>
             <field>ContactId</field>
             <value>
-                <elementReference>varSelectedContactId</elementReference>
+                <elementReference>varContactId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -467,7 +725,7 @@
         <inputAssignments>
             <field>Subject</field>
             <value>
-                <elementReference>frmSubject</elementReference>
+                <elementReference>Subject_0</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -484,10 +742,376 @@
         </inputAssignments>
         <object>Case</object>
     </recordCreates>
+    <recordCreates>
+        <name>createCase_0_0</name>
+        <label>createCase</label>
+        <locationX>1608</locationX>
+        <locationY>916</locationY>
+        <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>getCurrentContact.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BusinessArea__c</field>
+            <value>
+                <elementReference>Business_Area_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSAccountManager__c</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <stringValue>EUR</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Subject_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Expected_Request_Closing_Date__c</field>
+            <value>
+                <elementReference>Expected_Requet_Closing_Date_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Inform_Account_Manager__c</field>
+            <value>
+                <elementReference>Inform_Account_Manager_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <elementReference>Request_Origin_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <elementReference>Priority_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ProductName__c</field>
+            <value>
+                <elementReference>varProductId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>$Label.sustainability_request_recordtype</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Subject_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sustainability_request__c</field>
+            <value>
+                <elementReference>Sustainability_Requests_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Sustainability</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordCreates>
+        <name>createCase_0_0_0_0_0</name>
+        <label>createCase</label>
+        <locationX>2094</locationX>
+        <locationY>899</locationY>
+        <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Create_Case_and_VR_Relationship_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>getCurrentVR.Account__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BusinessArea__c</field>
+            <value>
+                <elementReference>Business_Area_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSAccountManager__c</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>varContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <stringValue>EUR</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Description_0_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Expected_Request_Closing_Date__c</field>
+            <value>
+                <elementReference>Expected_Requet_Closing_Date_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Inform_Account_Manager__c</field>
+            <value>
+                <elementReference>Inform_Account_Manager_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <elementReference>Request_Origin_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <elementReference>Priority_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ProductName__c</field>
+            <value>
+                <elementReference>varProductId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>$Label.sustainability_request_recordtype</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Subject_0_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sustainability_request__c</field>
+            <value>
+                <elementReference>Sustainability_Requests_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Sustainability</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordLookups>
+        <name>get_APAC_queue</name>
+        <label>get APAC queue</label>
+        <locationX>1240</locationX>
+        <locationY>1317</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_APAC</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CSR_PMAPAC</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_HTS_queue</name>
+        <label>get HTS queue</label>
+        <locationX>1097</locationX>
+        <locationY>1406</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_HTS</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CSR_HTS</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_PMA_queue</name>
+        <label>get PMA queue</label>
+        <locationX>729</locationX>
+        <locationY>1413</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_PMA</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CSR_PMA</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_PMEMEA_queue</name>
+        <label>get PMEMEA queue</label>
+        <locationX>455</locationX>
+        <locationY>1415</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_PMEMEA</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CSR_PMEMEA</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Queue</name>
+        <label>get Queue</label>
+        <locationX>63</locationX>
+        <locationY>1357</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Escalate_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CSR_RAC</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <name>getCurrentAccount</name>
         <label>getCurrentAccount</label>
-        <locationX>616</locationX>
+        <locationX>1376</locationX>
         <locationY>326</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -505,11 +1129,53 @@
         <object>Account</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>getCurrentContact</name>
+        <label>getCurrentContact</label>
+        <locationX>1609</locationX>
+        <locationY>419</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0_0_0_0_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>getCurrentVR</name>
+        <label>getCurrentVR</label>
+        <locationX>1851</locationX>
+        <locationY>326</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>scrVRNewSustainabilityCase</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>VisitReport__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Escalate_Case</name>
         <label>Escalate Case</label>
-        <locationX>330</locationX>
-        <locationY>1742</locationY>
+        <locationX>50</locationX>
+        <locationY>1613</locationY>
         <connector>
             <targetReference>eerzerz</targetReference>
         </connector>
@@ -524,7 +1190,103 @@
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <stringValue>00G9E00000DdNOQUA3</stringValue>
+                <elementReference>get_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_APAC</name>
+        <label>Update APAC</label>
+        <locationX>1289</locationX>
+        <locationY>1630</locationY>
+        <connector>
+            <targetReference>eerzerz</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varNewCaseId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>get_APAC_queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_HTS</name>
+        <label>Update HTS</label>
+        <locationX>1097</locationX>
+        <locationY>1526</locationY>
+        <connector>
+            <targetReference>eerzerz</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varNewCaseId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>get_HTS_queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_PMA</name>
+        <label>Update PMA</label>
+        <locationX>722</locationX>
+        <locationY>1571</locationY>
+        <connector>
+            <targetReference>eerzerz</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varNewCaseId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>get_PMA_queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_PMEMEA</name>
+        <label>Update PMEMEA</label>
+        <locationX>438</locationX>
+        <locationY>1647</locationY>
+        <connector>
+            <targetReference>eerzerz</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varNewCaseId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>get_PMEMEA_queue.Id</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
@@ -533,8 +1295,8 @@
     <screens>
         <name>eerzerz</name>
         <label>eerzerz</label>
-        <locationX>616</locationX>
-        <locationY>2054</locationY>
+        <locationX>2113</locationX>
+        <locationY>1867</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -567,8 +1329,8 @@
     <screens>
         <name>scrEscalate</name>
         <label>scrEscalate</label>
-        <locationX>462</locationX>
-        <locationY>1502</locationY>
+        <locationX>999</locationX>
+        <locationY>1159</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -577,7 +1339,7 @@
         </connector>
         <fields>
             <name>dfsdfsd</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;As a Questionnaire do you want me to escalate to your Sustainability Team?&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;As a Questionnaire do you want me to escalate to your Sustainability Team ?&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -702,13 +1464,13 @@
     <screens>
         <name>scrNewSustainabilityCase</name>
         <label>scrNewSustainabilityCase</label>
-        <locationX>616</locationX>
-        <locationY>566</locationY>
+        <locationX>1383</locationX>
+        <locationY>714</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>For_no_contacts</targetReference>
+            <targetReference>Check_Contact</targetReference>
         </connector>
         <fields>
             <name>scqsd</name>
@@ -793,7 +1555,7 @@
                 <name>scrNewSustainabilityCase_Section2_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
-                    <name>Contact</name>
+                    <name>AccContact</name>
                     <extensionName>c:quickLookup</extensionName>
                     <fieldType>ComponentInstance</fieldType>
                     <inputParameters>
@@ -805,7 +1567,7 @@
                     <inputParameters>
                         <name>label</name>
                         <value>
-                            <stringValue>Who&apos;s the contact we&apos;re helping?</stringValue>
+                            <stringValue>Contact</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -829,13 +1591,7 @@
                     <inputParameters>
                         <name>selectedValue</name>
                         <value>
-                            <elementReference>varSelectedContactId</elementReference>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>required</name>
-                        <value>
-                            <booleanValue>false</booleanValue>
+                            <elementReference>varContactId</elementReference>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -961,12 +1717,6 @@
                     <elementReference>varProductId</elementReference>
                 </value>
             </inputParameters>
-            <inputParameters>
-                <name>displayFieldName</name>
-                <value>
-                    <stringValue>frmProduct2Search__c</stringValue>
-                </value>
-            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <outputParameters>
@@ -982,8 +1732,8 @@
     <screens>
         <name>scrNewSustainabilityCase_0</name>
         <label>scrNewSustainabilityCase</label>
-        <locationX>616</locationX>
-        <locationY>1262</locationY>
+        <locationX>1378</locationX>
+        <locationY>1049</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1079,13 +1829,13 @@
     <screens>
         <name>scrNewSustainabilityCase_0_0</name>
         <label>scrNewSustainabilityCase</label>
-        <locationX>616</locationX>
-        <locationY>1022</locationY>
+        <locationX>1378</locationX>
+        <locationY>583</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>createCase</targetReference>
+            <targetReference>scrNewSustainabilityCase</targetReference>
         </connector>
         <fields>
             <name>zraerae</name>
@@ -1113,13 +1863,13 @@
     <screens>
         <name>scrNewSustainabilityCase_0_0_0</name>
         <label>scrNewSustainabilityCase</label>
-        <locationX>616</locationX>
-        <locationY>446</locationY>
+        <locationX>1377</locationX>
+        <locationY>463</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>scrNewSustainabilityCase</targetReference>
+            <targetReference>scrNewSustainabilityCase_0_0</targetReference>
         </connector>
         <fields>
             <name>zraerae_0</name>
@@ -1252,34 +2002,1069 @@
         <showFooter>false</showFooter>
         <showHeader>false</showHeader>
     </screens>
+    <screens>
+        <name>scrNewSustainabilityCase_0_0_0_0</name>
+        <label>scrNewSustainabilityCase</label>
+        <locationX>1610</locationX>
+        <locationY>792</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>createCase_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>scqsd_0</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Thank you &lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!$User.FirstName} ! :)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Can you give me a bit more information ?&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;Sustainability Request Type : &lt;/b&gt;&lt;b style=&quot;font-size: 16px; color: rgb(12, 108, 36);&quot;&gt;{!varSelectedRequestType}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>scrNewSustainabilityCase_0_0_0_0_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Account_0</name>
+                    <extensionName>flowruntime:lookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>fieldApiName</name>
+                        <value>
+                            <stringValue>AccountId</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Account</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>objectApiName</name>
+                        <value>
+                            <stringValue>Case</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>recordId</name>
+                        <value>
+                            <elementReference>getCurrentContact.Account.Id</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>sdsf_0</name>
+                    <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; color: rgb(27, 25, 25);&quot;&gt;Key Account ? &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;{!frmKeyAccount}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>scrNewSustainabilityCase_0_0_0_0_Section2</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_Section2_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Contact_0</name>
+                    <extensionName>c:quickLookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>objectName</name>
+                        <value>
+                            <stringValue>Contact</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Contact</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>filterFieldName</name>
+                        <value>
+                            <stringValue>AccountId</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>filterFieldValue</name>
+                        <value>
+                            <elementReference>recordId</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>svg</name>
+                        <value>
+                            <stringValue>standard:contact</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectedValue</name>
+                        <value>
+                            <elementReference>recordId</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>varContactId</assignToReference>
+                        <name>selectedValue</name>
+                    </outputParameters>
+                </fields>
+                <fields>
+                    <name>Priority_0</name>
+                    <choiceReferences>chxPriority</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <stringValue>Medium</stringValue>
+                    </defaultValue>
+                    <fieldText>Priority</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Expected_Requet_Closing_Date_0</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>frmClosingDate</elementReference>
+                    </defaultValue>
+                    <fieldText>Expected Request Closing Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_Section2_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Business_Area_0</name>
+                    <choiceReferences>chxBusinessArea</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>frmUserBusinessArea</elementReference>
+                    </defaultValue>
+                    <fieldText>Business Area</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Request_Origin_0</name>
+                    <choiceReferences>Email</choiceReferences>
+                    <choiceReferences>Phone</choiceReferences>
+                    <choiceReferences>Web</choiceReferences>
+                    <choiceReferences>Visit</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultSelectedChoiceReference>Email</defaultSelectedChoiceReference>
+                    <fieldText>Request Origin</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>sqd_0</name>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <fields>
+                    <name>Inform_Account_Manager_0</name>
+                    <dataType>Boolean</dataType>
+                    <defaultValue>
+                        <booleanValue>true</booleanValue>
+                    </defaultValue>
+                    <fieldText>Inform Account Manager</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>Sustainability_Requests_0</name>
+            <choiceReferences>chxSustainabilityRequestTypes</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Please Choose Sustainability Requests</fieldText>
+            <fieldType>MultiSelectPicklist</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Product_0</name>
+            <extensionName>c:quickLookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>objectName</name>
+                <value>
+                    <stringValue>Product2</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Product</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>svg</name>
+                <value>
+                    <stringValue>standard:product</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectedValue</name>
+                <value>
+                    <elementReference>varProductId</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>varProductId</assignToReference>
+                <name>selectedValue</name>
+            </outputParameters>
+        </fields>
+        <helpText>&lt;p&gt;sdfsdfsdf&lt;/p&gt;</helpText>
+        <nextOrFinishButtonLabel>Create request</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>scrNewSustainabilityCase_0_0_0_0_0</name>
+        <label>scrNewSustainabilityCase</label>
+        <locationX>1615</locationX>
+        <locationY>515</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0_0_0_0_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>zraerae_0_0</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Hi {!$User.FirstName} {!$User.LastName}!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;How can I help you today?&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>scrNewSustainabilityCase_0_0_0_0_0_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>qChoice_0_0</name>
+                    <extensionName>c:fsc_quickChoiceFSC</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>displayMode</name>
+                        <value>
+                            <stringValue>Visual</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>numberOfColumns</name>
+                        <value>
+                            <stringValue>1</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>includeIcons</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>navOnSelect</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>isResponsive</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>choiceIcons</name>
+                        <value>
+                            <elementReference>colTextIcons</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>iconSize</name>
+                        <value>
+                            <stringValue>medium</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>inputMode</name>
+                        <value>
+                            <stringValue>Dual String Collections</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>choiceLabels</name>
+                        <value>
+                            <elementReference>colTextLabels</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>choiceValues</name>
+                        <value>
+                            <elementReference>colTextDescriptions</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>style_width</name>
+                        <value>
+                            <numberValue>9999.0</numberValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>varSelectedRequestType</assignToReference>
+                        <name>value</name>
+                    </outputParameters>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_Section1_Column3</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <helpText>&lt;p&gt;You are now using the process to create sustainability requests&lt;/p&gt;</helpText>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>scrNewSustainabilityCase_0_0_0_0_0_0</name>
+        <label>scrNewSustainabilityCase</label>
+        <locationX>1610</locationX>
+        <locationY>659</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0_0_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>zraerae_0_0_0</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;First we need some basic informations :&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Subject_0_0</name>
+            <dataType>String</dataType>
+            <fieldText>Subject</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Description_0_0</name>
+            <fieldText>Description</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>&lt;p&gt;Please enter all details for proper handling of your request&lt;/p&gt;</helpText>
+            <isRequired>true</isRequired>
+        </fields>
+        <helpText>&lt;p&gt;sdfsdfsdf&lt;/p&gt;</helpText>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>scrNewSustainabilityCase_0_0_0_0_0_0_0</name>
+        <label>scrNewSustainabilityCase</label>
+        <locationX>1985</locationX>
+        <locationY>518</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0_0_0_0_0_0_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>zraerae_0_0_0_0</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Hi {!$User.FirstName} {!$User.LastName}!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;How can I help you today?&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>qChoice_0_0_0</name>
+                    <extensionName>c:fsc_quickChoiceFSC</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>displayMode</name>
+                        <value>
+                            <stringValue>Visual</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>numberOfColumns</name>
+                        <value>
+                            <stringValue>1</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>includeIcons</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>navOnSelect</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>isResponsive</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>choiceIcons</name>
+                        <value>
+                            <elementReference>colTextIcons</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>iconSize</name>
+                        <value>
+                            <stringValue>medium</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>inputMode</name>
+                        <value>
+                            <stringValue>Dual String Collections</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>choiceLabels</name>
+                        <value>
+                            <elementReference>colTextLabels</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>choiceValues</name>
+                        <value>
+                            <elementReference>colTextDescriptions</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>style_width</name>
+                        <value>
+                            <numberValue>9999.0</numberValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>varSelectedRequestType</assignToReference>
+                        <name>value</name>
+                    </outputParameters>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_Section1_Column3</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <helpText>&lt;p&gt;You are now using the process to create sustainability requests&lt;/p&gt;</helpText>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0</name>
+        <label>scrNewSustainabilityCase</label>
+        <locationX>2094</locationX>
+        <locationY>521</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>zraerae_0_0_0_0_0</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;First we need some basic informations :&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Subject_0_0_0</name>
+            <dataType>String</dataType>
+            <fieldText>Subject</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Description_0_0_0</name>
+            <fieldText>Description</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>&lt;p&gt;Please enter all details for proper handling of your request&lt;/p&gt;</helpText>
+            <isRequired>true</isRequired>
+        </fields>
+        <helpText>&lt;p&gt;sdfsdfsdf&lt;/p&gt;</helpText>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0</name>
+        <label>scrNewSustainabilityCase</label>
+        <locationX>2099</locationX>
+        <locationY>673</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Check_Contact_0</targetReference>
+        </connector>
+        <fields>
+            <name>scqsd_0_0</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Thank you &lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!$User.FirstName} ! :)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Can you give me a bit more information ?&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;Sustainability Request Type : &lt;/b&gt;&lt;b style=&quot;font-size: 16px; color: rgb(12, 108, 36);&quot;&gt;{!varSelectedRequestType}&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Account_0_0</name>
+                    <extensionName>flowruntime:lookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>fieldApiName</name>
+                        <value>
+                            <stringValue>AccountId</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Account</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>objectApiName</name>
+                        <value>
+                            <stringValue>Case</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>recordId</name>
+                        <value>
+                            <elementReference>getCurrentVR.Account__r.Id</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>sdsf_0_0</name>
+                    <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; color: rgb(27, 25, 25);&quot;&gt;Key Account ? &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;{!frmKeyAccount}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0_Section2</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0_Section2_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>VRContact</name>
+                    <extensionName>c:quickLookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>objectName</name>
+                        <value>
+                            <stringValue>Contact</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>displayFieldName</name>
+                        <value>
+                            <stringValue>Name</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Contact Name</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectedValue</name>
+                        <value>
+                            <elementReference>getCurrentVR.Main_External_Attendee__c</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>filterFieldName</name>
+                        <value>
+                            <elementReference>getCurrentVR.Account__r.Id</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>varContactId</assignToReference>
+                        <name>selectedValue</name>
+                    </outputParameters>
+                </fields>
+                <fields>
+                    <name>Priority_0_0</name>
+                    <choiceReferences>chxPriority</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <stringValue>Medium</stringValue>
+                    </defaultValue>
+                    <fieldText>Priority</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Expected_Requet_Closing_Date_0_0</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>frmClosingDate</elementReference>
+                    </defaultValue>
+                    <fieldText>Expected Request Closing Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrNewSustainabilityCase_0_0_0_0_0_0_0_0_0_Section2_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Business_Area_0_0</name>
+                    <choiceReferences>chxBusinessArea</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>frmUserBusinessArea</elementReference>
+                    </defaultValue>
+                    <fieldText>Business Area</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Request_Origin_0_0</name>
+                    <choiceReferences>Email</choiceReferences>
+                    <choiceReferences>Phone</choiceReferences>
+                    <choiceReferences>Web</choiceReferences>
+                    <choiceReferences>Visit</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultSelectedChoiceReference>Email</defaultSelectedChoiceReference>
+                    <fieldText>Request Origin</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>sqd_0_0</name>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <fields>
+                    <name>Inform_Account_Manager_0_0</name>
+                    <dataType>Boolean</dataType>
+                    <defaultValue>
+                        <booleanValue>true</booleanValue>
+                    </defaultValue>
+                    <fieldText>Inform Account Manager</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>Sustainability_Requests_0_0</name>
+            <choiceReferences>chxSustainabilityRequestTypes</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Please Choose Sustainability Requests</fieldText>
+            <fieldType>MultiSelectPicklist</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Product_0_0</name>
+            <extensionName>c:quickLookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>objectName</name>
+                <value>
+                    <stringValue>Product2</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Product</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>svg</name>
+                <value>
+                    <stringValue>standard:product</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectedValue</name>
+                <value>
+                    <elementReference>varProductId</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>varProductId</assignToReference>
+                <name>selectedValue</name>
+            </outputParameters>
+        </fields>
+        <helpText>&lt;p&gt;sdfsdfsdf&lt;/p&gt;</helpText>
+        <nextOrFinishButtonLabel>Create request</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>scrVRNewSustainabilityCase</name>
+        <label>scrVRNewSustainabilityCase</label>
+        <locationX>1842</locationX>
+        <locationY>451</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Create_New_Complaint</targetReference>
+        </connector>
+        <fields>
+            <name>zraerae_0_0_0_0_0_0</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Hi {!$User.FirstName} {!$User.LastName}!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;How can I help you today?&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>scrVRNewSustainabilityCase_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>scrVRNewSustainabilityCase_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>CaseReference</name>
+                    <extensionName>c:quickLookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>objectName</name>
+                        <value>
+                            <stringValue>Case</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Case Reference</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectedValue</name>
+                        <value>
+                            <elementReference>varNewCaseId</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>false</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>displayFieldName</name>
+                        <value>
+                            <stringValue>CaseNumber</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>scrVRNewSustainabilityCase_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>CaseVisitReport</name>
+                    <extensionName>c:quickLookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>objectName</name>
+                        <value>
+                            <stringValue>VisitReport__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>No. of Visit Report</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>filterFieldValue</name>
+                        <value>
+                            <elementReference>recordId</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>selectedValue</name>
+                        <value>
+                            <elementReference>recordId</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <helpText>&lt;p&gt;You are now using the process to create sustainability requests&lt;/p&gt;</helpText>
+        <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
     <start>
-        <locationX>490</locationX>
+        <locationX>1257</locationX>
         <locationY>48</locationY>
         <connector>
             <targetReference>assign_collections</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <subflows>
         <name>Create_Contact</name>
         <label>Create Contact</label>
-        <locationX>396</locationX>
-        <locationY>806</locationY>
+        <locationX>1053</locationX>
+        <locationY>660</locationY>
         <connector>
-            <targetReference>scrNewSustainabilityCase_0_0</targetReference>
+            <targetReference>createCase</targetReference>
         </connector>
         <flowName>Flow_Case_Create_Contact</flowName>
         <inputAssignments>
             <name>AccountId</name>
             <value>
-                <elementReference>getCurrentAccount.Id</elementReference>
+                <elementReference>recordId</elementReference>
             </value>
         </inputAssignments>
         <outputAssignments>
-            <assignToReference>varSelectedContactId</assignToReference>
+            <assignToReference>varContactId</assignToReference>
             <name>varCreatedContactId</name>
         </outputAssignments>
     </subflows>
+    <subflows>
+        <name>Create_Contact_V1</name>
+        <label>Create Contact V1</label>
+        <locationX>1883</locationX>
+        <locationY>894</locationY>
+        <connector>
+            <targetReference>createCase_0_0_0_0_0</targetReference>
+        </connector>
+        <flowName>Flow_Case_Create_Contact</flowName>
+        <inputAssignments>
+            <name>AccountId</name>
+            <value>
+                <elementReference>getCurrentVR.Account__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>varContactId</assignToReference>
+            <name>varCreatedContactId</name>
+        </outputAssignments>
+    </subflows>
+    <variables>
+        <name>CaseIdFilter</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
     <variables>
         <name>colTextDescriptions</name>
         <dataType>String</dataType>
@@ -1351,6 +3136,21 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>CurContact</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>JobDepartment</name>
+        <dataType>Picklist</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>recordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -1372,14 +3172,14 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
-        <name>varProductId</name>
+        <name>varNewVRCaseId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>
     <variables>
-        <name>varSelectedContactId</name>
+        <name>varProductId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -1398,5 +3198,13 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varVRContactId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>VisitReport__c</objectType>
     </variables>
 </Flow>
