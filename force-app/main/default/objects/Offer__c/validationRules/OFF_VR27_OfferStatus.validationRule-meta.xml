@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OFF_VR27_OfferStatus</fullName>
+    <active>true</active>
+    <errorConditionFormula>( ISCHANGED(OfferStatus__c) &amp;&amp; ISPICKVAL(PRIORVALUE(OfferStatus__c), &quot;Draft&quot; )&amp;&amp; (NOT ((ISPICKVAL(OfferStatus__c, &quot;Offer Sent&quot;))) &amp;&amp; (NOT(ISPICKVAL(OfferStatus__c, &quot;Offer cancelled&quot;))))) ||
+( ISCHANGED(OfferStatus__c) &amp;&amp; ISPICKVAL(PRIORVALUE(OfferStatus__c), &quot;Offer Sent&quot; )&amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Placed order / Accepted offer&quot;)))&amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Draft&quot;))))</errorConditionFormula>
+    <errorMessage>Follow each and every stage</errorMessage>
+</ValidationRule>
