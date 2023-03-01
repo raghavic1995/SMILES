@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Your_market__c</fullName>
+    <externalId>false</externalId>
+    <label>Your Market</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Abrasives</fullName>
+                <default>false</default>
+                <label>Abrasives</label>
+            </value>
+            <value>
+                <fullName>Adhesives, caulks &amp; sealants</fullName>
+                <default>false</default>
+                <label>Adhesives, caulks &amp; sealants</label>
+            </value>
+            <value>
+                <fullName>Advanced ceramics</fullName>
+                <default>false</default>
+                <label>Advanced ceramics</label>
+            </value>
+            <value>
+                <fullName>Animal care</fullName>
+                <default>false</default>
+                <label>Animal care</label>
+            </value>
+            <value>
+                <fullName>Batteries &amp; fuel cells</fullName>
+                <default>false</default>
+                <label>Batteries &amp; fuel cells</label>
+            </value>
+            <value>
+                <fullName>Board, paper, packaging &amp; pulp</fullName>
+                <default>false</default>
+                <label>Board, paper, packaging &amp; pulp</label>
+            </value>
+            <value>
+                <fullName>Building materials</fullName>
+                <default>false</default>
+                <label>Building materials</label>
+            </value>
+            <value>
+                <fullName>Ceramics</fullName>
+                <default>false</default>
+                <label>Ceramics</label>
+            </value>
+            <value>
+                <fullName>Component manufacturing</fullName>
+                <default>false</default>
+                <label>Component manufacturing</label>
+            </value>
+            <value>
+                <fullName>Cosmetics &amp; personal care</fullName>
+                <default>false</default>
+                <label>Cosmetics &amp; personal care</label>
+            </value>
+            <value>
+                <fullName>Crop production</fullName>
+                <default>false</default>
+                <label>Crop production</label>
+            </value>
+            <value>
+                <fullName>Energy &amp; environment</fullName>
+                <default>false</default>
+                <label>Energy &amp; environment</label>
+            </value>
+            <value>
+                <fullName>Food &amp; beverage</fullName>
+                <default>false</default>
+                <label>Food &amp; beverage</label>
+            </value>
+            <value>
+                <fullName>Friction materials</fullName>
+                <default>false</default>
+                <label>Friction materials</label>
+            </value>
+            <value>
+                <fullName>Health, pharma &amp; biotechnology</fullName>
+                <default>false</default>
+                <label>Health, pharma &amp; biotechnology</label>
+            </value>
+            <value>
+                <fullName>Home care</fullName>
+                <default>false</default>
+                <label>Home care</label>
+            </value>
+            <value>
+                <fullName>Infrastructure &amp; utilities</fullName>
+                <default>false</default>
+                <label>Infrastructure &amp; utilities</label>
+            </value>
+            <value>
+                <fullName>Investment casting</fullName>
+                <default>false</default>
+                <label>Investment casting</label>
+            </value>
+            <value>
+                <fullName>Lubricants</fullName>
+                <default>false</default>
+                <label>Lubricants</label>
+            </value>
+            <value>
+                <fullName>Paints &amp; coatings</fullName>
+                <default>false</default>
+                <label>Paints &amp; coatings</label>
+            </value>
+            <value>
+                <fullName>Pet care</fullName>
+                <default>false</default>
+                <label>Pet care</label>
+            </value>
+            <value>
+                <fullName>Plastics</fullName>
+                <default>false</default>
+                <label>Plastics</label>
+            </value>
+            <value>
+                <fullName>Refractory producers</fullName>
+                <default>false</default>
+                <label>Refractory producers</label>
+            </value>
+            <value>
+                <fullName>Rubber</fullName>
+                <default>false</default>
+                <label>Rubber</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
