@@ -1,0 +1,272 @@
+<!--Edit- 08/08/2022 by Anshu. Added Total customer revenue Fields. US 1402-->
+
+
+<aura:component controller="SOW" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    
+
+    <aura:attribute type="object" name="acctList"/>
+    <aura:attribute type="object" name="productList"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="productlistcolumns" type="List"/>
+    <aura:attribute name="showproducttable" type="boolean" default= "false" />
+    <aura:attribute name="productfieldsenabled" type="boolean" default= "false" />
+    <aura:attribute name="checkboxchecked" type="Boolean" default="false" />
+    <aura:attribute name="recordId" type="string"/>
+    <aura:attribute name="SelectedRecordID" type="string"/>
+    <aura:attribute name="SelectedRecordName" type="string"/>
+    <aura:attribute name="accountid" type="string"/>
+    <aura:attribute name="SelectedProductRecordID" type="string"/>
+    <aura:attribute name="ADDProductButtonController" type="boolean" default= "true"/>
+    <aura:attribute name="truthy" type="boolean" default= "false"/>
+    <aura:attribute name="truthyproduct" type="boolean" default= "false"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="1"/>
+    
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="ProdId" type="String" />
+    <aura:attribute name="ProductName" type="String" />
+    
+    <aura:attribute name="OurAnnualRevenue" type="string"/>
+    <aura:attribute name="TotalCustomerRevenue" type="string"/>
+    <aura:attribute name="ImerysMargin" type="string"/>
+    <aura:attribute name="TotalConsumptioninVolume" type="string"/>
+    
+    <aura:attribute name="Imerysshareofwallet" type="string"/>
+    <aura:attribute name="ImerysshareofwalletRevenue" type="string"/>
+    <aura:attribute name="TargetshareofwalletRevenue" type="string"/>
+    <aura:attribute name="Targetshareofwallet" type="string"/>
+    <aura:attribute name="Imeryspotential" type="string"/>
+    <aura:attribute name="currencyValue" type="string"/> <!--Pranay-->
+    <aura:attribute name="AnnualVolume" type="string"/>  <!--Pranay-->
+    
+    
+    <aura:attribute name="Productshowlist" type="object"/>
+    <aura:attribute name="myProductlistcolumns" type="list"/>
+    
+    <aura:attribute name="hideCheckbox" type="boolean" />
+    
+    <aura:attribute name="Recordcontains" type="boolean" />
+    <aura:attribute name="Recorddoesnotcontains" type="boolean" />
+    <aura:attribute name="recID" type="String" default="{!v.recordId}"/> <!-- pranay-->
+    
+    <aura:attribute name="fieldMapforunit" type="Map"/>
+    <aura:attribute name="Unit" type="String" />
+    
+    
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAcc}"/>
+    <aura:handler event="force:refreshView" action="{!c.refreshcomponent}" />
+    
+    
+    <aura:if isTrue="{!v.Recordcontains}">
+        <ui:message title="Instructions:" severity="warning" >
+               For the table below, please click on a child account and enter the share of wallet for all products belonging to the child account. To add a product, simply click on the "Add product" button and search for the right product and fill in all the relavant inputs. Upon adding the products, click on "Show products" for the respective accounts to see all the products added and their respective share of wallets. Always select the radio button of the exact the Account Name or Product Name (left of name) before proceeding to the next step. </ui:message>
+        <br></br>
+        <div class="slds-float_right">
+            <lightning:button   variant="brand-outline" label ="Add Product" title="Non-primary action" onclick="{!c.AddbuttonhandleClick}" disabled="{!v.ADDProductButtonController}" ></lightning:button>
+        </div>
+        <br></br>
+        <br></br>
+         
+        <lightning:datatable data="{! v.acctList }"
+                             columns="{! v.mycolumns }"
+                             keyField="id"
+                             maxRowSelection="{! v.maxRowSelection }"
+                             hideCheckboxColumn="{!v.hideCheckbox}"
+                             onrowselection="{! c.updateSelectedText }" 
+                             onrowaction="{!c.viewRecord}" />
+      
+        <aura:if isTrue="{!v.truthy}">
+            
+            <div class="slds-m-around_xx-large">
+                
+                <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+                <!-- Modal/Popup Box starts here-->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{! c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Product</h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            
+                            
+                            <lightning:input aura:id="textfieldid"   placeholder="Search here..." label="Key products solutions &amp; services / production lines" />
+                            <br></br>
+                            <div class = "slds-align_absolute-center">
+                                <lightning:button variant="brand-outline" label ="Search"  onclick="{!c.searchbuttonhandleClick}" />
+                            </div>
+                            <aura:if isTrue="{!v.truthyproduct}">
+                                <br ></br>
+                                <lightning:datatable    
+                                                     data="{! v.productList }"
+                                                     columns="{! v.productlistcolumns }"
+                                                     maxRowSelection="{! v.maxRowSelection }"
+                                                     keyField="id"
+                                                     hideCheckboxColumn="false"  
+                                                     onrowselection="{! c.updateProductSelectedText }"   />
+                            </aura:if>
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral"
+                                              label="Cancel"
+                                              title="Cancel"
+                                              onclick="{! c.closeModel }"/>
+                            <lightning:button variant="brand"
+                                              label="OK"
+                                              title="OK"
+                                              onclick="{!c.submitDetails}"/>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </aura:if>
+        
+        
+        
+        
+        <aura:if isTrue="{!v.productfieldsenabled}">
+            <br></br>
+            
+            <div>
+                <p class=" Titlecss" >Product Details</p>
+            </div>
+            <div class="slds-box" > 
+                <lightning:layout horizontalAlign="space" verticalAlign="end">
+                    
+                    <lightning:layoutItem size="6" padding="horizontal-medium">
+                        <lightning:input  value="{! v.SelectedRecordName }"   label="Product Name"  disabled="true"/>
+                        <lightning:input  aura:id="AnnualVolumeAuraID"  value="{! v.AnnualVolume }" label="Annual Volume" /> <!--Pranay-->
+                         
+                        <lightning:select name="selectItem" label="Units"  aura:id="Unit" value = "{!v.Unit}"   > 
+                        	<option value="">None</option>
+                        	<aura:iteration items="{!v.fieldMapforunit}" var="i" indexVar="key">
+                            	<option text="{!i.value}" value="{!i.key}"  />
+                        	</aura:iteration>
+                    	</lightning:select>	
+                        <lightning:input  value="{! v.currencyValue }"   label="Currency"  disabled="true"/> <!--Pranay-->
+                        <lightning:input  aura:id="OurAnnualRevenueAuraID"  value="{! v.OurAnnualRevenue }"  				  label="Annual Revenue" />
+                        <lightning:input  aura:id="TotalConsumptioninVolumeAuraID"  value="{! v.TotalConsumptioninVolume }"   label="Total Customer Volume" />
+                        <lightning:input  aura:id="TotalCustomerRevenueID"  value="{! v.TotalCustomerRevenue }"  			  label="Total Customer Revenue" />
+                        <lightning:input  aura:id="ImerysshareofwalletAuraID" value="{! v.Imerysshareofwallet }" 			  label="Imerys Share of Wallet Volume (%)" />
+                        <lightning:input  aura:id="ImerysshareofwalletRevenueID" value="{! v.ImerysshareofwalletRevenue }" 	  label="Imerys Share of Wallet Revenue (%)" />
+                        <lightning:input  aura:id="TargetshareofwalletAuraID" value="{! v.Targetshareofwallet }" 			  label="Target Share of Wallet Volume (%)" />
+                        <lightning:input  aura:id="TargetshareofwalletRevenueID" value="{! v.TargetshareofwalletRevenue }" 	  label="Target share of wallet Revenue (%)" />
+                        <lightning:input  aura:id="ImeryspotentialAuraID"  value="{! v.Imeryspotential }" 					  label="Imerys Potential" />
+                        
+                        
+							
+                        
+                        <br></br>
+                        <div class = "slds-align_absolute-center">
+                            <lightning:button variant="brand-outline" label="Save" title="Brand action" onclick="{! c.SavehandleClick }" />
+                            <lightning:button variant="brand-outline" label="Cancel" title="Brand action" onclick="{! c.CancelhandleClick }" />
+                        </div>
+                    </lightning:layoutItem> 
+                </lightning:layout>
+            </div>
+        </aura:if>
+        
+        
+        <aura:if isTrue="{!v.showproducttable}"> 
+            
+            <br></br>
+            <div class="slds-float_right">
+        <lightning:button label="Edit"  variant="brand"  onclick="{!c.handleClick }"/>
+        <lightning:button label="Delete"  variant="brand"  onclick="{!c.handleDelete }"/>
+    </div>
+            <br></br>
+            <br></br>
+            
+            <lightning:datatable 
+                                 aura:id="productDataTable" data="{! v.Productshowlist }"
+                                 columns="{! v.myProductlistcolumns }"
+                                 keyField="Id"
+                                 onsave ="{!c.ProductonSave}"
+                                 hideCheckboxColumn="false"
+                                 maxRowSelection = "1"
+                                 onrowselection="{! c.updateSelectedTextProduct }"/>
+            
+            
+            
+            
+        </aura:if>
+    </aura:if>
+    <aura:if isTrue="{!v.isModalOpen}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeModelProduct }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Product</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    
+                    	<lightning:input  aura:id="ProductName" value="{! v.SelectedRecordName }"   label="Product Name"  disabled="true"/>
+                        <lightning:input  aura:id="AnnualVolumeAuraID"  value="{! v.AnnualVolume }" label="Annual Volume" /> <!--Pranay-->
+                        
+                    	<lightning:select name="selectItem" label="Units"  aura:id="Unit" value = "{!v.Unit}"   > 
+                        	<option value="">None</option>
+                        	<aura:iteration items="{!v.fieldMapforunit}" var="i" indexVar="key">
+                            	<option text="{!i.value}" value="{!i.key}"  />
+                        </aura:iteration>
+                    	</lightning:select>
+                    	<lightning:input  value="{! v.currencyValue }"   label="Currency"  disabled="true"/> <!--Pranay-->
+                        <lightning:input  aura:id="OurAnnualRevenueAuraID"  value="{! v.OurAnnualRevenue }"  				 label="Annual Revenue" />
+                    	<lightning:input  aura:id="TotalConsumptioninVolumeAuraID"  value="{! v.TotalConsumptioninVolume }"  label="Total Customer Volume" />
+                        <lightning:input  aura:id="TotalCustomerRevenueID"  value="{! v.TotalCustomerRevenue }"  			 label="Total Customer Revenue" />
+                        <!--<lightning:input  aura:id="UnitsAuraID"  value="{! v.Units }" label="Units" />-->
+                        <lightning:input  aura:id="ImerysshareofwalletAuraID" value="{! v.Imerysshareofwallet }" 			 label="Imerys Share of Wallet Volume (%)" />
+                        <lightning:input  aura:id="ImerysshareofwalletRevenueID" value="{! v.ImerysshareofwalletRevenue }"   label="Imerys Share of Wallet Revenue (%)" />
+                        <lightning:input  aura:id="TargetshareofwalletAuraID" value="{! v.Targetshareofwallet }" 			 label="Target Share of Wallet Volume (%)" />
+                        <lightning:input  aura:id="TargetshareofwalletRevenueID" value="{! v.TargetshareofwalletRevenue }" 	 label="Target Share of Wallet Revenue (%)" />
+                    	<!--<lightning:input  aura:id="ImerysMarginAuraID"  value="{! v.ImerysMargin }" label="Imerys Margin(%)" />-->
+                        <lightning:input  aura:id="ImeryspotentialAuraID"  value="{! v.Imeryspotential }" 					 label="Imerys Potential" />
+                        
+                       
+							
+                    
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.closeModelProduct }"/>
+                    <lightning:button variant="brand"
+                                      label="Save"
+                                      title="Save"
+                                      onclick="{!c.submitDetailsProduct}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    
+    </aura:if>
+    
+    
+    
+    <aura:if isTrue="{!v.Recorddoesnotcontains}"> 
+        
+        <h3 style="text-align:center;"> No Records Found. </h3>
+        
+        
+    </aura:if>
+    
+    
+</aura:component>
