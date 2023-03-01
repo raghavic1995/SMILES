@@ -1,0 +1,118 @@
+<aura:component controller="AccountOverview" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="accountPlanRecord" type="Account_Plan__c"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="haspermission" type="string"/>
+     <ui:message title="Instructions:" severity="warning" >
+                             To edit the input fields within the Overview section, please go to the Account Page, tab Details under the section Account Information you will find the same input fields. Any inputs added in the Account Information (within Account) will pre-fill in Key Account Overview (within Account Plan).
+                        </ui:message>
+    <br></br>
+   
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-2">
+                 <lightning:card title="Overview">
+                <h3>
+                    <p>Key Contact Name</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.Contact__r.Name}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                
+                <h3>
+                    <p>Foundation</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.Foundation__c}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                
+                <h3>
+                    <p>HQ</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.HQ__c}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                
+                <h3>
+                    <p>Employees</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.Employees__c}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                     
+                     <h3>
+                    <p>Company Type</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.Company_type__c}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                <h3>
+                    <p>Ownership</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.Ownership}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                
+                <h3>
+                    <p>Management</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.Management__c}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                <h3>
+                    <p>Market Shares</p>
+                    <p style="font-size: 15px;">
+                        {!v.accountPlanRecord.Account__r.Market_Shares__c}
+                        <hr style="width: 90%; margin: 5px"></hr>
+                    </p>
+                </h3>
+                
+                <lightning:card title="Business Description">
+                    <lightning:textarea aura:id="businessDesc" type="Text" name="businesDescription" value="{!v.accountPlanRecord.Business_Description__c}"  />  
+                </lightning:card>
+                <lightning:card title="Geographical Reach">
+                        <lightning:textarea aura:id="geoReach" type="Text" name="Geographical Reach" value="{!v.accountPlanRecord.Geographical_Reach__c}"/>
+                </lightning:card>
+                <lightning:card title="Major Plant Location">
+                    <c:ChildAccounts accountPlanId="{!v.recordId}" columns="{!v.columns}"/>
+                </lightning:card>
+                </lightning:card>
+            </div>
+            
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:card title="R&amp;D Project And Important Innovations">
+                        <lightning:textarea aura:id="impInno" type="Text" name="Important Innovations" value="{!v.accountPlanRecord.Important_Innovations__c}" />
+                </lightning:card>
+                <lightning:card title="Major Clients">
+                        <lightning:textarea aura:id="majorClients" type="Text" name="Major Clients" value="{!v.accountPlanRecord.Major_Clients__c}"/>
+                </lightning:card>
+                <lightning:card title="Key Competitors">
+                        <lightning:textarea aura:id="keyCompetitors" type="Text" name="Key Competitors" value="{!v.accountPlanRecord.Key_Competitors__c}" />
+                </lightning:card>
+              <lightning:card title="Comments">
+                        <lightning:textarea aura:id="comments" type="Text" name="Comments" value="{!v.accountPlanRecord.Comments__c}" />
+                </lightning:card> 
+            <!--     <lightning:card title="Comments">
+                                                                                                                                                
+               <lightning:inputRichText aura:id="comments"  value="{!v.accountPlanRecord.Comments__c}">
+       <lightning:insertImageButton/> 
+    </lightning:inputRichText>
+                     </lightning:card>  
+                <div>
+                     <lightning:input name="file1" type="file" label="Add image" multiple="false" accept="image/png" onchange="{! c.handleFilesChange }"/>
+                     </div>  -->
+            </div>  
+            
+           
+        </div>
+        <div class= "buttonaligment" >
+            <lightning:button variant="brand" aura:id="buttonsave" label="Save" onclick="{!c.handleSave}"/>
+            <lightning:button variant="brand" aura:id="buttoncancel" label="Cancel" onclick="{!c.doInit}"/>
+    </div>
+</aura:component>
