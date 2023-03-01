@@ -145,7 +145,7 @@
                 <value>Market VP</value>
             </criteriaItems>
             <criteriaItems>
-                <field>Case.Requested_Credit_amount__c</field>
+                <field>Case.Net_Credit_Requested__c</field>
                 <operation>greaterThan</operation>
                 <value>&quot;USD 10,000&quot;</value>
             </criteriaItems>
