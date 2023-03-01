@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSTeamInCharge__c</fullName>
+    <externalId>false</externalId>
+    <label>CS Team In Charge</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AluminatesFos</fullName>
+                <default>false</default>
+                <label>AluminatesFos</label>
+            </value>
+            <value>
+                <fullName>Andersonville</fullName>
+                <default>false</default>
+                <label>Andersonville</label>
+            </value>
+            <value>
+                <fullName>Bahrain</fullName>
+                <default>false</default>
+                <label>Bahrain</label>
+            </value>
+            <value>
+                <fullName>Beyrede</fullName>
+                <default>false</default>
+                <label>Beyrede</label>
+            </value>
+            <value>
+                <fullName>Clerac &amp; IRMIS</fullName>
+                <default>false</default>
+                <label>Clerac &amp; IRMIS</label>
+            </value>
+            <value>
+                <fullName>Domodossola</fullName>
+                <default>false</default>
+                <label>Domodossola</label>
+            </value>
+            <value>
+                <fullName>Glomel</fullName>
+                <default>false</default>
+                <label>Glomel</label>
+            </value>
+            <value>
+                <fullName>Greeneville</fullName>
+                <default>false</default>
+                <label>Greeneville</label>
+            </value>
+            <value>
+                <fullName>Laufenburg</fullName>
+                <default>false</default>
+                <label>Laufenburg</label>
+            </value>
+            <value>
+                <fullName>Teutschental</fullName>
+                <default>false</default>
+                <label>Teutschental</label>
+            </value>
+            <value>
+                <fullName>Villach &amp; Ruse</fullName>
+                <default>false</default>
+                <label>Villach &amp; Ruse</label>
+            </value>
+            <value>
+                <fullName>Vizag (Accpac)</fullName>
+                <default>false</default>
+                <label>Vizag (Accpac)</label>
+            </value>
+            <value>
+                <fullName>Zschornewitz</fullName>
+                <default>false</default>
+                <label>Zschornewitz</label>
+            </value>
+            <value>
+                <fullName>MinasTest</fullName>
+                <default>false</default>
+                <label>MinasTest</label>
+            </value>
+            <value>
+                <fullName>Test1</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Test1</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
