@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Navigate_to_New_Record</name>
+        <label>Navigate to New Record</label>
+        <locationX>1469</locationX>
+        <locationY>1886</locationY>
+        <actionName>c:navigateEverywhereLFA</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>destinationAction</name>
+            <value>
+                <stringValue>View</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>destinationRecordId</name>
+            <value>
+                <elementReference>NewCaseId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>destinationType</name>
+            <value>
+                <stringValue>Record</stringValue>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>Assign_New_Case_Id</name>
+        <label>Assign New Case Id</label>
+        <locationX>182</locationX>
+        <locationY>1334</locationY>
+        <assignmentItems>
+            <assignToReference>NewCaseId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create_case_from_web2case</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Final_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_1_of_Assign_New_Case_Id</name>
+        <label>Copy 1 of Assign New Case Id</label>
+        <locationX>886</locationX>
+        <locationY>1454</locationY>
+        <assignmentItems>
+            <assignToReference>NewCaseId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Copy_1_of_Create_case_from_web2case</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Final_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_1_of_Copy_1_of_Assign_New_Case_Id</name>
+        <label>Copy 1 of Copy 1 of Assign New Case Id</label>
+        <locationX>1590</locationX>
+        <locationY>1454</locationY>
+        <assignmentItems>
+            <assignToReference>NewCaseId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Copy_2_of_Create_case_from_web2case</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Final_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_1_of_Copy_1_of_Copy_1_of_Assign_New_Case_Id</name>
+        <label>Copy 1 of Copy 1 of Copy 1 of Assign New Case Id</label>
+        <locationX>2030</locationX>
+        <locationY>1454</locationY>
+        <assignmentItems>
+            <assignToReference>NewCaseId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Copy_1_of_Copy_2_of_Create_case_from_web2case</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Final_Screen</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Case_Null_check</name>
         <label>Case Null check</label>
@@ -279,7 +371,7 @@
         <locationX>182</locationX>
         <locationY>1214</locationY>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>MemberId</field>
@@ -308,7 +400,7 @@
         <locationX>886</locationX>
         <locationY>1334</locationY>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>Copy_1_of_Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>MemberId</field>
@@ -337,7 +429,7 @@
         <locationX>2030</locationX>
         <locationY>1334</locationY>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>Copy_1_of_Copy_1_of_Copy_1_of_Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>MemberId</field>
@@ -370,12 +462,6 @@
             <targetReference>Copy_1_of_Copy_2_of_Add_Case_Team_Member</targetReference>
         </connector>
         <inputAssignments>
-            <field>AccountId</field>
-            <value>
-                <elementReference>varselectedAccountid</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Description</field>
             <value>
                 <elementReference>Copy_1_of_Copy_2_of_Description</elementReference>
@@ -384,13 +470,19 @@
         <inputAssignments>
             <field>Origin</field>
             <value>
-                <stringValue>Web</stringValue>
+                <stringValue>Email</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
                 <elementReference>Copy_1_of_Copy_2_of_Get_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Related_Account__c</field>
+            <value>
+                <elementReference>varselectedAccountid</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -426,7 +518,7 @@
         <inputAssignments>
             <field>Origin</field>
             <value>
-                <stringValue>Web</stringValue>
+                <stringValue>Email</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -462,7 +554,7 @@
         <locationX>1590</locationX>
         <locationY>1334</locationY>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>Copy_1_of_Copy_1_of_Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>MemberId</field>
@@ -495,12 +587,6 @@
             <targetReference>Copy_2_of_Add_Case_Team_Member</targetReference>
         </connector>
         <inputAssignments>
-            <field>AccountId</field>
-            <value>
-                <elementReference>varselectedAccountid</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Description</field>
             <value>
                 <elementReference>Copy_2_of_Description</elementReference>
@@ -509,13 +595,19 @@
         <inputAssignments>
             <field>Origin</field>
             <value>
-                <stringValue>Web</stringValue>
+                <stringValue>Email</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
                 <elementReference>Copy_2_of_Get_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Related_Account__c</field>
+            <value>
+                <elementReference>varselectedAccountid</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -543,18 +635,6 @@
             <targetReference>Add_Case_Team_Member</targetReference>
         </connector>
         <inputAssignments>
-            <field>AccountId</field>
-            <value>
-                <elementReference>Get_Account_id.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Contact_First_Name__c</field>
-            <value>
-                <elementReference>varselectedcontactId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Description</field>
             <value>
                 <elementReference>Description</elementReference>
@@ -563,13 +643,25 @@
         <inputAssignments>
             <field>Origin</field>
             <value>
-                <stringValue>Web</stringValue>
+                <stringValue>Email</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
                 <elementReference>Get_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Related_Account__c</field>
+            <value>
+                <elementReference>Get_Account_id.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Related_Contact__c</field>
+            <value>
+                <elementReference>varselectedcontactId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -922,6 +1014,12 @@
                     <elementReference>Copy_1_of_get_Related_Account.Id</elementReference>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <outputParameters>
@@ -1061,6 +1159,12 @@
                     <stringValue>AccountId</stringValue>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <outputParameters>
@@ -1180,6 +1284,12 @@
                 <name>filterFieldValue</name>
                 <value>
                     <elementReference>get_Related_Account.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -1306,14 +1416,20 @@
             <inputParameters>
                 <name>valueFieldName</name>
                 <value>
-                    <elementReference>get_Contact.FirstName</elementReference>
+                    <stringValue>Id</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <outputParameters>
                 <assignToReference>varselectedcontactId</assignToReference>
-                <name>valueFieldName</name>
+                <name>selectedValue</name>
             </outputParameters>
         </fields>
         <fields>
@@ -1337,10 +1453,13 @@
         <name>Final_Screen</name>
         <label>Final Screen</label>
         <locationX>1469</locationX>
-        <locationY>1646</locationY>
+        <locationY>1766</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Navigate_to_New_Record</targetReference>
+        </connector>
         <fields>
             <name>Success</name>
             <fieldText>&lt;p&gt;&lt;strong&gt;Case Created Successfully!&lt;/strong&gt;&lt;/p&gt;</fieldText>
@@ -1440,6 +1559,13 @@
     <variables>
         <description>store the contact id</description>
         <name>Contactidvar</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>NewCaseId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
