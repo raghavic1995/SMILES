@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Smiles_Community</name>
+    <queueMembers>
+        <users>
+            <user>alexis.roche@imerys.com</user>
+            <user>anshu.singh@external.imerys.com</user>
+            <user>matthew.chua@imerys.com</user>
+            <user>mohamed.kazak@imerys.com</user>
+            <user>nitin.sharma@imerys.com</user>
+            <user>sabine.dethier@imerys.com</user>
+            <user>shien.teo@imerys.com</user>
+            <user>sylvie.gras@imerys.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>User_Feedback__c</sobjectType>
+    </queueSobject>
+</Queue>
