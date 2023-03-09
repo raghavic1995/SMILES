@@ -549,7 +549,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             gatekeeperSet.add(objNew.GateKeeper__c);
         }
         
-        if(gatekeeperSet!=gatekeeperOld){
+        if(gatekeeperSet!=gatekeeperOld && productOld!=productNew){
             try{
                 
                 delete [select Id,MemberId FROM CaseTeamMember WHERE ParentId IN:recordId];
@@ -794,6 +794,11 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
         }
         Map<Id, Product2> caseMap = new Map<Id,Product2>([SELECT Id, New_Product_Type_2__c from Product2 WHERE 
                                                           Id IN:productNew AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]);
+        
+        system.debug('plantcase is '+plantcase);
+        system.debug('productOld is '+productOld);
+        system.debug('productNew is '+productNew);
+        system.debug('caseMap is '+caseMap.size());
         
         if(plantcase !=Null && productOld!=productNew && caseMap.size() ==0 && !plantCase.contains(Label.CL00043)){
             //||businessArea != Null && plantcase !=Null && businessAreaOld!=businessArea && caseMap.size() ==0){      
