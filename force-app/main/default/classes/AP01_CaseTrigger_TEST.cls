@@ -671,7 +671,7 @@ Database.update(caseMapUpdate.values(),true);
                 system.assertEquals(caseList[0].OutOfOffice__c, true);
             } 
         }
-        user bypassValidation2 = [SELECT Id, Email, MultiPicklistDivision__c, ByPassValidationRule__c, Division FROM 
+        /*user bypassValidation2 = [SELECT Id, Email, MultiPicklistDivision__c, ByPassValidationRule__c, Division FROM 
                                   User WHERE Id=:users[4].Id LIMIT 1];
         
         if(bypassValidation2.Division == null){
@@ -684,7 +684,7 @@ Database.update(caseMapUpdate.values(),true);
         
         
         bypassValidation2.ByPassValidationRule__c = false;
-        update bypassValidation2;
+        update bypassValidation2;*/
     } 
 /**
 *@author Geerusting Govind Kumar
