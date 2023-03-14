@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application_Cluster__c</fullName>
+    <externalId>false</externalId>
+    <label>Application Cluster</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Abrasives</fullName>
+                <default>false</default>
+                <label>Abrasives</label>
+            </value>
+            <value>
+                <fullName>B&amp;I</fullName>
+                <default>false</default>
+                <label>B&amp;I</label>
+            </value>
+            <value>
+                <fullName>Ceramics</fullName>
+                <default>false</default>
+                <label>Ceramics</label>
+            </value>
+            <value>
+                <fullName>FLS</fullName>
+                <default>false</default>
+                <label>FLS</label>
+            </value>
+            <value>
+                <fullName>G&amp;C</fullName>
+                <default>false</default>
+                <label>G&amp;C</label>
+            </value>
+            <value>
+                <fullName>Paper &amp; Board</fullName>
+                <default>false</default>
+                <label>Paper &amp; Board</label>
+            </value>
+            <value>
+                <fullName>PARP</fullName>
+                <default>false</default>
+                <label>PARP</label>
+            </value>
+            <value>
+                <fullName>Refractory Producers</fullName>
+                <default>false</default>
+                <label>Refractory Producers</label>
+            </value>
+            <value>
+                <fullName>Foundry</fullName>
+                <default>false</default>
+                <label>Foundry</label>
+            </value>
+            <value>
+                <fullName>Iron &amp; Steel</fullName>
+                <default>false</default>
+                <label>Iron &amp; Steel</label>
+            </value>
+            <value>
+                <fullName>Thermal</fullName>
+                <default>false</default>
+                <label>Thermal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
