@@ -95,10 +95,10 @@
                 <lightning:card title="Key Competitors">
                         <lightning:textarea aura:id="keyCompetitors" type="Text" name="Key Competitors" value="{!v.accountPlanRecord.Key_Competitors__c}" />
                 </lightning:card>
-              <lightning:card title="Comments">
+           <!--   <lightning:card title="Comments">
                         <lightning:textarea aura:id="comments" type="Text" name="Comments" value="{!v.accountPlanRecord.Comments__c}" />
-                </lightning:card> 
-            <!--     <lightning:card title="Comments">
+                </lightning:card>  -->
+                 <lightning:card title="Comments">
                                                                                                                                                 
                <lightning:inputRichText aura:id="comments"  value="{!v.accountPlanRecord.Comments__c}">
        <lightning:insertImageButton/> 
@@ -106,7 +106,7 @@
                      </lightning:card>  
                 <div>
                      <lightning:input name="file1" type="file" label="Add image" multiple="false" accept="image/png" onchange="{! c.handleFilesChange }"/>
-                     </div>  -->
+                     </div>  
             </div>  
             
            
