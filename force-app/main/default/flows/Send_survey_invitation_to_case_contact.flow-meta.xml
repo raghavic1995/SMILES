@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>CFS_Chinese</name>
-        <label>CFS_Chinese</label>
-        <locationX>37</locationX>
-        <locationY>389</locationY>
-        <actionName>cfs_chinese</actionName>
+        <name>CFS2</name>
+        <label>CFS2</label>
+        <locationX>182</locationX>
+        <locationY>269</locationY>
+        <actionName>cfs</actionName>
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>isUnauthenticatedResponse</name>
             <value>
-                <booleanValue>true</booleanValue>
+                <booleanValue>false</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -32,43 +32,6 @@
                 <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>cfs_chinese</nameSegment>
-        <versionSegment>1</versionSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>CFS_English</name>
-        <label>CFS English</label>
-        <locationX>158</locationX>
-        <locationY>236</locationY>
-        <actionName>customer_feedback_survey_template</actionName>
-        <actionType>dynamicSendSurveyInvitation</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>isUnauthenticatedResponse</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>recipient</name>
-            <value>
-                <elementReference>CaseContact</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>recipientType</name>
-            <value>
-                <stringValue>Contact</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>surveySubjectEntity</name>
-            <value>
-                <elementReference>Subject</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>customer_feedback_survey_template</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>CFS_French</name>
@@ -79,15 +42,9 @@
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>personalInvitation</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>isUnauthenticatedResponse</name>
             <value>
-                <booleanValue>true</booleanValue>
+                <booleanValue>false</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -108,27 +65,19 @@
                 <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>cfs_french</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>cfs_german</name>
         <label>cfs german</label>
-        <locationX>105</locationX>
-        <locationY>518</locationY>
+        <locationX>186</locationX>
+        <locationY>501</locationY>
         <actionName>cfs_german</actionName>
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>personalInvitation</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>isUnauthenticatedResponse</name>
             <value>
-                <booleanValue>true</booleanValue>
+                <booleanValue>false</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -145,12 +94,7 @@
         </inputParameters>
         <inputParameters>
             <name>surveySubjectEntity</name>
-            <value>
-                <elementReference>Subject</elementReference>
-            </value>
         </inputParameters>
-        <nameSegment>cfs_german</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>CFS_Italian</name>
@@ -161,15 +105,9 @@
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>personalInvitation</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>isUnauthenticatedResponse</name>
             <value>
-                <booleanValue>true</booleanValue>
+                <booleanValue>false</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -190,23 +128,15 @@
                 <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>cfs_italian</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
-        <name>CFS_Spanish</name>
-        <label>CFS Spanish</label>
-        <locationX>189</locationX>
-        <locationY>622</locationY>
-        <actionName>cfs_spanish</actionName>
+        <name>customer_feedback_survey</name>
+        <label>customer feedback survey</label>
+        <locationX>87</locationX>
+        <locationY>392</locationY>
+        <actionName>customer_feedback_survey</actionName>
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>isUnauthenticatedResponse</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
         <inputParameters>
             <name>recipient</name>
             <value>
@@ -246,7 +176,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>CFS_English</targetReference>
+                <targetReference>CFS2</targetReference>
             </connector>
             <label>English</label>
         </rules>
@@ -294,36 +224,6 @@
                 <targetReference>CFS_French</targetReference>
             </connector>
             <label>French</label>
-        </rules>
-        <rules>
-            <name>Chinese</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Language__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Chinese (Mandarin)</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>CFS_Chinese</targetReference>
-            </connector>
-            <label>Chinese</label>
-        </rules>
-        <rules>
-            <name>Spanish</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Language__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Spanish</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>CFS_Spanish</targetReference>
-            </connector>
-            <label>Spanish</label>
         </rules>
     </decisions>
     <decisions>
