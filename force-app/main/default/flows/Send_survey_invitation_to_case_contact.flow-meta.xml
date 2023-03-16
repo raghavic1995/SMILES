@@ -3,9 +3,138 @@
     <actionCalls>
         <name>CFS2</name>
         <label>CFS2</label>
-        <locationX>195</locationX>
-        <locationY>403</locationY>
+        <locationX>182</locationX>
+        <locationY>269</locationY>
         <actionName>cfs</actionName>
+        <actionType>dynamicSendSurveyInvitation</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipient</name>
+            <value>
+                <elementReference>CaseContact</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientType</name>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>surveySubjectEntity</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>CFS_French</name>
+        <label>CFS French</label>
+        <locationX>314</locationX>
+        <locationY>178</locationY>
+        <actionName>cfs_french</actionName>
+        <actionType>dynamicSendSurveyInvitation</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipient</name>
+            <value>
+                <elementReference>CaseContact</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientType</name>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>surveySubjectEntity</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>cfs_german</name>
+        <label>cfs german</label>
+        <locationX>186</locationX>
+        <locationY>501</locationY>
+        <actionName>cfs_german</actionName>
+        <actionType>dynamicSendSurveyInvitation</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipient</name>
+            <value>
+                <elementReference>CaseContact</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientType</name>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>surveySubjectEntity</name>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>CFS_Italian</name>
+        <label>CFS Italian</label>
+        <locationX>374</locationX>
+        <locationY>638</locationY>
+        <actionName>cfs_italian</actionName>
+        <actionType>dynamicSendSurveyInvitation</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipient</name>
+            <value>
+                <elementReference>CaseContact</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientType</name>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>surveySubjectEntity</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>customer_feedback_survey</name>
+        <label>customer feedback survey</label>
+        <locationX>87</locationX>
+        <locationY>392</locationY>
+        <actionName>customer_feedback_survey</actionName>
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -28,6 +157,73 @@
         </inputParameters>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Check_Language</name>
+        <label>Check Language</label>
+        <locationX>360</locationX>
+        <locationY>388</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>English</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Language__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>English</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CFS2</targetReference>
+            </connector>
+            <label>English</label>
+        </rules>
+        <rules>
+            <name>German</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Language__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>German</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>cfs_german</targetReference>
+            </connector>
+            <label>German</label>
+        </rules>
+        <rules>
+            <name>Italian</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Language__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Italian</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CFS_Italian</targetReference>
+            </connector>
+            <label>Italian</label>
+        </rules>
+        <rules>
+            <name>French</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Language__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>French</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CFS_French</targetReference>
+            </connector>
+            <label>French</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Contact_null_check</name>
         <label>Contact null check</label>
@@ -52,7 +248,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>CFS2</targetReference>
+                <targetReference>Check_Language</targetReference>
             </connector>
             <label>Rec available</label>
         </rules>
@@ -169,26 +365,12 @@
             <targetReference>Contact_null_check</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>1 OR (2 AND 3)</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Status</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Follow-Up</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Tech_EmailCounter__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>ParentId</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <object>Case</object>
