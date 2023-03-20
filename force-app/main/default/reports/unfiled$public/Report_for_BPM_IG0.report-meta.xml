@@ -19,10 +19,7 @@
         <field>SalesAgreement$Sales_Manager__c</field>
     </columns>
     <columns>
-        <field>SalesAgreement$Ship_To__c</field>
-    </columns>
-    <columns>
-        <field>SalesAgreement$Bill_To__c</field>
+        <field>SalesAgreement$Bill_To__c.Name</field>
     </columns>
     <columns>
         <field>SalesAgreement.SalesAgreementProduct$EndCustomer__c</field>
