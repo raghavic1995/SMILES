@@ -932,7 +932,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Final Customer : Account Name</displayNameOverride>
             <field>EndCustomer__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
