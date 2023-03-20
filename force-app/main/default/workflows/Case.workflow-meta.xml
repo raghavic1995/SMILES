@@ -1,37 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>DocumentRequest_EmailtoCaseAutomatic_Case_Creation_Notification</fullName>
-        <description>DocumentRequest EmailtoCaseAutomatic Case Creation Notification</description>
+        <fullName>Duvall_Logistic_Carrier_Email_Alert</fullName>
+        <description>Duvall Logistic Carrier Email Alert</description>
         <protected>false</protected>
         <recipients>
-            <field>SuppliedEmail</field>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Duvall_Email_1__c</field>
             <type>email</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/DocumentRequest_EmailtoCaseAutomatic_Case_Creation_Notification</template>
-    </alerts>
-    <alerts>
-        <fullName>DocumentRequest_EmailtoCaseManual_Case_Creation_Notification</fullName>
-        <description>DocumentRequest EmailtoCaseManual Case Creation Notification</description>
-        <protected>false</protected>
         <recipients>
-            <field>Related_Contact__c</field>
-            <type>contactLookup</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/DocumentRequest_EmailtoCaseManual_Case_Creation_Notification</template>
-    </alerts>
-    <alerts>
-        <fullName>WebtoCase_Case_Creation_Notification</fullName>
-        <description>DocumentRequest WebtoCase Case Creation Notification</description>
-        <protected>false</protected>
-        <recipients>
-            <field>SuppliedEmail</field>
+            <field>Duvall_Email_2__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>smiles.support@imerys.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/WebtoCase_Case_Creation_Notification</template>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Duvall_Carrier_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>J_M_Logistic_Carrier_Email_Alert</fullName>
+        <description>J&amp;M Logistic Carrier Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>J_M_Email_1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>J_M_Email_2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>J_M_Email_3__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/J_M_Carrier_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Seasons_Logistic_Carrier_Email_Alert</fullName>
+        <description>Seasons Logistic Carrier Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Season_Email_1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Season_Email_2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Season_Email_3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>mrunmay.jadhav@external.imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Seasons_Carrier_Template</template>
     </alerts>
 </Workflow>
