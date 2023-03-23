@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QUO_QuoteCompactLayout</fullName>
+    <fields>Name</fields>
+    <fields>AccountId</fields>
+    <fields>OwnerId</fields>
+    <fields>OpportunityId</fields>
+    <fields>Approval_Status__c</fields>
+    <fields>Total_Product_Revenue__c</fields>
+    <fields>TotalFreightCost__c</fields>
+    <fields>GeneralTotal__c</fields>
+    <label>QUO_QuoteCompactLayout</label>
+</CompactLayout>
