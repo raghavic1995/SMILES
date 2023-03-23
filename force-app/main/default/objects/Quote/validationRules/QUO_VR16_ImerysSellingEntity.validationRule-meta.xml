@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QUO_VR16_ImerysSellingEntity</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISPICKVAL(Status,&apos;Quote initialization&apos;)) &amp;&amp;
+RecordType.DeveloperName = &apos;Quote_After_Creation&apos; &amp;&amp;
+ISBLANK(ImerysSellingEntity1__c)</errorConditionFormula>
+    <errorDisplayField>ImerysSellingEntity1__c</errorDisplayField>
+    <errorMessage>You cannot reach Price definition and approval without filling out &apos;Imerys Selling Entity&apos;.</errorMessage>
+</ValidationRule>
