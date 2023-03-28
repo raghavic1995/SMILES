@@ -298,6 +298,13 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Request</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>get_CaseShareforPersonIncharge</targetReference>
             </connector>
@@ -349,7 +356,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Copy_1_of_Create_CaseShare_Record</targetReference>
+                <targetReference>Call_Create_CaseShare_on_owner_change_flow</targetReference>
             </connector>
             <label>Null</label>
         </rules>
@@ -381,35 +388,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordCreates>
-        <name>Copy_1_of_Create_CaseShare_Record</name>
-        <label>Copy 1 of Create CaseShare Record</label>
-        <locationX>248</locationX>
-        <locationY>1583</locationY>
-        <connector>
-            <targetReference>Check_Created_By_0</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>CaseAccessLevel</field>
-            <value>
-                <stringValue>Edit</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>CaseId</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>UserOrGroupId</field>
-            <value>
-                <elementReference>$Record.Customer_Service_Responsible__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>CaseShare</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordCreates>
         <name>Create_CaseShare_Record</name>
         <label>Create CaseShare Record</label>
@@ -668,6 +646,22 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>Call_Create_CaseShare_on_owner_change_flow</name>
+        <label>Call Create CaseShare on owner change flow</label>
+        <locationX>248</locationX>
+        <locationY>1583</locationY>
+        <connector>
+            <targetReference>Check_Created_By_0</targetReference>
+        </connector>
+        <flowName>Create_CaseShare_on_owner_change</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
     <variables>
         <name>HasEditAccess</name>
         <dataType>Boolean</dataType>
