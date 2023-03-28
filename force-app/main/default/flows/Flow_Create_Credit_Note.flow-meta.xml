@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Credit_Note_Queue_Member_Notify</name>
         <label>Credit Note Queue Member Notify</label>
-        <locationX>182</locationX>
-        <locationY>1670</locationY>
+        <locationX>669</locationX>
+        <locationY>2054</locationY>
         <actionName>Case.Credit_Note_Queue_Member_Notify</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -21,8 +21,8 @@
     <actionCalls>
         <name>list_view</name>
         <label>list view</label>
-        <locationX>182</locationX>
-        <locationY>2030</locationY>
+        <locationX>669</locationX>
+        <locationY>2414</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -43,8 +43,8 @@
     <actionCalls>
         <name>Open_Case</name>
         <label>Open Case</label>
-        <locationX>182</locationX>
-        <locationY>1910</locationY>
+        <locationX>669</locationX>
+        <locationY>2294</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <connector>
@@ -74,8 +74,8 @@
     <actionCalls>
         <name>postToChatter</name>
         <label>postToChatter</label>
-        <locationX>182</locationX>
-        <locationY>1790</locationY>
+        <locationX>669</locationX>
+        <locationY>2174</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -122,12 +122,44 @@
         </value>
     </choices>
     <decisions>
-        <name>creator_is_user</name>
-        <label>creator is user</label>
-        <locationX>182</locationX>
-        <locationY>1334</locationY>
+        <name>compare_input_with_fields_on_credit_issue</name>
+        <label>compare input with fields on credit issue</label>
+        <locationX>669</locationX>
+        <locationY>1718</locationY>
         <defaultConnector>
             <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>compare_invoice_and_sales_order</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Invoice_Number</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>getCase.InvoiceNumber__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Sales_Order_Number</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>getCase.SalesOrderNumber__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_parent_customer_issue</targetReference>
+            </connector>
+            <label>compare invoice and sales order</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>creator_is_user</name>
+        <label>creator is user</label>
+        <locationX>669</locationX>
+        <locationY>1382</locationY>
+        <defaultConnector>
+            <targetReference>compare_input_with_fields_on_credit_issue</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -149,8 +181,8 @@
     <decisions>
         <name>Invoice_Exist</name>
         <label>Invoice Exist</label>
-        <locationX>182</locationX>
-        <locationY>878</locationY>
+        <locationX>669</locationX>
+        <locationY>926</locationY>
         <defaultConnector>
             <targetReference>Create_Case_0</targetReference>
         </defaultConnector>
@@ -320,7 +352,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -333,8 +365,8 @@
     <recordCreates>
         <name>Create_Case_0</name>
         <label>Create Case</label>
-        <locationX>182</locationX>
-        <locationY>1214</locationY>
+        <locationX>669</locationX>
+        <locationY>1262</locationY>
         <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
         <connector>
             <targetReference>creator_is_user</targetReference>
@@ -508,6 +540,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>SalesOrderNumber__c</field>
+            <value>
+                <elementReference>getCase.SalesOrderNumber__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Status</field>
             <value>
                 <stringValue>New</stringValue>
@@ -542,8 +580,8 @@
     <recordLookups>
         <name>getAccountManager</name>
         <label>getAccountManager</label>
-        <locationX>182</locationX>
-        <locationY>518</locationY>
+        <locationX>669</locationX>
+        <locationY>566</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getUser</targetReference>
@@ -570,8 +608,8 @@
     <recordLookups>
         <name>getCase</name>
         <label>getCase</label>
-        <locationX>182</locationX>
-        <locationY>158</locationY>
+        <locationX>669</locationX>
+        <locationY>206</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>scrRequest</targetReference>
@@ -591,8 +629,8 @@
     <recordLookups>
         <name>getInvoiceInfo</name>
         <label>getInvoiceInfo</label>
-        <locationX>182</locationX>
-        <locationY>758</locationY>
+        <locationX>669</locationX>
+        <locationY>806</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Invoice_Exist</targetReference>
@@ -628,8 +666,8 @@
     <recordLookups>
         <name>getTypeAndSubType</name>
         <label>getTypeAndSubType</label>
-        <locationX>182</locationX>
-        <locationY>398</locationY>
+        <locationX>669</locationX>
+        <locationY>446</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getAccountManager</targetReference>
@@ -649,8 +687,8 @@
     <recordLookups>
         <name>getUser</name>
         <label>getUser</label>
-        <locationX>182</locationX>
-        <locationY>638</locationY>
+        <locationX>669</locationX>
+        <locationY>686</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getInvoiceInfo</targetReference>
@@ -667,12 +705,42 @@
         <object>User</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>update_parent_customer_issue</name>
+        <label>update parent customer issue</label>
+        <locationX>537</locationX>
+        <locationY>1838</locationY>
+        <connector>
+            <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>getCase.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>InvoiceNumber__c</field>
+            <value>
+                <elementReference>Invoice_Number</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SalesOrderNumber__c</field>
+            <value>
+                <elementReference>Sales_Order_Number</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <screens>
         <name>scrRequest</name>
         <label>scrRequest</label>
-        <locationX>182</locationX>
-        <locationY>278</locationY>
+        <locationX>669</locationX>
+        <locationY>326</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -784,8 +852,12 @@
                     </defaultValue>
                     <fieldText>Rebill Amount</fieldText>
                     <fieldType>InputField</fieldType>
-                    <isRequired>false</isRequired>
+                    <isRequired>true</isRequired>
                     <scale>0</scale>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;Please enter a value other than 0&lt;/p&gt;</errorMessage>
+                        <formulaExpression>{!Rebill_Amount} &lt;&gt; 0</formulaExpression>
+                    </validationRule>
                     <visibilityRule>
                         <conditionLogic>and</conditionLogic>
                         <conditions>
@@ -896,8 +968,8 @@
     <screens>
         <name>Warning</name>
         <label>Warning</label>
-        <locationX>50</locationX>
-        <locationY>998</locationY>
+        <locationX>537</locationX>
+        <locationY>1046</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -915,13 +987,13 @@
     <screens>
         <name>xyz</name>
         <label>xyz</label>
-        <locationX>50</locationX>
-        <locationY>1454</locationY>
+        <locationX>537</locationX>
+        <locationY>1502</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
+            <targetReference>compare_input_with_fields_on_credit_issue</targetReference>
         </connector>
         <fields>
             <name>messagetouser</name>
@@ -933,8 +1005,8 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>56</locationX>
-        <locationY>0</locationY>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>getCase</targetReference>
         </connector>
