@@ -811,7 +811,7 @@
             <targetReference>getCase</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>colTextDescriptions</name>
         <dataType>String</dataType>
