@@ -235,14 +235,14 @@
             <field>Name</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Docgen_Designer_Standard_User</stringValue>
+                <stringValue>DocGenUser</stringValue>
             </value>
         </filters>
         <filters>
             <field>Name</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>OmniStudioAdmin</stringValue>
+                <stringValue>OmniStudioExecution</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
