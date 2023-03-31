@@ -62,6 +62,13 @@
                 <stringValue>custom:custom9</stringValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>colTextIcons</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>standard:record_update</stringValue>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>assign_collections_descriptions</targetReference>
         </connector>
@@ -127,6 +134,13 @@
                 <stringValue>Create Email-to-case</stringValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>colTextDescriptions</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>Create a customer onboarding case</stringValue>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>check_If_Account</targetReference>
         </connector>
@@ -190,6 +204,13 @@
             <operator>Add</operator>
             <value>
                 <stringValue>Back-Office Cases</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>colTextLabels</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>Customer Onboarding</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -436,13 +457,28 @@
                 <leftValueReference>frmSelectedCaseType</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Back</stringValue>
+                    <stringValue>Back-Office Cases</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Email_to_case</targetReference>
             </connector>
             <label>IsEmailtoCase</label>
+        </rules>
+        <rules>
+            <name>IsCustomerOnboarding</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>frmSelectedCaseType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer Onboarding</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Customer_Onboarding_Case</targetReference>
+            </connector>
+            <label>IsCustomerOnboarding</label>
         </rules>
     </decisions>
     <dynamicChoiceSets>
@@ -954,7 +990,7 @@
             <inputParameters>
                 <name>selectedValue</name>
                 <value>
-                    <elementReference>recordId</elementReference>
+                    <stringValue>Id</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -965,7 +1001,10 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>recordId</assignToReference>
+                <name>selectedValue</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>scrNewSustainabilityCase_0_0_0_0_Section1</name>
@@ -1080,6 +1119,19 @@
         <locationX>533</locationX>
         <locationY>806</locationY>
         <flowName>Flow_Create_Request</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Customer_Onboarding_Case</name>
+        <label>Customer Onboarding Case</label>
+        <locationX>49</locationX>
+        <locationY>538</locationY>
+        <flowName>Customer_Onboarding_Case</flowName>
         <inputAssignments>
             <name>recordId</name>
             <value>
