@@ -3,10 +3,10 @@
     <available>true</available>
     <description>Boilerplate content for when you embed a link to a survey in an email. You can&apos;t embed a survey link if you edit the merge fields or delete this template.</description>
     <encodingKey>ISO-8859-1</encodingKey>
-    <name>Embed_a_Survey_Link_German</name>
+    <name>Embed_a_Survey_Link_Chinese</name>
     <relatedEntityType>SurveyQuestion</relatedEntityType>
     <style>none</style>
-    <subject>Ihr Feedback ist uns wichtig. Helfen Sie uns, uns zu verbessern, indem Sie an dieser Umfrage teilnehmen.</subject>
+    <subject>您的反馈非常重要。 请通过参加这项调查来帮助我们改进。</subject>
     <type>custom</type>
     <uiType>SFX</uiType>
 </EmailTemplate>
