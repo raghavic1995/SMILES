@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Credit_Note_Queue_Member_Notify</name>
         <label>Credit Note Queue Member Notify</label>
-        <locationX>669</locationX>
-        <locationY>2054</locationY>
+        <locationX>182</locationX>
+        <locationY>2006</locationY>
         <actionName>Case.Credit_Note_Queue_Member_Notify</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -21,8 +21,8 @@
     <actionCalls>
         <name>list_view</name>
         <label>list view</label>
-        <locationX>669</locationX>
-        <locationY>2414</locationY>
+        <locationX>182</locationX>
+        <locationY>2366</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -43,8 +43,8 @@
     <actionCalls>
         <name>Open_Case</name>
         <label>Open Case</label>
-        <locationX>669</locationX>
-        <locationY>2294</locationY>
+        <locationX>182</locationX>
+        <locationY>2246</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <connector>
@@ -74,8 +74,8 @@
     <actionCalls>
         <name>postToChatter</name>
         <label>postToChatter</label>
-        <locationX>669</locationX>
-        <locationY>2174</locationY>
+        <locationX>182</locationX>
+        <locationY>2126</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -124,8 +124,8 @@
     <decisions>
         <name>compare_input_with_fields_on_credit_issue</name>
         <label>compare input with fields on credit issue</label>
-        <locationX>669</locationX>
-        <locationY>1718</locationY>
+        <locationX>182</locationX>
+        <locationY>1670</locationY>
         <defaultConnector>
             <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
         </defaultConnector>
@@ -156,8 +156,8 @@
     <decisions>
         <name>creator_is_user</name>
         <label>creator is user</label>
-        <locationX>669</locationX>
-        <locationY>1382</locationY>
+        <locationX>182</locationX>
+        <locationY>1334</locationY>
         <defaultConnector>
             <targetReference>compare_input_with_fields_on_credit_issue</targetReference>
         </defaultConnector>
@@ -181,8 +181,8 @@
     <decisions>
         <name>Invoice_Exist</name>
         <label>Invoice Exist</label>
-        <locationX>669</locationX>
-        <locationY>926</locationY>
+        <locationX>182</locationX>
+        <locationY>878</locationY>
         <defaultConnector>
             <targetReference>Create_Case_0</targetReference>
         </defaultConnector>
@@ -352,7 +352,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -365,8 +365,8 @@
     <recordCreates>
         <name>Create_Case_0</name>
         <label>Create Case</label>
-        <locationX>669</locationX>
-        <locationY>1262</locationY>
+        <locationX>182</locationX>
+        <locationY>1214</locationY>
         <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
         <connector>
             <targetReference>creator_is_user</targetReference>
@@ -446,7 +446,7 @@
         <inputAssignments>
             <field>InvoiceNumber__c</field>
             <value>
-                <elementReference>getCase.InvoiceNumber__c</elementReference>
+                <elementReference>Invoice_Number</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -542,7 +542,7 @@
         <inputAssignments>
             <field>SalesOrderNumber__c</field>
             <value>
-                <elementReference>getCase.SalesOrderNumber__c</elementReference>
+                <elementReference>Sales_Order_Number</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -580,8 +580,8 @@
     <recordLookups>
         <name>getAccountManager</name>
         <label>getAccountManager</label>
-        <locationX>669</locationX>
-        <locationY>566</locationY>
+        <locationX>182</locationX>
+        <locationY>518</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getUser</targetReference>
@@ -608,8 +608,8 @@
     <recordLookups>
         <name>getCase</name>
         <label>getCase</label>
-        <locationX>669</locationX>
-        <locationY>206</locationY>
+        <locationX>182</locationX>
+        <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>scrRequest</targetReference>
@@ -629,8 +629,8 @@
     <recordLookups>
         <name>getInvoiceInfo</name>
         <label>getInvoiceInfo</label>
-        <locationX>669</locationX>
-        <locationY>806</locationY>
+        <locationX>182</locationX>
+        <locationY>758</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Invoice_Exist</targetReference>
@@ -666,8 +666,8 @@
     <recordLookups>
         <name>getTypeAndSubType</name>
         <label>getTypeAndSubType</label>
-        <locationX>669</locationX>
-        <locationY>446</locationY>
+        <locationX>182</locationX>
+        <locationY>398</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getAccountManager</targetReference>
@@ -687,8 +687,8 @@
     <recordLookups>
         <name>getUser</name>
         <label>getUser</label>
-        <locationX>669</locationX>
-        <locationY>686</locationY>
+        <locationX>182</locationX>
+        <locationY>638</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getInvoiceInfo</targetReference>
@@ -708,8 +708,8 @@
     <recordUpdates>
         <name>update_parent_customer_issue</name>
         <label>update parent customer issue</label>
-        <locationX>537</locationX>
-        <locationY>1838</locationY>
+        <locationX>50</locationX>
+        <locationY>1790</locationY>
         <connector>
             <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
         </connector>
@@ -739,8 +739,8 @@
     <screens>
         <name>scrRequest</name>
         <label>scrRequest</label>
-        <locationX>669</locationX>
-        <locationY>326</locationY>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -968,8 +968,8 @@
     <screens>
         <name>Warning</name>
         <label>Warning</label>
-        <locationX>537</locationX>
-        <locationY>1046</locationY>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -987,8 +987,8 @@
     <screens>
         <name>xyz</name>
         <label>xyz</label>
-        <locationX>537</locationX>
-        <locationY>1502</locationY>
+        <locationX>50</locationX>
+        <locationY>1454</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1005,8 +1005,8 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>543</locationX>
-        <locationY>48</locationY>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>getCase</targetReference>
         </connector>
