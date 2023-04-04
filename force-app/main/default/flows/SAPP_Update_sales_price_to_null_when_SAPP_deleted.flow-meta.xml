@@ -7,7 +7,7 @@
         <locationX>138</locationX>
         <locationY>671</locationY>
         <assignmentItems>
-            <assignToReference>update_SAPS_Sales_price_to_null.SalesPrice</assignToReference>
+            <assignToReference>update_SAPS_Sales_price_to_null.Sales_Price__c</assignToReference>
             <operator>Assign</operator>
         </assignmentItems>
         <assignmentItems>
