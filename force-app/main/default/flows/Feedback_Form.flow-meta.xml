@@ -132,7 +132,7 @@
     </recordLookups>
     <screens>
         <name>Feedback_Form</name>
-        <label>Feedback Form</label>
+        <label>Your Feedback</label>
         <locationX>417</locationX>
         <locationY>187</locationY>
         <allowBack>false</allowBack>
@@ -142,13 +142,19 @@
             <targetReference>get_Case</targetReference>
         </connector>
         <fields>
+            <name>Feedback</name>
+            <fieldText>Feedback</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
             <name>Rating</name>
             <extensionName>flowruntime:slider</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>label</name>
                 <value>
-                    <stringValue>Rating</stringValue>
+                    <stringValue>How important is this for you?</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -166,12 +172,6 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
-            <name>Feedback</name>
-            <fieldText>Feedback</fieldText>
-            <fieldType>LargeTextArea</fieldType>
-            <isRequired>false</isRequired>
         </fields>
         <nextOrFinishButtonLabel>Submit</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
