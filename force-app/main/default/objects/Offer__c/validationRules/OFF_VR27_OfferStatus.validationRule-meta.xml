@@ -3,6 +3,6 @@
     <fullName>OFF_VR27_OfferStatus</fullName>
     <active>true</active>
     <errorConditionFormula>( ISCHANGED(OfferStatus__c) &amp;&amp; ISPICKVAL(PRIORVALUE(OfferStatus__c), &quot;Draft&quot; )&amp;&amp; (NOT ((ISPICKVAL(OfferStatus__c, &quot;Offer Sent&quot;))) &amp;&amp; (NOT(ISPICKVAL(OfferStatus__c, &quot;Offer cancelled&quot;))))) ||
-( ISCHANGED(OfferStatus__c) &amp;&amp; ISPICKVAL(PRIORVALUE(OfferStatus__c), &quot;Offer Sent&quot; )&amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Placed order / Accepted offer&quot;)))&amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Draft&quot;))))</errorConditionFormula>
+( ISCHANGED(OfferStatus__c) &amp;&amp; ISPICKVAL(PRIORVALUE(OfferStatus__c), &quot;Offer Sent&quot; )&amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Placed order / Accepted offer&quot;)))&amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Draft&quot;))) &amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Denied Offer&quot;))) &amp;&amp; NOT ((ISPICKVAL(OfferStatus__c, &quot;Offer Cancelled&quot;))))</errorConditionFormula>
     <errorMessage>Follow each and every stage</errorMessage>
 </ValidationRule>
