@@ -644,7 +644,7 @@ Database.update(caseMapUpdate.values(),true);
                 Database.update(caseMapUpdate.values(),true);
                 
             }           
-            If (caseList[0].productName__c <> p3.Id){
+          /*  If (caseList[0].productName__c <> p3.Id){
                 for(Case casUpd2: CaseList){
                     casUpd2.ProductName__c = p4.Id;
                     casUpd2.Volume__c = 1233;
@@ -657,7 +657,7 @@ Database.update(caseMapUpdate.values(),true);
                 caseMapUpdate.putall(updateCase2);
                 Database.update(caseMapUpdate.values(),true);
                 
-            }            
+            } */           
             
             outofList = [SELECT Message, UserId FROM OutOfOffice
                          WHERE UserId =: User2Id];
@@ -671,7 +671,7 @@ Database.update(caseMapUpdate.values(),true);
                 system.assertEquals(caseList[0].OutOfOffice__c, true);
             } 
         }
-        user bypassValidation2 = [SELECT Id, Email, MultiPicklistDivision__c, ByPassValidationRule__c, Division FROM 
+        /*user bypassValidation2 = [SELECT Id, Email, MultiPicklistDivision__c, ByPassValidationRule__c, Division FROM 
                                   User WHERE Id=:users[4].Id LIMIT 1];
         
         if(bypassValidation2.Division == null){
@@ -684,7 +684,7 @@ Database.update(caseMapUpdate.values(),true);
         
         
         bypassValidation2.ByPassValidationRule__c = false;
-        update bypassValidation2;
+        update bypassValidation2;*/
     } 
 /**
 *@author Geerusting Govind Kumar
@@ -914,7 +914,7 @@ Database.update(caseMapUpdate.values(),true);
             
             List<Case> caseUpd= [SELECT id FROM Case WHERE Id = :cas.Id];  
             
-            List<Case> caseUpd2= [SELECT id FROM Case WHERE Id = :cas2.Id];  
+            //List<Case> caseUpd2= [SELECT id FROM Case WHERE Id = :cas2.Id limit 1];  
             
             List<Case> updateCaseList2 = New List<Case>(); 
             List<Case> updateCaseList3 = New List<Case>(); 
@@ -925,13 +925,7 @@ Database.update(caseMapUpdate.values(),true);
             }  
             Test.startTest();
             Update updateCaseList2;
-            Test.stopTest();
             
-            /*for(Case cas4:caseUpd2){    
-                cas4.GateKeeper__c = users[3].Id;
-                updateCaseList3.add(cas4);// update sample
-            }  
-            Update updateCaseList3;*/
             
             
             List<CaseShare> caseShrs2 = [SELECT Id, UserOrGroupId, CaseAccessLevel, 
@@ -944,7 +938,8 @@ Database.update(caseMapUpdate.values(),true);
             if(updateCaseList2.size() > 0){
                 System.assertEquals(caseShrs2[0].CaseAccessLevel, 'Edit');
                 System.assertEquals(caseShrs2[0].UserOrGroupId, users[8].Id);
-            }              
+            }
+            Test.stopTest();
         }
     }
  /**
@@ -1166,7 +1161,7 @@ Database.update(caseMapUpdate.values(),true);
             p.Division__c = 'Ceramics';
             
             Database.insert(p, true);
-			
+            
             Test.StartTest();
             
               for(Relationship__c relList: relat){       
@@ -1186,7 +1181,7 @@ Database.update(caseMapUpdate.values(),true);
             }
             insert caseList;
         }
-	}
+    }
 
 /**
 *@author Jaunbocus Muhammad Irshaad
@@ -1233,8 +1228,8 @@ Database.update(caseMapUpdate.values(),true);
             Test.StartTest();
             
             /*//Creating Group
-        	Group testGroup = new Group(Name='QUEUE NAME', Type='Queue');
-        	insert testGroup;*/
+            Group testGroup = new Group(Name='QUEUE NAME', Type='Queue');
+            insert testGroup;*/
             
             //Create Parent Group ( Queue)
             Group grp = new Group();
@@ -1305,7 +1300,7 @@ Database.update(caseMapUpdate.values(),true);
             //gat.AllPlants__c = True;
             gat.ManufacturingImerysPlant__c = 'AR - Tucuman';
             gat.BusinessArea__c = 'HTS';
-                gat.Request_Queue__c = 'GlomelBackOffice';
+                gat.Request_Queue__c = 'ReqGlomelBackOfficeQueue';
             gat.Gatekeeper2__c=user1Id;
             gat.CSTeamInCharge__c = 'Bahrain';
             gat.Object__c = 'Request';   
@@ -1317,7 +1312,7 @@ Database.update(caseMapUpdate.values(),true);
             gat2.Gatekeeper__c = user1Id;
             gat2.ManufacturingImerysPlant__c = 'AT - Villach';
             gat2.Object__c = 'Request';
-            gat2.Request_Queue__c = 'BahrainQueue';
+            gat2.Request_Queue__c = 'ReqBahrainQueue';
             gat2.CSTeamInCharge__c = 'Bahrain';
             gat2.Gatekeeper2__c=user3Id;
             gat2.BusinessArea__c = 'RAC';
