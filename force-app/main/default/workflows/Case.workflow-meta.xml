@@ -1,69 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>Duvall_Logistic_Carrier_Email_Alert</fullName>
-        <description>Duvall Logistic Carrier Email Alert</description>
+        <fullName>Notify_Morgan_Frederick</fullName>
+        <description>Notify_Morgan_Frederick</description>
         <protected>false</protected>
         <recipients>
-            <type>creator</type>
-        </recipients>
-        <recipients>
-            <field>Duvall_Email_1__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <field>Duvall_Email_2__c</field>
-            <type>email</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>unfiled$public/Duvall_Carrier_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>J_M_Logistic_Carrier_Email_Alert</fullName>
-        <description>J&amp;M Logistic Carrier Email Alert</description>
-        <protected>false</protected>
-        <recipients>
-            <type>creator</type>
-        </recipients>
-        <recipients>
-            <field>J_M_Email_1__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <field>J_M_Email_2__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <field>J_M_Email_3__c</field>
-            <type>email</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>unfiled$public/J_M_Carrier_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Seasons_Logistic_Carrier_Email_Alert</fullName>
-        <description>Seasons Logistic Carrier Email Alert</description>
-        <protected>false</protected>
-        <recipients>
-            <type>creator</type>
-        </recipients>
-        <recipients>
-            <field>Season_Email_1__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <field>Season_Email_2__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <field>Season_Email_3__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <recipient>mrunmay.jadhav@external.imerys.com</recipient>
+            <recipient>morgan.frederick@imerys.com</recipient>
             <type>user</type>
         </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>unfiled$public/Seasons_Carrier_Template</template>
+        <senderAddress>smiles.support@imerys.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Notify_Credit_Note_product_Managers</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Morgan_Renato</fullName>
+        <description>Notify Morgan &amp; Renato</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>anshu.singh@external.imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>morgan.frederick@imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>renato.giannotti@imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>smiles.support@imerys.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Notify_Credit_Note_product_Managers</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Niki_Ginel</fullName>
+        <description>Notify Niki Ginel</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>niki.ginel@imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>smiles.support@imerys.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Notify_Credit_Note_product_Managers</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Renato_Gianotti</fullName>
+        <description>Notify Renato Gianotti</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>renato.giannotti@imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>smiles.support@imerys.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Notify_Credit_Note_product_Managers</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Robin_McCann</fullName>
+        <description>Notify Robin McCann</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>robin.mccann@imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>smiles.support@imerys.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Notify_Credit_Note_product_Managers</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Tyler_Levis</fullName>
+        <description>Notify Tyler Levis</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>tyler.levis@imerys.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>smiles.support@imerys.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Notify_Credit_Note_product_Managers</template>
     </alerts>
 </Workflow>
