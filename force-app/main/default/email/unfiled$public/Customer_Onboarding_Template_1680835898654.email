@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Dear {{{Recipient.ContactName__c}}},</span></span></span></span></span></span></span></p>
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Thank you for choosing Imerys.&nbsp;</span></span></span></span></span></span></span></p>
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">In order to facilitate the set up of your accounts with us and ensure a smooth ordering process, can you please help us on the below items.<br />
+<br />
+Please enter the case reference number in web form: </span></span></span></span></span></span></span>{{{Case.CaseNumber}}}</p>
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:underline"><span style="text-decoration-skip-ink:none">General Information</span></span></span></span></span></span></span></span></p>
+
+<ul>
+	<li aria-level="1" style="list-style-type:disc"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Please complete your setup </span></span></span></span></span></span></span><strong><a href="https://imeryscrm--built.sandbox.my.site.com/customeronboarding/s"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">form</span></span></span></span></span></span></span></a></strong> <span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">here.&nbsp;</span></span></span></span></span></span></span></li>
+</ul>
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:underline"><span style="text-decoration-skip-ink:none">Invoicing information</span></span></span></span></span></span></span></span></p>
+
+<ul>
+	<li aria-level="1" style="list-style-type:disc"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Please complete your credit application here,</span></span></span></span></span></span></span></li>
+	<li aria-level="1" style="list-style-type:disc"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">For your reference, please find attached our ACH/wire payment instructions,</span></span></span></span></span></span></span></li>
+	<li aria-level="1" style="list-style-type:disc"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Do share with us a blank PO form or an example so that we are sure we have all the information we need to properly process your orders and invoices in our systems.</span></span></span></span></span></span></span></li>
+</ul>
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:underline"><span style="text-decoration-skip-ink:none">Tax information</span></span></span></span></span></span></span></span></p>
+
+<ul>
+	<li aria-level="1" style="list-style-type:disc"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Also, please find attached our W9 form.</span></span></span></span></span></span></span></li>
+	<li aria-level="1" style="list-style-type:disc"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Do send us your tax exemption certificates by ship-to location.</span></span></span></span></span></span></span></li>
+</ul>
+&nbsp;
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Do let us know if you need a vendor form and we will get that over quickly.</span></span></span></span></span></span></span></p>
+&nbsp;
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">If you have any further questions or concerns, please reply to this email.</span></span></span></span></span></span></span></p>
+&nbsp;
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Thank you for choosing Imerys.</span></span></span></span></span></span></span></p>
+
+<p style="line-height:1.08; margin-top:13px"><span style="font-size:12px;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-family:'Open Sans',sans-serif"><span style="color:#434343"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Imerys Customer Services</span></span></span></span></span></span></span></p>
+</body>
+</html>
