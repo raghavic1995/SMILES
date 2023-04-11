@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Copy_1_of_Post_chatter</name>
+        <label>Copy 1 of Post chatter</label>
+        <locationX>461</locationX>
+        <locationY>863</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <connector>
+            <targetReference>Check_owner</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>chattermsg2</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>$Record.Parent.Id</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
         <name>Post_chatter</name>
         <label>Post chatter</label>
-        <locationX>50</locationX>
-        <locationY>935</locationY>
+        <locationX>164</locationX>
+        <locationY>1895</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -23,11 +48,89 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
+    <assignments>
+        <name>Assign_Creator_name</name>
+        <label>Assign Creator name</label>
+        <locationX>32</locationX>
+        <locationY>1679</locationY>
+        <assignmentItems>
+            <assignToReference>Creator</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Creator_name.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Owner</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Owner:User.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_chatter</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_1_of_Assign_Creator_name</name>
+        <label>Copy 1 of Assign Creator name</label>
+        <locationX>296</locationX>
+        <locationY>1679</locationY>
+        <assignmentItems>
+            <assignToReference>Creator</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Creator_name.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Owner</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Owner:Group.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_chatter</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>check_current_case_status</name>
+        <label>check current case status</label>
+        <locationX>593</locationX>
+        <locationY>623</locationY>
+        <defaultConnector>
+            <targetReference>Check_owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>if_closed</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Close</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_parent_customer_issue</targetReference>
+            </connector>
+            <label>if closed</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Check_if_the_record_type_matches</name>
         <label>Check if the record type matches</label>
-        <locationX>501</locationX>
-        <locationY>455</locationY>
+        <locationX>840</locationX>
+        <locationY>503</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>credit_note</name>
@@ -40,7 +143,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_owner</targetReference>
+                <targetReference>check_current_case_status</targetReference>
             </connector>
             <label>credit note</label>
         </rules>
@@ -48,19 +151,12 @@
     <decisions>
         <name>Check_owner</name>
         <label>Check owner</label>
-        <locationX>336</locationX>
-        <locationY>575</locationY>
+        <locationX>593</locationX>
+        <locationY>1079</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>PMA_Billing_Coordinators</name>
             <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Owner:Group.Name</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>PMA_Billing_Coordinators</stringValue>
-                </rightValue>
-            </conditions>
             <conditions>
                 <leftValueReference>$Record.Status</leftValueReference>
                 <operator>EqualTo</operator>
@@ -69,16 +165,41 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Pending_approval_Step</targetReference>
+                <targetReference>Get_Creator_name</targetReference>
             </connector>
             <label>PMA_Billing_Coordinators</label>
         </rules>
     </decisions>
     <decisions>
+        <name>check_user_queue</name>
+        <label>check user/queue</label>
+        <locationX>164</locationX>
+        <locationY>1559</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Assign_Creator_name</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>queue</defaultConnectorLabel>
+        <rules>
+            <name>user</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Creator_name</targetReference>
+            </connector>
+            <label>user</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Record_found</name>
         <label>Record found?</label>
-        <locationX>182</locationX>
-        <locationY>815</locationY>
+        <locationX>362</locationX>
+        <locationY>1439</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
@@ -91,14 +212,15 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Post_chatter</targetReference>
+                <targetReference>check_user_queue</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
+    <description>Close case added as part of 23-00002213</description>
     <environments>Default</environments>
     <interviewLabel>Credit note chatter notification {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Credit note chatter notification</label>
+    <label>Credit note chatter notification and close case</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -108,7 +230,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -119,10 +241,31 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>Get_Creator_name</name>
+        <label>Get Creator name</label>
+        <locationX>362</locationX>
+        <locationY>1199</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Pending_approval_Step</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Credit_note_record_type</name>
         <label>Get Credit note record type</label>
-        <locationX>501</locationX>
-        <locationY>335</locationY>
+        <locationX>840</locationX>
+        <locationY>383</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_the_record_type_matches</targetReference>
@@ -149,13 +292,13 @@
     <recordLookups>
         <name>Get_Pending_approval_Step</name>
         <label>Get Pending approval Step</label>
-        <locationX>182</locationX>
-        <locationY>695</locationY>
+        <locationX>362</locationX>
+        <locationY>1319</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Record_found</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
         <filters>
             <field>TargetObjectId</field>
             <operator>EqualTo</operator>
@@ -170,13 +313,44 @@
                 <stringValue>Started</stringValue>
             </value>
         </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>ProcessInstance</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>update_parent_customer_issue</name>
+        <label>update parent customer issue</label>
+        <locationX>461</locationX>
+        <locationY>743</locationY>
+        <connector>
+            <targetReference>Copy_1_of_Post_chatter</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
     <start>
-        <locationX>375</locationX>
-        <locationY>0</locationY>
+        <locationX>714</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Get_Credit_note_record_type</targetReference>
         </connector>
@@ -187,7 +361,40 @@
     <status>Active</status>
     <textTemplates>
         <name>ChatterMsg</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;Hi {!$Record.CreatedBy.Name},&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;PMA_CAS Queue Member has submitted the record for approval to PMA_Billing_Coordinators queue.&lt;/p&gt;</text>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!Creator}, 
+{!Owner} Queue Member has submitted the record for approval to PMA_Billing_Coordinators queue.</text>
     </textTemplates>
+    <textTemplates>
+        <name>chattermsg2</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi,
+
+The credit request case is now closed. To see the related details, you can access the credit request case by going to the &quot;Related Cases&quot; in the Related List tab. 
+
+Thank you for raising this customer issue. We are now closing this case.
+
+Thank you!</text>
+    </textTemplates>
+    <variables>
+        <name>Creator</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Owner</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>OwnerQueue</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
 </Flow>
