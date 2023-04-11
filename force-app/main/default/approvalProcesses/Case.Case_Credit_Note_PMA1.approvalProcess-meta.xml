@@ -109,6 +109,11 @@
                 <operation>equals</operation>
                 <value>Product Manager</value>
             </criteriaItems>
+            <criteriaItems>
+                <field>Case.Net_Credit_Requested__c</field>
+                <operation>greaterThan</operation>
+                <value>USD 500</value>
+            </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>Product Manager</label>
