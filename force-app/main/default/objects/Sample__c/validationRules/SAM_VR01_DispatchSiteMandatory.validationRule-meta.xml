@@ -26,5 +26,5 @@ ISPICKVAL( CloseReason__c, &apos;Cancelled - Other&apos; )
 )
 )</errorConditionFormula>
     <errorDisplayField>DispatchSiteLookup__c</errorDisplayField>
-    <errorMessage>You need to select a Dispatch Site in order to continue</errorMessage>
+    <errorMessage>You need to select a Dispatch Site in order to continue.</errorMessage>
 </ValidationRule>
