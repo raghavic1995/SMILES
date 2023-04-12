@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SAM_VR16_MandatoryFieldsForDateSent</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+Canceled__c=FALSE,
+$User.ByPassValidationRule__c = FALSE,
+(RecordType.DeveloperName = &apos;SAM_SampleWithOpportunity&apos; || RecordType.DeveloperName = &apos;SAM_SampleWithoutOpportunity&apos; ),
+NOT(ISNULL(DateSent__c)),
+
+OR(
+
+ISPICKVAL(Incoterm__c ,&apos;&apos;),
+ISBLANK(DispatchSiteLookup__c),
+ISBLANK(RequiredDocumentation__c),
+ISBLANK(LogisticsCharge__c),
+
+OR(
+ISPICKVAL(Approved__c,&apos;&apos;),ISPICKVAL(Approved__c,&apos;No&apos;)
+
+)
+
+))
+
+||
+
+AND(
+$User.ByPassValidationRule__c = FALSE,
+NOT(
+ISPICKVAL( CloseReason__c, &apos;Cancelled - Product not available&apos; ) ||
+ISPICKVAL( CloseReason__c, &apos;Cancelled - Customer decision&apos; ) ||
+ISPICKVAL( CloseReason__c, &apos;Cancelled - Other&apos; )
+),
+
+RecordType.DeveloperName = &apos;SampleAfterCreation&apos; ,
+NOT(ISNULL(DateSent__c)),
+
+OR(
+
+ISPICKVAL(Incoterm__c ,&apos;&apos;),
+ISBLANK(DispatchSiteLookup__c),
+ISBLANK(RequiredDocumentation__c),
+ISBLANK(LogisticsCharge__c)
+
+
+))</errorConditionFormula>
+    <errorDisplayField>DateSent__c</errorDisplayField>
+    <errorMessage>In order to fill Date sent the following fields are mandatory: Incoterm, Dispatch Site, Required Documentation, Sample Logistic Cost.</errorMessage>
+</ValidationRule>
