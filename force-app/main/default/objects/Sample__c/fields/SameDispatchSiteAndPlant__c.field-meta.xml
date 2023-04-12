@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SameDispatchSiteAndPlant__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( DispatchSiteLookup__r.Name = ManufacturingImerysPlant__c , True,false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Same Dispatch Site And Plant</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>
