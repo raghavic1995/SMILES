@@ -2,8 +2,8 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <decisions>
-        <name>check_BA</name>
-        <label>check BA</label>
+        <name>update_case_status</name>
+        <label>update case status</label>
         <locationX>182</locationX>
         <locationY>455</locationY>
         <defaultConnector>
@@ -11,19 +11,26 @@
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>If_PMEMEA</name>
-            <conditionLogic>and</conditionLogic>
+            <name>if_closed</name>
+            <conditionLogic>or</conditionLogic>
             <conditions>
-                <leftValueReference>Record_ID.Owner:Group.Id</leftValueReference>
+                <leftValueReference>$Record.Parent.Status</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>00G1q000005jH64EAE</stringValue>
+                    <stringValue>Closed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Parent.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Close</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Copy_1_of_Update_Related_Case</targetReference>
             </connector>
-            <label>If PMEMEA</label>
+            <label>if closed</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -55,7 +62,7 @@
         <locationY>335</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>check_BA</targetReference>
+            <targetReference>update_case_status</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -74,19 +81,15 @@
         <label>Copy 1 of Update Related Case</label>
         <locationX>50</locationX>
         <locationY>575</locationY>
+        <connector>
+            <targetReference>UpdateRelatedCase</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>$Record.RelatedToId</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Unread_Email__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <filters>
@@ -97,15 +100,15 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>BusinessArea__c</field>
+            <field>OwnerId</field>
             <value>
-                <stringValue>PM EMEA</stringValue>
+                <elementReference>$Record.Parent.Case_closed_user__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Unread_Email__c</field>
+            <field>Status</field>
             <value>
-                <booleanValue>true</booleanValue>
+                <stringValue>Open</stringValue>
             </value>
         </inputAssignments>
         <object>Case</object>
@@ -113,8 +116,8 @@
     <recordUpdates>
         <name>UpdateRelatedCase</name>
         <label>Update Related Case</label>
-        <locationX>314</locationX>
-        <locationY>575</locationY>
+        <locationX>182</locationX>
+        <locationY>791</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
