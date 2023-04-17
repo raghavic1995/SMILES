@@ -1,0 +1,16 @@
+Dear {!Case.Related_Contact__c},
+
+Thank you for reaching out to us. We have received your inquiry and have created a case with the following details:
+
+Case Number: {!Case.CaseNumber}
+Case Description: {!Case.Description}
+Assigned To: {!Case.OwnerFullName}
+
+We will work diligently to respond to your inquiry as soon as possible. You will receive updates on the status of your case via email. If you have any further questions or concerns, please reply to this email.
+
+To ensure efficiency in our response to you, please do not submit the same inquiry multiple times.
+
+Thank you for choosing Imerys.
+
+Best Regards,
+Imerys
