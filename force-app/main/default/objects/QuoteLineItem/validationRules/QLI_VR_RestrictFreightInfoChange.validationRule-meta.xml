@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QLI_VR_RestrictFreightInfoChange</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR( NOT(ISBLANK(CommentsOnFreight__c)) ,
+NOT(ISBLANK(TEXT(ModeOfShipment__c))),
+NOT(ISBLANK( FreightUnitPrice__c)),
+NOT(ISBLANK(Estimated_number_of_shipment__c)),
+NOT(ISBLANK(TEXT( EstimatedTransportationLeadtimeUnit__c ))),
+NOT(ISBLANK(TEXT( EstimatedTransportationLeadtimeTime__c ))),
+NOT(ISBLANK(TEXT( FreightUnitOfMeasure__c ))),
+NOT(ISBLANK(  DateOfFirstSale__c )),
+NOT(ISBLANK( ValidityDate__c))),
+ISPICKVAL( Incoterm__c,&apos;Ex Works&apos;) )</errorConditionFormula>
+    <errorMessage>Freight Information Fields should be blank for Incoterm Value &apos;Ex Works&apos;</errorMessage>
+</ValidationRule>
