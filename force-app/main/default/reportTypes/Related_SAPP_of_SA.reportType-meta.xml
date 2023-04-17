@@ -551,6 +551,16 @@
             <field>Validity_End_Date__c</field>
             <table>SalesAgreement</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Analyst_1__c</field>
+            <table>SalesAgreement</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Analyst_2__c</field>
+            <table>SalesAgreement</table>
+        </columns>
         <masterLabel>Sales Agreements</masterLabel>
     </sections>
     <sections>
@@ -1959,6 +1969,81 @@
             <field>Final_Customer_Code__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Actual_YTD_volume_dry__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Actual_YTD_volume_UoM__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Year_volume_dry__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Year_volume_UoM__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Actual_YTD_revenue_TC__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Actual_YTD_revenue_Euro__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_year_revenue_TC__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_year_revenue_Euro__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Budget_volume_UoM__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Budget_volume_dry__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Budget_revenue_TC__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Budget_revenue_Euro__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Material_Group_5__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Total_transport_price_opera__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Freight_Surcharge_opera__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
         <masterLabel>Sales Agreement Products</masterLabel>
     </sections>
     <sections>
@@ -2480,6 +2565,31 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Mode_of_Transport__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Transport_Price_per_unit_opera__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Energy_Surcharge_per_uom__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Full_delivered_Price_inc_surcharge__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Total_Transport_Price_opera__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Freight_Surcharge_per_uom_opera__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
         <masterLabel>Sales Agreement Product Prices</masterLabel>
