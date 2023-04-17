@@ -1,0 +1,2402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AR - Capitan Bermudez</fullName>
+        <default>false</default>
+        <label>AR - Capitan Bermudez</label>
+    </customValue>
+    <customValue>
+        <fullName>AR - Ledesma</fullName>
+        <default>false</default>
+        <label>AR - Ledesma</label>
+    </customValue>
+    <customValue>
+        <fullName>AR - Tucuman</fullName>
+        <default>false</default>
+        <label>AR - Tucuman</label>
+    </customValue>
+    <customValue>
+        <fullName>AS - Expansion</fullName>
+        <default>false</default>
+        <label>AS - Expansion</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Oberfeistritz</fullName>
+        <default>false</default>
+        <label>AT - Oberfeistritz</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Villach</fullName>
+        <default>false</default>
+        <label>AT - Villach</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Villach - E</fullName>
+        <default>false</default>
+        <label>AT - Villach - E</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Villach - FR</fullName>
+        <default>false</default>
+        <label>AT - Villach - FR</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Villach - ITC</fullName>
+        <default>false</default>
+        <label>AT - Villach - ITC</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Villach - Micro</fullName>
+        <default>false</default>
+        <label>AT - Villach - Micro</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Villach - SolGel</fullName>
+        <default>false</default>
+        <label>AT - Villach - SolGel</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Villach - White</fullName>
+        <default>false</default>
+        <label>AT - Villach - White</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Weisskirchen</fullName>
+        <default>false</default>
+        <label>AT - Weisskirchen</label>
+    </customValue>
+    <customValue>
+        <fullName>AU - CALD - Unanderra</fullName>
+        <default>false</default>
+        <label>AU - CALD - Unanderra</label>
+    </customValue>
+    <customValue>
+        <fullName>AU - DAVCO</fullName>
+        <default>false</default>
+        <label>AU - DAVCO</label>
+    </customValue>
+    <customValue>
+        <fullName>AU - Phil O&apos;Brien</fullName>
+        <default>false</default>
+        <label>AU - Phil O&apos;Brien</label>
+    </customValue>
+    <customValue>
+        <fullName>AU - Pittong</fullName>
+        <default>false</default>
+        <label>AU - Pittong</label>
+    </customValue>
+    <customValue>
+        <fullName>AU - Shinagawa</fullName>
+        <default>false</default>
+        <label>AU - Shinagawa</label>
+    </customValue>
+    <customValue>
+        <fullName>AU - Three Springs</fullName>
+        <default>false</default>
+        <label>AU - Three Springs</label>
+    </customValue>
+    <customValue>
+        <fullName>BA - Bahrain</fullName>
+        <default>false</default>
+        <label>BA - Bahrain</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Antwerp</fullName>
+        <default>false</default>
+        <label>BE - Antwerp</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Blicquy (ADB)</fullName>
+        <default>false</default>
+        <label>BE - Blicquy (ADB)</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Elementis</fullName>
+        <default>false</default>
+        <label>BE - Elementis</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Eurohub</fullName>
+        <default>false</default>
+        <label>BE - Eurohub</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Genk</fullName>
+        <default>false</default>
+        <label>BE - Genk</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Gent</fullName>
+        <default>false</default>
+        <label>BE - Gent</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - IMB - Valdo</fullName>
+        <default>false</default>
+        <label>BE - IMB - Valdo</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - IMIS Personal Care</fullName>
+        <default>false</default>
+        <label>BE - IMIS Personal Care</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>BE - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Lixhe</fullName>
+        <default>false</default>
+        <label>BE - Lixhe</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Maasmechelen</fullName>
+        <default>false</default>
+        <label>BE - Maasmechelen</label>
+    </customValue>
+    <customValue>
+        <fullName>BE- Meer Store</fullName>
+        <default>false</default>
+        <label>BE- Meer Store</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Willebroek</fullName>
+        <default>false</default>
+        <label>BE - Willebroek</label>
+    </customValue>
+    <customValue>
+        <fullName>BE - Zuidnatie Wollastonite</fullName>
+        <default>false</default>
+        <label>BE - Zuidnatie Wollastonite</label>
+    </customValue>
+    <customValue>
+        <fullName>BG - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>BG - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>BG - Kardzhali</fullName>
+        <default>false</default>
+        <label>BG - Kardzhali</label>
+    </customValue>
+    <customValue>
+        <fullName>BH - Bahrain</fullName>
+        <default>false</default>
+        <label>BH - Bahrain</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Cachoeiro 1</fullName>
+        <default>false</default>
+        <label>BR - Cachoeiro 1</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Cachoeiro 2</fullName>
+        <default>false</default>
+        <label>BR - Cachoeiro 2</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Cachoeiro 3</fullName>
+        <default>false</default>
+        <label>BR - Cachoeiro 3</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Cachoeiro 4</fullName>
+        <default>false</default>
+        <label>BR - Cachoeiro 4</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Campinas</fullName>
+        <default>false</default>
+        <label>BR - Campinas</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Capim</fullName>
+        <default>false</default>
+        <label>BR - Capim</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Guaratingueta</fullName>
+        <default>false</default>
+        <label>BR - Guaratingueta</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Hagen</fullName>
+        <default>false</default>
+        <label>BR - Hagen</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - ICB - Rio Claro</fullName>
+        <default>false</default>
+        <label>BR - ICB - Rio Claro</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Limeira</fullName>
+        <default>false</default>
+        <label>BR - Limeira</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Mogi das Cruzes 1</fullName>
+        <default>false</default>
+        <label>BR - Mogi das Cruzes 1</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Mogi das Cruzes 2</fullName>
+        <default>false</default>
+        <label>BR - Mogi das Cruzes 2</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Mogi das Cruzes 3</fullName>
+        <default>false</default>
+        <label>BR - Mogi das Cruzes 3</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Paulinia</fullName>
+        <default>false</default>
+        <label>BR - Paulinia</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Pirai</fullName>
+        <default>false</default>
+        <label>BR - Pirai</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Salto</fullName>
+        <default>false</default>
+        <label>BR - Salto</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Suzano</fullName>
+        <default>false</default>
+        <label>BR - Suzano</label>
+    </customValue>
+    <customValue>
+        <fullName>CA - Belledune</fullName>
+        <default>false</default>
+        <label>CA - Belledune</label>
+    </customValue>
+    <customValue>
+        <fullName>CA - Cacouna</fullName>
+        <default>false</default>
+        <label>CA - Cacouna</label>
+    </customValue>
+    <customValue>
+        <fullName>CA - LDI</fullName>
+        <default>false</default>
+        <label>CA - LDI</label>
+    </customValue>
+    <customValue>
+        <fullName>CA - Penhorwood</fullName>
+        <default>false</default>
+        <label>CA - Penhorwood</label>
+    </customValue>
+    <customValue>
+        <fullName>CA - Suzorite</fullName>
+        <default>false</default>
+        <label>CA - Suzorite</label>
+    </customValue>
+    <customValue>
+        <fullName>CA - Terrebonne</fullName>
+        <default>false</default>
+        <label>CA - Terrebonne</label>
+    </customValue>
+    <customValue>
+        <fullName>CA - Timmins</fullName>
+        <default>false</default>
+        <label>CA - Timmins</label>
+    </customValue>
+    <customValue>
+        <fullName>CH - Bodio</fullName>
+        <default>false</default>
+        <label>CH - Bodio</label>
+    </customValue>
+    <customValue>
+        <fullName>CL - Arica</fullName>
+        <default>false</default>
+        <label>CL - Arica</label>
+    </customValue>
+    <customValue>
+        <fullName>CL - Santiago</fullName>
+        <default>false</default>
+        <label>CL - Santiago</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - CALD - Zhangjiagang</fullName>
+        <default>false</default>
+        <label>CN - CALD - Zhangjiagang</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Chaoyang</fullName>
+        <default>false</default>
+        <label>CN - Chaoyang</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - CMP</fullName>
+        <default>false</default>
+        <label>CN - CMP</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Cryo</fullName>
+        <default>false</default>
+        <label>CN - Cryo</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Expansion</fullName>
+        <default>false</default>
+        <label>CN - Expansion</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Guiyang</fullName>
+        <default>false</default>
+        <label>CN - Guiyang</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Guiyang - Guizhou</fullName>
+        <default>false</default>
+        <label>CN - Guiyang - Guizhou</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Henan</fullName>
+        <default>false</default>
+        <label>CN - Henan</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - IIM - China</fullName>
+        <default>false</default>
+        <label>CN - IIM - China</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Jianping</fullName>
+        <default>false</default>
+        <label>CN - Jianping</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Linjiang</fullName>
+        <default>false</default>
+        <label>CN - Linjiang</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Qingyang</fullName>
+        <default>false</default>
+        <label>CN - Qingyang</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Shawen (Yindu)</fullName>
+        <default>false</default>
+        <label>CN - Shawen (Yindu)</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Shengton (GW)</fullName>
+        <default>false</default>
+        <label>CN - Shengton (GW)</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Tianjin (Teda)</fullName>
+        <default>false</default>
+        <label>CN - Tianjin (Teda)</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Whale</fullName>
+        <default>false</default>
+        <label>CN - Whale</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Wuhu</fullName>
+        <default>false</default>
+        <label>CN - Wuhu</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Yilong</fullName>
+        <default>false</default>
+        <label>CN - Yilong</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Yingkou</fullName>
+        <default>false</default>
+        <label>CN - Yingkou</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Yueyang</fullName>
+        <default>false</default>
+        <label>CN - Yueyang</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Zhejiang</fullName>
+        <default>false</default>
+        <label>CN - Zhejiang</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Zhengzhou (GW)</fullName>
+        <default>false</default>
+        <label>CN - Zhengzhou (GW)</label>
+    </customValue>
+    <customValue>
+        <fullName>CN - Zibo</fullName>
+        <default>false</default>
+        <label>CN - Zibo</label>
+    </customValue>
+    <customValue>
+        <fullName>CZ - ITWCZ - Karlovy Vary</fullName>
+        <default>false</default>
+        <label>CZ - ITWCZ - Karlovy Vary</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Andernach</fullName>
+        <default>false</default>
+        <label>DE - Andernach</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Borregaard (PER)</fullName>
+        <default>false</default>
+        <label>DE - Borregaard (PER)</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - CALD - Neuwied</fullName>
+        <default>false</default>
+        <label>DE - CALD - Neuwied</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Clariant (PER)</fullName>
+        <default>false</default>
+        <label>DE - Clariant (PER)</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Dornburg</fullName>
+        <default>false</default>
+        <label>DE - Dornburg</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Dortmund</fullName>
+        <default>false</default>
+        <label>DE - Dortmund</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Dr Ludwig</fullName>
+        <default>false</default>
+        <label>DE - Dr Ludwig</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Eisenberg</fullName>
+        <default>false</default>
+        <label>DE - Eisenberg</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Emsdetten Cirkel</fullName>
+        <default>false</default>
+        <label>DE - Emsdetten Cirkel</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Hamburg</fullName>
+        <default>false</default>
+        <label>DE - Hamburg</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Iko</fullName>
+        <default>false</default>
+        <label>DE - Iko</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Inprotec (PER)</fullName>
+        <default>false</default>
+        <label>DE - Inprotec (PER)</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - ITWD - Kahla</fullName>
+        <default>false</default>
+        <label>DE - ITWD - Kahla</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - ITWD - Neustadt</fullName>
+        <default>false</default>
+        <label>DE - ITWD - Neustadt</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - ITWD - Schmelitz</fullName>
+        <default>false</default>
+        <label>DE - ITWD - Schmelitz</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - ITWD - Selb</fullName>
+        <default>false</default>
+        <label>DE - ITWD - Selb</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Krefeld APJ (bentonite)</fullName>
+        <default>false</default>
+        <label>DE - Krefeld APJ (bentonite)</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Landshut</fullName>
+        <default>false</default>
+        <label>DE - Landshut</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Laufenburg</fullName>
+        <default>false</default>
+        <label>DE - Laufenburg</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Laufenburg - Macro</fullName>
+        <default>false</default>
+        <label>DE - Laufenburg - Macro</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Laufenburg - Micro</fullName>
+        <default>false</default>
+        <label>DE - Laufenburg - Micro</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Leipheim (Greiwing)</fullName>
+        <default>false</default>
+        <label>DE - Leipheim (Greiwing)</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Liebenau Thermoputz (perlite)</fullName>
+        <default>false</default>
+        <label>DE - Liebenau Thermoputz (perlite)</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Mannheim</fullName>
+        <default>false</default>
+        <label>DE - Mannheim</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Marl Brassert</fullName>
+        <default>false</default>
+        <label>DE - Marl Brassert</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Marl Sinsen</fullName>
+        <default>false</default>
+        <label>DE - Marl Sinsen</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Mengerskirchen</fullName>
+        <default>false</default>
+        <label>DE - Mengerskirchen</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - MineralWerk Hamm</fullName>
+        <default>false</default>
+        <label>DE - MineralWerk Hamm</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Murg</fullName>
+        <default>false</default>
+        <label>DE - Murg</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Oberhausen</fullName>
+        <default>false</default>
+        <label>DE - Oberhausen</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Oelsnitz</fullName>
+        <default>false</default>
+        <label>DE - Oelsnitz</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Polch</fullName>
+        <default>false</default>
+        <label>DE - Polch</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Poraver</fullName>
+        <default>false</default>
+        <label>DE - Poraver</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Rheinberg</fullName>
+        <default>false</default>
+        <label>DE - Rheinberg</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Rywa</fullName>
+        <default>false</default>
+        <label>DE - Rywa</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Saint Gobain Formula</fullName>
+        <default>false</default>
+        <label>DE - Saint Gobain Formula</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - SC Imgrund</fullName>
+        <default>false</default>
+        <label>DE - SC Imgrund</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Sud Chemie (PER)</fullName>
+        <default>false</default>
+        <label>DE - Sud Chemie (PER)</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Teutschenthal</fullName>
+        <default>false</default>
+        <label>DE - Teutschenthal</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Wesel Store</fullName>
+        <default>false</default>
+        <label>DE - Wesel Store</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Wörth</fullName>
+        <default>false</default>
+        <label>DE - Wörth</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Zietzschmann</fullName>
+        <default>false</default>
+        <label>DE - Zietzschmann</label>
+    </customValue>
+    <customValue>
+        <fullName>DE - Zschornewitz</fullName>
+        <default>false</default>
+        <label>DE - Zschornewitz</label>
+    </customValue>
+    <customValue>
+        <fullName>DK - Fur</fullName>
+        <default>false</default>
+        <label>DK - Fur</label>
+    </customValue>
+    <customValue>
+        <fullName>DK - Mors</fullName>
+        <default>false</default>
+        <label>DK - Mors</label>
+    </customValue>
+    <customValue>
+        <fullName>EG - ICE - Egypt</fullName>
+        <default>false</default>
+        <label>EG - ICE - Egypt</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - Alicante</fullName>
+        <default>false</default>
+        <label>ES - Alicante</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - CALD - Gijon</fullName>
+        <default>false</default>
+        <label>ES - CALD - Gijon</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - El Ejido</fullName>
+        <default>false</default>
+        <label>ES - El Ejido</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - IKFE - Lomba</fullName>
+        <default>false</default>
+        <label>ES - IKFE - Lomba</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>ES - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - Mijas</fullName>
+        <default>false</default>
+        <label>ES - Mijas</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - Moron</fullName>
+        <default>false</default>
+        <label>ES - Moron</label>
+    </customValue>
+    <customValue>
+        <fullName>ES - Rubi</fullName>
+        <default>false</default>
+        <label>ES - Rubi</label>
+    </customValue>
+    <customValue>
+        <fullName>EU - Resale</fullName>
+        <default>false</default>
+        <label>EU - Resale</label>
+    </customValue>
+    <customValue>
+        <fullName>FI - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>FI - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>FI - Rauma</fullName>
+        <default>false</default>
+        <label>FI - Rauma</label>
+    </customValue>
+    <customValue>
+        <fullName>FI - Sunila</fullName>
+        <default>false</default>
+        <label>FI - Sunila</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - A&amp;J - Trading</fullName>
+        <default>false</default>
+        <label>FR - A&amp;J - Trading</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - A&amp;J - Trelaze</fullName>
+        <default>false</default>
+        <label>FR - A&amp;J - Trelaze</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Abbeville</fullName>
+        <default>false</default>
+        <label>FR - Abbeville</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Alixan</fullName>
+        <default>false</default>
+        <label>FR - Alixan</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Beyrede</fullName>
+        <default>false</default>
+        <label>FR - Beyrede</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - CALD - Sezanne</fullName>
+        <default>false</default>
+        <label>FR - CALD - Sezanne</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Chryso</fullName>
+        <default>false</default>
+        <label>FR - Chryso</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Clerac</fullName>
+        <default>false</default>
+        <label>FR - Clerac</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - DCDIS</fullName>
+        <default>false</default>
+        <label>FR - DCDIS</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Dunkerque</fullName>
+        <default>false</default>
+        <label>FR - Dunkerque</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Emaux</fullName>
+        <default>false</default>
+        <label>FR - Emaux</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Extracthive</fullName>
+        <default>false</default>
+        <label>FR - Extracthive</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Fos sur mer</fullName>
+        <default>false</default>
+        <label>FR - Fos sur mer</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Glomel</fullName>
+        <default>false</default>
+        <label>FR - Glomel</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - HD Distribution</fullName>
+        <default>false</default>
+        <label>FR - HD Distribution</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Hepha</fullName>
+        <default>false</default>
+        <label>FR - Hepha</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Beaujard</fullName>
+        <default>false</default>
+        <label>FR - ICF - Beaujard</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Beaulon</fullName>
+        <default>false</default>
+        <label>FR - ICF - Beaulon</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Beauvoir</fullName>
+        <default>false</default>
+        <label>FR - ICF - Beauvoir</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Brittany (Ploemeur)</fullName>
+        <default>false</default>
+        <label>FR - ICF - Brittany (Ploemeur)</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - FDS Lansac/Salvezines</fullName>
+        <default>false</default>
+        <label>FR - ICF - FDS Lansac/Salvezines</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - FDS Saint Paul de Fenouillet</fullName>
+        <default>false</default>
+        <label>FR - ICF - FDS Saint Paul de Fenouillet</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Feldspaths de Montebras</fullName>
+        <default>false</default>
+        <label>FR - ICF - Feldspaths de Montebras</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Feldspaths du Morvan</fullName>
+        <default>false</default>
+        <label>FR - ICF - Feldspaths du Morvan</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Nancay</fullName>
+        <default>false</default>
+        <label>FR - ICF - Nancay</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Neuvy</fullName>
+        <default>false</default>
+        <label>FR - ICF - Neuvy</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - QDO</fullName>
+        <default>false</default>
+        <label>FR - ICF - QDO</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - QSL</fullName>
+        <default>false</default>
+        <label>FR - ICF - QSL</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - St Pierre le Moutier</fullName>
+        <default>false</default>
+        <label>FR - ICF - St Pierre le Moutier</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Tournon st Martin</fullName>
+        <default>false</default>
+        <label>FR - ICF - Tournon st Martin</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ICF - Trading</fullName>
+        <default>false</default>
+        <label>FR - ICF - Trading</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Iko</fullName>
+        <default>false</default>
+        <label>FR - Iko</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>FR - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITC Toulouse</fullName>
+        <default>false</default>
+        <label>FR - ITC Toulouse</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITC Vaulx-Milieu</fullName>
+        <default>false</default>
+        <label>FR - ITC Vaulx-Milieu</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITFR DIMOTRANS STRASBOURG</fullName>
+        <default>false</default>
+        <label>FR - ITFR DIMOTRANS STRASBOURG</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITFR MDC PACK</fullName>
+        <default>false</default>
+        <label>FR - ITFR MDC PACK</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITWF - Aixe</fullName>
+        <default>false</default>
+        <label>FR - ITWF - Aixe</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITWF - Chateauvieux</fullName>
+        <default>false</default>
+        <label>FR - ITWF - Chateauvieux</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITWF - Juriol</fullName>
+        <default>false</default>
+        <label>FR - ITWF - Juriol</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - ITWF - Marcognac</fullName>
+        <default>false</default>
+        <label>FR - ITWF - Marcognac</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Lafarge Ciment Cruas</fullName>
+        <default>false</default>
+        <label>FR - Lafarge Ciment Cruas</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Lafarge Ciment Le Teil</fullName>
+        <default>false</default>
+        <label>FR - Lafarge Ciment Le Teil</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - La Mothe Achard</fullName>
+        <default>false</default>
+        <label>FR - La Mothe Achard</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Le Teil</fullName>
+        <default>false</default>
+        <label>FR - Le Teil</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Limoges</fullName>
+        <default>false</default>
+        <label>FR - Limoges</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - LTS Le Treport</fullName>
+        <default>false</default>
+        <label>FR - LTS Le Treport</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Luzenac</fullName>
+        <default>false</default>
+        <label>FR - Luzenac</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - MARTER</fullName>
+        <default>false</default>
+        <label>FR - MARTER</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Minerval</fullName>
+        <default>false</default>
+        <label>FR - Minerval</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Montoir De Bretagne</fullName>
+        <default>false</default>
+        <label>FR - Montoir De Bretagne</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Murat</fullName>
+        <default>false</default>
+        <label>FR - Murat</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Ouvrie</fullName>
+        <default>false</default>
+        <label>FR - Ouvrie</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Persan</fullName>
+        <default>false</default>
+        <label>FR - Persan</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Plessiet</fullName>
+        <default>false</default>
+        <label>FR - Plessiet</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Quessoy</fullName>
+        <default>false</default>
+        <label>FR - Quessoy</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Salin De Giraud</fullName>
+        <default>false</default>
+        <label>FR - Salin De Giraud</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - SINIAT</fullName>
+        <default>false</default>
+        <label>FR - SINIAT</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - STIM</fullName>
+        <default>false</default>
+        <label>FR - STIM</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - TFC</fullName>
+        <default>false</default>
+        <label>FR - TFC</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Vera Chimie</fullName>
+        <default>false</default>
+        <label>FR - Vera Chimie</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Villers</fullName>
+        <default>false</default>
+        <label>FR - Villers</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Wissembourg</fullName>
+        <default>false</default>
+        <label>FR - Wissembourg</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Beverley</fullName>
+        <default>false</default>
+        <label>GB - Beverley</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Bristol</fullName>
+        <default>false</default>
+        <label>GB - Bristol</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Castleford</fullName>
+        <default>false</default>
+        <label>GB - Castleford</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Cliffe Vale</fullName>
+        <default>false</default>
+        <label>GB - Cliffe Vale</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Furzebrook</fullName>
+        <default>false</default>
+        <label>GB - Furzebrook</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Furzebrook Mill</fullName>
+        <default>false</default>
+        <label>GB - Furzebrook Mill</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Greensplat Drier</fullName>
+        <default>false</default>
+        <label>GB - Greensplat Drier</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Heathfield Bagging Plant</fullName>
+        <default>false</default>
+        <label>GB - Heathfield Bagging Plant</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Heathfield Mill</fullName>
+        <default>false</default>
+        <label>GB - Heathfield Mill</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Hull</fullName>
+        <default>false</default>
+        <label>GB - Hull</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>GB - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - IML - Cliffe Vale</fullName>
+        <default>false</default>
+        <label>GB - IML - Cliffe Vale</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - IML -Devon</fullName>
+        <default>false</default>
+        <label>GB - IML -Devon</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - IML - Devon</fullName>
+        <default>false</default>
+        <label>GB - IML - Devon</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - IML - Dorset</fullName>
+        <default>false</default>
+        <label>GB - IML - Dorset</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - IML - Soft Calcined Herreschoff</fullName>
+        <default>false</default>
+        <label>GB - IML - Soft Calcined Herreschoff</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - IML - Treviscoe</fullName>
+        <default>false</default>
+        <label>GB - IML - Treviscoe</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Lee Moor HK3</fullName>
+        <default>false</default>
+        <label>GB - Lee Moor HK3</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Lee Moor Polarite</fullName>
+        <default>false</default>
+        <label>GB - Lee Moor Polarite</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Lostock</fullName>
+        <default>false</default>
+        <label>GB - Lostock</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Par Emc</fullName>
+        <default>false</default>
+        <label>GB - Par EMC</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Par Grade Drier</fullName>
+        <default>false</default>
+        <label>GB - Par Grade Drier</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Parkandillick Buell</fullName>
+        <default>false</default>
+        <label>GB - Parkandillick Buell</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Parkandillick Calciner</fullName>
+        <default>false</default>
+        <label>GB - Parkandillick Calciner</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Par Moor</fullName>
+        <default>false</default>
+        <label>GB - Par Moor</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Par Opacilite</fullName>
+        <default>false</default>
+        <label>GB - Par Opacilite</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - PKC</fullName>
+        <default>false</default>
+        <label>GB - PKC</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Trelavour Bagging</fullName>
+        <default>false</default>
+        <label>GB - Trelavour Bagging</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Western Area CC</fullName>
+        <default>false</default>
+        <label>GB - Western Area CC</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - West Thurrock</fullName>
+        <default>false</default>
+        <label>GB - West Thurrock</label>
+    </customValue>
+    <customValue>
+        <fullName>GR - Agia Marina</fullName>
+        <default>false</default>
+        <label>GR - Agia Marina</label>
+    </customValue>
+    <customValue>
+        <fullName>GR - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>GR - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>GR - Itea</fullName>
+        <default>false</default>
+        <label>GR - Itea</label>
+    </customValue>
+    <customValue>
+        <fullName>GR - Kifissia</fullName>
+        <default>false</default>
+        <label>GR - Kifissia</label>
+    </customValue>
+    <customValue>
+        <fullName>GR - Milos - Tsigrado</fullName>
+        <default>false</default>
+        <label>GR - Milos - Tsigrado</label>
+    </customValue>
+    <customValue>
+        <fullName>GR - Milos - Voudia</fullName>
+        <default>false</default>
+        <label>GR - Milos - Voudia</label>
+    </customValue>
+    <customValue>
+        <fullName>HU - Bentonite</fullName>
+        <default>false</default>
+        <label>HU - Bentonite</label>
+    </customValue>
+    <customValue>
+        <fullName>HU - CALD - Gyor</fullName>
+        <default>false</default>
+        <label>HU - CALD - Gyor</label>
+    </customValue>
+    <customValue>
+        <fullName>HU - Egyhazaskeszo</fullName>
+        <default>false</default>
+        <label>HU - Egyhazaskeszo</label>
+    </customValue>
+    <customValue>
+        <fullName>HU - IKFH - Apta</fullName>
+        <default>false</default>
+        <label>HU - IKFH - Apta</label>
+    </customValue>
+    <customValue>
+        <fullName>ID - CALD - Bekasi</fullName>
+        <default>false</default>
+        <label>ID - CALD - Bekasi</label>
+    </customValue>
+    <customValue>
+        <fullName>ID - Cilegon</fullName>
+        <default>false</default>
+        <label>ID - Cilegon</label>
+    </customValue>
+    <customValue>
+        <fullName>IE - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>IE - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Alwar</fullName>
+        <default>false</default>
+        <label>IN - Alwar</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Amritsar</fullName>
+        <default>false</default>
+        <label>IN - Amritsar</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Badhrachalam</fullName>
+        <default>false</default>
+        <label>IN - Badhrachalam</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Balasore</fullName>
+        <default>false</default>
+        <label>IN - Balasore</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Bhigwan</fullName>
+        <default>false</default>
+        <label>IN - Bhigwan</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Bhiwandi</fullName>
+        <default>false</default>
+        <label>IN - Bhiwandi</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - BOP India</fullName>
+        <default>false</default>
+        <label>IN - BOP India</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - CALD - Dharuhera</fullName>
+        <default>false</default>
+        <label>IN - CALD - Dharuhera</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - CALD - Katni</fullName>
+        <default>false</default>
+        <label>IN - CALD - Katni</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - CALD - Katni bricks</fullName>
+        <default>false</default>
+        <label>IN - CALD - Katni bricks</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - CALD - Nagpur</fullName>
+        <default>false</default>
+        <label>IN - CALD - Nagpur</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Cilegon</fullName>
+        <default>false</default>
+        <label>IN - Cilegon</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Durgapur</fullName>
+        <default>false</default>
+        <label>IN - Durgapur</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Gimpex Imerys</fullName>
+        <default>false</default>
+        <label>IN - Gimpex Imerys</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - ICI - Hyderabad</fullName>
+        <default>false</default>
+        <label>IN - ICI - Hyderabad</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - ICI - Jumbo</fullName>
+        <default>false</default>
+        <label>IN - ICI - Jumbo</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - ICI - Kadthal</fullName>
+        <default>false</default>
+        <label>IN - ICI - Kadthal</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - ICI - Kothakotta</fullName>
+        <default>false</default>
+        <label>IN - ICI - Kothakotta</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - ICI - Nadiad</fullName>
+        <default>false</default>
+        <label>IN - ICI - Nadiad</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - ICI - Pendipakala</fullName>
+        <default>false</default>
+        <label>IN - ICI - Pendipakala</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - ICI - Rajasthan</fullName>
+        <default>false</default>
+        <label>IN - ICI - Rajasthan</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Kolkata</fullName>
+        <default>false</default>
+        <label>IN - Kolkata</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Mehsana</fullName>
+        <default>false</default>
+        <label>IN - Mehsana</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Silvassa</fullName>
+        <default>false</default>
+        <label>IN - Silvassa</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Vizag</fullName>
+        <default>false</default>
+        <label>IN - Vizag</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Wankaner (Cald)</fullName>
+        <default>false</default>
+        <label>IN - Wankaner (Cald)</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Wankaner (Cald bricks)</fullName>
+        <default>false</default>
+        <label>IN - Wankaner (Cald bricks)</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Wankaner (Ceram)</fullName>
+        <default>false</default>
+        <label>IN - Wankaner (Ceram)</label>
+    </customValue>
+    <customValue>
+        <fullName>IN - Wankaner (EMS)</fullName>
+        <default>false</default>
+        <label>IN - Wankaner (EMS)</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Ancona</fullName>
+        <default>false</default>
+        <label>IT - Ancona</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Avezzano</fullName>
+        <default>false</default>
+        <label>IT - Avezzano</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - CALD - Fiorano</fullName>
+        <default>false</default>
+        <label>IT - CALD - Fiorano</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Corsico</fullName>
+        <default>false</default>
+        <label>IT - Corsico</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Cosseria</fullName>
+        <default>false</default>
+        <label>IT - Cosseria</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Domodossola</fullName>
+        <default>false</default>
+        <label>IT - Domodossola</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Ferrara Store</fullName>
+        <default>false</default>
+        <label>IT - Ferrara Store</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Genua</fullName>
+        <default>false</default>
+        <label>IT - Genua</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Gran Bianco</fullName>
+        <default>false</default>
+        <label>IT - Gran Bianco</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - ICIT - Modena</fullName>
+        <default>false</default>
+        <label>IT - ICIT - Modena</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - ICIT - Spica</fullName>
+        <default>false</default>
+        <label>IT - ICIT - Spica</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - IMIS GAMALERO</fullName>
+        <default>false</default>
+        <label>IT - IMIS GAMALERO</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - IMIS - Mantova</fullName>
+        <default>false</default>
+        <label>IT - IMIS - Mantova</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - IMIS VERCELLI</fullName>
+        <default>false</default>
+        <label>IT - IMIS VERCELLI</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Malanaggio</fullName>
+        <default>false</default>
+        <label>IT - Malanaggio</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Monfalcone</fullName>
+        <default>false</default>
+        <label>IT - Monfalcone</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Ravenna</fullName>
+        <default>false</default>
+        <label>IT - Ravenna</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Rodoretto</fullName>
+        <default>false</default>
+        <label>IT - Rodoretto</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Sardinia</fullName>
+        <default>false</default>
+        <label>IT - Sardinia</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Savona</fullName>
+        <default>false</default>
+        <label>IT - Savona</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - Vimark</fullName>
+        <default>false</default>
+        <label>IT - Vimark</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - CALD - Nagoya</fullName>
+        <default>false</default>
+        <label>JP - CALD - Nagoya</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Chiba - MGL</fullName>
+        <default>false</default>
+        <label>JP - Chiba - MGL</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Fuji</fullName>
+        <default>false</default>
+        <label>JP - Fuji</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Kitakyushu</fullName>
+        <default>false</default>
+        <label>JP - Kitakyushu</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Miyagi</fullName>
+        <default>false</default>
+        <label>JP - Miyagi</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Nagoya - Oji Logi</fullName>
+        <default>false</default>
+        <label>JP - Nagoya - Oji Logi</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Nagoya - Shinwa - IMJ</fullName>
+        <default>false</default>
+        <label>JP - Nagoya - Shinwa - IMJ</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Nagoya - Shinwa - ISJ</fullName>
+        <default>false</default>
+        <label>JP - Nagoya - Shinwa - ISJ</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Nagoya - Toyotsu Logi</fullName>
+        <default>false</default>
+        <label>JP - Nagoya - Toyotsu Logi</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Niigata</fullName>
+        <default>false</default>
+        <label>JP - Niigata</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Suzuka</fullName>
+        <default>false</default>
+        <label>JP - Suzuka</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Tomakomai</fullName>
+        <default>false</default>
+        <label>JP - Tomakomai</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Yashio - Shinozaki</fullName>
+        <default>false</default>
+        <label>JP - Yashio - Shinozaki</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Yatsushiro</fullName>
+        <default>false</default>
+        <label>JP - Yatsushiro</label>
+    </customValue>
+    <customValue>
+        <fullName>JP - Yokkaichi - Trancy</fullName>
+        <default>false</default>
+        <label>JP - Yokkaichi - Trancy</label>
+    </customValue>
+    <customValue>
+        <fullName>KR - Anseong (Logistics)</fullName>
+        <default>false</default>
+        <label>KR - Anseong (Logistics)</label>
+    </customValue>
+    <customValue>
+        <fullName>MX - Cuautitlan</fullName>
+        <default>false</default>
+        <label>MX - Cuautitlan</label>
+    </customValue>
+    <customValue>
+        <fullName>MX - Hermosillo</fullName>
+        <default>false</default>
+        <label>MX - Hermosillo</label>
+    </customValue>
+    <customValue>
+        <fullName>MX - KTM - Dolores</fullName>
+        <default>false</default>
+        <label>MX - KTM - Dolores</label>
+    </customValue>
+    <customValue>
+        <fullName>MX - KTM - Monterrey</fullName>
+        <default>false</default>
+        <label>MX - KTM - Monterrey</label>
+    </customValue>
+    <customValue>
+        <fullName>MX - Mexico City</fullName>
+        <default>false</default>
+        <label>MX - Mexico City</label>
+    </customValue>
+    <customValue>
+        <fullName>MX - Zacoalco</fullName>
+        <default>false</default>
+        <label>MX - Zacoalco</label>
+    </customValue>
+    <customValue>
+        <fullName>MY - Ipoh 1</fullName>
+        <default>false</default>
+        <label>MY - Ipoh 1</label>
+    </customValue>
+    <customValue>
+        <fullName>MY - Ipoh 2</fullName>
+        <default>false</default>
+        <label>MY - Ipoh 2</label>
+    </customValue>
+    <customValue>
+        <fullName>N/A</fullName>
+        <default>false</default>
+        <label>N/A</label>
+    </customValue>
+    <customValue>
+        <fullName>NL - Amsterdam Bonded Warehouse</fullName>
+        <default>false</default>
+        <label>NL - Amsterdam Bonded Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>NL - BV Nem</fullName>
+        <default>false</default>
+        <label>NL - BV Nem</label>
+    </customValue>
+    <customValue>
+        <fullName>NL - CALD - Oosterhout</fullName>
+        <default>false</default>
+        <label>NL - CALD - Oosterhout</label>
+    </customValue>
+    <customValue>
+        <fullName>NL - IMIS Warehouse</fullName>
+        <default>false</default>
+        <label>NL - IMIS Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>NL - Veendam</fullName>
+        <default>false</default>
+        <label>NL - Veendam</label>
+    </customValue>
+    <customValue>
+        <fullName>NL - Vlaardingen</fullName>
+        <default>false</default>
+        <label>NL - Vlaardingen</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Assigned</fullName>
+        <default>false</default>
+        <label>Not Assigned</label>
+    </customValue>
+    <customValue>
+        <fullName>NZ - ICNZ - New Zealand</fullName>
+        <default>false</default>
+        <label>NZ - ICNZ - New Zealand</label>
+    </customValue>
+    <customValue>
+        <fullName>PT - ICP - Portugal Trading</fullName>
+        <default>false</default>
+        <label>PT - ICP - Portugal Trading</label>
+    </customValue>
+    <customValue>
+        <fullName>SA - Rabigh</fullName>
+        <default>false</default>
+        <label>SA - Rabigh</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - CALD - Amal</fullName>
+        <default>false</default>
+        <label>SE - CALD - Amal</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - CALD - Gävle</fullName>
+        <default>false</default>
+        <label>SE - CALD - Gävle</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - CALD - Hoganas</fullName>
+        <default>false</default>
+        <label>SE - CALD - Hoganas</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - CALD - Köping</fullName>
+        <default>false</default>
+        <label>SE - CALD - Köping</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - Gavle</fullName>
+        <default>false</default>
+        <label>SE - Gavle</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - Husum</fullName>
+        <default>false</default>
+        <label>SE - Husum</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - Peramin</fullName>
+        <default>false</default>
+        <label>SE - Peramin</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - Perstorp</fullName>
+        <default>false</default>
+        <label>SE - Perstorp</label>
+    </customValue>
+    <customValue>
+        <fullName>SE - Tunadal</fullName>
+        <default>false</default>
+        <label>SE - Tunadal</label>
+    </customValue>
+    <customValue>
+        <fullName>SG - Singapore Warehouse</fullName>
+        <default>false</default>
+        <label>SG - Singapore Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>SI - Ruse</fullName>
+        <default>false</default>
+        <label>SI - Ruse</label>
+    </customValue>
+    <customValue>
+        <fullName>TH - Ayutthaya</fullName>
+        <default>false</default>
+        <label>TH - Ayutthaya</label>
+    </customValue>
+    <customValue>
+        <fullName>TH - ICTH - Imerys Ceramics Thailand</fullName>
+        <default>false</default>
+        <label>TH - ICTH - Imerys Ceramics Thailand</label>
+    </customValue>
+    <customValue>
+        <fullName>TH - Lampang</fullName>
+        <default>false</default>
+        <label>TH - Lampang</label>
+    </customValue>
+    <customValue>
+        <fullName>TH - Ranong</fullName>
+        <default>false</default>
+        <label>TH - Ranong</label>
+    </customValue>
+    <customValue>
+        <fullName>TR - CALD - Silivri (Haznedar)</fullName>
+        <default>false</default>
+        <label>TR - CALD - Silivri (Haznedar)</label>
+    </customValue>
+    <customValue>
+        <fullName>TR - Dikili</fullName>
+        <default>false</default>
+        <label>TR - Dikili</label>
+    </customValue>
+    <customValue>
+        <fullName>TR - ICT - Turkey</fullName>
+        <default>false</default>
+        <label>TR - ICT - Turkey</label>
+    </customValue>
+    <customValue>
+        <fullName>TR - Karabiga</fullName>
+        <default>false</default>
+        <label>TR - Karabiga</label>
+    </customValue>
+    <customValue>
+        <fullName>TW - CALD - Kaohsiung (Sunward)</fullName>
+        <default>false</default>
+        <label>TW - CALD - Kaohsiung (Sunward)</label>
+    </customValue>
+    <customValue>
+        <fullName>TW - CALD - Pingtung</fullName>
+        <default>false</default>
+        <label>TW - CALD - Pingtung</label>
+    </customValue>
+    <customValue>
+        <fullName>TW - Kaohsiung</fullName>
+        <default>false</default>
+        <label>TW - Kaohsiung</label>
+    </customValue>
+    <customValue>
+        <fullName>UA - CALD - Vladimirovka</fullName>
+        <default>false</default>
+        <label>UA - CALD - Vladimirovka</label>
+    </customValue>
+    <customValue>
+        <fullName>UA - DBK - Donbasskeramica</fullName>
+        <default>false</default>
+        <label>UA - DBK - Donbasskeramica</label>
+    </customValue>
+    <customValue>
+        <fullName>UA - VKV</fullName>
+        <default>false</default>
+        <label>UA - VKV</label>
+    </customValue>
+    <customValue>
+        <fullName>Unknown</fullName>
+        <default>false</default>
+        <label>Unknown</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Aberdeen</fullName>
+        <default>false</default>
+        <label>US - Aberdeen</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Andersonville</fullName>
+        <default>false</default>
+        <label>US - Andersonville</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Antonito</fullName>
+        <default>false</default>
+        <label>US - Antonito</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Baltimore</fullName>
+        <default>false</default>
+        <label>US - Baltimore</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Bennettsville</fullName>
+        <default>false</default>
+        <label>US - Bennettsville</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Birmingham</fullName>
+        <default>false</default>
+        <label>US - Birmingham</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Brunswick</fullName>
+        <default>false</default>
+        <label>US - Brunswick</label>
+    </customValue>
+    <customValue>
+        <fullName>US - CALD - Jacksonville</fullName>
+        <default>false</default>
+        <label>US - CALD - Jacksonville</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Canton</fullName>
+        <default>false</default>
+        <label>US - Canton</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Canton Fiberlean</fullName>
+        <default>false</default>
+        <label>US - Canton Fiberlean</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Carpenter Warehouse</fullName>
+        <default>false</default>
+        <label>US - Carpenter Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Chicago, IL (Savage Services Transload)</fullName>
+        <default>false</default>
+        <label>US - Chicago, IL (Savage Services Transload)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Cincinnati</fullName>
+        <default>false</default>
+        <label>US - Cincinnati</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Claymont</fullName>
+        <default>false</default>
+        <label>US - Claymont</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Colony</fullName>
+        <default>false</default>
+        <label>US - Colony</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Dallas, TX (WSI Transload)</fullName>
+        <default>false</default>
+        <label>US - Dallas, TX (WSI Transload)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Elyria (Amware)</fullName>
+        <default>false</default>
+        <label>US - Elyria (Amware)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Escondido</fullName>
+        <default>false</default>
+        <label>US - Escondido</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Fernley</fullName>
+        <default>false</default>
+        <label>US - Fernley</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Ft. Lauderdale, FL (Transflo Transload)</fullName>
+        <default>false</default>
+        <label>US - Ft. Lauderdale, FL (Transflo Transload)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Greeneville</fullName>
+        <default>false</default>
+        <label>US - Greeneville</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Green River</fullName>
+        <default>false</default>
+        <label>US - Green River</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Houston</fullName>
+        <default>false</default>
+        <label>US - Houston</label>
+    </customValue>
+    <customValue>
+        <fullName>US - IOS</fullName>
+        <default>false</default>
+        <label>US - IOS</label>
+    </customValue>
+    <customValue>
+        <fullName>US - ITC Atlanta</fullName>
+        <default>false</default>
+        <label>US - ITC Atlanta</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Jacksonville, FL (RSI Logistics Transload)</fullName>
+        <default>false</default>
+        <label>US - Jacksonville, FL (RSI Logistics Transload)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - KaMin (TALC NA)</fullName>
+        <default>false</default>
+        <label>US - KaMin (TALC NA)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Kings Mountain</fullName>
+        <default>false</default>
+        <label>US - Kings Mountain</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Klamath Falls</fullName>
+        <default>false</default>
+        <label>US - Klamath Falls</label>
+    </customValue>
+    <customValue>
+        <fullName>US - KTC - CRN</fullName>
+        <default>false</default>
+        <label>US - KTC - CRN</label>
+    </customValue>
+    <customValue>
+        <fullName>US - KTC - GLS</fullName>
+        <default>false</default>
+        <label>US - KTC - GLS</label>
+    </customValue>
+    <customValue>
+        <fullName>US - KTC - LNG</fullName>
+        <default>false</default>
+        <label>US - KTC - LNG</label>
+    </customValue>
+    <customValue>
+        <fullName>US - KTC - SND</fullName>
+        <default>false</default>
+        <label>US - KTC - SND</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Kyanite Mining Corp</fullName>
+        <default>false</default>
+        <label>US - Kyanite Mining Corp</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Lakeview</fullName>
+        <default>false</default>
+        <label>US - Lakeview</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Lake Wales</fullName>
+        <default>false</default>
+        <label>US - Lake Wales</label>
+    </customValue>
+    <customValue>
+        <fullName>US - La Porte</fullName>
+        <default>false</default>
+        <label>US - La Porte</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Lompoc Celpure</fullName>
+        <default>false</default>
+        <label>US - Lompoc Celpure</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Lompoc Powder Mill</fullName>
+        <default>false</default>
+        <label>US - Lompoc Powder Mill</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Lompoc Resale</fullName>
+        <default>false</default>
+        <label>US - Lompoc Resale</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Lompoc Silicates</fullName>
+        <default>false</default>
+        <label>US - Lompoc Silicates</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Lompoc Specialties</fullName>
+        <default>false</default>
+        <label>US - Lompoc Specialties</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Ludlow</fullName>
+        <default>false</default>
+        <label>US - Ludlow</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Marble Hill</fullName>
+        <default>false</default>
+        <label>US - Marble Hill</label>
+    </customValue>
+    <customValue>
+        <fullName>US - MGK - DRP</fullName>
+        <default>false</default>
+        <label>US - MGK - DRP</label>
+    </customValue>
+    <customValue>
+        <fullName>US - MGK - PP</fullName>
+        <default>false</default>
+        <label>US - MGK - PP</label>
+    </customValue>
+    <customValue>
+        <fullName>US - MGK - PV</fullName>
+        <default>false</default>
+        <label>US - MGK - PV</label>
+    </customValue>
+    <customValue>
+        <fullName>US - MGK - Resale</fullName>
+        <default>false</default>
+        <label>US - MGK - Resale</label>
+    </customValue>
+    <customValue>
+        <fullName>US - MGK - SCP</fullName>
+        <default>false</default>
+        <label>US - MGK - SCP</label>
+    </customValue>
+    <customValue>
+        <fullName>US - MGK - Tech</fullName>
+        <default>false</default>
+        <label>US - MGK - Tech</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Miami, FL (Savage Service Transload)</fullName>
+        <default>false</default>
+        <label>US - Miami, FL (Savage Service Transload)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Mobile</fullName>
+        <default>false</default>
+        <label>US - Mobile</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Montana</fullName>
+        <default>false</default>
+        <label>US - Montana</label>
+    </customValue>
+    <customValue>
+        <fullName>US - MR Transportation Warehouse</fullName>
+        <default>false</default>
+        <label>US - MR Transportation Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Newell</fullName>
+        <default>false</default>
+        <label>US - Newell</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Niagara Falls (FM)</fullName>
+        <default>false</default>
+        <label>US - Niagara Falls (FM)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Niagara Falls (SCF)</fullName>
+        <default>false</default>
+        <label>US - Niagara Falls (SCF)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Norfolk</fullName>
+        <default>false</default>
+        <label>US - Norfolk</label>
+    </customValue>
+    <customValue>
+        <fullName>US - North Coast Logistics Warehouse</fullName>
+        <default>false</default>
+        <label>US - North Coast Logistics Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Octochem</fullName>
+        <default>false</default>
+        <label>US - Octochem</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Pittsburgh, PA (Arrow Material Svcs Transload)</fullName>
+        <default>false</default>
+        <label>US - Pittsburgh, PA (Arrow Material Svcs Transload)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Pittsburgh, PA (Transflo Transload)</fullName>
+        <default>false</default>
+        <label>US - Pittsburgh, PA (Transflo Transload)</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Polycor</fullName>
+        <default>false</default>
+        <label>US - Polycor</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Portland Terminal</fullName>
+        <default>false</default>
+        <label>US - Portland Terminal</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Quincy FL</fullName>
+        <default>false</default>
+        <label>US - Quincy FL</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Quincy WA</fullName>
+        <default>false</default>
+        <label>US - Quincy WA</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Sahuarita</fullName>
+        <default>false</default>
+        <label>US - Sahuarita</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Sappington</fullName>
+        <default>false</default>
+        <label>US - Sappington</label>
+    </customValue>
+    <customValue>
+        <fullName>US - SAV - CTI</fullName>
+        <default>false</default>
+        <label>US - SAV - CTI</label>
+    </customValue>
+    <customValue>
+        <fullName>US - SAV - GKT</fullName>
+        <default>false</default>
+        <label>US - SAV - GKT</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Searsport Terminal</fullName>
+        <default>false</default>
+        <label>US - Searsport Terminal</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Service First Warehouse</fullName>
+        <default>false</default>
+        <label>US - Service First Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Somerset</fullName>
+        <default>false</default>
+        <label>US - Somerset</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Superior</fullName>
+        <default>false</default>
+        <label>US - Superior</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Sylacauga</fullName>
+        <default>false</default>
+        <label>US - Sylacauga</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Terminal Warehouse</fullName>
+        <default>false</default>
+        <label>US - Terminal Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Three Forks</fullName>
+        <default>false</default>
+        <label>US - Three Forks</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Three Rivers</fullName>
+        <default>false</default>
+        <label>US - Three Rivers</label>
+    </customValue>
+    <customValue>
+        <fullName>US - TQC - Spruce Pine</fullName>
+        <default>false</default>
+        <label>US - TQC - Spruce Pine</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Trade</fullName>
+        <default>false</default>
+        <label>US - Trade</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Urbana Fiber Cel</fullName>
+        <default>false</default>
+        <label>US - Urbana Fiber Cel</label>
+    </customValue>
+    <customValue>
+        <fullName>US - US Product</fullName>
+        <default>false</default>
+        <label>US - US Product</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Vicksburg</fullName>
+        <default>false</default>
+        <label>US - Vicksburg</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Waterloo</fullName>
+        <default>false</default>
+        <label>US - Waterloo</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Whitestone</fullName>
+        <default>false</default>
+        <label>US - Whitestone</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Willsboro</fullName>
+        <default>false</default>
+        <label>US - Willsboro</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Wrens</fullName>
+        <default>false</default>
+        <label>US - Wrens</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Yellowstone</fullName>
+        <default>false</default>
+        <label>US - Yellowstone</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Youngsville</fullName>
+        <default>false</default>
+        <label>US - Youngsville</label>
+    </customValue>
+    <customValue>
+        <fullName>VN - YBB</fullName>
+        <default>false</default>
+        <label>VN - YBB</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Annesley</fullName>
+        <default>false</default>
+        <label>ZA - Annesley</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Apiesdoring</fullName>
+        <default>false</default>
+        <label>ZA - Apiesdoring</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - CALD - Vereeniging</fullName>
+        <default>false</default>
+        <label>ZA - CALD - Vereeniging</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Cape Bentonite</fullName>
+        <default>false</default>
+        <label>ZA - Cape Bentonite</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Cyferfontein</fullName>
+        <default>false</default>
+        <label>ZA - Cyferfontein</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Krugerpost</fullName>
+        <default>false</default>
+        <label>ZA - Krugerpost</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Olifantsfontein</fullName>
+        <default>false</default>
+        <label>ZA - Olifantsfontein</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Refmin</fullName>
+        <default>false</default>
+        <label>ZA - Refmin</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Rhino Mine (Purusite product)</fullName>
+        <default>false</default>
+        <label>ZA - Rhino Mine (Purusite product)</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Richard&apos;s Bay</fullName>
+        <default>false</default>
+        <label>ZA - Richard&apos;s Bay</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA - Thabazimbi</fullName>
+        <default>false</default>
+        <label>ZA - Thabazimbi</label>
+    </customValue>
+    <customValue>
+        <fullName>ZZ - Third Party Warehouse</fullName>
+        <default>false</default>
+        <label>ZZ - Third Party Warehouse</label>
+    </customValue>
+    <customValue>
+        <fullName>IT - ICIT - Platform Italy</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>IT - ICIT - Platform Italy</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Sandersville</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>US - Sandersville</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Teco</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>US - Teco</label>
+    </customValue>
+    <customValue>
+        <fullName>AT - Ebensee</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>AT - Ebensee</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Gothers</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>GB - Gothers</label>
+    </customValue>
+    <customValue>
+        <fullName>US - CE Minerals</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>US - CE Minerals</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Dry Branch Kaolin</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>US - Dry Branch Kaolin</label>
+    </customValue>
+    <customValue>
+        <fullName>US - Middle Georgia Kaolin</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>US - Middle Georgia Kaolin</label>
+    </customValue>
+    <customValue>
+        <fullName>FR - Axat</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>FR - Axat</label>
+    </customValue>
+    <customValue>
+        <fullName>BR - Itatex</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BR - Itatex</label>
+    </customValue>
+    <customValue>
+        <fullName>MYS - Ipoh</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>MYS - Ipoh</label>
+    </customValue>
+    <customValue>
+        <fullName>GB - Lee Moor HK2</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>GB - Lee Moor HK2</label>
+    </customValue>
+    <masterLabel>Imerys Manufacturing Plants</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
