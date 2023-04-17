@@ -1,0 +1,12 @@
+Hey,
+
+
+We received feedback from contact {!Case.Contact}. Please review.
+
+{!SurveySubject.Link}
+
+If negative feedback received, you will find a case with Subject "Negative feedback" from the related cases on below case.
+
+{!Case.Link}
+
+Thanks,
