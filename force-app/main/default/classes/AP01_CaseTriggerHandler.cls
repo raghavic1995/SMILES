@@ -49,7 +49,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             status.add(obj.Status);
         }
         
-        String recordTypeComplaint = Label.CL00008;//CSE_Complaint
+        String recordTypeComplaint = Label.CL00008;//Complaint_After_Creation_New
         
         RecordType complaint = [SELECT Id, DeveloperName 
                                 FROM RecordType 
@@ -61,7 +61,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
    
         
         Map<Id, Product2> caseMap = new Map<Id,Product2>([SELECT Id, New_Product_Type_2__c from Product2 WHERE 
-                                                          Id IN:productSet AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]); //CL00037 - Calderys ; CL00039 - 3rd Party	
+                                                          Id IN:productSet AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]); //CL00037 - Calderys ; CL00039 - 3rd Party    
         system.debug('caseMap' + caseMap);
         system.debug('ProductSet' + productSet);
         
@@ -90,8 +90,10 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper:[SELECT id FROM user WHERE Id IN: keeperId]){
                     for(Case obj2 : aNewList){ 
+                        if(obj2.RecordTypeId == recordTypeComplaintId ){
                         obj2.GateKeeper__c = userGatekeeper.Id;
                         //obj2.OutOfOffice__c = false;
+                        }
                         caseList.add(obj2);
                         system.debug('test9' + userGatekeeper.Id);
                     }
@@ -105,13 +107,15 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper2:[SELECT id FROM user WHERE Id IN: keeper2Id]){
                     for(Case obj3 : aNewList){ 
+                        if(obj3.RecordTypeId == recordTypeComplaintId ){
                         obj3.Gatekeeper2__c = userGatekeeper2.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj3);
                         system.debug('test userGatekeeper2' + userGatekeeper2.Id);
-                    	}
-                	}
-            	}
+                        }
+                    }
+                }
             catch(Exception e){
                 System.Debug('Error in assign owner '+ e);
             }
@@ -119,7 +123,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper3:[SELECT id FROM user WHERE Id IN: keeper3Id]){
                     for(Case obj4 : aNewList){ 
+                        if(obj4.RecordTypeId == recordTypeComplaintId ){
                         obj4.Gatekeeper3__c = userGatekeeper3.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj4);
                         system.debug('test userGatekeeper3' + userGatekeeper3.Id);
@@ -133,7 +139,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper4:[SELECT id FROM user WHERE Id IN: keeper4Id]){
                     for(Case obj5 : aNewList){ 
+                        if(obj5.RecordTypeId == recordTypeComplaintId ){
                         obj5.Gatekeeper4__c = userGatekeeper4.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj5);
                         system.debug('test userGatekeeper4' + userGatekeeper4.Id);
@@ -147,7 +155,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             //}
         }
         
-        if(usersPlant == 0 && caseMap.size() == 0)
+        if(usersPlant == 0 && caseMap.size() == 0 )
         {   
             system.debug('regis');
             for(GatekeeperAssignment__c gate2 : [SELECT Gatekeeper__c,Gatekeeper2__c,Gatekeeper3__c,Gatekeeper4__c
@@ -165,8 +173,10 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper:[SELECT id FROM user WHERE Id IN: keeperId]){
                     for(case obj2 : aNewList){ 
+                        if(obj2.RecordTypeId == recordTypeComplaintId ){
                         obj2.GateKeeper__c = userGatekeeper.Id;
                         //obj2.OutOfOffice__c = false;
+                        }
                         caseList.add(obj2);
                         system.debug('test9' + userGatekeeper.Id);
                     }
@@ -179,8 +189,10 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper2:[SELECT id FROM user WHERE Id IN: keeper2Id]){
                     for(case obj3 : aNewList){ 
+                        if(obj3.RecordTypeId == recordTypeComplaintId ){
                         obj3.GateKeeper2__c = userGatekeeper2.Id;
                         //obj2.OutOfOffice__c = false;
+                           }
                         caseList.add(obj3);
                         system.debug('test10' + userGatekeeper2.Id);
                     }
@@ -194,7 +206,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper3:[SELECT id FROM user WHERE Id IN: keeper3Id]){
                     for(case obj4 : aNewList){ 
+                        if(obj4.RecordTypeId == recordTypeComplaintId ){
                         obj4.GateKeeper3__c = userGatekeeper3.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj4);
                         system.debug('test10' + userGatekeeper3.Id);
@@ -209,7 +223,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
            try{
                 for(user userGatekeeper4:[SELECT id FROM user WHERE Id IN: keeper4Id]){
                     for(case obj5 : aNewList){ 
+                        if(obj5.RecordTypeId == recordTypeComplaintId ){
                         obj5.GateKeeper4__c = userGatekeeper4.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj5);
                         system.debug('test10' + userGatekeeper4.Id);
@@ -224,7 +240,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
         }
         
         
-        if(accountManager !=null && caseMap.size() > 0){   
+        if(accountManager !=null && caseMap.size() > 0 ){   
             for(User userGate : [SELECT CountryforGatekeeper__c 
                                  FROM User 
                                  Where Id IN: accountManager
@@ -255,12 +271,12 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj2);
                         system.debug('test9' + userGatekeeper.Id);
-                    	}
-                	}
+                        }
+                    }
                }
-            	catch(DMLException e){
+                catch(DMLException e){
                 System.Debug('Error in assign owner '+ e);
-            	}
+                }
                 
             try{
                 for(user userGatekeeper2:[SELECT id FROM user WHERE Id IN: keeper2Id]){
@@ -274,7 +290,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             }
             catch(DMLException e){
                 System.Debug('Error in assign owner '+ e);
-            	}
+                }
             
             try{
                 for(user userGatekeeper3:[SELECT id FROM user WHERE Id IN: keeper3Id]){
@@ -288,7 +304,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             }
             catch(DMLException e){
                 System.Debug('Error in assign owner '+ e);
-            	}
+                }
             
            try{
                 for(user userGatekeeper4:[SELECT id FROM user WHERE Id IN: keeper4Id]){
@@ -302,9 +318,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             }
             catch(DMLException e){
                 System.Debug('Error in assign owner '+ e);
-            	}
+                }
             
-        	}       
+            }       
     }
     
     /**
@@ -549,7 +565,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             gatekeeperSet.add(objNew.GateKeeper__c);
         }
         
-        if(gatekeeperSet!=gatekeeperOld){
+        if(gatekeeperSet!=gatekeeperOld && productOld!=productNew){
             try{
                 
                 delete [select Id,MemberId FROM CaseTeamMember WHERE ParentId IN:recordId];
@@ -677,7 +693,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
                         insertCaseTeamMap4.put(caseNewTeam4.Id, caseNewTeam4);
                     }
                 }
-                /* if(!gatekeeperMap.containsKey(objCaseTeam.Gatekeeper__c)){	
+                /* if(!gatekeeperMap.containsKey(objCaseTeam.Gatekeeper__c)){   
                     
                     for(GatekeeperAssignment__c gateAssign:[SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c
                                                             FROM GatekeeperAssignment__c WHERE Gatekeeper__c IN: gatekeeperMap.KeySet()
@@ -795,6 +811,11 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
         Map<Id, Product2> caseMap = new Map<Id,Product2>([SELECT Id, New_Product_Type_2__c from Product2 WHERE 
                                                           Id IN:productNew AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]);
         
+        system.debug('plantcase is '+plantcase);
+        system.debug('productOld is '+productOld);
+        system.debug('productNew is '+productNew);
+        system.debug('caseMap is '+caseMap.size());
+        
         if(plantcase !=Null && productOld!=productNew && caseMap.size() ==0 && !plantCase.contains(Label.CL00043)){
             //||businessArea != Null && plantcase !=Null && businessAreaOld!=businessArea && caseMap.size() ==0){      
             
@@ -824,8 +845,10 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper:[SELECT id FROM user WHERE Id IN: keeperId]){
                     for(Case obj2 : aNewList){ 
+                        if(obj2.RecordTypeId == recordTypeComplaintId ){
                         obj2.GateKeeper__c = userGatekeeper.Id;
                         //obj2.OutOfOffice__c = false;
+                        }
                         caseList.add(obj2);
                         system.debug('test9' + userGatekeeper.Id);
                     }
@@ -837,13 +860,15 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
                         try{
                 for(user userGatekeeper2:[SELECT id FROM user WHERE Id IN: keeper2Id]){
                     for(Case obj3 : aNewList){ 
+                        if(obj3.RecordTypeId == recordTypeComplaintId ){
                         obj3.Gatekeeper2__c = userGatekeeper2.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj3);
                         system.debug('test userGatekeeper2' + userGatekeeper2.Id);
-                    	}
-                	}
-            	}
+                        }
+                    }
+                }
             catch(Exception e){
                 System.Debug('Error in assign owner '+ e);
             }
@@ -851,7 +876,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper3:[SELECT id FROM user WHERE Id IN: keeper3Id]){
                     for(Case obj4 : aNewList){ 
+                        if(obj4.RecordTypeId == recordTypeComplaintId ){
                         obj4.Gatekeeper3__c = userGatekeeper3.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj4);
                         system.debug('test userGatekeeper3' + userGatekeeper3.Id);
@@ -865,7 +892,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper4:[SELECT id FROM user WHERE Id IN: keeper4Id]){
                     for(Case obj5 : aNewList){ 
+                        if(obj5.RecordTypeId == recordTypeComplaintId ){
                         obj5.Gatekeeper4__c = userGatekeeper4.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj5);
                         system.debug('test userGatekeeper4' + userGatekeeper4.Id);
@@ -893,8 +922,10 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper:[SELECT id FROM user WHERE Id IN: keeperId]){
                     for(case obj2 : aNewList){ 
+                        if(obj2.RecordTypeId == recordTypeComplaintId ){
                         obj2.GateKeeper__c = userGatekeeper.Id;
                         //obj2.OutOfOffice__c = false;
+                           }
                         caseList.add(obj2);
                         system.debug('test9' + userGatekeeper.Id);
                     }
@@ -908,13 +939,15 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper2:[SELECT id FROM user WHERE Id IN: keeper2Id]){
                     for(Case obj3 : aNewList){ 
+                        if(obj3.RecordTypeId == recordTypeComplaintId ){
                         obj3.Gatekeeper2__c = userGatekeeper2.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj3);
                         system.debug('test userGatekeeper2' + userGatekeeper2.Id);
-                    	}
-                	}
-            	}
+                        }
+                    }
+                }
             catch(Exception e){
                 System.Debug('Error in assign owner '+ e);
             }
@@ -922,7 +955,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper3:[SELECT id FROM user WHERE Id IN: keeper3Id]){
                     for(Case obj4 : aNewList){ 
+                        if(obj4.RecordTypeId == recordTypeComplaintId ){
                         obj4.Gatekeeper3__c = userGatekeeper3.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj4);
                         system.debug('test userGatekeeper3' + userGatekeeper3.Id);
@@ -936,7 +971,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper4:[SELECT id FROM user WHERE Id IN: keeper4Id]){
                     for(Case obj5 : aNewList){ 
+                        if(obj5.RecordTypeId == recordTypeComplaintId ){
                         obj5.Gatekeeper4__c = userGatekeeper4.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj5);
                         system.debug('test userGatekeeper4' + userGatekeeper4.Id);
@@ -990,7 +1027,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper2:[SELECT id FROM user WHERE Id IN: keeper2Id]){
                     for(Case obj3 : aNewList){ 
+                        if(obj3.RecordTypeId == recordTypeComplaintId ){
                         obj3.GateKeeper2__c = userGatekeeper2.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj3);
                         system.debug('test10' + userGatekeeper2.Id);
@@ -1004,7 +1043,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper3:[SELECT id FROM user WHERE Id IN: keeper3Id]){
                     for(Case obj4 : aNewList){ 
+                        if(obj4.RecordTypeId == recordTypeComplaintId ){
                         obj4.GateKeeper3__c = userGatekeeper3.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj4);
                         system.debug('test10' + userGatekeeper3.Id);
@@ -1018,7 +1059,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
             try{
                 for(user userGatekeeper4:[SELECT id FROM user WHERE Id IN: keeper4Id]){
                     for(Case obj5 : aNewList){ 
+                        if(obj5.RecordTypeId == recordTypeComplaintId ){
                         obj5.GateKeeper4__c = userGatekeeper4.Id;
+                        }
                         //obj2.OutOfOffice__c = false;
                         caseList.add(obj5);
                         system.debug('test10' + userGatekeeper4.Id);
@@ -1558,9 +1601,9 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
                 for(Relationship__c relDivName :relList){
                     try{
                         for(Case bd: aNewList){
-                            bd.Tech_RelationshipInformation__c= relDivName.Id;
-                            caseList.add(bd);
-                            system.debug('bd' + caseList);                       
+                           bd.Tech_RelationshipInformation__c= relDivName.Id;
+                           caseList.add(bd);
+                           system.debug('bd' + caseList);                       
                         }
                     }
                     catch(DMLException e){
@@ -1576,7 +1619,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
 *@Date Creation 02/08/2021
 *@param aNewList                     
 *@return error message
-*@Descriptopm This method changes the owner Id when user sets type to 'New Order	' On creation
+*@Descriptopm This method changes the owner Id when user sets type to 'New Order    ' On creation
 */  
     public static void updateOwnerIdonCreation(List<Case> aNewList) {
         set<String> businessAreaList = new set<string>();
@@ -1656,7 +1699,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
         //If Business Area is changed OR If Customer Service Department is changed 
         //Re calculate the Queue 
         if(!newCsTeamInChargeList.equals(oldCsTeamInChargeList) || !newBusinessAreaList.equals(oldBusinessAreaList)  ){
-           	 List<GatekeeperAssignment__c> RequestList = new List<GatekeeperAssignment__c>(
+             List<GatekeeperAssignment__c> RequestList = new List<GatekeeperAssignment__c>(
                 [Select Request_Queue__c From GatekeeperAssignment__c
                  Where Object__c =: Label.CL00081 //Request
                  And BusinessArea__c IN: newBusinessAreaList
@@ -1664,7 +1707,7 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
                 
                 ]);
             
-            	if(RequestList.size()>0){
+                if(RequestList.size()>0){
                     system.debug('RequestList------->'+RequestList);
                     system.debug('RequestList Val --->'+RequestList[0].Request_Queue__c);
                     
@@ -1683,12 +1726,12 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
                             b.OwnerId = queueIdList[0];
                         }
                     }
-      			}
+                }
         }
         /*else{
             for (Case b : aNewList){
                 b.OwnerId = b.CreatedById;
-            	}
+                }
             }*/
     }
         
@@ -1704,16 +1747,16 @@ public static void createCaseGatekeeper(List<Case> aNewList) {
 //If Owner is creator, add creator as Team Member 
 */     
 public static void createCaseTeamRequest(List<Case> aNewList){
-    	set<String> typeList = new set<string>();
+        set<String> typeList = new set<string>();
         set<String> businessAreaList = new set<string>();
         set<String> customerServiceDeptList = new set<string>();
         Set<String> countryUserGatekeeper = new Set<String>();
-    	List <CaseTeamMember> CaseTeamLst = new List<CaseTeamMember>();
-    	Set<Id> recordIdSet = new Set<Id>();
-    	Set<id> ownerIdSet  = new Set<Id>();
-    	Set<Id> recordTypeId = new Set<Id>();
-	    Integer usersPlant;
-   		CaseTeamRole role = [select Id from CaseTeamRole where Name = :Label.CL00069 limit 1];	
+        List <CaseTeamMember> CaseTeamLst = new List<CaseTeamMember>();
+        Set<Id> recordIdSet = new Set<Id>();
+        Set<id> ownerIdSet  = new Set<Id>();
+        Set<Id> recordTypeId = new Set<Id>();
+        Integer usersPlant;
+        CaseTeamRole role = [select Id from CaseTeamRole where Name = :Label.CL00069 limit 1];  
         
         for(Case obj : aNewList){
             typeList.add(obj.Imerys_Manufacturing_Plant__c);           
@@ -1777,8 +1820,8 @@ public static void createCaseTeamRequest(List<Case> aNewList){
                     database.insert(CaseTeamLst);
                 }
                 catch(DMLException e){
-           			 System.Debug('Error' + e);
-        		}
+                     System.Debug('Error' + e);
+                }
             }
         }
         
@@ -1796,8 +1839,8 @@ public static void createCaseTeamRequest(List<Case> aNewList){
                     database.insert(CaseTeamLst);
                 }
                 catch(DMLException e){
-           			 System.Debug('Error' + e);
-        		}
+                     System.Debug('Error' + e);
+                }
             }
         }
         
@@ -1857,7 +1900,7 @@ public static void createCaseTeamRequest(List<Case> aNewList){
                     c.NewMarketL2__c = relList[0].NewMarketL2__c;
                 }
             }
-			
+            
             
             //Fill Account Manager
             //Idea : If user does not fill Account Manager, take Account Manager from relationship.
@@ -1877,8 +1920,8 @@ public static void createCaseTeamRequest(List<Case> aNewList){
         // If customer service is not filled, we check if the Owner is of type Customer Service & Sales Administration, if true we auto fill the CS with owner, otherwise we leave blank.
         if(customerServiceSet.isEmpty()){
 
-		//CL00078 - Customer Service & Sales Administration
-			List<User> custServiceOwner = new List<User>([Select id from User where id IN: ownerIdSet and Job_Department__c =: Label.CL00078 ]);
+        //CL00078 - Customer Service & Sales Administration
+            List<User> custServiceOwner = new List<User>([Select id from User where id IN: ownerIdSet and Job_Department__c =: Label.CL00078 ]);
             
             system.debug('custServiceOwner-->'+custServiceOwner);
             
@@ -1887,9 +1930,9 @@ public static void createCaseTeamRequest(List<Case> aNewList){
                     b.CustomerService2__c = custServiceOwner[0].id;
                 }
             }
-		}
+        }
 
-		
+        
     }
     
     /**
@@ -1919,11 +1962,11 @@ public static void DecideCaseOwnerBasedOnAccountGateKeeper(List<id> aNewCaseIdls
     id ownerIdOriginal ;
     list<RecordType> requestRecType=[SELECT Id, Name, DeveloperName, IsActive, SobjectType FROM RecordType where SobjectType='Case' and DeveloperName='Request'];
     list<Case> caseList= new list<Case>();
-	for(Case c : aNewList)
-        {	
+    for(Case c : aNewList)
+        {   
             OwnerIdOriginal = c.OwnerId;
             if(c.RecordTypeId==requestRecType[0].id &&c.Origin=='Email Automated' &&c.AccountId!=null)
-            {	
+            {   
 
                 list<GatekeeperAssignment__c> GateKeeperAssignment=[SELECT Id, Name, Gatekeeper__c, GatekeeperAccount__r.name FROM GatekeeperAssignment__c where GatekeeperAccount__c=:c.AccountId limit 1];
                 if(GateKeeperAssignment.size()>0){
@@ -1949,11 +1992,12 @@ public static void DecideCaseOwnerBasedOnAccountGateKeeper(List<id> aNewCaseIdls
 *@return method createCaseGatekeeper with new values.
 */
     public override void beforeInsert() {
+                
         //Override method BeforeUpdate from class Handler to create new Account Team record.
         fillRelationship(Trigger.new); 
         fillMarketSegmentAndAcctMgr(Trigger.new);
         updateOwnerIdonCreation(Trigger.new);
-        createCaseGatekeeper(Trigger.new);
+        createCaseGatekeeper(Trigger.new); 
     }   
     /**
 *@author Geerutsing Govind Kumar
