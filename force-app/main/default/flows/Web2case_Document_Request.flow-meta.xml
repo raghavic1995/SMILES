@@ -4,7 +4,7 @@
         <name>Navigate_to_New_Record</name>
         <label>Navigate to New Record</label>
         <locationX>1469</locationX>
-        <locationY>1886</locationY>
+        <locationY>1766</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -33,7 +33,7 @@
         <name>Assign_New_Case_Id</name>
         <label>Assign New Case Id</label>
         <locationX>182</locationX>
-        <locationY>1334</locationY>
+        <locationY>1214</locationY>
         <assignmentItems>
             <assignToReference>NewCaseId</assignToReference>
             <operator>Assign</operator>
@@ -49,7 +49,7 @@
         <name>Copy_1_of_Assign_New_Case_Id</name>
         <label>Copy 1 of Assign New Case Id</label>
         <locationX>886</locationX>
-        <locationY>1454</locationY>
+        <locationY>1334</locationY>
         <assignmentItems>
             <assignToReference>NewCaseId</assignToReference>
             <operator>Assign</operator>
@@ -65,7 +65,7 @@
         <name>Copy_1_of_Copy_1_of_Assign_New_Case_Id</name>
         <label>Copy 1 of Copy 1 of Assign New Case Id</label>
         <locationX>1590</locationX>
-        <locationY>1454</locationY>
+        <locationY>1334</locationY>
         <assignmentItems>
             <assignToReference>NewCaseId</assignToReference>
             <operator>Assign</operator>
@@ -81,7 +81,7 @@
         <name>Copy_1_of_Copy_1_of_Copy_1_of_Assign_New_Case_Id</name>
         <label>Copy 1 of Copy 1 of Copy 1 of Assign New Case Id</label>
         <locationX>2030</locationX>
-        <locationY>1454</locationY>
+        <locationY>1334</locationY>
         <assignmentItems>
             <assignToReference>NewCaseId</assignToReference>
             <operator>Assign</operator>
@@ -366,100 +366,13 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
-        <name>Add_Case_Team_Member</name>
-        <label>Add Case Team Member</label>
-        <locationX>182</locationX>
-        <locationY>1214</locationY>
-        <connector>
-            <targetReference>Assign_New_Case_Id</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>MemberId</field>
-            <value>
-                <elementReference>$User.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ParentId</field>
-            <value>
-                <elementReference>Create_case_from_web2case</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>TeamRoleId</field>
-            <value>
-                <stringValue>0B71i000000fxWICAY</stringValue>
-            </value>
-        </inputAssignments>
-        <object>CaseTeamMember</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Copy_1_of_Add_Case_Team_Member</name>
-        <label>Copy 1 of Add Case Team Member</label>
-        <locationX>886</locationX>
-        <locationY>1334</locationY>
-        <connector>
-            <targetReference>Copy_1_of_Assign_New_Case_Id</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>MemberId</field>
-            <value>
-                <elementReference>$User.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ParentId</field>
-            <value>
-                <elementReference>Copy_1_of_Create_case_from_web2case</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>TeamRoleId</field>
-            <value>
-                <stringValue>0B71i000000fxWICAY</stringValue>
-            </value>
-        </inputAssignments>
-        <object>CaseTeamMember</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Copy_1_of_Copy_2_of_Add_Case_Team_Member</name>
-        <label>Copy 1 of Copy 2 of Add Case Team Member</label>
-        <locationX>2030</locationX>
-        <locationY>1334</locationY>
-        <connector>
-            <targetReference>Copy_1_of_Copy_1_of_Copy_1_of_Assign_New_Case_Id</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>MemberId</field>
-            <value>
-                <elementReference>$User.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ParentId</field>
-            <value>
-                <elementReference>Copy_1_of_Copy_2_of_Create_case_from_web2case</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>TeamRoleId</field>
-            <value>
-                <stringValue>0B71i000000fxWICAY</stringValue>
-            </value>
-        </inputAssignments>
-        <object>CaseTeamMember</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
         <description>Create a case for Web2case</description>
         <name>Copy_1_of_Copy_2_of_Create_case_from_web2case</name>
         <label>Copy 1 of Copy 2 of Create case from web2case</label>
         <locationX>2030</locationX>
         <locationY>1214</locationY>
         <connector>
-            <targetReference>Copy_1_of_Copy_2_of_Add_Case_Team_Member</targetReference>
+            <targetReference>Copy_1_of_Copy_1_of_Copy_1_of_Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>Description</field>
@@ -507,7 +420,7 @@
         <locationX>886</locationX>
         <locationY>1214</locationY>
         <connector>
-            <targetReference>Copy_1_of_Add_Case_Team_Member</targetReference>
+            <targetReference>Copy_1_of_Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>Description</field>
@@ -549,42 +462,13 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
-        <name>Copy_2_of_Add_Case_Team_Member</name>
-        <label>Copy 2 of Add Case Team Member</label>
-        <locationX>1590</locationX>
-        <locationY>1334</locationY>
-        <connector>
-            <targetReference>Copy_1_of_Copy_1_of_Assign_New_Case_Id</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>MemberId</field>
-            <value>
-                <elementReference>$User.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ParentId</field>
-            <value>
-                <elementReference>Copy_2_of_Create_case_from_web2case</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>TeamRoleId</field>
-            <value>
-                <stringValue>0B71i000000fxWICAY</stringValue>
-            </value>
-        </inputAssignments>
-        <object>CaseTeamMember</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
         <description>Create a case for Web2case</description>
         <name>Copy_2_of_Create_case_from_web2case</name>
         <label>Copy 2 of Create case from web2case</label>
         <locationX>1590</locationX>
         <locationY>1214</locationY>
         <connector>
-            <targetReference>Copy_2_of_Add_Case_Team_Member</targetReference>
+            <targetReference>Copy_1_of_Copy_1_of_Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>Description</field>
@@ -632,7 +516,7 @@
         <locationX>182</locationX>
         <locationY>1094</locationY>
         <connector>
-            <targetReference>Add_Case_Team_Member</targetReference>
+            <targetReference>Assign_New_Case_Id</targetReference>
         </connector>
         <inputAssignments>
             <field>Description</field>
@@ -1419,12 +1303,6 @@
                     <stringValue>Id</stringValue>
                 </value>
             </inputParameters>
-            <inputParameters>
-                <name>required</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <outputParameters>
@@ -1453,7 +1331,7 @@
         <name>Final_Screen</name>
         <label>Final Screen</label>
         <locationX>1469</locationX>
-        <locationY>1766</locationY>
+        <locationY>1646</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
