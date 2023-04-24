@@ -4,7 +4,7 @@
         <name>Navigate_to_New_Record</name>
         <label>Navigate to New Record</label>
         <locationX>1469</locationX>
-        <locationY>1766</locationY>
+        <locationY>1886</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -42,7 +42,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>fileUpload</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -58,7 +58,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>fileUpload</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -74,7 +74,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>fileUpload</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -90,7 +90,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Final_Screen</targetReference>
+            <targetReference>fileUpload</targetReference>
         </connector>
     </assignments>
     <decisions>
@@ -1311,6 +1311,32 @@
             </outputParameters>
         </fields>
         <fields>
+            <name>Product</name>
+            <extensionName>c:quickLookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>objectName</name>
+                <value>
+                    <stringValue>Product2</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Which product is it on?</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>svg</name>
+                <value>
+                    <stringValue>standard:product</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
             <name>Subject1</name>
             <dataType>String</dataType>
             <fieldText>Subject</fieldText>
@@ -1327,11 +1353,106 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>fileUpload</name>
+        <label>fileUpload</label>
+        <locationX>1469</locationX>
+        <locationY>1646</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Final_Screen</targetReference>
+        </connector>
+        <fields>
+            <name>hfhjnm</name>
+            <extensionName>c:fileUploadImproved</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>sessionKey</name>
+                <value>
+                    <elementReference>$Flow.InterviewGuid</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>allowMultiple</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>disableDelete</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>embedExternally</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Any files to attach?</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>helpText</name>
+                <value>
+                    <stringValue>You can attach any file you feel will help in</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>icon</name>
+                <value>
+                    <stringValue>standard:file</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>NewCaseId</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>visibleToAllUsers</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>renderExistingFiles</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>renderFilesBelow</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <nextOrFinishButtonLabel>save</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <description>Case Created Successfully!</description>
         <name>Final_Screen</name>
         <label>Final Screen</label>
         <locationX>1469</locationX>
-        <locationY>1646</locationY>
+        <locationY>1766</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
