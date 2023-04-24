@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSE_VR59_Credit_Note_ERP_Rebill_Number</fullName>
+    <active>true</active>
+    <description>23-00002452</description>
+    <errorConditionFormula>ISPICKVAL(Status , &apos;Close&apos;) &amp;&amp;
+ISPICKVAL(PRIORVALUE(Status),&apos;Approved&apos;) &amp;&amp;
+ISBLANK( ERP_Rebill_Number__c)&amp;&amp;
+RecordType.DeveloperName = &apos;Credit_Note&apos;&amp;&amp;
+$User.ByPassValidationRule__c = False</errorConditionFormula>
+    <errorDisplayField>ERP_Rebill_Number__c</errorDisplayField>
+    <errorMessage>ERP Rebill number is mandatory to proceed</errorMessage>
+</ValidationRule>
