@@ -41,7 +41,7 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
         
         for(Case obj : aNewList){
             ///businessArea.add(obj.BusinessArea__c);
-            plantCase.add(obj.Imerys_Manufacturing_Plant__c);
+            plantCase.add(obj.Manufacturing_Plant__c);
             currentGatekeeper.add(obj.GateKeeper__c);
             productSet.add(obj.ProductName__c);
             recordTypeId.add(obj.recordTypeId);
@@ -64,12 +64,13 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
                                                           Id IN:productSet AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]); //CL00037 - Calderys ; CL00039 - 3rd Party    
         system.debug('caseMap' + caseMap);
         system.debug('ProductSet' + productSet);
+         system.debug('PlantCase' + PlantCase);
         
         if(plantCase !=Null && caseMap.size()== 0 && !plantCase.contains(Label.CL00043)){   
             system.debug('regis');
             for(GatekeeperAssignment__c gate : [SELECT Gatekeeper__c ,Gatekeeper2__c,Gatekeeper3__c,Gatekeeper4__c
                                                 FROM GatekeeperAssignment__c 
-                                                WHERE ImerysManufacturingPlant__c IN:plantCase
+                                                WHERE Manufacturing_Plant__c IN:plantCase
                                                 AND AllPlants__c =: false
                                                 AND Object__c =: Label.CL00038
                                                 ORDER BY Id DESC]){
@@ -81,7 +82,7 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
                                                 }                     
             usersPlant = [SELECT COUNT()
                           FROM GatekeeperAssignment__c 
-                          WHERE ImerysManufacturingPlant__c IN: plantCase
+                          WHERE Manufacturing_Plant__c IN: plantCase
                           AND Object__c =: Label.CL00038
                           AND AllPlants__c =: false];
             system.debug('users' + usersPlant);
@@ -351,7 +352,7 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
         Integer usersPlant;
         
         for(Case obj : aNewList){
-            plantCase.add(obj.Imerys_Manufacturing_Plant__c);           
+            plantCase.add(obj.Manufacturing_Plant__c);           
             productSet.add(obj.ProductName__c);
             accountManager.add(obj.CSAccountManager__c);
             
@@ -367,7 +368,7 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
                                 AND DeveloperName =:recordTypeComplaint]; 
         usersPlant = [SELECT COUNT()
                       FROM GatekeeperAssignment__c 
-                      WHERE ImerysManufacturingPlant__c IN: plantCase
+                      WHERE Manufacturing_Plant__c IN: plantCase
                       AND Object__c =: Label.CL00038
                       AND AllPlants__c =: false];                         
         
@@ -382,7 +383,7 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
             system.debug('regis');
             for(GatekeeperAssignment__c gate : [SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c
                                                 FROM GatekeeperAssignment__c 
-                                                WHERE ImerysManufacturingPlant__c IN:plantCase
+                                                WHERE Manufacturing_Plant__c IN:plantCase
                                                 AND AllPlants__c =: false
                                                 AND Object__c =: Label.CL00038
                                                 ORDER BY Id DESC]){
@@ -518,233 +519,6 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
         
     }
     
-    /**
-*@author Geerutsing Govind Kumar
-*@Date Creation 29/7/2020
-*@Date modification 
-*@param aNewList to pass update records.                      
-*@return
-*/
-    
-    public static void updateCaseTeam(List<Case> aNewList, List<Case> aOldList){
-        Set<String> plantCase = new Set<String>();
-        Set<String> productOld = new Set<String>();
-        Set<String> productNew = new Set<String>();
-        Set<Id> accountManagerOld = new Set<Id>();
-        Set<Id> accountManagerNew = new Set<Id>();
-        Set<Id> gatekeeperOld = new Set<Id>();
-        Set<Id> recordId = new Set<Id>();
-        Set<String> countryUserGatekeeper = new Set<String>();
-        Map<Id,GatekeeperAssignment__c> gatekeeperMap = new Map<Id,GatekeeperAssignment__c>();
-        Set<Id> gatekeeperSet = new Set<Id>();
-        Set<Id> gatekeeper2Set = new Set<Id>();
-        Set<Id> gatekeeper3Set = new Set<Id>();
-        Set<Id> gatekeeper4Set = new Set<Id>();     
-        Map<Id, CaseTeamMember> insertCaseTeamMap2 = new Map<id, CaseTeamMember>();
-        Map<Id, CaseTeamMember> insertCaseTeamMap3 = new Map<id, CaseTeamMember>();
-        Map<Id, CaseTeamMember> insertCaseTeamMap4 = new Map<id, CaseTeamMember>();
-        CaseTeamRole role = [select Id from CaseTeamRole where Name = :Label.CL00069 limit 1];
-        CaseTeamMember caseNewTeam2;
-        CaseTeamMember caseNewTeam3;
-        CaseTeamMember caseNewTeam4;
-        Integer usersPlant;
-        Set<Id> gateRecordId = new Set<Id>();
-        
-        
-        for(case objOldCase : aOldList){
-            productOld.add(objOldCase.ProductName__c);  
-            accountManagerOld.add(objOldCase.CSAccountManager__c);
-            recordId.add(objOldCase.Id);
-            gatekeeperOld.add(objOldCase.GateKeeper__c);            
-        }           
-        
-        for(Case objNew : aNewList){ 
-            plantCase.add(objNew.Imerys_Manufacturing_Plant__c);
-            productNew.add(objNew.ProductName__c); 
-            accountManagerNew.add(objNew.CSAccountManager__c);
-            gatekeeperSet.add(objNew.GateKeeper__c);
-        }
-        
-        if(gatekeeperSet!=gatekeeperOld && productOld!=productNew){
-            try{
-                
-                delete [select Id,MemberId FROM CaseTeamMember WHERE ParentId IN:recordId];
-            }
-            
-            catch(DMLException e){
-                System.Debug('Error in delete case team' + e);
-            }    
-        }
-        
-        String recordTypeComplaint = Label.CL00008;
-        
-        RecordType complaint = [SELECT Id, DeveloperName 
-                                FROM RecordType 
-                                WHERE SObjectType =:Label.CL00036
-                                AND DeveloperName =:recordTypeComplaint]; 
-        
-        
-        Id recordTypeComplaintId = complaint.Id;
-        
-        usersPlant = [SELECT COUNT()
-                      FROM GatekeeperAssignment__c 
-                      WHERE ImerysManufacturingPlant__c IN: plantCase
-                      AND Object__c =:Label.CL00038
-                      AND AllPlants__c =: false];
-        system.debug('users' + usersPlant);     
-        
-        Map<Id, Product2> caseMap = new Map<Id,Product2>([SELECT Id, New_Product_Type_2__c from Product2 WHERE 
-                                                          Id IN:productNew AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]);
-        
-        if(plantcase !=Null && productOld!=productNew && caseMap.size() ==0 && usersPlant!=0 && !plantCase.contains(Label.CL00043)){
-            //||businessArea != Null && plantcase !=Null && businessAreaOld!=businessArea && caseMap.size() ==0){      
-            
-            system.debug('regis');
-            
-            for(GatekeeperAssignment__c gate : [SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c  
-                                                FROM GatekeeperAssignment__c 
-                                                WHERE ImerysManufacturingPlant__c IN: plantCase
-                                                AND AllPlants__c =: false
-                                                AND Object__c =: Label.CL00038
-                                                AND GateKeeper__c IN: gatekeeperSet
-                                                ORDER BY Id DESC]){
-                                                    
-                                                    gatekeeperMap.put(gate.Gatekeeper__c, gate);
-                                                    gatekeeper2Set.add(gate.Gatekeeper2__c);
-                                                    gatekeeper3Set.add(gate.Gatekeeper3__c);
-                                                    gatekeeper4Set.add(gate.Gatekeeper4__c);
-                                                    gateRecordId.add(gate.Id);
-                                                }
-            
-            
-        }       
-        if (usersPlant == 0 && productOld!=productNew && caseMap.size() == 0){
-            
-            for(GatekeeperAssignment__c gate2 : [SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c   
-                                                 FROM GatekeeperAssignment__c 
-                                                 WHERE AllPlants__c =: true
-                                                 AND Object__c =:Label.CL00038
-                                                 AND GateKeeper__c IN: gatekeeperSet
-                                                 ORDER BY CreatedDate DESC]){
-                                                     
-                                                     gatekeeperMap.put(gate2.Gatekeeper__c, gate2);
-                                                     gatekeeper2Set.add(gate2.Gatekeeper2__c);
-                                                     gatekeeper3Set.add(gate2.Gatekeeper3__c);
-                                                     gatekeeper4Set.add(gate2.Gatekeeper4__c);
-                                                     gateRecordId.add(gate2.Id);
-                                                     
-                                                 }
-            system.debug('gate2' + gatekeeper2Set+gatekeeper3Set+gatekeeper4Set);
-        }
-        if(accountManagerOld!=accountManagerNew && caseMap.size() > 0){
-            //businessAreaOld!=businessArea && businessArea != null && caseMap.size() > 0||    
-            
-            system.debug('update Calderys');
-            
-            for(User userCountryGate : [SELECT CountryforGatekeeper__c 
-                                        FROM User 
-                                        Where Id IN: accountManagerNew
-                                        ORDER BY Id DESC]){
-                                            
-                                            countryUserGatekeeper.add(userCountryGate.CountryforGatekeeper__c);
-                                            system.debug('countryforGatekeeper' + userCountryGate);
-                                        }                     
-            for(GatekeeperAssignment__c gatekeeperCalderys : [SELECT CountryforGatekeeper__c, Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c  
-                                                              FROM GatekeeperAssignment__c
-                                                              WHERE CountryforGatekeeper__c IN: countryUserGatekeeper
-                                                              AND Object__c =: Label.CL00038
-                                                              AND GateKeeper__c IN: gatekeeperSet
-                                                              ORDER BY Id DESC]){
-                                                                  
-                                                                  gatekeeperMap.put(gatekeeperCalderys.Gatekeeper__c, gatekeeperCalderys);
-                                                                  gatekeeper2Set.add(gatekeeperCalderys.Gatekeeper2__c);
-                                                                  gatekeeper3Set.add(gatekeeperCalderys.Gatekeeper3__c);
-                                                                  gatekeeper4Set.add(gatekeeperCalderys.Gatekeeper4__c);
-                                                                  gateRecordId.add(gatekeeperCalderys.Id);
-                                                                  
-                                                              }
-            system.debug('gate3' + gatekeeper2Set+gatekeeper3Set+gatekeeper4Set);
-        }           
-        try{
-            
-            for(Case objCaseTeam: aNewList){ 
-                if(gatekeeperMap.containsKey(objCaseTeam.Gatekeeper__c)){   
-                    if(gatekeeperMap.size() > 0 && !gatekeeper2Set.contains(null)){              
-                        caseNewTeam2 = new caseTeamMember();
-                        caseNewTeam2.MemberId = gatekeeperMap.get(objCaseTeam.Gatekeeper__c).Gatekeeper2__c;
-                        caseNewTeam2.ParentId = objCaseTeam.Id;
-                        caseNewTeam2.TeamRoleId = role.Id;
-                        insertCaseTeamMap2.put(caseNewTeam2.Id, caseNewTeam2);
-                    }
-                    if(gatekeeperMap.size() > 0 && !gatekeeper3Set.contains(null)){              
-                        caseNewTeam3 = new caseTeamMember();
-                        caseNewTeam3.MemberId = gatekeeperMap.get(objCaseTeam.Gatekeeper__c).Gatekeeper3__c;
-                        caseNewTeam3.ParentId = objCaseTeam.Id;
-                        caseNewTeam3.TeamRoleId = role.Id;
-                        insertCaseTeamMap3.put(caseNewTeam3.Id, caseNewTeam3);
-                    }
-                    if(gatekeeperMap.size() > 0 && !gatekeeper4Set.contains(null)){
-                        system.debug('gate4' + gatekeeper4Set);                 
-                        caseNewTeam4 = new caseTeamMember();
-                        caseNewTeam4.MemberId = gatekeeperMap.get(objCaseTeam.Gatekeeper__c).Gatekeeper4__c;
-                        caseNewTeam4.ParentId = objCaseTeam.Id;
-                        
-                        caseNewTeam4.TeamRoleId = role.Id;
-                        insertCaseTeamMap4.put(caseNewTeam4.Id, caseNewTeam4);
-                    }
-                }
-                /* if(!gatekeeperMap.containsKey(objCaseTeam.Gatekeeper__c)){   
-                    
-                    for(GatekeeperAssignment__c gateAssign:[SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c
-                                                            FROM GatekeeperAssignment__c WHERE Gatekeeper__c IN: gatekeeperMap.KeySet()
-                                                            AND Object__c =: Label.CL00038
-                                                            AND Id IN: gateRecordId]){
-                                                                
-                                                                if(gateAssign.Gatekeeper2__c!= null){
-                                                                    caseNewTeam2 = new caseTeamMember();
-                                                                    caseNewTeam2.MemberId = gateAssign.Gatekeeper2__c;
-                                                                    caseNewTeam2.ParentId = objCaseTeam.Id;
-                                                                    caseNewTeam2.TeamRoleId = role.Id;
-                                                                    insertCaseTeamMap2.put(caseNewTeam2.Id, caseNewTeam2);
-                                                                }
-                                                                if(gateAssign.Gatekeeper3__c!= null){
-                                                                    caseNewTeam3 = new caseTeamMember();
-                                                                    caseNewTeam3.MemberId = gateAssign.Gatekeeper3__c;
-                                                                    caseNewTeam3.ParentId = objCaseTeam.Id;
-                                                                    caseNewTeam3.TeamRoleId = role.Id;
-                                                                    insertCaseTeamMap3.put(caseNewTeam3.Id, caseNewTeam3);
-                                                                }
-                                                                if(gateAssign.Gatekeeper4__c!= null){
-                                                                    caseNewTeam4 = new caseTeamMember();
-                                                                    caseNewTeam4.MemberId = gateAssign.Gatekeeper4__c;
-                                                                    caseNewTeam4.ParentId = objCaseTeam.Id;
-                                                                    caseNewTeam4.TeamRoleId = role.Id;
-                                                                    insertCaseTeamMap4.put(caseNewTeam4.Id, caseNewTeam4);
-                                                                }
-                                                            }
-                }*/
-
-               
-            }
-            
-            
-            if(insertCaseTeamMap2.size() > 0){
-                Database.insert(insertCaseTeamMap2.values(), false);
-                
-            }
-            if(insertCaseTeamMap3.size() > 0){
-                Database.insert(insertCaseTeamMap3.values(), false);
-                
-            }
-            if(insertCaseTeamMap4.size() > 0){
-                Database.insert(insertCaseTeamMap4.values(),false);
-                
-            }
-        }
-        catch(DMLException e){
-            System.Debug('Error' + e);
-        }          
-    }
     
     /** 
 *@author Geerutsing Govind Kumar
@@ -801,7 +575,7 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
         }   
         for(Case obj : aNewList){
             //businessArea.add(obj.BusinessArea__c);
-            plantCase.add(obj.Imerys_Manufacturing_Plant__c);
+            plantCase.add(obj.Manufacturing_Plant__c);
             status.add(obj.Status);
             productNew.add(obj.ProductName__c);
             currentGatekeeper.add(obj.GateKeeper__c);
@@ -811,19 +585,19 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
         Map<Id, Product2> caseMap = new Map<Id,Product2>([SELECT Id, New_Product_Type_2__c from Product2 WHERE 
                                                           Id IN:productNew AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]);
         
-        system.debug('plantcase is '+plantcase);
+        system.debug('plantcase is '+plantCase);
         system.debug('productOld is '+productOld);
         system.debug('productNew is '+productNew);
         system.debug('caseMap is '+caseMap.size());
         
-        if(plantcase !=Null && productOld!=productNew && caseMap.size() ==0 && !plantCase.contains(Label.CL00043)){
+        if(plantCase !=Null && productOld!=productNew && caseMap.size() ==0 && !plantCase.contains(Label.CL00043)){
             //||businessArea != Null && plantcase !=Null && businessAreaOld!=businessArea && caseMap.size() ==0){      
             
             system.debug('regis');
             
             for(GatekeeperAssignment__c gate : [SELECT Gatekeeper__c,Gatekeeper2__c,Gatekeeper3__c,Gatekeeper4__c 
                                                 FROM GatekeeperAssignment__c 
-                                                WHERE ImerysManufacturingPlant__c IN: plantCase
+                                                WHERE Manufacturing_Plant__c IN: plantCase
                                                 AND AllPlants__c =: false
                                                 AND Object__c =: Label.CL00038
                                                 ORDER BY Id DESC]){
@@ -836,7 +610,7 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
             
             usersPlant = [SELECT COUNT()
                           FROM GatekeeperAssignment__c 
-                          WHERE ImerysManufacturingPlant__c IN: plantCase
+                          WHERE Manufacturing_Plant__c IN: plantCase
                           AND Object__c =: 'Complaint'
                           AND AllPlants__c =: false];
             system.debug('users' + usersPlant);
@@ -1073,7 +847,236 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
             }         
             
         }
-    }        
+    }  
+    
+      /**
+*@author Geerutsing Govind Kumar
+*@Date Creation 29/7/2020
+*@Date modification 
+*@param aNewList to pass update records.                      
+*@return
+*/
+    
+    public static void updateCaseTeam(List<Case> aNewList, List<Case> aOldList){
+        Set<String> plantCase = new Set<String>();
+        Set<String> productOld = new Set<String>();
+        Set<String> productNew = new Set<String>();
+        Set<Id> accountManagerOld = new Set<Id>();
+        Set<Id> accountManagerNew = new Set<Id>();
+        Set<Id> gatekeeperOld = new Set<Id>();
+        Set<Id> recordId = new Set<Id>();
+        Set<String> countryUserGatekeeper = new Set<String>();
+        Map<Id,GatekeeperAssignment__c> gatekeeperMap = new Map<Id,GatekeeperAssignment__c>();
+        Set<Id> gatekeeperSet = new Set<Id>();
+        Set<Id> gatekeeper2Set = new Set<Id>();
+        Set<Id> gatekeeper3Set = new Set<Id>();
+        Set<Id> gatekeeper4Set = new Set<Id>();     
+        Map<Id, CaseTeamMember> insertCaseTeamMap2 = new Map<id, CaseTeamMember>();
+        Map<Id, CaseTeamMember> insertCaseTeamMap3 = new Map<id, CaseTeamMember>();
+        Map<Id, CaseTeamMember> insertCaseTeamMap4 = new Map<id, CaseTeamMember>();
+        CaseTeamRole role = [select Id from CaseTeamRole where Name = :Label.CL00069 limit 1];
+        CaseTeamMember caseNewTeam2;
+        CaseTeamMember caseNewTeam3;
+        CaseTeamMember caseNewTeam4;
+        Integer usersPlant;
+        Set<Id> gateRecordId = new Set<Id>();
+        
+        
+        for(case objOldCase : aOldList){
+            productOld.add(objOldCase.ProductName__c);  
+            accountManagerOld.add(objOldCase.CSAccountManager__c);
+            recordId.add(objOldCase.Id);
+            gatekeeperOld.add(objOldCase.GateKeeper__c);            
+        }           
+        
+        for(Case objNew : aNewList){ 
+            plantCase.add(objNew.Manufacturing_Plant__c);
+            productNew.add(objNew.ProductName__c); 
+            accountManagerNew.add(objNew.CSAccountManager__c);
+            gatekeeperSet.add(objNew.GateKeeper__c);
+        }
+        
+        if(gatekeeperSet!=gatekeeperOld && productOld!=productNew){
+            try{
+                
+                delete [select Id,MemberId FROM CaseTeamMember WHERE ParentId IN:recordId];
+            }
+            
+            catch(DMLException e){
+                System.Debug('Error in delete case team' + e);
+            }    
+        }
+        
+        String recordTypeComplaint = Label.CL00008;
+        
+        RecordType complaint = [SELECT Id, DeveloperName 
+                                FROM RecordType 
+                                WHERE SObjectType =:Label.CL00036
+                                AND DeveloperName =:recordTypeComplaint]; 
+        
+        
+        Id recordTypeComplaintId = complaint.Id;
+        
+        usersPlant = [SELECT COUNT()
+                      FROM GatekeeperAssignment__c 
+                      WHERE Manufacturing_Plant__c IN: plantCase
+                      AND Object__c =:Label.CL00038
+                      AND AllPlants__c =: false];
+        system.debug('users' + usersPlant);     
+        
+        Map<Id, Product2> caseMap = new Map<Id,Product2>([SELECT Id, New_Product_Type_2__c from Product2 WHERE 
+                                                          Id IN:productNew AND New_Product_Type_2__c IN(:Label.CL00037,:Label.CL00039)]);
+        
+        if(plantCase !=Null && productOld!=productNew && caseMap.size() ==0 && usersPlant!=0 && !plantCase.contains(Label.CL00043)){
+            //||businessArea != Null && plantcase !=Null && businessAreaOld!=businessArea && caseMap.size() ==0){      
+            
+            system.debug('regis');
+            
+            for(GatekeeperAssignment__c gate : [SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c  
+                                                FROM GatekeeperAssignment__c 
+                                                WHERE Manufacturing_Plant__c IN: plantCase
+                                                AND AllPlants__c =: false
+                                                AND Object__c =: Label.CL00038
+                                                AND GateKeeper__c IN: gatekeeperSet
+                                                ORDER BY Id DESC]){
+                                                    
+                                                    gatekeeperMap.put(gate.Gatekeeper__c, gate);
+                                                    gatekeeper2Set.add(gate.Gatekeeper2__c);
+                                                    gatekeeper3Set.add(gate.Gatekeeper3__c);
+                                                    gatekeeper4Set.add(gate.Gatekeeper4__c);
+                                                    gateRecordId.add(gate.Id);
+                                                }
+            
+            
+        }       
+        if (usersPlant == 0 && productOld!=productNew && caseMap.size() == 0){
+            
+            for(GatekeeperAssignment__c gate2 : [SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c   
+                                                 FROM GatekeeperAssignment__c 
+                                                 WHERE AllPlants__c =: true
+                                                 AND Object__c =:Label.CL00038
+                                                 AND GateKeeper__c IN: gatekeeperSet
+                                                 ORDER BY CreatedDate DESC]){
+                                                     
+                                                     gatekeeperMap.put(gate2.Gatekeeper__c, gate2);
+                                                     gatekeeper2Set.add(gate2.Gatekeeper2__c);
+                                                     gatekeeper3Set.add(gate2.Gatekeeper3__c);
+                                                     gatekeeper4Set.add(gate2.Gatekeeper4__c);
+                                                     gateRecordId.add(gate2.Id);
+                                                     
+                                                 }
+            system.debug('gate2' + gatekeeper2Set+gatekeeper3Set+gatekeeper4Set);
+        }
+        if(accountManagerOld!=accountManagerNew && caseMap.size() > 0){
+            //businessAreaOld!=businessArea && businessArea != null && caseMap.size() > 0||    
+            
+            system.debug('update Calderys');
+            
+            for(User userCountryGate : [SELECT CountryforGatekeeper__c 
+                                        FROM User 
+                                        Where Id IN: accountManagerNew
+                                        ORDER BY Id DESC]){
+                                            
+                                            countryUserGatekeeper.add(userCountryGate.CountryforGatekeeper__c);
+                                            system.debug('countryforGatekeeper' + userCountryGate);
+                                        }                     
+            for(GatekeeperAssignment__c gatekeeperCalderys : [SELECT CountryforGatekeeper__c, Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c  
+                                                              FROM GatekeeperAssignment__c
+                                                              WHERE CountryforGatekeeper__c IN: countryUserGatekeeper
+                                                              AND Object__c =: Label.CL00038
+                                                              AND GateKeeper__c IN: gatekeeperSet
+                                                              ORDER BY Id DESC]){
+                                                                  
+                                                                  gatekeeperMap.put(gatekeeperCalderys.Gatekeeper__c, gatekeeperCalderys);
+                                                                  gatekeeper2Set.add(gatekeeperCalderys.Gatekeeper2__c);
+                                                                  gatekeeper3Set.add(gatekeeperCalderys.Gatekeeper3__c);
+                                                                  gatekeeper4Set.add(gatekeeperCalderys.Gatekeeper4__c);
+                                                                  gateRecordId.add(gatekeeperCalderys.Id);
+                                                                  
+                                                              }
+            system.debug('gate3' + gatekeeper2Set+gatekeeper3Set+gatekeeper4Set);
+        }           
+        try{
+            
+            for(Case objCaseTeam: aNewList){ 
+                if(gatekeeperMap.containsKey(objCaseTeam.Gatekeeper__c)){   
+                    if(gatekeeperMap.size() > 0 && !gatekeeper2Set.contains(null)){              
+                        caseNewTeam2 = new caseTeamMember();
+                        caseNewTeam2.MemberId = gatekeeperMap.get(objCaseTeam.Gatekeeper__c).Gatekeeper2__c;
+                        caseNewTeam2.ParentId = objCaseTeam.Id;
+                        caseNewTeam2.TeamRoleId = role.Id;
+                        insertCaseTeamMap2.put(caseNewTeam2.Id, caseNewTeam2);
+                    }
+                    if(gatekeeperMap.size() > 0 && !gatekeeper3Set.contains(null)){              
+                        caseNewTeam3 = new caseTeamMember();
+                        caseNewTeam3.MemberId = gatekeeperMap.get(objCaseTeam.Gatekeeper__c).Gatekeeper3__c;
+                        caseNewTeam3.ParentId = objCaseTeam.Id;
+                        caseNewTeam3.TeamRoleId = role.Id;
+                        insertCaseTeamMap3.put(caseNewTeam3.Id, caseNewTeam3);
+                    }
+                    if(gatekeeperMap.size() > 0 && !gatekeeper4Set.contains(null)){
+                        system.debug('gate4' + gatekeeper4Set);                 
+                        caseNewTeam4 = new caseTeamMember();
+                        caseNewTeam4.MemberId = gatekeeperMap.get(objCaseTeam.Gatekeeper__c).Gatekeeper4__c;
+                        caseNewTeam4.ParentId = objCaseTeam.Id;
+                        
+                        caseNewTeam4.TeamRoleId = role.Id;
+                        insertCaseTeamMap4.put(caseNewTeam4.Id, caseNewTeam4);
+                    }
+                }
+                /* if(!gatekeeperMap.containsKey(objCaseTeam.Gatekeeper__c)){   
+                    
+                    for(GatekeeperAssignment__c gateAssign:[SELECT Gatekeeper__c, Gatekeeper2__c, Gatekeeper3__c, Gatekeeper4__c
+                                                            FROM GatekeeperAssignment__c WHERE Gatekeeper__c IN: gatekeeperMap.KeySet()
+                                                            AND Object__c =: Label.CL00038
+                                                            AND Id IN: gateRecordId]){
+                                                                
+                                                                if(gateAssign.Gatekeeper2__c!= null){
+                                                                    caseNewTeam2 = new caseTeamMember();
+                                                                    caseNewTeam2.MemberId = gateAssign.Gatekeeper2__c;
+                                                                    caseNewTeam2.ParentId = objCaseTeam.Id;
+                                                                    caseNewTeam2.TeamRoleId = role.Id;
+                                                                    insertCaseTeamMap2.put(caseNewTeam2.Id, caseNewTeam2);
+                                                                }
+                                                                if(gateAssign.Gatekeeper3__c!= null){
+                                                                    caseNewTeam3 = new caseTeamMember();
+                                                                    caseNewTeam3.MemberId = gateAssign.Gatekeeper3__c;
+                                                                    caseNewTeam3.ParentId = objCaseTeam.Id;
+                                                                    caseNewTeam3.TeamRoleId = role.Id;
+                                                                    insertCaseTeamMap3.put(caseNewTeam3.Id, caseNewTeam3);
+                                                                }
+                                                                if(gateAssign.Gatekeeper4__c!= null){
+                                                                    caseNewTeam4 = new caseTeamMember();
+                                                                    caseNewTeam4.MemberId = gateAssign.Gatekeeper4__c;
+                                                                    caseNewTeam4.ParentId = objCaseTeam.Id;
+                                                                    caseNewTeam4.TeamRoleId = role.Id;
+                                                                    insertCaseTeamMap4.put(caseNewTeam4.Id, caseNewTeam4);
+                                                                }
+                                                            }
+                }*/
+
+               
+            }
+            
+            
+            if(insertCaseTeamMap2.size() > 0){
+                Database.insert(insertCaseTeamMap2.values(), false);
+                
+            }
+            if(insertCaseTeamMap3.size() > 0){
+                Database.insert(insertCaseTeamMap3.values(), false);
+                
+            }
+            if(insertCaseTeamMap4.size() > 0){
+                Database.insert(insertCaseTeamMap4.values(),false);
+                
+            }
+        }
+        catch(DMLException e){
+            System.Debug('Error' + e);
+        }          
+    }
+  
     
     /**
 *@author Geerutsing Govind Kumar
