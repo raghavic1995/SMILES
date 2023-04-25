@@ -15,7 +15,7 @@ public without sharing class AP01_FreightRateRequestTriggerHandler extends Trigg
      
      For(FreightRateRequest__c obj : aNewList){
          objRecordType.add(obj.RecordTypeId); 
-         imerysPlantSet.add(obj.ImerysManufacturingPlantLookup__c);
+         imerysPlantSet.add(obj.Manufacturing_Plant__c);
          productTypeSet.add(obj.New_Product_Type_1__c);
      }
      
@@ -76,7 +76,7 @@ public without sharing class AP01_FreightRateRequestTriggerHandler extends Trigg
                            								FROM GatekeeperAssignment__c 
                                                         WHERE Object__c =: Label.CL00095 
                                                         AND ModeOfShipment__c =: recordTypeApi
-                           								AND	ImerysManufacturingPlant__c IN:	imerysPlantSet	];
+                           								AND	Manufacturing_Plant__c IN:	imerysPlantSet	];
          }
          catch(DMLException e){
                 
@@ -138,6 +138,7 @@ public without sharing class AP01_FreightRateRequestTriggerHandler extends Trigg
      Set<Id> quoteLineItemIdSet = new Set<Id>();
      List<QuoteLineItem> productQli = new List<QuoteLineItem>();
      List<Product2> prodDetails = new List<Product2>();
+     List<Manufacturing_Plant__c>ManufacturingplantDetails = new List<Manufacturing_Plant__c>();
      Set<Id> objRecordType = new Set<Id>();
      Id prodId ;
      String recordTypeApi;
@@ -168,8 +169,8 @@ public without sharing class AP01_FreightRateRequestTriggerHandler extends Trigg
      
      //Get Imerys Manufacturing Plant and Product type 1 from ProductId
      try{
-         prodDetails = [SELECT New_Product_Type_1__c,ImerysManufacturingPlant__c from Product2 where Id =: prodId];
-         
+         ManufacturingplantDetails = [SELECT Imerys_Product__c,Imerys_Site__c  from Manufacturing_Plant__c where Imerys_Product__c =: prodId];
+         prodDetails = [SELECT New_Product_Type_1__c from Product2 where Id =: prodId];
      }
      catch(DMLException e){
          
@@ -180,7 +181,7 @@ public without sharing class AP01_FreightRateRequestTriggerHandler extends Trigg
          //If RecordType == Transload,Rail
          if(recordTypeApi.equals(Label.CL00092) ){
              for(FreightRateRequest__c obj : aNewList){
-                 obj.ImerysManufacturingPlantLookup__c = prodDetails[0].ImerysManufacturingPlant__c;
+                 obj.Manufacturing_Plant__c = ManufacturingplantDetails[0].Id;
                  obj.New_Product_Type_1__c = prodDetails[0].New_Product_Type_1__c;
              }
          }
@@ -188,7 +189,7 @@ public without sharing class AP01_FreightRateRequestTriggerHandler extends Trigg
       //If RecordType == Truck,Intermodal
          if(recordTypeApi.equals(Label.CL00093) ){
              for(FreightRateRequest__c obj : aNewList){
-                 obj.ImerysManufacturingPlantLookup__c = prodDetails[0].ImerysManufacturingPlant__c;
+                 obj.Manufacturing_Plant__c = ManufacturingplantDetails[0].Id;
                  obj.New_Product_Type_1__c = prodDetails[0].New_Product_Type_1__c;  
              }
          }
@@ -197,7 +198,7 @@ public without sharing class AP01_FreightRateRequestTriggerHandler extends Trigg
          if(recordTypeApi.equals(Label.CL00094) ){
              for(FreightRateRequest__c obj : aNewList){
                  obj.New_Product_Type_1__c = prodDetails[0].New_Product_Type_1__c;
-                 obj.ImerysManufacturingPlantLookup__c = prodDetails[0].ImerysManufacturingPlant__c;
+                 obj.Manufacturing_Plant__c = ManufacturingplantDetails[0].Id;
              }
          }
          
