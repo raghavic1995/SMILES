@@ -1,6 +1,5 @@
-public class Strategicpriorities {
-  
-  @AuraEnabled
+public class AccountPlanStages {
+   @AuraEnabled
     public static boolean haspermission(id AccountplanId){
         {	
             boolean Permission;
@@ -62,84 +61,72 @@ public class Strategicpriorities {
     }
        
     
+    @AuraEnabled
+    public static list<Account_Plan_Priorities__c> getAccountPlanPrioritiesList(Id AccountplanID) 
+    {       list<Account_Plan_Priorities__c> listOfaccPlanPrioritiesList;
+     try{
+         if(AccountplanID != null){
+             listOfaccPlanPrioritiesList = [Select id,Top_5_Priorities__c,List_Priorities_of_the_Key_Account__c,
+                                            Rating_for_Priorities_of_the_Key_Account__c,Rating_for_Imerys_Internal_Fit__c,
+                                            Description_for_the_Priorities_of_the_Ke__c from Account_Plan_Priorities__c where Account_Plan__c =:AccountplanID   Order by  CreatedDate ASC  ];
+         } 
+     }catch(Exception EX){
+         EX.getMessage();
+     }
+     return listOfaccPlanPrioritiesList;
+    }
     
     @AuraEnabled
-    public static  list<Account_Plan_Priorities__c>  getAccountpriorites(id AccountplanID){
-        list<Account_Plan_Priorities__c> listOfaccPlanPrioritiesList;
-        try {	
-            if(AccountplanID != null){
-                listOfaccPlanPrioritiesList = [Select id, Top_5_Priorities__c, List_Priorities_of_the_Key_Account__c, Account_Plan__c,Win_Win_Partnership__c,Imerys_Strategic__c
-                                               from Account_Plan_Priorities__c  where Account_Plan__c =:AccountplanID  AND Top_5_Priorities__c = true order by createddate ASC  ];
-            } 
-            
+    public static List<Account_Plan_Priorities__c> saveAccountPlanPrioritiesList(List<Account_Plan_Priorities__c> accPlanPrioritiesList){  
+        
+        try{
+            if(accPlanPrioritiesList != null){
+                update accPlanPrioritiesList;
+            }
         }catch(Exception EX){
             EX.getMessage();
         }
+        return accPlanPrioritiesList;
         
-        System.debug('@@listOfaccPlanPrioritiesList'+listOfaccPlanPrioritiesList);
-        return listOfaccPlanPrioritiesList; 
     }
     
     
     @AuraEnabled
-    public static  void  sumbitAccountPriorites(Id AccountplanID, list<Account_Plan_Priorities__c> row1, list<Account_Plan_Priorities__c> row2, list<Account_Plan_Priorities__c> row3, 
-                                               list<Account_Plan_Priorities__c> row4, list<Account_Plan_Priorities__c> row5)
-    {
-        
-        list<Account_Plan_Priorities__c> listtoinsert = new list<Account_Plan_Priorities__c>();
-        try {	
-            if(AccountplanID != null){
+    public static void InsertAccountPlanPrioritiesList( Id Accplanrecid,string accppPriorityKA,string accppRatingPriority,
+                                                       string accppRatingIMS,string accppDescription)
+    {      
+        try{
+            if(Accplanrecid != null &&  accppPriorityKA != null && accppRatingPriority !=null && accppRatingIMS !=null){
                 
-                if(row1!=Null){
-                for(Account_Plan_Priorities__c APProw1 : row1 ){
-                    if(APProw1.id != null){
-                        listtoinsert.add(APProw1);
-                    }
-                }
-                }
-                
-                if(row2!=Null){
-                for(Account_Plan_Priorities__c APProw2 : row2 ){
-                    if(APProw2.id != null){
-                        listtoinsert.add(APProw2);
-                    }
-                }
-                }
-                
-                
-                if(row3!=Null){
-                for(Account_Plan_Priorities__c APProw3 : row3 ){
-                    if(APProw3.id != null){
-                        listtoinsert.add(APProw3);
-                    }
-                }
-                }
-                
-                if(row4!=Null){
-                for(Account_Plan_Priorities__c APProw4 : row4 ){
-                    if(APProw4.id != null){
-                        listtoinsert.add(APProw4);
-                    }
-                }
-                }
-                if(row5!=Null){
-                    for(Account_Plan_Priorities__c APProw5 : row5 ){
-                    if(APProw5.id != null){
-                        listtoinsert.add(APProw5);
-                    }
-                }
-                    
-                }
-                
-                if(listtoinsert != null){
-                    update listtoinsert;
-                    system.debug('listtoinsert is'+listtoinsert);
-                }
-            }      
+                Account_Plan_Priorities__c  AccPlanPriority = new Account_Plan_Priorities__c();
+                AccPlanPriority.Account_Plan__c = Accplanrecid;
+                AccPlanPriority.List_Priorities_of_the_Key_Account__c = accppPriorityKA;
+                AccPlanPriority.Rating_for_Priorities_of_the_Key_Account__c = accppRatingPriority;
+                AccPlanPriority.Rating_for_Imerys_Internal_Fit__c = accppRatingIMS;
+                AccPlanPriority.Description_for_the_Priorities_of_the_Ke__c = accppDescription;
+                insert AccPlanPriority;
+            }
         }catch(Exception EX){
             EX.getMessage();
-            system.debug('listtoinsert is in catch'+listtoinsert);
         }
+        
     }
-   
+    
+    @AuraEnabled
+    public static String deletePriorities(List<Account_Plan_Priorities__c> accPriorities){
+       	String value= 'No';
+        system.debug('hello');
+        
+        List<Account_Plan_Priorities__c> accPrioritiesList=[select Top_5_Priorities__c from Account_Plan_Priorities__c where id in:accPriorities ];
+        for(Account_Plan_Priorities__c appList:accPrioritiesList){
+            if(appList.Top_5_Priorities__c==true){
+                delete appList;
+                value='Yes';
+            }
+        }
+        return value;
+        
+
+    }
+    
 }
