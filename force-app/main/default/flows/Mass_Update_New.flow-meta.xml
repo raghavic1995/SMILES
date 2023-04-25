@@ -373,10 +373,6 @@
             <targetReference>assign_to_used_collection</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__targetCommonRecordCollection</typeName>
-            <typeValue>Account</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>T__sourceRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
@@ -390,6 +386,10 @@
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>U__targetUniqueRecordCollection</typeName>
+            <typeValue>Account</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>U__targetCommonRecordCollection</typeName>
             <typeValue>Account</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
@@ -437,19 +437,15 @@
             <targetReference>getLinkedAccountProduct</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
-            <typeValue>SalesAgreementProduct</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>U__sourceCommonRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__targetRecordCollection</typeName>
-            <typeValue>Product2</typeValue>
+            <typeName>T__sourceRecordCollection</typeName>
+            <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__targetUniqueRecordCollection</typeName>
+            <typeName>T__targetRecordCollection</typeName>
             <typeValue>Product2</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
@@ -459,6 +455,10 @@
         <dataTypeMappings>
             <typeName>U__sourceUniqueRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>U__targetUniqueRecordCollection</typeName>
+            <typeValue>Product2</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -717,12 +717,12 @@
             <targetReference>sort_Collectionx</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
-            <typeValue>SalesAgreementProduct</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>U__outputCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__sourceRecordCollection</typeName>
+            <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -809,16 +809,16 @@
             <targetReference>getSAPsNotFound</targetReference>
         </connector>
         <dataTypeMappings>
+            <typeName>T__sourceRecordCollection</typeName>
+            <typeValue>SalesAgreementProduct</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
             <typeName>T__targetRecordCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>U__sourceUniqueRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
-            <typeName>U__targetCommonRecordCollection</typeName>
-            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>U__sourceCommonRecordCollection</typeName>
@@ -829,8 +829,8 @@
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
-            <typeValue>SalesAgreementProduct</typeValue>
+            <typeName>U__targetCommonRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -1069,12 +1069,12 @@
             <targetReference>MapSAPtoERP</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
-            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__sourceRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -1135,11 +1135,11 @@
             <targetReference>check_Results</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__sourceRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -1310,11 +1310,11 @@
             <targetReference>Move_SAP_to_S3</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__inputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__inputCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -4145,7 +4145,7 @@
         <name>frmAssignNewProductPrice</name>
         <dataType>Currency</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Product&quot;,{!loopSelectedPrices.Tech_Temp_price__c} ,
+&quot;Base Price&quot;,{!loopSelectedPrices.Tech_Temp_price__c} ,
 {!loopSelectedPrices.Customer_ex_works_price__c}
 )</expression>
         <scale>2</scale>
@@ -4163,7 +4163,7 @@
         <name>frmAssignNewTransportTotalPrice</name>
         <dataType>Currency</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Transport (Total)&quot;,{!loopSelectedPrices.Tech_Temp_price__c} ,
+&quot;Transport (Per Container)&quot;,{!loopSelectedPrices.Tech_Temp_price__c} ,
 {!loopSelectedPrices.Trasport_price_lumpsum__c})</expression>
         <scale>2</scale>
     </formulas>
@@ -4176,9 +4176,9 @@
         <name>frmColumnLabel</name>
         <dataType>String</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Product&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Product Price, frmTech_New_price__c:New Product Price&quot; ,
+&quot;Base Price&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Base Price, frmTech_New_price__c:New Base Price&quot; ,
 &quot;Transport&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Transport Price(Unit), frmTech_New_price__c:New Transport Price(Unit)&quot; ,
-&quot;Transport (Total)&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Transport Price(Total), frmTech_New_price__c:New Transport Price(Total)&quot; ,
+&quot;Transport (Per Container)&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Transport Price (Per Container), frmTech_New_price__c:New Transport Price (Per Container)&quot; ,
 &quot;Energy&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Energy Surcharge, frmTech_New_price__c:New Energy Surcharge&quot; ,
 &quot;Freight&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Freight Surcharge, frmTech_New_price__c:New Freight Surcharge&quot; ,
 &quot;Full price (exc. surcharge)&quot;  ,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Full Price exc. Surchages, frmTech_New_price__c:New Full Price exc. Surchages&quot; ,
@@ -4189,9 +4189,9 @@
         <name>frmCurrentPrice</name>
         <dataType>String</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Product&quot;,TEXT( IF(ISBLANK({!loopProductPrices.Customer_ex_works_price__c}),0, {!loopProductPrices.Customer_ex_works_price__c} )) ,
+&quot;Base Price&quot;,TEXT( IF(ISBLANK({!loopProductPrices.Customer_ex_works_price__c}),0, {!loopProductPrices.Customer_ex_works_price__c} )) ,
 &quot;Transport&quot;,TEXT( IF(ISBLANK( {!loopProductPrices.TransportPricePerUnit__c} ),0, {!loopProductPrices.TransportPricePerUnit__c} )) ,
-&quot;Transport (Total)&quot;,TEXT( IF(ISBLANK({!loopProductPrices.Trasport_price_lumpsum__c}),0,{!loopProductPrices.Trasport_price_lumpsum__c})) ,
+&quot;Transport (Per Container)&quot;,TEXT( IF(ISBLANK({!loopProductPrices.Trasport_price_lumpsum__c}),0,{!loopProductPrices.Trasport_price_lumpsum__c})) ,
 &quot;Energy&quot;,TEXT( IF(ISBLANK({!loopProductPrices.Energy_Surcharge__c}),0,{!loopProductPrices.Energy_Surcharge__c} )) ,
 &quot;Freight&quot;,TEXT( IF(ISBLANK({!loopProductPrices.Freight_Surcharge__c}),0, {!loopProductPrices.Freight_Surcharge__c})) ,
 &quot;Full price (exc. surcharge)&quot;,TEXT( IF(ISBLANK({!loopProductPrices.Full_delivered_Price_exc_surcharge__c} ),0, {!loopProductPrices.Full_delivered_Price_exc_surcharge__c} )) ,
@@ -4289,9 +4289,9 @@ VALUE(MID(TEXT({!loopSelectedPrices.New_Start_Date__c}),1,2))
         <name>frmNewPricePolyMorphic</name>
         <dataType>Currency</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Product&quot;,{!frmNewProductPrice} ,
+&quot;Base Price&quot;,{!frmNewProductPrice} ,
 &quot;Transport&quot;,{!frmNewTransportUnitPrice} ,
-&quot;Transport (Total)&quot;,{!frmNewTransportTotalPrice} ,
+&quot;Transport (Per Container)&quot;,{!frmNewTransportTotalPrice} ,
 &quot;Energy&quot;,{!frmNewEnergyPrice} ,
 &quot;Freight&quot;,{!frmNewFreightPrice} ,
 &quot;Full price (exc. surcharge)&quot;,{!frmNewFullexcSurchargePrice} ,
@@ -4474,9 +4474,9 @@ HYPERLINK(
         <name>frmTempNewPrice</name>
         <dataType>String</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Product&quot;,TEXT( IF(ISBLANK({!frmNewProductPrice}),0, {!frmNewProductPrice} )) ,
+&quot;Base Price&quot;,TEXT( IF(ISBLANK({!frmNewProductPrice}),0, {!frmNewProductPrice} )) ,
 &quot;Transport&quot;,TEXT( IF(ISBLANK({!frmNewTransportUnitPrice}),0, {!frmNewTransportUnitPrice} )) ,
-&quot;Transport (Total)&quot;,TEXT( IF(ISBLANK({!frmNewTransportTotalPrice}),0, {!frmNewTransportTotalPrice} )) ,
+&quot;Transport (Per Container)&quot;,TEXT( IF(ISBLANK({!frmNewTransportTotalPrice}),0, {!frmNewTransportTotalPrice} )) ,
 &quot;Energy&quot;,TEXT( IF(ISBLANK({!frmNewEnergyPrice}),0, {!frmNewEnergyPrice} )) ,
 &quot;Freight&quot;,TEXT( IF(ISBLANK({!frmNewFreightPrice}),0, {!frmNewFreightPrice} )) ,
 &quot;Full price (exc. surcharge)&quot;,TEXT( IF(ISBLANK({!frmNewFullexcSurchargePrice} ),0, {!frmNewFullexcSurchargePrice} )) ,
@@ -6032,7 +6032,7 @@ HYPERLINK(
         <label>scrPriceComponentSelection</label>
         <locationX>644</locationX>
         <locationY>9302</locationY>
-        <allowBack>false</allowBack>
+        <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
@@ -6139,7 +6139,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>staticChoicesString</name>
                         <value>
-                            <stringValue>[{&quot;label&quot;:&quot;Product&quot;,&quot;value&quot;:&quot;Product price per unit update&quot;}]</stringValue>
+                            <stringValue>[{&quot;label&quot;:&quot;Base Price&quot;,&quot;value&quot;:&quot;Base price per unit update&quot;}]</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -6293,7 +6293,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>staticChoicesString</name>
                         <value>
-                            <stringValue>[{&quot;label&quot;:&quot;Transport (Total)&quot;,&quot;value&quot;:&quot;Total transport price update&quot;}]</stringValue>
+                            <stringValue>[{&quot;label&quot;:&quot;Transport (Per Container)&quot;,&quot;value&quot;:&quot;Transport Price Per Container update&quot;}]</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -6479,6 +6479,7 @@ HYPERLINK(
             <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <helpText>&lt;p&gt;You are now using the process to create sustainability requests&lt;/p&gt;</helpText>
+        <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
         <showFooter>false</showFooter>
         <showHeader>false</showHeader>
     </screens>
@@ -7017,7 +7018,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnFields</name>
                         <value>
-                            <stringValue>Name,Family,Description,New_Product_Type_1__c,ImerysManufacturingPlant__c</stringValue>
+                            <stringValue>Name,Material_Group_5__c,Family,Description,New_Product_Type_1__c,ImerysManufacturingPlant__c</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7029,7 +7030,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnWidths</name>
                         <value>
-                            <stringValue>Name:290, Family:155, Description:285, New_Product_Type_1__c:170, ImerysManufacturingPlant__c:315</stringValue>
+                            <stringValue>Name:290, Material_Group_5__c:179, Family:155, Description:285, New_Product_Type_1__c:170, ImerysManufacturingPlant__c:315</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7354,7 +7355,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnLabels</name>
                         <value>
-                            <stringValue>Name:Sales Agr. Price, Sales_Agreement_Product__c:Sales Agr. Product, Customer_ex_works_price__c:Product price, Freight_Surcharge__c:Freight Surcharge, TransportPricePerUnit__c:Transport Price</stringValue>
+                            <stringValue>Name:Sales Agr. Price, Sales_Agreement_Product__c:Sales Agr. Product, Ex_works_Product_price_per_unit_reports__c:Base Price Per unit, Total_Transport_Price__c:Transport Price Per Container</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -8420,7 +8421,7 @@ HYPERLINK(
         <label>scrTypeOfUpdateSelection</label>
         <locationX>644</locationX>
         <locationY>9182</locationY>
-        <allowBack>false</allowBack>
+        <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
@@ -8477,18 +8478,6 @@ HYPERLINK(
                         </value>
                     </inputParameters>
                     <inputParameters>
-                        <name>navOnSelect</name>
-                        <value>
-                            <booleanValue>true</booleanValue>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>isResponsive</name>
-                        <value>
-                            <booleanValue>true</booleanValue>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
                         <name>choiceIcons</name>
                         <value>
                             <elementReference>colTextIcons</elementReference>
@@ -8530,6 +8519,18 @@ HYPERLINK(
                             <stringValue>        </stringValue>
                         </value>
                     </inputParameters>
+                    <inputParameters>
+                        <name>isResponsive</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>navOnSelect</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                     <outputParameters>
@@ -8555,12 +8556,6 @@ HYPERLINK(
                     </inputParameters>
                     <inputParameters>
                         <name>includeIcons</name>
-                        <value>
-                            <booleanValue>true</booleanValue>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>navOnSelect</name>
                         <value>
                             <booleanValue>true</booleanValue>
                         </value>
@@ -8607,6 +8602,12 @@ HYPERLINK(
                             <elementReference>colTextLabelCenter</elementReference>
                         </value>
                     </inputParameters>
+                    <inputParameters>
+                        <name>navOnSelect</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                     <outputParameters>
@@ -8632,12 +8633,6 @@ HYPERLINK(
                     </inputParameters>
                     <inputParameters>
                         <name>includeIcons</name>
-                        <value>
-                            <booleanValue>true</booleanValue>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>navOnSelect</name>
                         <value>
                             <booleanValue>true</booleanValue>
                         </value>
@@ -8676,6 +8671,12 @@ HYPERLINK(
                         <name>choiceIcons</name>
                         <value>
                             <elementReference>colTextIconsRight</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>navOnSelect</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
