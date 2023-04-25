@@ -1,0 +1,16 @@
+Your approval is requested for the following credit note in Salesforce
+
+Customer: {!Case.Account}
+Reason: - {!Case.Sub_Type__c}
+Credit Amount: {!Case.Requested_Credit_amount__c}
+Rebill Amount, if any: {!Case.Rebill_Amount__c}
+Details: {!Case.Description}
+
+To approve or reject this item, click this link {!Case.Link}
+
+You can also reply to this email with one of the following words in the first line of the email body: APPROVE, APPROVED, YES, REJECT, REJECTED, NO
+
+If replying via email you can also add comments on the second line. Comments will be stored with the approval request in Salesforce.
+
+Thank you,
+Imerys Salesforce Team

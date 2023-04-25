@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SAM_VR19_DateSent_SamplewithouOpp</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+
+(RecordType.DeveloperName = &apos;SAM_SampleWithOpportunity&apos; || RecordType.DeveloperName = &apos;SAM_SampleWithoutOpportunity&apos; ),
+
+OR(
+NOT(ISNULL(DateSent__c)),DateSent__c &gt; TODAY()),
+Canceled__c=FALSE,
+$User.ByPassValidationRule__c = FALSE,
+ISPICKVAL(Status__c,&apos;Preparation/Shipment&apos;),
+
+
+OR(
+Tech_NoOfOpenedWorkRequest__c &gt;0,
+ISPICKVAL(Incoterm__c ,&apos;&apos;),
+ISBLANK(DispatchSiteLookup__c),
+ISBLANK(RequiredDocumentation__c),
+ISPICKVAL(CostChargedToCustomer__c ,&apos;&apos;),
+ISBLANK(ProductCharge__c),
+ISBLANK(LogisticsCharge__c),
+ISPICKVAL(Approved__c,&apos;&apos;),
+
+AND(
+ISBLANK(MarketSegmentation__c)
+)
+
+))</errorConditionFormula>
+    <errorDisplayField>DateSent__c</errorDisplayField>
+    <errorMessage>To fill Date sent the following fields are mandatory: 
+Incoterm, Dispatch Site, Required Doc, Cost Charged to Cust,Associated Sample Charge, Associated Logistic Charge and Approved?,MarketSegmentL2 (All open work request should be closed)</errorMessage>
+</ValidationRule>
