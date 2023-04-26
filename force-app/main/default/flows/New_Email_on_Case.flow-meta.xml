@@ -58,7 +58,7 @@
     <recordLookups>
         <name>get_E2C_record_type</name>
         <label>get E2C record type</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>335</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -149,7 +149,7 @@
         <object>Case</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>get_E2C_record_type</targetReference>
