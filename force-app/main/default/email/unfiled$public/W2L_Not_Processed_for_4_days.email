@@ -1,0 +1,13 @@
+Dear Gatekeeper,
+
+This lead has been created and not processed in the last 4 days. Please progress the lead.
+
+Details of the lead is as follows:
+• Lead Source: {!Lead.LeadSource}
+• Lead time: {!Lead.LastModifiedDate}
+• Lead owner: {!Lead.OwnerFullName}
+• User's first name: {!Lead.FirstName}
+• User's Last name: {!Lead.LastName}
+
+Regards,
+Imerys
