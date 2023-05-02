@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <assignments>
+        <name>assign_Country</name>
+        <label>assign Country</label>
+        <locationX>199</locationX>
+        <locationY>102</locationY>
+        <assignmentItems>
+            <assignToReference>varCountry</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>getAccount.BillingCountry</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>check_Market_Segmentation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>assign_Territory</name>
+        <label>assign Territory</label>
+        <locationX>614</locationX>
+        <locationY>398</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Territory__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>get_Territory.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Business_Performance_Manager__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>get_Territory.Business_Performance_Manager__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Market_VP__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>get_Territory.MarketVP__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Sales_Director__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>get_Territory.SalesDirector__c</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>assign_Territory_0</name>
+        <label>assign Territory</label>
+        <locationX>175</locationX>
+        <locationY>447</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Territory__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>check_Market_Segmentation</name>
+        <label>check Market Segmentation</label>
+        <locationX>173</locationX>
+        <locationY>218</locationY>
+        <defaultConnector>
+            <targetReference>assign_Territory_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Not_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Market_Segmentation_new__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Territory</targetReference>
+            </connector>
+            <label>Is Not Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Result</name>
+        <label>check Result</label>
+        <locationX>465</locationX>
+        <locationY>453</locationY>
+        <defaultConnector>
+            <targetReference>assign_Territory_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Not_Nullx</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Territory</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>assign_Territory</targetReference>
+            </connector>
+            <label>Is Not Null</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>frmArea</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK( {!varCountry} ),&quot;None&quot;,
+IF(CONTAINS(&quot;Antigua And Barbuda:Bahamas:Barbados:Belize:Bermuda:Cayman Islands:Costa Rica:Cuba:Curacao:Dominican Republic:El Salvador:Grenada:Guadeloupe:Guatemala:Guyana:Haiti:Honduras:Jamaica:Martinique:Nicaragua:Panama:Saint Kitts and Nevis:Canada:Mexico:United States:Argentina:Bolivia:Brazil:Chile:Colombia:Ecuador:Falkland Islands (Malvinas):Paraguay:Peru:Suriname:Trinidad And Tobago:Uruguay:Venezuela&quot;,{!varCountry} ), &quot;AMERICAS&quot;,
+IF(CONTAINS(&quot;China:Japan:Korea:Korea, Democratic Republic of (North Korea):Mongolia:South Korea:Taiwan:Australia:Fiji:New Caledonia:New Zealand:Brunei Darussalam:Cambodia:Indonesia:Laos:Malaysia:Philippines:Phillippines:Singapore:Thailand:Viet Nam:Vietnam:Afghanistan:Bangladesh:Bhutan:India:Myanmar:Nepal:Pakistan:Sri Lanka&quot;, {!varCountry} ), &quot;APAC&quot;,
+
+
+IF(CONTAINS(&quot;Algeria;Angola;Benin;Botswana;Burkina Faso;Burundi;Cameroon;Cape Verde;Central African Republic;Chad;Comoros;Congo;Cote d&apos;Ivoire;Djibouti;Equatorial Guinea;Eritrea;Ethiopia;Gabon;Gambia;Ghana;Guinea;Guinea-Bissau;Kenya;Lesotho;Liberia;Madagascar;Malawi;Mali;Mauritius;Mayotte;Morocco;Mozambique;Namibia;Niger;Nigeria;Reunion;Rwanda;Senegal;Seychelles;Sierra Leone;Somalia;South Africa;Sudan;Swaziland;Tanzania;Togo;Tunisia;Uganda;Zambia;Zimbabwe;Albania;Andorra;Armenia;Austria;Belarus;Belarussia;Belgique;Belgium;Bosnia and Herzegovina;Bulgaria;Croatia;Cyprus;Czechia;Denmark;Estonia;Finland;France;Georgia;Germany;Gibraltar;Greece;Hungary;Iceland;Ireland;Italy;Kazakhstan;Kosovo;Kyrgyzstan;Latvia;Liechtenstein;Lithuania;Luxembourg;Macedonia;Malta;Moldova;Monaco;Montenegro;Netherlands;Norway;Poland;Portugal;Romania;Russia;San Marino;Serbia;Slovakia;Slovenia;Spain;Suisse;Sweden;Switzerland;Turkmenistan;UK;Ukraine;United Kingdom;Uzbekistan;Azerbaijan;Bahrain;Egypt;Iran;Iraq;Israel;Jordan;Kuwait;Lebanon;Libyan Arab Jamahiriya;Oman;Qatar;Saudi Arabia;Syrian Arab Republic;Turkey;United Arab Emirates;Yemen&quot;, {!varCountry}), &quot;EMEA&quot;, &quot;None&quot;)))
+)</expression>
+    </formulas>
+    <formulas>
+        <name>frmCountryRegion</name>
+        <dataType>String</dataType>
+        <expression>CASE( {!frmArea},
+&quot;AMERICAS&quot;,IF ({!frmRegionOpp}=&quot;North America&quot;,&quot;NA&quot;,&quot;SA&quot;),
+{!frmArea} )</expression>
+    </formulas>
+    <formulas>
+        <name>frmMarketL2Code</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.Market_Segmentation_new__r.Market_Segmentation_Global_Code__c},5)</expression>
+    </formulas>
+    <formulas>
+        <name>frmRegionOpp</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK( {!varCountry}), &quot;None&quot;,
+
+IF(CONTAINS(&quot;Albania:Andorra:Armenia:Austria:Belarus:Belarussia:Belgique:Belgium:Bosnia and Herzegovina:Bulgaria:Cyprus:Czechia:Denmark:Estonia:Finland:France:Germany:Greece:Hungary:Ireland:Italy:Kazakhstan:Kosovo:Kyrgyzstan:Latvia:Liechtenstein:Lithuania:Luxembourg:Malta:Moldova:Monaco:Montenegro:Netherlands:Norway:Poland:Portugal:Romania:San Marino:Slovakia:Spain:Sweden:Switzerland:Turkmenistan:UK:Ukraine:United Kingdom:Uzbekistan&quot;, {!varCountry} ), &quot;Europe&quot;,
+
+IF(CONTAINS(&quot;Algeria:Angola:Benin:Botswana:Burkina Faso:Burundi:Cameroon:Cape Verde:Central African Republic:Chad:Congo:Coted&apos;Ivoire:Djibouti:Guinea:Eritrea:Ethiopia:Gabon:Gambia:Ghana:Guinea:Guinea-Bissau:Kenya:Lesotho:Liberia:Madagascar:Malawi:Mali:Mauritius:Mayotte:Morocco:Mozambique:Namibia:Niger:Nigeria:Reunion:Rwanda:Senegal:Seychelles:Sierra Leone:Somalia:South Africa:Sudan:Swaziland:Tanzania:Togo:Tunisia:Uganda:Zambia:Zimbabwe&quot;,  {!varCountry} ), &quot;Africa&quot;,
+
+IF(CONTAINS(&quot;Antigua And Barbuda:Bahamas:Barbados:Belize:Bermuda:Cayman Islands:Costa Rica:Cuba:Curacao:Dominican Republic:El Salvador:Grenada:Guadeloupe:Guatemala:Guyana:Haiti:Honduras:Jamaica:Martinique:Nicaragua:Panama:Saint Kitts and Nevis&quot;, {!varCountry} ), &quot;Central America&quot;,
+
+IF(CONTAINS(&quot;Azerbaijan:Bahrain:Egypt:Iran:Iraq:Israel:Jordan:Kuwait:Lebanon:Libyan Arab Jamahiriya:Oman:Qatar:Saudi Arabia:Syrian Arab Republic:Turkey:Arab Emirates:Yemen&quot;, {!varCountry} ), &quot;Middle East&quot;,
+
+IF(CONTAINS(&quot;Canada:Mexico:United States&quot;, {!varCountry} ), &quot;North America&quot;,
+
+IF(CONTAINS(&quot;China:Japan:Korea:Korea, Democratic Republic of (North Korea):Mongolia:South Korea:Taiwan&quot;, {!varCountry} ), &quot;North Asia&quot;,
+
+IF(CONTAINS(&quot;Australia:Fiji:New Caledonia:New Zealand&quot;,  {!varCountry} ), &quot;Pacific&quot;,
+
+IF(CONTAINS(&quot;Argentina:Bolivia:Brazil:Chile:Colombia:Ecuador:Falkland Islands (Malvinas):Paraguay:Peru:Suriname:Trinidad And Tobago:Uruguay:Venezuela&quot;, {!varCountry} ), &quot;South America&quot;,
+
+IF(CONTAINS(&quot;Brunei Darussalam:Cambodia:Indonesia:Laos:Malaysia:Philippines:Phillippines:Singapore:Thailand:Viet Nam:Vietnam:&quot;,  {!varCountry} ), &quot;South East Asia&quot;,
+
+IF(CONTAINS(&quot;Afghanistan:Bangladesh:Russia:Bhutan:India:Myanmar:Nepal:Pakistan:Sri Lanka&quot;, {!varCountry} ), &quot;West Asia&quot;, &quot;Other&quot;)))))))))))</expression>
+    </formulas>
+    <interviewLabel>Opportunity - BS - Create - Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - BS - Create - Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>get_Territory</name>
+        <label>get Territory</label>
+        <locationX>359</locationX>
+        <locationY>203</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_Result</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Country_Region__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>frmCountryRegion</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Market_Segment_L2_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>frmMarketL2Code</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Territory__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>getAccount</name>
+        <label>getAccount</label>
+        <locationX>314</locationX>
+        <locationY>92</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>assign_Country</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>441</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>getAccount</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varCountry</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
