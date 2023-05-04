@@ -917,6 +917,8 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
         
         Id recordTypeComplaintId = complaint.Id;
         
+        if(productOld!=productNew ||accountManagerOld!=accountManagerNew){
+        
         usersPlant = [SELECT COUNT()
                       FROM GatekeeperAssignment__c 
                       WHERE Manufacturing_Plant__c IN: plantCase
@@ -1074,7 +1076,8 @@ public without sharing class AP01_CaseTriggerHandler extends TriggerHandler {
         }
         catch(DMLException e){
             System.Debug('Error' + e);
-        }          
+        }
+        }
     }
   
     
