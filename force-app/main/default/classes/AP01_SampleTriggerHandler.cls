@@ -1252,8 +1252,14 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
         Integer usersAllPlants;
         DateTime date1 = Date.today();
         Set<id> csAccountManager = new set<id>();
+        Set<id> BPMSet = new set<id>();
+        Set<id> MarketVPSet = new set<id>();
+        Set<id> SalesDirSet = new set<id>();
         Id currentUserId = userinfo.getUserId();
         List<Sample__Share> sampShrsGatekeeper  = new List<Sample__Share>();
+        List<Sample__Share> sampShrsBPM  = new List<Sample__Share>();
+        List<Sample__Share> sampShrsMarketVP  = new List<Sample__Share>();
+        List<Sample__Share> sampShrsSalesDir  = new List<Sample__Share>();
         Map<id,Sample__Share> sampMapGatekeeper = new Map<id,Sample__Share>();
         
         if(!aNewList.isEmpty()){
@@ -1267,7 +1273,8 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
                 
                 sampleShr = new sample__Share(); 
                 
-                csAccountManager.add(sam.CSAccountManager__c);             
+                csAccountManager.add(sam.CSAccountManager__c);
+                
                 if(sam.CSAccountManager__c!= null){   
                     sampleShr.ParentId = sam.Id;
                     
@@ -1286,6 +1293,92 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
                     System.Debug('Error in createShare '+ e);
                 }
             }
+            
+             Sample__Share sampleShrBPM;            
+            // Instantiate the sharing objects             
+            
+            for(Sample__c sam : aNewList){
+                
+                sampleShrBPM = new sample__Share(); 
+                
+                BPMSet.add(sam.Business_Performance_Manager__c);
+                
+                if(sam.Business_Performance_Manager__c!= null){   
+                    sampleShrBPM.ParentId = sam.Id;
+                    
+                    sampleShrBPM.UserOrGroupId = sam.Business_Performance_Manager__c;          
+                    // Set the access level
+                    sampleShrBPM.AccessLevel = 'edit';           
+                    // Add objects to list for insert               
+                    sampShrsBPM.add(sampleShrBPM);
+                }
+            }         
+            if(BPMSet!=null && !BPMSet.contains(currentUserId)){ 
+                try{
+                    Database.SaveResult[] lsr = Database.insert(sampShrsBPM,True);
+                }
+                catch(DMLException e){
+                    System.Debug('Error in createShare '+ e);
+                }
+            }
+            
+              Sample__Share sampleShrMarketVP;            
+            // Instantiate the sharing objects             
+            
+            for(Sample__c sam : aNewList){
+                
+                sampleShrMarketVP = new sample__Share(); 
+                
+                MarketVPSet.add(sam.Market_VP__c);
+                
+                if(sam.Market_VP__c!= null){   
+                    sampleShrMarketVP.ParentId = sam.Id;
+                    
+                    sampleShrMarketVP.UserOrGroupId = sam.Market_VP__c;          
+                    // Set the access level
+                    sampleShrMarketVP.AccessLevel = 'edit';           
+                    // Add objects to list for insert               
+                    sampShrsMarketVP.add(sampleShrMarketVP);
+                }
+            }         
+            if(MarketVPSet!=null && !MarketVPSet.contains(currentUserId)){ 
+                try{
+                    Database.SaveResult[] lsr = Database.insert(sampShrsMarketVP,True);
+                }
+                catch(DMLException e){
+                    System.Debug('Error in createShare '+ e);
+                }
+            }
+            
+             Sample__Share sampleShrSalesDir;            
+            // Instantiate the sharing objects             
+            
+            for(Sample__c sam : aNewList){
+                
+                sampleShrSalesDir = new sample__Share(); 
+                
+                SalesDirSet.add(sam.Sales_Director__c);
+                
+                if(sam.Sales_Director__c!= null){   
+                    sampleShrSalesDir.ParentId = sam.Id;
+                    
+                    sampleShrSalesDir.UserOrGroupId = sam.Sales_Director__c;          
+                    // Set the access level
+                    sampleShrSalesDir.AccessLevel = 'edit';           
+                    // Add objects to list for insert               
+                    sampShrsSalesDir.add(sampleShrSalesDir);
+                }
+            }         
+            if(SalesDirSet!=null && !SalesDirSet.contains(currentUserId)){ 
+                try{
+                    Database.SaveResult[] lsr = Database.insert(sampShrsSalesDir,True);
+                }
+                catch(DMLException e){
+                    System.Debug('Error in createShare '+ e);
+                }
+            }
+
+
             
             sample__Share sampleShrGate;  
             
@@ -1329,7 +1422,13 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
     public static void updateSampleShare(List<Sample__c> aoldList, List<Sample__c> aNewList) {      
         set<id> recordId = new set<id>();
         set<id> groupId = new set<id>();
+        set<id> groupIdBPM = new set<id>();
+        set<id> groupIdMarketVP = new set<id>();
+        set<id> groupIdSalesDir = new set<id>();
         set<id> csAccountManager = new set<id>();
+        set<id> BPMSet = new set<id>();
+        set<id> MarketVPSet = new set<id>();
+        set<id> SalesDirSet = new set<id>();
         set<id> ownerId = new set<id>();
         set<string> statusOld = new set<string>();
         set<string> statusNew = new set<string>();
@@ -1341,8 +1440,16 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
         map<id,Sample__Share> samMapAcctMang = new map<id,Sample__Share>();
         map<id,Sample__Share> samMapDelGatekeeper = new map<id,Sample__Share>();
         map<id,Sample__Share> samMapInsGatekeeper = new map<id,Sample__Share>();
+        map<id,Sample__Share> samMapInsBPM = new map<id,Sample__Share>();
+        map<id,Sample__Share> samMapInsMarketVP = new map<id,Sample__Share>();
+        map<id,Sample__Share> samMapInsSalesDir = new map<id,Sample__Share>();
+        
         List<Sample__Share> samShrsOwnerCreated  = new List<Sample__Share>();
         List<Sample__Share> samShrsGatekeeperList  = new List<Sample__Share>();
+        List<Sample__Share> samShrsBPMList  = new List<Sample__Share>();
+        List<Sample__Share> samShrsMarketVPList  = new List<Sample__Share>();
+        List<Sample__Share> samShrsSalesDirList  = new List<Sample__Share>();
+        
         
         Set<String> businessArea = new Set<String>();
         Set<String> plantSample = new Set<String>();
@@ -1381,6 +1488,9 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
             for(Sample__c samp: aoldList){
                 recordId.add(samp.Id);
                 groupId.add(samp.CSAccountManager__c);
+                groupIdBPM.add(samp.Business_Performance_Manager__c);
+                groupIdMarketVP.add(samp.Market_VP__c);
+                groupIdSalesDir.add(samp.Sales_Director__c);
                 ownerId.add(samp.OwnerId);
                 statusOld.add(samp.Status__c);
                 gatekeeperOld.add(samp.GateKeeper__c);
@@ -1390,6 +1500,9 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
         }
         for(sample__c samUpd : aNewList){
             csAccountManager.add(samUpd.CSAccountManager__c); 
+            BPMSet.add(samUpd.Business_Performance_Manager__c);
+            MarketVPSet.add(samUpd.Market_VP__c);
+            SalesDirSet.add(samUpd.Sales_Director__c);
             statusNew.add(samUpd.Status__c);
             gatekeeperNew.add(samUpd.gatekeeper__c);
         }   
@@ -1406,6 +1519,63 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
             if(sampleShare.size() > 0){
                 try{
                     Database.delete(sampleshare,True);
+                }
+                catch(DMLException e){
+                    System.Debug('Error in updatesampleshare delete '+ e);
+                }       
+            }
+        }
+        
+         List<Sample__Share> SampleShrsBPM  = new List<Sample__Share>();       
+        // Declare variables for sample sharing  BPM 
+        
+        Sample__Share[] sampleShareBPM = [SELECT Id, UserOrGroupId, AccessLevel, 
+                                       RowCause FROM Sample__share 
+                                       WHERE ParentId IN : recordId 
+                                       AND UserOrGroupId IN:groupIdBPM];
+        
+        if(ownerId!= BPMSet && ownerId!=groupIdBPM){
+            if(sampleShareBPM.size() > 0){
+                try{
+                    Database.delete(sampleShareBPM,True);
+                }
+                catch(DMLException e){
+                    System.Debug('Error in updatesampleshare delete '+ e);
+                }       
+            }
+        }
+        
+          List<Sample__Share> SampleShrsMarketVP  = new List<Sample__Share>();       
+        // Declare variables for sample sharing  Market VP 
+        
+        Sample__Share[] sampleShareMarketVP = [SELECT Id, UserOrGroupId, AccessLevel, 
+                                       RowCause FROM Sample__share 
+                                       WHERE ParentId IN : recordId 
+                                       AND UserOrGroupId IN:groupIdMarketVP];
+        
+        if(ownerId!= MarketVPSet && ownerId!=groupIdMarketVP){
+            if(sampleShareMarketVP.size() > 0){
+                try{
+                    Database.delete(sampleShareMarketVP,True);
+                }
+                catch(DMLException e){
+                    System.Debug('Error in updatesampleshare delete '+ e);
+                }       
+            }
+        }
+        
+          List<Sample__Share> SampleShrsSalesDir  = new List<Sample__Share>();       
+        // Declare variables for sample sharing  Sales Dir 
+        
+        Sample__Share[] sampleShareSalesDir = [SELECT Id, UserOrGroupId, AccessLevel, 
+                                       RowCause FROM Sample__share 
+                                       WHERE ParentId IN : recordId 
+                                       AND UserOrGroupId IN:groupIdSalesDir];
+        
+        if(ownerId!= SalesDirSet && ownerId!=groupIdSalesDir){
+            if(sampleShareSalesDir.size() > 0){
+                try{
+                    Database.delete(sampleShareSalesDir,True);
                 }
                 catch(DMLException e){
                     System.Debug('Error in updatesampleshare delete '+ e);
@@ -1434,6 +1604,9 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
         Sample__Share sampleShr;
         sample__Share samShrOwnerCreatedRecord;
         sample__Share sampleShrGatekeeper;
+       // sample__Share sampleShrBPM;
+       // sample__Share sampleShrMarketVP;
+      //  sample__Share sampleShrSalesDir;
         
         for(sample__c samUpd : aNewList){
             samShrOwnerCreatedRecord = new Sample__Share();  
@@ -1470,6 +1643,96 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
             samShrsOwnerCreated.add(samShrOwnerCreatedRecord); 
             
         }
+        
+        sample__Share sampleShrBPM;  
+        
+        for(Sample__c sampBPM : aNewList){
+            
+            sampleShrBPM = new Sample__Share();
+            
+            if(sampBPM.Business_Performance_Manager__c!=null){   
+                
+                sampleShrBPM.ParentId  = sampBPM.Id;
+                sampleShrBPM.UserOrGroupId = sampBPM.Business_Performance_Manager__c;          
+                // Set the access level
+                sampleShrBPM.AccessLevel = 'edit';           
+                // Add objects to list for insert               
+                samShrsBPMList.add(sampleShrBPM);
+            }
+        }
+        
+        samMapInsBPM.putall(samShrsBPMList);
+        
+        if(samMapInsBPM.size() > 0){                               
+            try{
+                upsert samMapInsBPM.values();                  
+            }
+            catch(DMLException e){
+                System.Debug('Error in createBPM' + e);
+            }                   
+            
+        }   
+        
+         sample__Share sampleShrMarketVP;  
+        
+        for(Sample__c sampMarketVP : aNewList){
+            
+            sampleShrMarketVP = new Sample__Share();
+            
+            if(sampMarketVP.Market_VP__c!=null){   
+                
+                sampleShrMarketVP.ParentId  = sampMarketVP.Id;
+                sampleShrMarketVP.UserOrGroupId = sampMarketVP.Market_VP__c;          
+                // Set the access level
+                sampleShrMarketVP.AccessLevel = 'edit';           
+                // Add objects to list for insert               
+                samShrsMarketVPList.add(sampleShrMarketVP);
+            }
+        }
+        
+        samMapInsMarketVP.putall(samShrsMarketVPList);
+        
+        if(samMapInsMarketVP.size() > 0){                               
+            try{
+                upsert samMapInsMarketVP.values();                  
+            }
+            catch(DMLException e){
+                System.Debug('Error in createMarketVP' + e);
+            }                   
+            
+        }   
+        
+          sample__Share sampleShrSalesDir;  
+        
+        for(Sample__c sampSalesDir : aNewList){
+            
+            sampleShrSalesDir = new Sample__Share();
+            
+            if(sampSalesDir.Sales_Director__c!=null){   
+                
+                sampleShrSalesDir.ParentId  = sampSalesDir.Id;
+                sampleShrSalesDir.UserOrGroupId = sampSalesDir.Sales_Director__c;          
+                // Set the access level
+                sampleShrSalesDir.AccessLevel = 'edit';           
+                // Add objects to list for insert               
+                samShrsSalesDirList.add(sampleShrSalesDir);
+            }
+        }
+        
+        samMapInsSalesDir.putall(samShrsSalesDirList);
+        
+        if(samMapInsSalesDir.size() > 0){                               
+            try{
+                upsert samMapInsSalesDir.values();                  
+            }
+            catch(DMLException e){
+                System.Debug('Error in createSalesDir' + e);
+            }                   
+            
+        }   
+
+
+
         sample__Share sampleShrGate;  
         
         for(Sample__c sampGatekeeper : aNewList){
@@ -1572,6 +1835,9 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
         Sample__Share sampleShare3;
         Sample__Share sampleShare4;
         Set<id> csAccountManager = new set<id>();
+        Set<id> BPMSet = new set<id>();
+        Set<id> MarketVPSet = new set<id>();
+        Set<id> SalesDirSet = new set<id>();
         Set<id> ownerId = new set<id>();
         
         if(!aDeleteList.isEmpty()){
@@ -1594,6 +1860,60 @@ public without sharing class AP01_SampleTriggerHandler extends TriggerHandler {
                 
                 Database.DeleteResult[] drList = Database.delete(samShare, true);  
             }  
+            
+             Sample__Share sampleShrBPM;  
+            
+            for(Sample__c samDel: aDeleteList){
+                BPMSet.add(samDel.Business_Performance_Manager__c); 
+                // Instantiate the sharing objects
+                recordId.add(samDel.Id); 
+                ownerId.add(samDel.OwnerId);
+                // Set the ID of user or group being granted access
+            }
+            
+            if(BPMSet!=null && ownerId!=BPMSet){
+                
+                Sample__Share[] samShare = [SELECT Id, AccessLevel, UserOrGroupId FROM Sample__Share
+                                            WHERE UserOrGroupId IN:BPMSet AND AccessLevel ='Edit' AND ParentId IN: recordId];
+                
+                Database.DeleteResult[] drList = Database.delete(samShare, true);  
+            }
+            
+             Sample__Share sampleShrMarketVP;  
+            
+            for(Sample__c samDel: aDeleteList){
+                MarketVPSet.add(samDel.Market_VP__c); 
+                // Instantiate the sharing objects
+                recordId.add(samDel.Id); 
+                ownerId.add(samDel.OwnerId);
+                // Set the ID of user or group being granted access
+            }
+            
+            if(MarketVPSet!=null && ownerId!=MarketVPSet){
+                
+                Sample__Share[] samShare = [SELECT Id, AccessLevel, UserOrGroupId FROM Sample__Share
+                                            WHERE UserOrGroupId IN:MarketVPSet AND AccessLevel ='Edit' AND ParentId IN: recordId];
+                
+                Database.DeleteResult[] drList = Database.delete(samShare, true);  
+            }
+            
+              Sample__Share sampleShrSalesDir;  
+            
+            for(Sample__c samDel: aDeleteList){
+                SalesDirSet.add(samDel.Sales_Director__c); 
+                // Instantiate the sharing objects
+                recordId.add(samDel.Id); 
+                ownerId.add(samDel.OwnerId);
+                // Set the ID of user or group being granted access
+            }
+            
+            if(SalesDirSet!=null && ownerId!=SalesDirSet){
+                
+                Sample__Share[] samShare = [SELECT Id, AccessLevel, UserOrGroupId FROM Sample__Share
+                                            WHERE UserOrGroupId IN:SalesDirSet AND AccessLevel ='Edit' AND ParentId IN: recordId];
+                
+                Database.DeleteResult[] drList = Database.delete(samShare, true);  
+            }
         }
     }
     
