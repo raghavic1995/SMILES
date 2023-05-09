@@ -3,8 +3,8 @@
     <actionCalls>
         <name>AddQuotesToFields</name>
         <label>AddQuotesToFields</label>
-        <locationX>644</locationX>
-        <locationY>2270</locationY>
+        <locationX>512</locationX>
+        <locationY>2030</locationY>
         <actionName>AddQuotesToFields</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -23,16 +23,18 @@
                 <stringValue>&apos;</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>AddQuotesToFields</nameSegment>
         <outputParameters>
             <assignToReference>varSelectedSellingEntities</assignToReference>
             <name>fieldString</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Copy_1_of_getSAPsinValidatedSAPPs</name>
         <label>getSAPsinValidatedSAPPs</label>
-        <locationX>578</locationX>
-        <locationY>16742</locationY>
+        <locationX>1568</locationX>
+        <locationY>15206</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -89,16 +91,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colSAP_SendToERP</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Copy_1_of_MapSAPtoERP</name>
         <label>Copy 1 of MapSAPtoERP</label>
-        <locationX>578</locationX>
-        <locationY>16862</locationY>
+        <locationX>1568</locationX>
+        <locationY>15314</locationY>
         <actionName>MapCollection</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -125,13 +129,15 @@
                 <stringValue>&quot;Negotiation_Status__c&quot; : &quot;S1-Negotiation Starting Soon&quot;</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>MapCollection</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Copy_1_of_Move_SAP_to_S1</name>
         <label>Move SAP to S1</label>
-        <locationX>578</locationX>
-        <locationY>16982</locationY>
+        <locationX>1568</locationX>
+        <locationY>15422</locationY>
         <actionName>MassTransactor</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -160,24 +166,26 @@
                 <elementReference>Copy_1_of_MapSAPtoERP.outputCollection</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>MassTransactor</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>DedupeRecordCollection</name>
         <label>DedupeRecordCollection</label>
-        <locationX>512</locationX>
-        <locationY>13766</locationY>
+        <locationX>1502</locationX>
+        <locationY>12542</locationY>
         <actionName>DedupeRecordCollection</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>Copy_1_of_assign_counters</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__inputRecordCollection</typeName>
+            <typeName>U__outputRecordCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__outputRecordCollection</typeName>
+            <typeName>T__inputRecordCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -193,148 +201,172 @@
                 <elementReference>colSAPP_To_Delete</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>DedupeRecordCollection</nameSegment>
         <outputParameters>
             <assignToReference>colSAPPToDeleteDeDuped</assignToReference>
             <name>outputRecordCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyAction3</name>
         <label>dummyAction</label>
-        <locationX>600</locationX>
-        <locationY>7742</locationY>
+        <locationX>468</locationX>
+        <locationY>6938</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopSelectedSAPPS</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyAction5</name>
         <label>dummyAction</label>
-        <locationX>556</locationX>
-        <locationY>5102</locationY>
+        <locationX>424</locationX>
+        <locationY>4574</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopCreatePrices</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyAction5_0</name>
         <label>dummyAction</label>
-        <locationX>2602</locationX>
-        <locationY>2870</locationY>
+        <locationX>3592</locationX>
+        <locationY>2570</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopResetSA</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>DummyAction_0</name>
         <label>DummyAction</label>
-        <locationX>1084</locationX>
-        <locationY>13214</locationY>
+        <locationX>2074</locationX>
+        <locationY>12050</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopValidatedSAPP</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>DummyAction_0_0_0</name>
         <label>DummyAction</label>
-        <locationX>556</locationX>
-        <locationY>6014</locationY>
+        <locationX>424</locationX>
+        <locationY>5390</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>getLinkedSAPP_0</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyActionv</name>
         <label>dummyAction</label>
-        <locationX>644</locationX>
-        <locationY>9878</locationY>
+        <locationX>1634</locationX>
+        <locationY>9062</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopProductPrices</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyActionv_0</name>
         <label>dummyAction</label>
-        <locationX>644</locationX>
-        <locationY>11030</locationY>
+        <locationX>1634</locationX>
+        <locationY>10094</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopSelectedPrices</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyActionv_0_0</name>
         <label>dummyAction</label>
-        <locationX>644</locationX>
-        <locationY>11942</locationY>
+        <locationX>1634</locationX>
+        <locationY>10910</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopValidatedSAPP</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyActionv_0_0_0</name>
         <label>dummyAction</label>
-        <locationX>732</locationX>
-        <locationY>10358</locationY>
+        <locationX>1722</locationX>
+        <locationY>9494</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopProductPrices</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>dummyActionv_0_0_0_0</name>
         <label>dummyAction</label>
-        <locationX>732</locationX>
-        <locationY>11510</locationY>
+        <locationX>1722</locationX>
+        <locationY>10526</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>loopSelectedPrices</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>DummyActionx</name>
         <label>DummyAction</label>
-        <locationX>512</locationX>
-        <locationY>6806</locationY>
+        <locationX>380</locationX>
+        <locationY>6098</locationY>
         <actionName>c:DummyAction</actionName>
         <actionType>component</actionType>
         <connector>
             <targetReference>nullify_previous_SAP</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>c:DummyAction</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Extract_Strings_From_Collection</name>
         <label>Extract Strings From Collection</label>
-        <locationX>644</locationX>
-        <locationY>2150</locationY>
+        <locationX>512</locationX>
+        <locationY>1922</locationY>
         <actionName>ExtractStringsFromCollection</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -357,21 +389,27 @@
                 <elementReference>colSelectedSellingEntities</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>ExtractStringsFromCollection</nameSegment>
         <outputParameters>
             <assignToReference>varSelectedSellingEntities</assignToReference>
             <name>fieldValueString</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>filterCollections</name>
         <label>filterCollections</label>
-        <locationX>732</locationX>
-        <locationY>3710</locationY>
+        <locationX>600</locationX>
+        <locationY>3326</locationY>
         <actionName>FindCommonAndUniqueRecords</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>assign_to_used_collection</targetReference>
         </connector>
+        <dataTypeMappings>
+            <typeName>U__targetCommonRecordCollection</typeName>
+            <typeValue>Account</typeValue>
+        </dataTypeMappings>
         <dataTypeMappings>
             <typeName>T__sourceRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
@@ -386,10 +424,6 @@
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>U__targetUniqueRecordCollection</typeName>
-            <typeValue>Account</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
-            <typeName>U__targetCommonRecordCollection</typeName>
             <typeValue>Account</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
@@ -421,27 +455,29 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>FindCommonAndUniqueRecords</nameSegment>
         <outputParameters>
             <assignToReference>colLinkedSAP_TEMP</assignToReference>
             <name>sourceCommonRecordCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Get_Common_and_Unique_Records</name>
         <label>Get Common and Unique Records</label>
-        <locationX>644</locationX>
-        <locationY>3230</locationY>
+        <locationX>512</locationX>
+        <locationY>2894</locationY>
         <actionName>FindCommonAndUniqueRecords</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>getLinkedAccountProduct</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__sourceCommonRecordCollection</typeName>
+            <typeName>T__sourceRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
+            <typeName>U__sourceCommonRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
@@ -485,16 +521,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>FindCommonAndUniqueRecords</nameSegment>
         <outputParameters>
             <assignToReference>colLinkedSAP</assignToReference>
             <name>sourceCommonRecordCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>get_SAP</name>
         <label>get SAP</label>
-        <locationX>1821</locationX>
-        <locationY>1790</locationY>
+        <locationX>2811</locationX>
+        <locationY>1598</locationY>
         <actionName>ExecuteSOQL</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -511,16 +549,18 @@
                 <elementReference>FrmQuerySAPReset</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>ExecuteSOQL</nameSegment>
         <outputParameters>
             <assignToReference>ResetSAPs</assignToReference>
             <name>sObjects</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getCurrentProductList</name>
         <label>getCurrentProductList</label>
-        <locationX>644</locationX>
-        <locationY>2390</locationY>
+        <locationX>512</locationX>
+        <locationY>2138</locationY>
         <actionName>ExecuteSOQL</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -537,28 +577,30 @@
                 <elementReference>frmQueryLinkedProducts</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>ExecuteSOQL</nameSegment>
         <outputParameters>
             <assignToReference>colCurrentProductList</assignToReference>
             <name>sObjects</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getLinkedAccountProduct</name>
         <label>getLinkedAccountProduct</label>
-        <locationX>644</locationX>
-        <locationY>3350</locationY>
+        <locationX>512</locationX>
+        <locationY>3002</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>scrSelectAccounts_0</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
-            <typeValue>Account</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>T__sourceRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>U__outputCollection</typeName>
+            <typeValue>Account</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -609,16 +651,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colLinkedAccounts</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getLinkedSAP</name>
         <label>getLinkedSAP</label>
-        <locationX>644</locationX>
-        <locationY>3110</locationY>
+        <locationX>512</locationX>
+        <locationY>2786</locationY>
         <actionName>ExecuteSOQL</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -635,16 +679,18 @@
                 <elementReference>frmQueryLinkedSAP</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>ExecuteSOQL</nameSegment>
         <outputParameters>
             <assignToReference>colLinkedSAP_TEMP</assignToReference>
             <name>sObjects</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getLinkedSAPP</name>
         <label>getLinkedSAPP</label>
-        <locationX>644</locationX>
-        <locationY>4046</locationY>
+        <locationX>512</locationX>
+        <locationY>3626</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -701,16 +747,18 @@
                 <stringValue>Sales_Agreement_Product__c</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colLinkedSAPP</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getLinkedSAPP_0</name>
         <label>getLinkedSAPP</label>
-        <locationX>556</locationX>
-        <locationY>6134</locationY>
+        <locationX>424</locationX>
+        <locationY>5498</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -767,16 +815,18 @@
                 <stringValue>Sales_Agreement_Product__c</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colLinkedSAPP</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getLinkedSellingEntity</name>
         <label>getLinkedSellingEntity</label>
-        <locationX>644</locationX>
-        <locationY>1790</locationY>
+        <locationX>512</locationX>
+        <locationY>1598</locationY>
         <actionName>ExecuteSOQL</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -793,16 +843,18 @@
                 <elementReference>frmLinkedSellingEntity</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>ExecuteSOQL</nameSegment>
         <outputParameters>
             <assignToReference>colSellingEntity</assignToReference>
             <name>sObjects</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getNotFoundSAPPS</name>
         <label>getNotFoundSAPPS</label>
-        <locationX>512</locationX>
-        <locationY>4286</locationY>
+        <locationX>380</locationX>
+        <locationY>3842</locationY>
         <actionName>FindCommonAndUniqueRecords</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -821,16 +873,16 @@
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__sourceCommonRecordCollection</typeName>
-            <typeValue>SalesAgreementProduct</typeValue>
+            <typeName>U__targetCommonRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>U__targetUniqueRecordCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__targetCommonRecordCollection</typeName>
-            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
+            <typeName>U__sourceCommonRecordCollection</typeName>
+            <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -857,16 +909,18 @@
                 <stringValue>Sales_Agreement_Product__c</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>FindCommonAndUniqueRecords</nameSegment>
         <outputParameters>
             <assignToReference>colCreateSAP_Prices</assignToReference>
             <name>sourceUniqueRecordCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getPlantsLinkedProducts</name>
         <label>getPlantsLinkedProducts</label>
-        <locationX>644</locationX>
-        <locationY>2870</locationY>
+        <locationX>512</locationX>
+        <locationY>2570</locationY>
         <actionName>FindCommonAndUniqueRecords</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -921,16 +975,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>FindCommonAndUniqueRecords</nameSegment>
         <outputParameters>
             <assignToReference>colCurrentProductList</assignToReference>
             <name>sourceCommonRecordCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getProductPlants</name>
         <label>getProductPlants</label>
-        <locationX>644</locationX>
-        <locationY>2510</locationY>
+        <locationX>512</locationX>
+        <locationY>2246</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -987,16 +1043,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colCurrentManufacturingPlants</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getSA_inValidatedSAPPs</name>
         <label>getSA_inValidatedSAPPs</label>
-        <locationX>50</locationX>
-        <locationY>17102</locationY>
+        <locationX>1040</locationX>
+        <locationY>15530</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1053,16 +1111,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colSA_SendToERP</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getSAPsinValidatedSAPPs</name>
         <label>getSAPsinValidatedSAPPs</label>
-        <locationX>50</locationX>
-        <locationY>16742</locationY>
+        <locationX>1040</locationX>
+        <locationY>15206</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1119,16 +1179,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colSAP_SendToERP</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>getSAPsNotFound</name>
         <label>getSAPsNotFound</label>
-        <locationX>644</locationX>
-        <locationY>4502</locationY>
+        <locationX>512</locationX>
+        <locationY>4034</locationY>
         <actionName>GetRecordsIn</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1185,16 +1247,18 @@
                 <stringValue>Id</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>GetRecordsIn</nameSegment>
         <outputParameters>
             <assignToReference>colUnlinkedSAPWithData</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>JoinCollections</name>
         <label>JoinCollections</label>
-        <locationX>732</locationX>
-        <locationY>12662</locationY>
+        <locationX>1722</locationX>
+        <locationY>11558</locationY>
         <actionName>JoinCollections</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1225,27 +1289,29 @@
                 <elementReference>colSAPP_To_Delete</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>JoinCollections</nameSegment>
         <outputParameters>
             <assignToReference>colSAPP_To_Delete</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Map_SAPs</name>
         <label>Map SAPs</label>
-        <locationX>1766</locationX>
-        <locationY>2390</locationY>
+        <locationX>2756</locationX>
+        <locationY>2138</locationY>
         <actionName>MapCollection</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>massResetSAP</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__inputCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__inputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -1261,27 +1327,29 @@
                 <stringValue>&quot;Negotiation_Status__c&quot; : &quot;S0-Negotiation Not Yet Started&quot;</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>MapCollection</nameSegment>
         <outputParameters>
             <assignToReference>ResetSAPs</assignToReference>
             <name>outputCollection</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>mapSAForERP</name>
         <label>mapSAForERP</label>
-        <locationX>50</locationX>
-        <locationY>17222</locationY>
+        <locationX>1040</locationX>
+        <locationY>15638</locationY>
         <actionName>MapCollection</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>massSendToERP</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__inputCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreement</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__inputCollection</typeName>
             <typeValue>SalesAgreement</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -1297,13 +1365,15 @@
                 <stringValue>&quot;Ready_for_ERP_Integration__c&quot; : &quot;TRUE&quot;</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>MapCollection</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>MapSAPtoERP</name>
         <label>MapSAPtoERP</label>
-        <locationX>50</locationX>
-        <locationY>16862</locationY>
+        <locationX>1040</locationX>
+        <locationY>15314</locationY>
         <actionName>MapCollection</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1330,13 +1400,15 @@
                 <stringValue>&quot;Negotiation_Status__c&quot; : &quot;S3-Negotiation Closed&quot; , &quot;BypassDateTime__c&quot;: &quot;{!$Flow.CurrentDateTime}&quot;</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>MapCollection</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>massCreateFakePrices</name>
         <label>massCreateFakePrices</label>
-        <locationX>468</locationX>
-        <locationY>5414</locationY>
+        <locationX>336</locationX>
+        <locationY>4850</locationY>
         <actionName>MassTransactor</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1365,16 +1437,18 @@
                 <elementReference>colCreateFakePrices</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>MassTransactor</nameSegment>
         <outputParameters>
             <assignToReference>varJobId</assignToReference>
             <name>jobId</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>massResetSAP</name>
         <label>massResetSAP</label>
-        <locationX>1766</locationX>
-        <locationY>2510</locationY>
+        <locationX>2756</locationX>
+        <locationY>2246</locationY>
         <actionName>MassTransactor</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1403,16 +1477,18 @@
                 <elementReference>ResetSAPs</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>MassTransactor</nameSegment>
         <outputParameters>
             <assignToReference>varJobId</assignToReference>
             <name>jobId</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>massSendToERP</name>
         <label>massSendToERP</label>
-        <locationX>50</locationX>
-        <locationY>17342</locationY>
+        <locationX>1040</locationX>
+        <locationY>15746</locationY>
         <actionName>MassTransactor</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1441,13 +1517,15 @@
                 <elementReference>mapSAForERP.outputCollection</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>MassTransactor</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>massUpdate_Prices</name>
         <label>massUpdate Prices</label>
-        <locationX>512</locationX>
-        <locationY>14558</locationY>
+        <locationX>1502</locationX>
+        <locationY>13250</locationY>
         <actionName>MassTransactor</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1494,16 +1572,18 @@
                 <stringValue>mass updates</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>MassTransactor</nameSegment>
         <outputParameters>
             <assignToReference>varJobId</assignToReference>
             <name>jobId</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>massUpdate_Prices_0_0_0_0_0_0_0</name>
         <label>massUpdate Prices</label>
-        <locationX>512</locationX>
-        <locationY>15590</locationY>
+        <locationX>1502</locationX>
+        <locationY>14174</locationY>
         <actionName>MassTransactor</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1550,16 +1630,18 @@
                 <stringValue>mass updates</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>MassTransactor</nameSegment>
         <outputParameters>
             <assignToReference>varJobId</assignToReference>
             <name>jobId</name>
         </outputParameters>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Move_SAP_to_S3</name>
         <label>Move SAP to S3</label>
-        <locationX>50</locationX>
-        <locationY>16982</locationY>
+        <locationX>1040</locationX>
+        <locationY>15422</locationY>
         <actionName>MassTransactor</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -1588,14 +1670,16 @@
                 <elementReference>MapSAPtoERP.outputCollection</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>MassTransactor</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <assignments>
         <name>add_to_collection_SAPP_to_Create</name>
         <label>add to collection SAPP to Create</label>
-        <locationX>996</locationX>
-        <locationY>12878</locationY>
+        <locationX>1986</locationX>
+        <locationY>11750</locationY>
         <assignmentItems>
             <assignToReference>loopValidatedSAPP.Id</assignToReference>
             <operator>Assign</operator>
@@ -1614,8 +1698,8 @@
     <assignments>
         <name>add_to_collection_SAPP_to_Update</name>
         <label>add to collection SAPP to Update</label>
-        <locationX>1436</locationX>
-        <locationY>12422</locationY>
+        <locationX>2426</locationX>
+        <locationY>11342</locationY>
         <assignmentItems>
             <assignToReference>colSappToUpdate</assignToReference>
             <operator>Add</operator>
@@ -1630,8 +1714,8 @@
     <assignments>
         <name>assign</name>
         <label>assign</label>
-        <locationX>776</locationX>
-        <locationY>4286</locationY>
+        <locationX>644</locationX>
+        <locationY>3842</locationY>
         <assignmentItems>
             <assignToReference>colCreateSAP_Prices</assignToReference>
             <operator>Assign</operator>
@@ -1646,8 +1730,8 @@
     <assignments>
         <name>assign_collections_descriptions</name>
         <label>assign collections descriptions</label>
-        <locationX>1232</locationX>
-        <locationY>398</locationY>
+        <locationX>1661</locationX>
+        <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>colTextDescriptions</assignToReference>
             <operator>Add</operator>
@@ -1690,8 +1774,8 @@
     <assignments>
         <name>assign_collections_Icons</name>
         <label>assign collections Icons</label>
-        <locationX>1232</locationX>
-        <locationY>278</locationY>
+        <locationX>1661</locationX>
+        <locationY>242</locationY>
         <assignmentItems>
             <assignToReference>colTextIcons</assignToReference>
             <operator>Add</operator>
@@ -1832,8 +1916,8 @@
     <assignments>
         <name>assign_collections_labels</name>
         <label>assign collections labels</label>
-        <locationX>1232</locationX>
-        <locationY>158</locationY>
+        <locationX>1661</locationX>
+        <locationY>134</locationY>
         <assignmentItems>
             <assignToReference>colTextLabels</assignToReference>
             <operator>Add</operator>
@@ -1890,8 +1974,8 @@
     <assignments>
         <name>assign_counters</name>
         <label>assign counters</label>
-        <locationX>644</locationX>
-        <locationY>13526</locationY>
+        <locationX>1634</locationX>
+        <locationY>12326</locationY>
         <assignmentItems>
             <assignToReference>nCptSappToDelete</assignToReference>
             <operator>AssignCount</operator>
@@ -1927,8 +2011,8 @@
     <assignments>
         <name>assign_Create_SAPP_values</name>
         <label>assign Create SAPP values</label>
-        <locationX>688</locationX>
-        <locationY>4862</locationY>
+        <locationX>556</locationX>
+        <locationY>4358</locationY>
         <assignmentItems>
             <assignToReference>recSAPP.Account__c</assignToReference>
             <operator>Assign</operator>
@@ -2433,8 +2517,8 @@
     <assignments>
         <name>assign_Create_SAPP_values_0</name>
         <label>assign Create SAPP values</label>
-        <locationX>2734</locationX>
-        <locationY>2630</locationY>
+        <locationX>3724</locationX>
+        <locationY>2354</locationY>
         <assignmentItems>
             <assignToReference>nCpt</assignToReference>
             <operator>Add</operator>
@@ -2449,8 +2533,8 @@
     <assignments>
         <name>assign_latest_SAPPs</name>
         <label>assign latest SAPPs</label>
-        <locationX>512</locationX>
-        <locationY>8054</locationY>
+        <locationX>380</locationX>
+        <locationY>7214</locationY>
         <assignmentItems>
             <assignToReference>colLinkedSAPP</assignToReference>
             <operator>Assign</operator>
@@ -2465,8 +2549,8 @@
     <assignments>
         <name>Assign_LatestMonth_SAPP_to_LinkedSAPP</name>
         <label>Assign LatestMonth SAPP to LinkedSAPP</label>
-        <locationX>644</locationX>
-        <locationY>8942</locationY>
+        <locationX>512</locationX>
+        <locationY>8006</locationY>
         <assignmentItems>
             <assignToReference>colLinkedSAPP</assignToReference>
             <operator>Assign</operator>
@@ -2481,8 +2565,8 @@
     <assignments>
         <name>Assign_new_Price</name>
         <label>Assign new Price</label>
-        <locationX>864</locationX>
-        <locationY>10118</locationY>
+        <locationX>1854</locationX>
+        <locationY>9278</locationY>
         <assignmentItems>
             <assignToReference>recSAPP</assignToReference>
             <operator>Assign</operator>
@@ -2508,14 +2592,14 @@
             <assignToReference>recSAPP.New_Start_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>frmNewStartDate</elementReference>
+                <elementReference>frmNewStartDate1</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>recSAPP.New_End_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>frmNewEndDate</elementReference>
+                <elementReference>frmNewEndDate1</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -2546,8 +2630,8 @@
     <assignments>
         <name>Assign_New_SAPP_to_Update</name>
         <label>Assign New SAPP to Update</label>
-        <locationX>512</locationX>
-        <locationY>15254</locationY>
+        <locationX>1502</locationX>
+        <locationY>13874</locationY>
         <assignmentItems>
             <assignToReference>colSappToUpdate</assignToReference>
             <operator>Add</operator>
@@ -2562,8 +2646,8 @@
     <assignments>
         <name>Assign_Null_to_LinkedSAPP</name>
         <label>Assign Null to LinkedSAPP</label>
-        <locationX>644</locationX>
-        <locationY>8822</locationY>
+        <locationX>512</locationX>
+        <locationY>7898</locationY>
         <assignmentItems>
             <assignToReference>colLinkedSAPP</assignToReference>
             <operator>Assign</operator>
@@ -2575,8 +2659,8 @@
     <assignments>
         <name>assign_record_values</name>
         <label>assign record values</label>
-        <locationX>864</locationX>
-        <locationY>11270</locationY>
+        <locationX>1854</locationX>
+        <locationY>10310</locationY>
         <assignmentItems>
             <assignToReference>recSAPP.Id</assignToReference>
             <operator>Assign</operator>
@@ -2696,8 +2780,8 @@
     <assignments>
         <name>Assign_Stage</name>
         <label>Assign Stage</label>
-        <locationX>1232</locationX>
-        <locationY>638</locationY>
+        <locationX>1661</locationX>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>$Flow.CurrentStage</assignToReference>
             <operator>Assign</operator>
@@ -2712,8 +2796,8 @@
     <assignments>
         <name>Assign_Stage0</name>
         <label>Assign Stage</label>
-        <locationX>644</locationX>
-        <locationY>1910</locationY>
+        <locationX>512</locationX>
+        <locationY>1706</locationY>
         <assignmentItems>
             <assignToReference>$Flow.CurrentStage</assignToReference>
             <operator>Assign</operator>
@@ -2728,8 +2812,8 @@
     <assignments>
         <name>Assign_to_Latest_SAPPs</name>
         <label>Assign to Latest SAPPs</label>
-        <locationX>732</locationX>
-        <locationY>8510</locationY>
+        <locationX>600</locationX>
+        <locationY>7622</locationY>
         <assignmentItems>
             <assignToReference>LatestSAPPs</assignToReference>
             <operator>Add</operator>
@@ -2744,8 +2828,8 @@
     <assignments>
         <name>assign_to_used_collection</name>
         <label>assign to used collection</label>
-        <locationX>732</locationX>
-        <locationY>3830</locationY>
+        <locationX>600</locationX>
+        <locationY>3434</locationY>
         <assignmentItems>
             <assignToReference>colLinkedSAP</assignToReference>
             <operator>Assign</operator>
@@ -2760,8 +2844,8 @@
     <assignments>
         <name>assign_values</name>
         <label>assign values</label>
-        <locationX>600</locationX>
-        <locationY>7406</locationY>
+        <locationX>468</locationX>
+        <locationY>6638</locationY>
         <assignmentItems>
             <assignToReference>previousSAP</assignToReference>
             <operator>Assign</operator>
@@ -2783,8 +2867,8 @@
     <assignments>
         <name>assignxx</name>
         <label>assign</label>
-        <locationX>996</locationX>
-        <locationY>12662</locationY>
+        <locationX>1986</locationX>
+        <locationY>11558</locationY>
         <assignmentItems>
             <assignToReference>colSAPP_To_Delete</assignToReference>
             <operator>Assign</operator>
@@ -2799,8 +2883,8 @@
     <assignments>
         <name>Copy_1_of_assign_counters</name>
         <label>Copy 1 of assign counter</label>
-        <locationX>644</locationX>
-        <locationY>13982</locationY>
+        <locationX>1634</locationX>
+        <locationY>12734</locationY>
         <assignmentItems>
             <assignToReference>nCptSappToDeleteDeDuped</assignToReference>
             <operator>AssignCount</operator>
@@ -2815,8 +2899,8 @@
     <assignments>
         <name>cpt</name>
         <label>cpt</label>
-        <locationX>732</locationX>
-        <locationY>7166</locationY>
+        <locationX>600</locationX>
+        <locationY>6422</locationY>
         <assignmentItems>
             <assignToReference>nCpt</assignToReference>
             <operator>Add</operator>
@@ -2831,8 +2915,8 @@
     <assignments>
         <name>dqsdsqd</name>
         <label>dqsdsqd</label>
-        <locationX>468</locationX>
-        <locationY>5654</locationY>
+        <locationX>336</locationX>
+        <locationY>5066</locationY>
         <assignmentItems>
             <assignToReference>colApexJob</assignToReference>
             <operator>Assign</operator>
@@ -2851,8 +2935,8 @@
     <assignments>
         <name>dqsdsqd_0</name>
         <label>dqsdsqd</label>
-        <locationX>512</locationX>
-        <locationY>14798</locationY>
+        <locationX>1502</locationX>
+        <locationY>13466</locationY>
         <assignmentItems>
             <assignToReference>colApexJob</assignToReference>
             <operator>Assign</operator>
@@ -2871,8 +2955,8 @@
     <assignments>
         <name>dqsdsqd_0_0</name>
         <label>dqsdsqd</label>
-        <locationX>512</locationX>
-        <locationY>15830</locationY>
+        <locationX>1502</locationX>
+        <locationY>14390</locationY>
         <assignmentItems>
             <assignToReference>colApexJob</assignToReference>
             <operator>Assign</operator>
@@ -2891,8 +2975,8 @@
     <assignments>
         <name>dqsdsqd_0_0_0</name>
         <label>dqsdsqd</label>
-        <locationX>1766</locationX>
-        <locationY>2750</locationY>
+        <locationX>2756</locationX>
+        <locationY>2462</locationY>
         <assignmentItems>
             <assignToReference>colApexJob</assignToReference>
             <operator>Assign</operator>
@@ -2911,8 +2995,8 @@
     <assignments>
         <name>NCPTX</name>
         <label>NCPT</label>
-        <locationX>1216</locationX>
-        <locationY>12182</locationY>
+        <locationX>2206</locationX>
+        <locationY>11126</locationY>
         <assignmentItems>
             <assignToReference>nCpt</assignToReference>
             <operator>Add</operator>
@@ -2927,8 +3011,8 @@
     <assignments>
         <name>nullify_colLatestSAPP</name>
         <label>nullify colLatestSAPP</label>
-        <locationX>644</locationX>
-        <locationY>6566</locationY>
+        <locationX>512</locationX>
+        <locationY>5882</locationY>
         <assignmentItems>
             <assignToReference>colLatestSAPPs</assignToReference>
             <operator>Assign</operator>
@@ -2943,8 +3027,8 @@
     <assignments>
         <name>nullify_collections</name>
         <label>nullify collections</label>
-        <locationX>644</locationX>
-        <locationY>11822</locationY>
+        <locationX>1634</locationX>
+        <locationY>10802</locationY>
         <assignmentItems>
             <assignToReference>colSappToUpdate</assignToReference>
             <operator>Assign</operator>
@@ -2968,8 +3052,8 @@
     <assignments>
         <name>nullify_ColValidatedSAPPs</name>
         <label>nullify ColValidatedSAPPs</label>
-        <locationX>644</locationX>
-        <locationY>10910</locationY>
+        <locationX>1634</locationX>
+        <locationY>9986</locationY>
         <assignmentItems>
             <assignToReference>colValidatedSAPP</assignToReference>
             <operator>Assign</operator>
@@ -2988,8 +3072,8 @@
     <assignments>
         <name>nullify_colValidateSAPPs</name>
         <label>nullify colValidateSAPPs</label>
-        <locationX>644</locationX>
-        <locationY>9758</locationY>
+        <locationX>1634</locationX>
+        <locationY>8954</locationY>
         <assignmentItems>
             <assignToReference>colValidateSAPP</assignToReference>
             <operator>Assign</operator>
@@ -3004,8 +3088,8 @@
     <assignments>
         <name>nullify_previous_SAP</name>
         <label>nullify previous SAP</label>
-        <locationX>512</locationX>
-        <locationY>6926</locationY>
+        <locationX>380</locationX>
+        <locationY>6206</locationY>
         <assignmentItems>
             <assignToReference>previousSAP</assignToReference>
             <operator>Assign</operator>
@@ -3017,8 +3101,8 @@
     <assignments>
         <name>nullify_record_0_0_0_0_0_0</name>
         <label>nullify record</label>
-        <locationX>644</locationX>
-        <locationY>10670</locationY>
+        <locationX>1634</locationX>
+        <locationY>9770</locationY>
         <assignmentItems>
             <assignToReference>recSAPP</assignToReference>
             <operator>Assign</operator>
@@ -3030,8 +3114,8 @@
     <assignments>
         <name>Stage_Assignment</name>
         <label>Stage Assignment</label>
-        <locationX>1232</locationX>
-        <locationY>518</locationY>
+        <locationX>1661</locationX>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>$Flow.CurrentStage</assignToReference>
             <operator>Assign</operator>
@@ -3087,8 +3171,8 @@
         <name>filterProductsWithoutPlant</name>
         <elementSubtype>FilterCollectionProcessor</elementSubtype>
         <label>filterProductsWithoutPlant</label>
-        <locationX>644</locationX>
-        <locationY>2750</locationY>
+        <locationX>512</locationX>
+        <locationY>2462</locationY>
         <assignNextValueToReference>currentItem_filterProductsWithoutPlant</assignNextValueToReference>
         <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
         <collectionReference>colCurrentProductList</collectionReference>
@@ -3108,8 +3192,8 @@
         <name>sort_Collectionx</name>
         <elementSubtype>SortCollectionProcessor</elementSubtype>
         <label>sort Collection</label>
-        <locationX>644</locationX>
-        <locationY>6446</locationY>
+        <locationX>512</locationX>
+        <locationY>5774</locationY>
         <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
         <collectionReference>colLinkedSAPP</collectionReference>
         <connector>
@@ -3129,8 +3213,8 @@
     <decisions>
         <name>check_Access</name>
         <label>check Access</label>
-        <locationX>1821</locationX>
-        <locationY>1910</locationY>
+        <locationX>2811</locationX>
+        <locationY>1706</locationY>
         <defaultConnector>
             <targetReference>scrSelectSAPP_0_0</targetReference>
         </defaultConnector>
@@ -3154,8 +3238,8 @@
     <decisions>
         <name>check_Choice_0</name>
         <label>check Choice</label>
-        <locationX>644</locationX>
-        <locationY>16502</locationY>
+        <locationX>1634</locationX>
+        <locationY>14990</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Send_to_ERP</name>
@@ -3191,8 +3275,8 @@
     <decisions>
         <name>check_decision</name>
         <label>check decision</label>
-        <locationX>1232</locationX>
-        <locationY>878</locationY>
+        <locationX>1661</locationX>
+        <locationY>782</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_Check_User_Profile</targetReference>
         </defaultConnector>
@@ -3216,8 +3300,8 @@
     <decisions>
         <name>check_decision_0</name>
         <label>check decision</label>
-        <locationX>2272</locationX>
-        <locationY>2270</locationY>
+        <locationX>3262</locationX>
+        <locationY>2030</locationY>
         <defaultConnector>
             <targetReference>scrSelectSAPP_0_0_0_0_0</targetReference>
         </defaultConnector>
@@ -3256,8 +3340,8 @@
     <decisions>
         <name>Check_frmLinkedSellingEntity_Length</name>
         <label>Check frmLinkedSellingEntity Length</label>
-        <locationX>468</locationX>
-        <locationY>1238</locationY>
+        <locationX>336</locationX>
+        <locationY>1106</locationY>
         <defaultConnector>
             <targetReference>No_Records_Found</targetReference>
         </defaultConnector>
@@ -3281,8 +3365,8 @@
     <decisions>
         <name>check_if_already_added</name>
         <label>check if already added</label>
-        <locationX>732</locationX>
-        <locationY>7286</locationY>
+        <locationX>600</locationX>
+        <locationY>6530</locationY>
         <defaultConnector>
             <targetReference>Mod_nCpt_test</targetReference>
         </defaultConnector>
@@ -3304,10 +3388,63 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_If_Price_Component_is_Null</name>
+        <label>Check If Price Component is Null</label>
+        <locationX>974</locationX>
+        <locationY>8546</locationY>
+        <defaultConnector>
+            <targetReference>Route_Update_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>qChoicePrice.value</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>qChoiceTransportFull.value</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>qChoiceEnergySurcharge.value</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>qChoiceFreigth.value</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>qChoiceTransportUnit.value</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Price_Component_is_Mandatory</targetReference>
+            </connector>
+            <label>Not Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>check_If_SAPP_Dates_Updated</name>
         <label>check If SAPP Dates Updated</label>
-        <locationX>1216</locationX>
-        <locationY>12302</locationY>
+        <locationX>2206</locationX>
+        <locationY>11234</locationY>
         <defaultConnector>
             <targetReference>add_to_collection_SAPP_to_Update</targetReference>
         </defaultConnector>
@@ -3331,8 +3468,8 @@
     <decisions>
         <name>check_If_SAPPs_To_Delete</name>
         <label>check If SAPPs To Delete</label>
-        <locationX>644</locationX>
-        <locationY>14102</locationY>
+        <locationX>1634</locationX>
+        <locationY>12842</locationY>
         <defaultConnector>
             <targetReference>check_SAPPs_to_Create</targetReference>
         </defaultConnector>
@@ -3356,8 +3493,8 @@
     <decisions>
         <name>Check_If_Start_Date_Equals_Latest_date</name>
         <label>Check If Start Date Equals Latest date</label>
-        <locationX>864</locationX>
-        <locationY>8390</locationY>
+        <locationX>732</locationX>
+        <locationY>7514</locationY>
         <defaultConnector>
             <targetReference>All_linked_SAPP</targetReference>
         </defaultConnector>
@@ -3379,11 +3516,50 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_if_Type_is_Null</name>
+        <label>Check if Type is Null</label>
+        <locationX>512</locationX>
+        <locationY>8330</locationY>
+        <defaultConnector>
+            <targetReference>scrPriceComponentSelection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_Null11</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedLabel</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>varSelectedLabel2</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>varSelectedLabel3</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Type_Mandatory_Error</targetReference>
+            </connector>
+            <label>Not Null</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>check linked sapps</description>
         <name>check_linked_sapps</name>
         <label>check linked sapps</label>
-        <locationX>644</locationX>
-        <locationY>4166</locationY>
+        <locationX>512</locationX>
+        <locationY>3734</locationY>
         <defaultConnector>
             <targetReference>assign</targetReference>
         </defaultConnector>
@@ -3407,8 +3583,8 @@
     <decisions>
         <name>check_overlapping_periods</name>
         <label>check overlapping periods</label>
-        <locationX>996</locationX>
-        <locationY>12542</locationY>
+        <locationX>1986</locationX>
+        <locationY>11450</locationY>
         <defaultConnector>
             <targetReference>add_to_collection_SAPP_to_Create</targetReference>
         </defaultConnector>
@@ -3461,8 +3637,8 @@
     <decisions>
         <name>check_Results</name>
         <label>check Results</label>
-        <locationX>644</locationX>
-        <locationY>4622</locationY>
+        <locationX>512</locationX>
+        <locationY>4142</locationY>
         <defaultConnector>
             <targetReference>sort_Collectionx</targetReference>
         </defaultConnector>
@@ -3486,8 +3662,8 @@
     <decisions>
         <name>check_SAPPs_to_Create</name>
         <label>check SAPPs to Create</label>
-        <locationX>644</locationX>
-        <locationY>14438</locationY>
+        <locationX>1634</locationX>
+        <locationY>13142</locationY>
         <defaultConnector>
             <targetReference>check_SAPPS_To_Update</targetReference>
         </defaultConnector>
@@ -3511,8 +3687,8 @@
     <decisions>
         <name>check_SAPPS_To_Delete</name>
         <label>check SAPPS To Delete</label>
-        <locationX>644</locationX>
-        <locationY>13646</locationY>
+        <locationX>1634</locationX>
+        <locationY>12434</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_assign_counters</targetReference>
         </defaultConnector>
@@ -3536,8 +3712,8 @@
     <decisions>
         <name>check_SAPPS_To_Update</name>
         <label>check SAPPS To Update</label>
-        <locationX>644</locationX>
-        <locationY>15470</locationY>
+        <locationX>1634</locationX>
+        <locationY>14066</locationY>
         <defaultConnector>
             <targetReference>scrFillPercentage_0</targetReference>
         </defaultConnector>
@@ -3561,8 +3737,8 @@
     <decisions>
         <name>check_SAPs_to_send_to_ERP</name>
         <label>check SAPs to send to ERP</label>
-        <locationX>182</locationX>
-        <locationY>16622</locationY>
+        <locationX>1172</locationX>
+        <locationY>15098</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Selected_SAPs_Ok</name>
@@ -3583,8 +3759,8 @@
     <decisions>
         <name>check_Selected_Account</name>
         <label>check Selected Account</label>
-        <locationX>644</locationX>
-        <locationY>3590</locationY>
+        <locationX>512</locationX>
+        <locationY>3218</locationY>
         <defaultConnector>
             <targetReference>filterCollections</targetReference>
         </defaultConnector>
@@ -3608,8 +3784,8 @@
     <decisions>
         <name>Check_User_Profile</name>
         <label>Check User Profile</label>
-        <locationX>644</locationX>
-        <locationY>998</locationY>
+        <locationX>512</locationX>
+        <locationY>890</locationY>
         <defaultConnector>
             <targetReference>getLinkedSellingEntity</targetReference>
         </defaultConnector>
@@ -3633,8 +3809,8 @@
     <decisions>
         <name>Copy_1_of_check_SAPs_to_send_to_ERP</name>
         <label>Check if SAPs Null</label>
-        <locationX>710</locationX>
-        <locationY>16622</locationY>
+        <locationX>1700</locationX>
+        <locationY>15098</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Copy_1_of_Selected_SAPs_Ok</name>
@@ -3655,8 +3831,8 @@
     <decisions>
         <name>Copy_1_of_Check_User_Profile</name>
         <label>Copy 1 of Check User Profile</label>
-        <locationX>1821</locationX>
-        <locationY>998</locationY>
+        <locationX>2811</locationX>
+        <locationY>890</locationY>
         <defaultConnector>
             <targetReference>get_SAP</targetReference>
         </defaultConnector>
@@ -3680,8 +3856,8 @@
     <decisions>
         <name>Copy_1_of_test_cpt</name>
         <label>Copy 1 of test cpt</label>
-        <locationX>864</locationX>
-        <locationY>10238</locationY>
+        <locationX>1854</locationX>
+        <locationY>9386</locationY>
         <defaultConnector>
             <targetReference>loopProductPrices</targetReference>
         </defaultConnector>
@@ -3705,8 +3881,8 @@
     <decisions>
         <name>CPT_CHECK</name>
         <label>CPT CHECK</label>
-        <locationX>1216</locationX>
-        <locationY>13094</locationY>
+        <locationX>2206</locationX>
+        <locationY>11942</locationY>
         <defaultConnector>
             <targetReference>loopValidatedSAPP</targetReference>
         </defaultConnector>
@@ -3730,8 +3906,8 @@
     <decisions>
         <name>dsfds</name>
         <label>dsfds</label>
-        <locationX>468</locationX>
-        <locationY>5894</locationY>
+        <locationX>336</locationX>
+        <locationY>5282</locationY>
         <defaultConnector>
             <targetReference>DummyAction_0_0_0</targetReference>
         </defaultConnector>
@@ -3769,8 +3945,8 @@
     <decisions>
         <name>dsfds_0</name>
         <label>dsfds</label>
-        <locationX>512</locationX>
-        <locationY>15038</locationY>
+        <locationX>1502</locationX>
+        <locationY>13682</locationY>
         <defaultConnector>
             <targetReference>Assign_New_SAPP_to_Update</targetReference>
         </defaultConnector>
@@ -3808,8 +3984,8 @@
     <decisions>
         <name>dsfds_0_0</name>
         <label>dsfds</label>
-        <locationX>512</locationX>
-        <locationY>16070</locationY>
+        <locationX>1502</locationX>
+        <locationY>14606</locationY>
         <defaultConnector>
             <targetReference>scrFillPercentage_0</targetReference>
         </defaultConnector>
@@ -3847,8 +4023,8 @@
     <decisions>
         <name>dsfds_0_0_0</name>
         <label>dsfds</label>
-        <locationX>1766</locationX>
-        <locationY>2990</locationY>
+        <locationX>2756</locationX>
+        <locationY>2678</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Not_Finished_0_0_0</name>
@@ -3880,8 +4056,8 @@
     <decisions>
         <name>Mod_nCpt_test</name>
         <label>Mod nCpt test</label>
-        <locationX>732</locationX>
-        <locationY>7622</locationY>
+        <locationX>600</locationX>
+        <locationY>6830</locationY>
         <defaultConnector>
             <targetReference>loopSelectedSAPPS</targetReference>
         </defaultConnector>
@@ -3905,8 +4081,8 @@
     <decisions>
         <name>Mod_nCpt_test7</name>
         <label>Mod nCpt test</label>
-        <locationX>688</locationX>
-        <locationY>4982</locationY>
+        <locationX>556</locationX>
+        <locationY>4466</locationY>
         <defaultConnector>
             <targetReference>loopCreatePrices</targetReference>
         </defaultConnector>
@@ -3930,8 +4106,8 @@
     <decisions>
         <name>Mod_nCpt_test7_0</name>
         <label>Mod nCpt test</label>
-        <locationX>2734</locationX>
-        <locationY>2750</locationY>
+        <locationX>3724</locationX>
+        <locationY>2462</locationY>
         <defaultConnector>
             <targetReference>loopResetSA</targetReference>
         </defaultConnector>
@@ -3955,8 +4131,8 @@
     <decisions>
         <name>Route_Update_Type</name>
         <label>Route Update Type</label>
-        <locationX>644</locationX>
-        <locationY>9422</locationY>
+        <locationX>1634</locationX>
+        <locationY>8654</locationY>
         <defaultConnector>
             <targetReference>nullify_colValidateSAPPs</targetReference>
         </defaultConnector>
@@ -4010,8 +4186,8 @@
     <decisions>
         <name>SA_Not_Null</name>
         <label>SA Not Null</label>
-        <locationX>1645</locationX>
-        <locationY>1238</locationY>
+        <locationX>2635</locationX>
+        <locationY>1106</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_No_Records_Found</targetReference>
         </defaultConnector>
@@ -4035,8 +4211,8 @@
     <decisions>
         <name>sort_collection</name>
         <label>sort collection ?</label>
-        <locationX>644</locationX>
-        <locationY>6686</locationY>
+        <locationX>512</locationX>
+        <locationY>5990</locationY>
         <defaultConnector>
             <targetReference>All_linked_SAPP</targetReference>
         </defaultConnector>
@@ -4060,8 +4236,8 @@
     <decisions>
         <name>test_cpt</name>
         <label>test cpt</label>
-        <locationX>864</locationX>
-        <locationY>11390</locationY>
+        <locationX>1854</locationX>
+        <locationY>10418</locationY>
         <defaultConnector>
             <targetReference>loopSelectedPrices</targetReference>
         </defaultConnector>
@@ -4145,7 +4321,7 @@
         <name>frmAssignNewProductPrice</name>
         <dataType>Currency</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Base Price&quot;,{!loopSelectedPrices.Tech_Temp_price__c} ,
+&quot;Product&quot;,{!loopSelectedPrices.Tech_Temp_price__c} ,
 {!loopSelectedPrices.Customer_ex_works_price__c}
 )</expression>
         <scale>2</scale>
@@ -4176,7 +4352,7 @@
         <name>frmColumnLabel</name>
         <dataType>String</dataType>
         <expression>CASE({!frmSelectedPriceComponent},
-&quot;Base Price&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Base Price, frmTech_New_price__c:New Base Price&quot; ,
+&quot;Product&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Product Price, frmTech_New_price__c:New Product Price&quot; ,
 &quot;Transport&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Transport Price(Unit), frmTech_New_price__c:New Transport Price(Unit)&quot; ,
 &quot;Transport (Per Container)&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Transport Price (Per Container), frmTech_New_price__c:New Transport Price (Per Container)&quot; ,
 &quot;Energy&quot;,&quot;CurrencyIsoCode:Currency, frmTech_Current_price__c:Energy Surcharge, frmTech_New_price__c:New Energy Surcharge&quot; ,
@@ -4220,11 +4396,11 @@ If(ISBLANK({!frmSelectedLabel}),&quot;Parameters&quot;,{!frmSelectedLabel})&amp;
         <scale>0</scale>
     </formulas>
     <formulas>
-        <name>frmNewEndDate</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!New_End_Date}), 
-                 IF(ISBLANK({!New_End_Date2}),{!New_End_Date3},{!New_End_Date2}),
-{!New_End_Date})</expression>
+        <name>frmNewEndDate1</name>
+        <dataType>Date</dataType>
+        <expression>IF(ISBLANK({!New_End_Date_X}), 
+                 IF(ISBLANK({!New_End_Date_Y}),{!New_End_Date_Z},{!New_End_Date_Y}),
+{!New_End_Date_X})</expression>
     </formulas>
     <formulas>
         <name>frmNewEndDatePicklist</name>
@@ -4319,11 +4495,11 @@ VALUE(MID(TEXT({!loopSelectedPrices.New_End_Date__c}),1,2))
         <scale>2</scale>
     </formulas>
     <formulas>
-        <name>frmNewStartDate</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!New_Start_Date}), 
-                 IF(ISBLANK({!New_Start_Date2}),{!New_Start_Date3},{!New_Start_Date2}),
-{!New_Start_Date})</expression>
+        <name>frmNewStartDate1</name>
+        <dataType>Date</dataType>
+        <expression>IF(ISBLANK({!New_Start_Date_A}), 
+                 IF(ISBLANK({!New_Start_Date_B}),{!New_Start_Date_C},{!New_Start_Date_B}),
+{!New_Start_Date_A})</expression>
     </formulas>
     <formulas>
         <name>frmNewStartDatePicklist</name>
@@ -4385,9 +4561,9 @@ VALUE(MID(TEXT({!loopSelectedPrices.New_End_Date__c}),1,2))
         <dataType>String</dataType>
         <expression>IF({!frmAccessAll},
 
-&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,StockKeepingUnit,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) ) LIMIT 1000&quot;,
+&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,Material_Group_5__c,StockKeepingUnit,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) ) LIMIT 1000&quot;,
 
-&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,StockKeepingUnit,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) AND (frmOwnerId__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmSalesDirector__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmBPM__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos;)) LIMIT 1000 &quot;)</expression>
+&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,StockKeepingUnit,Material_Group_5__c,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) AND (frmOwnerId__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmSalesDirector__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmBPM__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos;)) LIMIT 1000 &quot;)</expression>
     </formulas>
     <formulas>
         <name>frmQueryLinkedSAP</name>
@@ -4493,8 +4669,8 @@ HYPERLINK(
     <loops>
         <name>All_linked_SAPP</name>
         <label>All linked SAPP</label>
-        <locationX>644</locationX>
-        <locationY>8270</locationY>
+        <locationX>512</locationX>
+        <locationY>7406</locationY>
         <collectionReference>colLinkedSAPP</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -4507,8 +4683,8 @@ HYPERLINK(
     <loops>
         <name>loopCreatePrices</name>
         <label>loopCreatePrices</label>
-        <locationX>468</locationX>
-        <locationY>4742</locationY>
+        <locationX>336</locationX>
+        <locationY>4250</locationY>
         <collectionReference>colUnlinkedSAPWithData</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -4521,8 +4697,8 @@ HYPERLINK(
     <loops>
         <name>loopProductPrices</name>
         <label>loopProductPrices</label>
-        <locationX>644</locationX>
-        <locationY>9998</locationY>
+        <locationX>1634</locationX>
+        <locationY>9170</locationY>
         <collectionReference>colSelectedSAPP</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -4535,8 +4711,8 @@ HYPERLINK(
     <loops>
         <name>loopResetSA</name>
         <label>loopResetSA</label>
-        <locationX>2514</locationX>
-        <locationY>2390</locationY>
+        <locationX>3504</locationX>
+        <locationY>2138</locationY>
         <collectionReference>colSelectedSAPsReset</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -4546,8 +4722,8 @@ HYPERLINK(
     <loops>
         <name>loopSelectedPrices</name>
         <label>loopSelectedPrices</label>
-        <locationX>644</locationX>
-        <locationY>11150</locationY>
+        <locationX>1634</locationX>
+        <locationY>10202</locationY>
         <collectionReference>colSelectedSAPPSValidated</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -4560,8 +4736,8 @@ HYPERLINK(
     <loops>
         <name>loopSelectedSAPPS</name>
         <label>loopSelectedSAPPS</label>
-        <locationX>512</locationX>
-        <locationY>7046</locationY>
+        <locationX>380</locationX>
+        <locationY>6314</locationY>
         <collectionReference>colLinkedSAPP</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -4574,8 +4750,8 @@ HYPERLINK(
     <loops>
         <name>loopValidatedSAPP</name>
         <label>loopValidatedSAPP</label>
-        <locationX>644</locationX>
-        <locationY>12062</locationY>
+        <locationX>1634</locationX>
+        <locationY>11018</locationY>
         <collectionReference>colValidatedSAPP</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -4607,8 +4783,8 @@ HYPERLINK(
     <recordDeletes>
         <name>delete_SAPPsx</name>
         <label>delete SAPPs</label>
-        <locationX>512</locationX>
-        <locationY>14222</locationY>
+        <locationX>1502</locationX>
+        <locationY>12950</locationY>
         <connector>
             <targetReference>check_SAPPs_to_Create</targetReference>
         </connector>
@@ -4617,8 +4793,8 @@ HYPERLINK(
     <recordLookups>
         <name>get_LinkedSellingEntity</name>
         <label>get LinkedSellingEntity</label>
-        <locationX>468</locationX>
-        <locationY>1118</locationY>
+        <locationX>336</locationX>
+        <locationY>998</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_frmLinkedSellingEntity_Length</targetReference>
@@ -4659,8 +4835,8 @@ HYPERLINK(
     <recordLookups>
         <name>get_overlaping_periods</name>
         <label>get overlaping periods</label>
-        <locationX>996</locationX>
-        <locationY>12422</locationY>
+        <locationX>1986</locationX>
+        <locationY>11342</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>check_overlapping_periods</targetReference>
@@ -4694,8 +4870,8 @@ HYPERLINK(
     <recordLookups>
         <name>get_related_SA</name>
         <label>get related SA</label>
-        <locationX>1645</locationX>
-        <locationY>1118</locationY>
+        <locationX>2635</locationX>
+        <locationY>998</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>SA_Not_Null</targetReference>
@@ -4743,8 +4919,8 @@ HYPERLINK(
     <recordLookups>
         <name>getJobStatus</name>
         <label>getJobStatus</label>
-        <locationX>468</locationX>
-        <locationY>5534</locationY>
+        <locationX>336</locationX>
+        <locationY>4958</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>dqsdsqd</targetReference>
@@ -4770,8 +4946,8 @@ HYPERLINK(
     <recordLookups>
         <name>getJobStatus_0</name>
         <label>getJobStatus</label>
-        <locationX>512</locationX>
-        <locationY>14678</locationY>
+        <locationX>1502</locationX>
+        <locationY>13358</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>dqsdsqd_0</targetReference>
@@ -4797,8 +4973,8 @@ HYPERLINK(
     <recordLookups>
         <name>getJobStatus_0_0</name>
         <label>getJobStatus</label>
-        <locationX>512</locationX>
-        <locationY>15710</locationY>
+        <locationX>1502</locationX>
+        <locationY>14282</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>dqsdsqd_0_0</targetReference>
@@ -4824,8 +5000,8 @@ HYPERLINK(
     <recordLookups>
         <name>getJobStatus_0_0_0</name>
         <label>getJobStatus</label>
-        <locationX>1766</locationX>
-        <locationY>2630</locationY>
+        <locationX>2756</locationX>
+        <locationY>2354</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>dqsdsqd_0_0_0</targetReference>
@@ -4851,8 +5027,8 @@ HYPERLINK(
     <recordUpdates>
         <name>update_SA</name>
         <label>update SA</label>
-        <locationX>2734</locationX>
-        <locationY>2510</locationY>
+        <locationX>3724</locationX>
+        <locationY>2246</locationY>
         <connector>
             <targetReference>assign_Create_SAPP_values_0</targetReference>
         </connector>
@@ -4882,8 +5058,8 @@ HYPERLINK(
     <screens>
         <name>Copy_1_of_No_Records_Found</name>
         <label>Copy 1 of No Records Found</label>
-        <locationX>1733</locationX>
-        <locationY>1358</locationY>
+        <locationX>2723</locationX>
+        <locationY>1214</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -4898,8 +5074,8 @@ HYPERLINK(
     <screens>
         <name>Copy_1_of_scrFillPercentage</name>
         <label>Copy 1 of scrFillPercentage</label>
-        <locationX>578</locationX>
-        <locationY>17102</locationY>
+        <locationX>1568</locationX>
+        <locationY>15530</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -4924,7 +5100,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>script</name>
                         <value>
-                            <stringValue>Selected records have been moved to S1</stringValue>
+                            <stringValue>You have chosen to not yet send these records to customer service. The status of these products will move to S1 - Negotiation Starting Soon. This status will indicate that the BPMs have updated the energy surcharge and prepared the price to be validated or updated by the sales manager. The next step in the process is for the Sales Manager to validated / update the price and send it to customer service at which point the status again update. Thank you.</stringValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -4985,8 +5161,8 @@ HYPERLINK(
     <screens>
         <name>No_Records_Found</name>
         <label>No Records Found</label>
-        <locationX>556</locationX>
-        <locationY>1358</locationY>
+        <locationX>424</locationX>
+        <locationY>1214</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -4999,10 +5175,26 @@ HYPERLINK(
         <showHeader>false</showHeader>
     </screens>
     <screens>
+        <name>Price_Component_is_Mandatory</name>
+        <label>Price Component is Mandatory</label>
+        <locationX>314</locationX>
+        <locationY>8654</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Selectpricecomponent</name>
+            <fieldText>&lt;p&gt;Please Select Atleast 1 Price Component&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>scrFillAddedAmount</name>
         <label>scrFillAddedAmount</label>
-        <locationX>512</locationX>
-        <locationY>9542</locationY>
+        <locationX>1502</locationX>
+        <locationY>8762</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5046,25 +5238,23 @@ HYPERLINK(
                     <scale>0</scale>
                 </fields>
                 <fields>
-                    <name>New_Start_Date2</name>
-                    <choiceReferences>chxStartDate</choiceReferences>
-                    <dataType>String</dataType>
+                    <name>New_Start_Date_B</name>
+                    <dataType>Date</dataType>
                     <defaultValue>
-                        <elementReference>New_Start_Date2</elementReference>
+                        <elementReference>New_Start_Date_B</elementReference>
                     </defaultValue>
                     <fieldText>New Start Date</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
-                    <name>New_End_Date2</name>
-                    <choiceReferences>chxEndDate</choiceReferences>
-                    <dataType>String</dataType>
+                    <name>New_End_Date_Y</name>
+                    <dataType>Date</dataType>
                     <defaultValue>
-                        <elementReference>New_End_Date2</elementReference>
+                        <elementReference>New_End_Date_Y</elementReference>
                     </defaultValue>
                     <fieldText>New End Date</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
@@ -5121,8 +5311,8 @@ HYPERLINK(
     <screens>
         <name>scrFillPercentage</name>
         <label>scrFillPercentage</label>
-        <locationX>248</locationX>
-        <locationY>9542</locationY>
+        <locationX>1238</locationX>
+        <locationY>8762</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5166,25 +5356,23 @@ HYPERLINK(
                     <scale>2</scale>
                 </fields>
                 <fields>
-                    <name>New_Start_Date</name>
-                    <choiceReferences>chxStartDate</choiceReferences>
-                    <dataType>String</dataType>
+                    <name>New_Start_Date_A</name>
+                    <dataType>Date</dataType>
                     <defaultValue>
-                        <elementReference>New_Start_Date</elementReference>
+                        <elementReference>New_Start_Date_A</elementReference>
                     </defaultValue>
                     <fieldText>New Start Date</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
-                    <name>New_End_Date</name>
-                    <choiceReferences>chxEndDate</choiceReferences>
-                    <dataType>String</dataType>
+                    <name>New_End_Date_X</name>
+                    <dataType>Date</dataType>
                     <defaultValue>
-                        <elementReference>New_End_Date</elementReference>
+                        <elementReference>New_End_Date_X</elementReference>
                     </defaultValue>
                     <fieldText>New End Date</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
@@ -5241,8 +5429,8 @@ HYPERLINK(
     <screens>
         <name>scrFillPercentage_0</name>
         <label>scrFillPercentage</label>
-        <locationX>644</locationX>
-        <locationY>16382</locationY>
+        <locationX>1634</locationX>
+        <locationY>14882</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5387,8 +5575,8 @@ HYPERLINK(
     <screens>
         <name>scrFillPercentage_0_0</name>
         <label>scrFillPercentage</label>
-        <locationX>50</locationX>
-        <locationY>17462</locationY>
+        <locationX>1040</locationX>
+        <locationY>15854</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5474,8 +5662,8 @@ HYPERLINK(
     <screens>
         <name>scrFillReplaceAmount</name>
         <label>scrFillReplaceAmount</label>
-        <locationX>776</locationX>
-        <locationY>9542</locationY>
+        <locationX>1766</locationX>
+        <locationY>8762</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5519,25 +5707,23 @@ HYPERLINK(
                     <scale>2</scale>
                 </fields>
                 <fields>
-                    <name>New_Start_Date3</name>
-                    <choiceReferences>chxStartDate</choiceReferences>
-                    <dataType>String</dataType>
+                    <name>New_Start_Date_C</name>
+                    <dataType>Date</dataType>
                     <defaultValue>
-                        <elementReference>New_Start_Date3</elementReference>
+                        <elementReference>New_Start_Date_C</elementReference>
                     </defaultValue>
                     <fieldText>New Start Date</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
-                    <name>New_End_Date3</name>
-                    <choiceReferences>chxEndDate</choiceReferences>
-                    <dataType>String</dataType>
+                    <name>New_End_Date_Z</name>
+                    <dataType>Date</dataType>
                     <defaultValue>
-                        <elementReference>New_End_Date3</elementReference>
+                        <elementReference>New_End_Date_Z</elementReference>
                     </defaultValue>
                     <fieldText>New End Date</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
@@ -5594,8 +5780,8 @@ HYPERLINK(
     <screens>
         <name>scrJobStatus</name>
         <label>scrJobStatus</label>
-        <locationX>468</locationX>
-        <locationY>5774</locationY>
+        <locationX>336</locationX>
+        <locationY>5174</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5703,8 +5889,8 @@ HYPERLINK(
     <screens>
         <name>scrJobStatus_0</name>
         <label>scrJobStatus</label>
-        <locationX>512</locationX>
-        <locationY>14918</locationY>
+        <locationX>1502</locationX>
+        <locationY>13574</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5812,8 +5998,8 @@ HYPERLINK(
     <screens>
         <name>scrJobStatus_0_0</name>
         <label>scrJobStatus</label>
-        <locationX>512</locationX>
-        <locationY>15950</locationY>
+        <locationX>1502</locationX>
+        <locationY>14498</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -5921,8 +6107,8 @@ HYPERLINK(
     <screens>
         <name>scrJobStatus_0_0_0</name>
         <label>scrJobStatus</label>
-        <locationX>1766</locationX>
-        <locationY>2870</locationY>
+        <locationX>2756</locationX>
+        <locationY>2570</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -6030,13 +6216,13 @@ HYPERLINK(
     <screens>
         <name>scrPriceComponentSelection</name>
         <label>scrPriceComponentSelection</label>
-        <locationX>644</locationX>
-        <locationY>9302</locationY>
+        <locationX>974</locationX>
+        <locationY>8438</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Route_Update_Type</targetReference>
+            <targetReference>Check_If_Price_Component_is_Null</targetReference>
         </connector>
         <fields>
             <name>scsdqsdq</name>
@@ -6139,7 +6325,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>staticChoicesString</name>
                         <value>
-                            <stringValue>[{&quot;label&quot;:&quot;Base Price&quot;,&quot;value&quot;:&quot;Base price per unit update&quot;}]</stringValue>
+                            <stringValue>[{&quot;label&quot;:&quot;Product&quot;,&quot;value&quot;:&quot;Product price per unit update&quot;}]</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -6480,14 +6666,14 @@ HYPERLINK(
         </fields>
         <helpText>&lt;p&gt;You are now using the process to create sustainability requests&lt;/p&gt;</helpText>
         <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
-        <showFooter>false</showFooter>
+        <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>scrSelectAccounts_0</name>
         <label>scrSelectAccounts</label>
-        <locationX>644</locationX>
-        <locationY>3470</locationY>
+        <locationX>512</locationX>
+        <locationY>3110</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -6706,8 +6892,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectPlants</name>
         <label>scrSelectPlants</label>
-        <locationX>644</locationX>
-        <locationY>2630</locationY>
+        <locationX>512</locationX>
+        <locationY>2354</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -6953,8 +7139,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectProduct</name>
         <label>scrSelectProduct</label>
-        <locationX>644</locationX>
-        <locationY>2990</locationY>
+        <locationX>512</locationX>
+        <locationY>2678</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -7194,8 +7380,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectSAPP</name>
         <label>scrSelectSAPP</label>
-        <locationX>644</locationX>
-        <locationY>9062</locationY>
+        <locationX>512</locationX>
+        <locationY>8114</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -7259,7 +7445,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnFields</name>
                         <value>
-                            <stringValue>Name,Sales_Agreement_Product__c,Selling_Entity__c,Product_Name__c,Product_Code__c,Account__c,Incoterm__c,Mode_of_Transport__c,Price_From__c,Price_To__c,Currency_Code__c,Ex_works_Product_price_per_unit_reports__c,Energy_Surcharge_per_uom_reports__c,Freight_Surcharge1__c,Transportpriceunitbase__c,Total_Transport_Price__c,Full_delivered_Price_Exc_Surcharge1__c,Full_delivered_Price_inc_surcharge_repor__c</stringValue>
+                            <stringValue>Name,Sales_Agreement_Product__c,Selling_Entity__c,Product_Name__c,Unit__c,Product_Code__c,Account__c,Incoterm__c,Mode_of_Transport__c,Price_From__c,Price_To__c,Currency_Code__c,Ex_works_Product_price_per_unit_reports__c,Energy_Surcharge_per_uom_reports__c,Freight_Surcharge1__c,Transportpriceunitbase__c,Total_Transport_Price__c,Full_delivered_Price_Exc_Surcharge1__c,Full_delivered_Price_inc_surcharge_repor__c,Negotiation_Status__c</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7271,7 +7457,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnWidths</name>
                         <value>
-                            <stringValue>Name:140, Sales_Agreement_Product__c:170, Selling_Entity__c:180, Product_Name__c:150, Product_Code__c:155, Account__c:160, Incoterm__c:115, Mode_of_Transport__c:155, Price_From__c:110, Price_To__c:105, Currency_Code__c:167, Ex_works_Product_price_per_unit_reports__c:270, Energy_Surcharge_per_uom_reports__c:282, Freight_Surcharge1__c:175, Transportpriceunitbase__c:263, Total_Transport_Price__c:171, Full_delivered_Price_Exc_Surcharge1__c:309, Full_delivered_Price_inc_surcharge_repor__c:275</stringValue>
+                            <stringValue>Name:140, Sales_Agreement_Product__c:170, Selling_Entity__c:180, Product_Name__c:150, Unit__c:120, Product_Code__c:155, Account__c:160, Incoterm__c:115, Mode_of_Transport__c:155, Price_From__c:110, Price_To__c:105, Currency_Code__c:167, Ex_works_Product_price_per_unit_reports__c:270, Energy_Surcharge_per_uom_reports__c:282, Freight_Surcharge1__c:175, Transportpriceunitbase__c:263, Total_Transport_Price__c:223, Full_delivered_Price_Exc_Surcharge1__c:309, Full_delivered_Price_inc_surcharge_repor__c:275, Negotiation_Status__c:50</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7355,7 +7541,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnLabels</name>
                         <value>
-                            <stringValue>Name:Sales Agr. Price, Sales_Agreement_Product__c:Sales Agr. Product, Ex_works_Product_price_per_unit_reports__c:Base Price Per unit, Total_Transport_Price__c:Transport Price Per Container</stringValue>
+                            <stringValue>Name:Sales Agr. Price, Sales_Agreement_Product__c:Sales Agr. Product, Ex_works_Product_price_per_unit_reports__c:Ex-works / product price per unit, Total_Transport_Price__c:Transport Price Per Container</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7450,8 +7636,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectSAPP_0</name>
         <label>scrSelectSAPP</label>
-        <locationX>644</locationX>
-        <locationY>10790</locationY>
+        <locationX>1634</locationX>
+        <locationY>9878</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -7515,7 +7701,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnFields</name>
                         <value>
-                            <stringValue>Name,Account__c,Selling_Entity__c,Product_Name__c,Price_From__c,Price_To__c,New_Start_Date__c,New_End_Date__c,frmTech_Current_price__c,frmTech_New_price__c</stringValue>
+                            <stringValue>Name,Account__c,Selling_Entity__c,Product_Name__c,Price_From__c,Price_To__c,New_Start_Date__c,New_End_Date__c,frmTech_Current_price__c,frmTech_New_price__c,Change__c</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7527,7 +7713,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnWidths</name>
                         <value>
-                            <stringValue>Name:224, Account__c:182, Selling_Entity__c:250, Product_Name__c:235, Price_From__c:143, Price_To__c:114, New_Start_Date__c:153, New_End_Date__c:128, frmTech_Current_price__c:177, frmTech_New_price__c:192</stringValue>
+                            <stringValue>Name:224, Account__c:182, Selling_Entity__c:250, Product_Name__c:235, Price_From__c:143, Price_To__c:114, New_Start_Date__c:153, New_End_Date__c:128, frmTech_Current_price__c:177, frmTech_New_price__c:192, Change__c:50</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7730,8 +7916,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectSAPP_0_0</name>
         <label>scrSelectSAPP</label>
-        <locationX>2272</locationX>
-        <locationY>2030</locationY>
+        <locationX>3262</locationX>
+        <locationY>1814</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -7902,8 +8088,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectSAPP_0_0_0</name>
         <label>scrSelectSAPP</label>
-        <locationX>2272</locationX>
-        <locationY>2150</locationY>
+        <locationX>3262</locationX>
+        <locationY>1922</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -8161,8 +8347,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectSAPP_0_0_0_0</name>
         <label>scrSelectSAPP</label>
-        <locationX>1370</locationX>
-        <locationY>2030</locationY>
+        <locationX>2360</locationX>
+        <locationY>1814</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -8195,8 +8381,8 @@ HYPERLINK(
     <screens>
         <name>scrSelectSAPP_0_0_0_0_0</name>
         <label>scrSelectSAPP</label>
-        <locationX>2778</locationX>
-        <locationY>2390</locationY>
+        <locationX>3768</locationX>
+        <locationY>2138</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -8229,8 +8415,8 @@ HYPERLINK(
     <screens>
         <name>scrSellingEntitySelection</name>
         <label>scrSellingEntitySelection</label>
-        <locationX>644</locationX>
-        <locationY>2030</locationY>
+        <locationX>512</locationX>
+        <locationY>1814</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -8419,13 +8605,13 @@ HYPERLINK(
     <screens>
         <name>scrTypeOfUpdateSelection</name>
         <label>scrTypeOfUpdateSelection</label>
-        <locationX>644</locationX>
-        <locationY>9182</locationY>
+        <locationX>512</locationX>
+        <locationY>8222</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>scrPriceComponentSelection</targetReference>
+            <targetReference>Check_if_Type_is_Null</targetReference>
         </connector>
         <fields>
             <name>sdqd</name>
@@ -8735,14 +8921,14 @@ HYPERLINK(
             <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <helpText>&lt;p&gt;You are now using the process to create sustainability requests&lt;/p&gt;</helpText>
-        <showFooter>false</showFooter>
+        <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>scrTypeOfUpdateSelection_0</name>
         <label>scrTypeOfUpdateSelection</label>
-        <locationX>1232</locationX>
-        <locationY>758</locationY>
+        <locationX>1661</locationX>
+        <locationY>674</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -8924,6 +9110,22 @@ HYPERLINK(
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
+    <screens>
+        <name>Type_Mandatory_Error</name>
+        <label>Type Mandatory Error</label>
+        <locationX>50</locationX>
+        <locationY>8438</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>typeismandatory</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please select atleast 1 type to proceed&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
     <stages>
         <name>Filter_Selling_Entities</name>
         <isActive>true</isActive>
@@ -8943,7 +9145,7 @@ HYPERLINK(
         <stageOrder>10</stageOrder>
     </stages>
     <start>
-        <locationX>1106</locationX>
+        <locationX>1535</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>assign_collections_labels</targetReference>
