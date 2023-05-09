@@ -20,7 +20,7 @@ public class AP01_AccountPlanTeamTriggerHandler extends TriggerHandler {
         }
         
         if(accountPlanId != null){
-            listOfAccountPlanTeam = [select id,AccountPlanNo__c,Member__c from AccountPlanTeam__c where AccountPlanNo__c =:accountPlanId  AND Access__c = 'Edit' ];        
+            listOfAccountPlanTeam = [select id,AccountPlanNo__c,Member__c from AccountPlanTeam__c where AccountPlanNo__c =:accountPlanId  AND Access__c = 'Read' ];        
         }
         for(AccountPlanTeam__c eachAccPlanTeam : listOfAccountPlanTeam){
             APTIds.add(eachAccPlanTeam.Member__c);  
@@ -29,8 +29,8 @@ public class AP01_AccountPlanTeamTriggerHandler extends TriggerHandler {
         if(AccountplanRecord != null)
         {
             for(AccountPlanTeam__c aPlanTeam : aNewList){   
-                if(!APTIds.contains(userid) && AccountplanRecord.Ownerid != userid && profileName!='System Administrator' ){
-                    aPlanTeam.addError('Access restricted. Available only to the current Account Plan Owner and Account Plan Team member with read and write access');
+                if(APTIds.contains(userid) ){
+                    aPlanTeam.addError('Insufficient Access');
                 }
                 
             }  
