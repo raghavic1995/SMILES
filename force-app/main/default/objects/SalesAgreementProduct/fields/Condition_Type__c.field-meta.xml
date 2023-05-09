@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Condition_Type__c</fullName>
     <externalId>false</externalId>
-    <formula>CASE(TEXT(Invoicing_Type__c), &apos;Full delivered Price Shown Only&apos;,&apos;ZPT3&apos;, &apos;Price components combined into one price excluding ESC which should be shown separately&apos;,&apos;ZPT0&apos;,&apos;Prices combined into one price, excluding transport price, which should be shown separately&apos;,&apos;ZPT0&apos;,&apos; &apos;)</formula>
+    <formula>CASE(TEXT(Invoicing_Type__c), &apos;Full delivered Price Shown Only&apos;,&apos;ZPT3&apos;, &apos;Price components combined into one price excluding ESC which should be shown separately&apos;,&apos;ZPT0&apos;,&apos;Prices combined into one price excluding transport price, which should be shown separately&apos;,&apos;ZPT0&apos;,&apos; &apos;)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Condition Type</label>
     <required>false</required>
