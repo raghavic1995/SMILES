@@ -6,28 +6,53 @@ public class SOW {
             set<Id> setOfUsers = new set<Id>();
             set<Id> AccPlanOwner = new set<Id>();
             set<Id> AccPlanTeammember = new set<Id>();
+            set<Id> AccPlanShare= new set<Id>();	
+            set<Id> groupId= new set<Id>();
             Id userid = UserInfo.getUserId();
-            ID accountid =[select id,Account__r.id   from Account_Plan__c  where id =: AccountplanId].Account__r.id ;
-            list<AccountTeamMember> listOfAccountTeamMember = [select id,UserId,User.Profile.name  from AccountTeamMember where Account.id =:accountid];
-            list<AccountPlanTeam__c> listOfAccountPlanTeamMember = [select id,AccountPlanNo__c,Access__c,Member__c from AccountPlanTeam__c where AccountPlanNo__c =:AccountplanId];
+            Id profileId=UserInfo.getProfileId();
+            String profileName=[Select Id,Name from Profile where Id=:profileId].Name;
+            ID accountid =[select id,Account__r.id   from Account_Plan__c  where id =: AccountPlanId].Account__r.id ;
+            
+            list<AccountPlanTeam__c> listOfAccountPlanTeamMember = [select id,AccountPlanNo__c,Access__c,Member__c from AccountPlanTeam__c where AccountPlanNo__c =:AccountPlanId];
 
-            list<Account_Plan__c> AccplanOwnerlist = [select id,ownerid from Account_Plan__c  where id =: AccountplanId];
+            list<Account_Plan__c> AccplanOwnerlist = [select id,ownerid from Account_Plan__c  where id =: AccountPlanId];
+            list<Account_Plan__Share> AccPlanShareList= [select id,UserOrGroupId,AccessLevel from Account_Plan__Share where parent.id=: AccountPlanId and AccessLevel='Edit' ];
+            
+            for(Account_Plan__Share ashare : AccPlanShareList ){   
+                groupId.add(ashare.UserOrGroupId); 
+            }
+            
+             List<GroupMember> GroupMemberList= [select id,UserOrGroupId from GroupMember where groupId in: groupId ];
+            
+            for(GroupMember gm : GroupMemberList){
+                if(userid == gm.UserOrGroupId ){
+                    AccPlanShare.add(userid);
+                }
+            }
+
+            
+            
+            
+            /* Modified by Anshu Singh 20/04/2023
+             * as part of US 2266
+             
+             list<AccountTeamMember> listOfAccountTeamMember = [select id,UserId,User.Profile.name  from AccountTeamMember where Account.id =:accountid];
             for(AccountTeamMember atm : listOfAccountTeamMember ){       
                 setOfUsers.add(atm.UserId);  
-            }
+            }*/
              for(Account_Plan__c acplanowner : AccplanOwnerlist ){       
                 AccPlanOwner.add(acplanowner.ownerid);  
             }
             for(AccountPlanTeam__c aptm : listOfAccountPlanTeamMember ){   
-                if(aptm.Access__c == 'Read'){
+                if(aptm.Access__c == 'Edit'){
                     AccPlanTeammember.add(aptm.Member__c);   
                 }
             }
-            if(setOfUsers.contains(userid) && !AccPlanOwner.contains(userid) ||AccPlanTeammember.contains(userid) && !AccPlanOwner.contains(userid) || !setOfUsers.contains(userid) && !AccPlanOwner.contains(userid) && AccPlanTeammember.contains(userid) ){
-                Permission = true;
+            if(AccPlanTeammember.contains(userid)|| AccPlanOwner.contains(userid)||profileName=='System Administrator'||AccPlanShare.contains(userid) ){
+                Permission = false;
             }
             else{
-                Permission = false;
+                Permission = true;
             }
              system.debug('=== ex : ' + Permission);
             return Permission;
