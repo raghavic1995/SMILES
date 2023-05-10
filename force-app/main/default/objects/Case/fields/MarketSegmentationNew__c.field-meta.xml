@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MarketSegmentationNew__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>To search, type the first letters of the market segment you are looking for followed by the * sign. For instance: ceramics* to search all ceramics related MS info</inlineHelpText>
+    <label>Market Segmentation</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 OR ((2 AND 3) OR (4 AND 3)) OR ((5 AND 6) OR (7 AND 8))</booleanFilter>
+        <errorMessage>Please select a market segmentation having a &apos;Segmentation Level 2&apos; = true.</errorMessage>
+        <filterItems>
+            <field>$User.ByPassLookupCriteria__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Record_Level_4__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Inactive__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Record_Level_2__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Business_Area__c</field>
+            <operation>equals</operation>
+            <value>G&amp;C</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.NewBusinessArea__c</field>
+            <operation>equals</operation>
+            <value>G&amp;C</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.NewBusinessArea__c</field>
+            <operation>equals</operation>
+            <value>HTS, PM AMERICAS, PM APAC, PM EMEA, RAC, Corporate, TALC NA</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Business_Area__c</field>
+            <operation>notEqual</operation>
+            <value>G&amp;C</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Market_Segmentation__c</referenceTo>
+    <relationshipLabel>Requests &amp; Complaints</relationshipLabel>
+    <relationshipName>Requests_Complaints</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

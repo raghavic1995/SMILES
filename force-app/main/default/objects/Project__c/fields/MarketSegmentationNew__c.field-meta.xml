@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MarketSegmentationNew__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>To search, type the first letters of the market segment you are looking for followed by the * sign. For instance: ceramics* to search all ceramics related MS info</inlineHelpText>
+    <label>Market Segmentation</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>((1 AND 2)) OR ((3 AND 4) OR (5 AND 6)) OR 7</booleanFilter>
+        <errorMessage>&apos;TO BE REALLOCATED&apos; value cannot be selected.</errorMessage>
+        <filterItems>
+            <field>Market_Segmentation__c.Record_Level_3__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Inactive__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Business_Area__c</field>
+            <operation>equals</operation>
+            <value>G&amp;C</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.NewBusinessArea__c</field>
+            <operation>equals</operation>
+            <value>G&amp;C</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.NewBusinessArea__c</field>
+            <operation>equals</operation>
+            <value>HTS, PM AMERICAS, PM APAC, PM EMEA, RAC, Corporate, TALC NA</value>
+        </filterItems>
+        <filterItems>
+            <field>Market_Segmentation__c.Business_Area__c</field>
+            <operation>notEqual</operation>
+            <value>G&amp;C</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.ByPassLookupCriteria__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Market_Segmentation__c</referenceTo>
+    <relationshipLabel>Master Projects</relationshipLabel>
+    <relationshipName>Projects</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
