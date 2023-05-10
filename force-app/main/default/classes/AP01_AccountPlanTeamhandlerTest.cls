@@ -18,6 +18,10 @@ public class AP01_AccountPlanTeamhandlerTest {
         accplan.Account__c =acc1.id;
         accplan.Year__c = '2021';
         insert accplan;
+        Profile p2 = [select id from profile where name='System Administrator' LIMIT 1];
+        List<User> users = [SELECT Id,email FROM User WHERE IsActive = true and email!=Null
+                            AND profile.Id =: p2.Id LIMIT 1];
+        
         
         
         
@@ -27,6 +31,7 @@ public class AP01_AccountPlanTeamhandlerTest {
     @isTest static void hasPermissionTest(){ 
         Test.startTest();
         ID userid = [select id from user where email!=Null limit 1].id;
+       
         Id AccountId = [select id from Account_Plan__c where Year__c = '2021'].id;
         AccountPlanTeam__c apt = new AccountPlanTeam__c();
         apt.Access__c = 'Edit';
