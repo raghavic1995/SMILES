@@ -41,12 +41,12 @@
             <targetReference>Copy_1_of_MapSAPtoERP</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
-            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__sourceRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -181,11 +181,11 @@
             <targetReference>Copy_1_of_assign_counters</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__outputRecordCollection</typeName>
+            <typeName>T__inputRecordCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__inputRecordCollection</typeName>
+            <typeName>U__outputRecordCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -595,12 +595,12 @@
             <targetReference>scrSelectAccounts_0</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
-            <typeValue>SalesAgreementProduct</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>U__outputCollection</typeName>
             <typeValue>Account</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__sourceRecordCollection</typeName>
+            <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -877,12 +877,12 @@
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__targetUniqueRecordCollection</typeName>
-            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>U__sourceCommonRecordCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>U__targetUniqueRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -1307,11 +1307,11 @@
             <targetReference>massResetSAP</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__inputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__inputCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -1345,11 +1345,11 @@
             <targetReference>massSendToERP</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__inputCollection</typeName>
             <typeValue>SalesAgreement</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>T__inputCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreement</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -1380,11 +1380,11 @@
             <targetReference>Move_SAP_to_S3</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__inputCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__inputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -2592,14 +2592,14 @@
             <assignToReference>recSAPP.New_Start_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>frmNewStartDate1</elementReference>
+                <elementReference>frmNewStartDate</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>recSAPP.New_End_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>frmNewEndDate1</elementReference>
+                <elementReference>frmNewEndDate</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -4396,11 +4396,11 @@ If(ISBLANK({!frmSelectedLabel}),&quot;Parameters&quot;,{!frmSelectedLabel})&amp;
         <scale>0</scale>
     </formulas>
     <formulas>
-        <name>frmNewEndDate1</name>
-        <dataType>Date</dataType>
-        <expression>IF(ISBLANK({!New_End_Date_X}), 
-                 IF(ISBLANK({!New_End_Date_Y}),{!New_End_Date_Z},{!New_End_Date_Y}),
-{!New_End_Date_X})</expression>
+        <name>frmNewEndDate</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!New_End_Date}), 
+                 IF(ISBLANK({!New_End_Date2}),{!New_End_Date3},{!New_End_Date2}),
+{!New_End_Date})</expression>
     </formulas>
     <formulas>
         <name>frmNewEndDatePicklist</name>
@@ -4495,11 +4495,11 @@ VALUE(MID(TEXT({!loopSelectedPrices.New_End_Date__c}),1,2))
         <scale>2</scale>
     </formulas>
     <formulas>
-        <name>frmNewStartDate1</name>
-        <dataType>Date</dataType>
-        <expression>IF(ISBLANK({!New_Start_Date_A}), 
-                 IF(ISBLANK({!New_Start_Date_B}),{!New_Start_Date_C},{!New_Start_Date_B}),
-{!New_Start_Date_A})</expression>
+        <name>frmNewStartDate</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!New_Start_Date}), 
+                 IF(ISBLANK({!New_Start_Date2}),{!New_Start_Date3},{!New_Start_Date2}),
+{!New_Start_Date})</expression>
     </formulas>
     <formulas>
         <name>frmNewStartDatePicklist</name>
@@ -4561,9 +4561,9 @@ VALUE(MID(TEXT({!loopSelectedPrices.New_End_Date__c}),1,2))
         <dataType>String</dataType>
         <expression>IF({!frmAccessAll},
 
-&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,Material_Group_5__c,StockKeepingUnit,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) ) LIMIT 1000&quot;,
+&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,StockKeepingUnit,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) ) LIMIT 1000&quot;,
 
-&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,StockKeepingUnit,Material_Group_5__c,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) AND (frmOwnerId__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmSalesDirector__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmBPM__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos;)) LIMIT 1000 &quot;)</expression>
+&quot;select id,Name,New_Product_Type_1__c,LocalProductName__c,StockKeepingUnit,Family,ProductCode,Description,ImerysManufacturingPlant__c,RegionForPlant__c  from Product2 where id in (select ProductId from SalesAgreementProduct where Imerys_Selling_Entity__c IN ( &quot;&amp;{!varSelectedSellingEntities}&amp;&quot;) AND (frmOwnerId__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmSalesDirector__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos; or frmBPM__c=&apos;&quot;&amp;{!$User.Id}&amp;&quot;&apos;)) LIMIT 1000 &quot;)</expression>
     </formulas>
     <formulas>
         <name>frmQueryLinkedSAP</name>
@@ -5100,7 +5100,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>script</name>
                         <value>
-                            <stringValue>You have chosen to not yet send these records to customer service. The status of these products will move to S1 - Negotiation Starting Soon. This status will indicate that the BPMs have updated the energy surcharge and prepared the price to be validated or updated by the sales manager. The next step in the process is for the Sales Manager to validated / update the price and send it to customer service at which point the status again update. Thank you.</stringValue>
+                            <stringValue>Selected records have been moved to S1</stringValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -5238,23 +5238,25 @@ HYPERLINK(
                     <scale>0</scale>
                 </fields>
                 <fields>
-                    <name>New_Start_Date_B</name>
-                    <dataType>Date</dataType>
+                    <name>New_Start_Date2</name>
+                    <choiceReferences>chxStartDate</choiceReferences>
+                    <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>New_Start_Date_B</elementReference>
+                        <elementReference>New_Start_Date2</elementReference>
                     </defaultValue>
                     <fieldText>New Start Date</fieldText>
-                    <fieldType>InputField</fieldType>
+                    <fieldType>DropdownBox</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
-                    <name>New_End_Date_Y</name>
-                    <dataType>Date</dataType>
+                    <name>New_End_Date2</name>
+                    <choiceReferences>chxEndDate</choiceReferences>
+                    <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>New_End_Date_Y</elementReference>
+                        <elementReference>New_End_Date2</elementReference>
                     </defaultValue>
                     <fieldText>New End Date</fieldText>
-                    <fieldType>InputField</fieldType>
+                    <fieldType>DropdownBox</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
@@ -5356,23 +5358,25 @@ HYPERLINK(
                     <scale>2</scale>
                 </fields>
                 <fields>
-                    <name>New_Start_Date_A</name>
-                    <dataType>Date</dataType>
+                    <name>New_Start_Date</name>
+                    <choiceReferences>chxStartDate</choiceReferences>
+                    <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>New_Start_Date_A</elementReference>
+                        <elementReference>New_Start_Date</elementReference>
                     </defaultValue>
                     <fieldText>New Start Date</fieldText>
-                    <fieldType>InputField</fieldType>
+                    <fieldType>DropdownBox</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
-                    <name>New_End_Date_X</name>
-                    <dataType>Date</dataType>
+                    <name>New_End_Date</name>
+                    <choiceReferences>chxEndDate</choiceReferences>
+                    <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>New_End_Date_X</elementReference>
+                        <elementReference>New_End_Date</elementReference>
                     </defaultValue>
                     <fieldText>New End Date</fieldText>
-                    <fieldType>InputField</fieldType>
+                    <fieldType>DropdownBox</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
@@ -5707,23 +5711,25 @@ HYPERLINK(
                     <scale>2</scale>
                 </fields>
                 <fields>
-                    <name>New_Start_Date_C</name>
-                    <dataType>Date</dataType>
+                    <name>New_Start_Date3</name>
+                    <choiceReferences>chxStartDate</choiceReferences>
+                    <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>New_Start_Date_C</elementReference>
+                        <elementReference>New_Start_Date3</elementReference>
                     </defaultValue>
                     <fieldText>New Start Date</fieldText>
-                    <fieldType>InputField</fieldType>
+                    <fieldType>DropdownBox</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
-                    <name>New_End_Date_Z</name>
-                    <dataType>Date</dataType>
+                    <name>New_End_Date3</name>
+                    <choiceReferences>chxEndDate</choiceReferences>
+                    <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>New_End_Date_Z</elementReference>
+                        <elementReference>New_End_Date3</elementReference>
                     </defaultValue>
                     <fieldText>New End Date</fieldText>
-                    <fieldType>InputField</fieldType>
+                    <fieldType>DropdownBox</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
@@ -7445,7 +7451,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnFields</name>
                         <value>
-                            <stringValue>Name,Sales_Agreement_Product__c,Selling_Entity__c,Product_Name__c,Unit__c,Product_Code__c,Account__c,Incoterm__c,Mode_of_Transport__c,Price_From__c,Price_To__c,Currency_Code__c,Ex_works_Product_price_per_unit_reports__c,Energy_Surcharge_per_uom_reports__c,Freight_Surcharge1__c,Transportpriceunitbase__c,Total_Transport_Price__c,Full_delivered_Price_Exc_Surcharge1__c,Full_delivered_Price_inc_surcharge_repor__c,Negotiation_Status__c</stringValue>
+                            <stringValue>Name,Sales_Agreement_Product__c,Selling_Entity__c,Product_Name__c,Product_Code__c,Account__c,Incoterm__c,Mode_of_Transport__c,Price_From__c,Price_To__c,Currency_Code__c,Ex_works_Product_price_per_unit_reports__c,Energy_Surcharge_per_uom_reports__c,Freight_Surcharge1__c,Transportpriceunitbase__c,Total_Transport_Price__c,Full_delivered_Price_Exc_Surcharge1__c,Full_delivered_Price_inc_surcharge_repor__c</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7457,7 +7463,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnWidths</name>
                         <value>
-                            <stringValue>Name:140, Sales_Agreement_Product__c:170, Selling_Entity__c:180, Product_Name__c:150, Unit__c:120, Product_Code__c:155, Account__c:160, Incoterm__c:115, Mode_of_Transport__c:155, Price_From__c:110, Price_To__c:105, Currency_Code__c:167, Ex_works_Product_price_per_unit_reports__c:270, Energy_Surcharge_per_uom_reports__c:282, Freight_Surcharge1__c:175, Transportpriceunitbase__c:263, Total_Transport_Price__c:223, Full_delivered_Price_Exc_Surcharge1__c:309, Full_delivered_Price_inc_surcharge_repor__c:275, Negotiation_Status__c:50</stringValue>
+                            <stringValue>Name:140, Sales_Agreement_Product__c:170, Selling_Entity__c:180, Product_Name__c:150, Product_Code__c:155, Account__c:160, Incoterm__c:115, Mode_of_Transport__c:155, Price_From__c:110, Price_To__c:105, Currency_Code__c:167, Ex_works_Product_price_per_unit_reports__c:270, Energy_Surcharge_per_uom_reports__c:282, Freight_Surcharge1__c:175, Transportpriceunitbase__c:263, Total_Transport_Price__c:171, Full_delivered_Price_Exc_Surcharge1__c:309, Full_delivered_Price_inc_surcharge_repor__c:275</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7701,7 +7707,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnFields</name>
                         <value>
-                            <stringValue>Name,Account__c,Selling_Entity__c,Product_Name__c,Price_From__c,Price_To__c,New_Start_Date__c,New_End_Date__c,frmTech_Current_price__c,frmTech_New_price__c,Change__c</stringValue>
+                            <stringValue>Name,Account__c,Selling_Entity__c,Product_Name__c,Price_From__c,Price_To__c,New_Start_Date__c,New_End_Date__c,frmTech_Current_price__c,frmTech_New_price__c</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -7713,7 +7719,7 @@ HYPERLINK(
                     <inputParameters>
                         <name>columnWidths</name>
                         <value>
-                            <stringValue>Name:224, Account__c:182, Selling_Entity__c:250, Product_Name__c:235, Price_From__c:143, Price_To__c:114, New_Start_Date__c:153, New_End_Date__c:128, frmTech_Current_price__c:177, frmTech_New_price__c:192, Change__c:50</stringValue>
+                            <stringValue>Name:224, Account__c:182, Selling_Entity__c:250, Product_Name__c:235, Price_From__c:143, Price_To__c:114, New_Start_Date__c:153, New_End_Date__c:128, frmTech_Current_price__c:177, frmTech_New_price__c:192</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
