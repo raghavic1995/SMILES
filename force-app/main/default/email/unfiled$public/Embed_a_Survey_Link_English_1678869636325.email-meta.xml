@@ -6,7 +6,7 @@
     <name>Embed_a_Survey_Link_Italian</name>
     <relatedEntityType>SurveyQuestion</relatedEntityType>
     <style>none</style>
-    <subject>Il tuo feedback è importante. Aiutaci a migliorare rispondendo a questo sondaggio.</subject>
+    <subject>Il Vostro parere è per noi importante. Aiutateci a migliorare rispondendo a questo questionario.</subject>
     <type>custom</type>
     <uiType>SFX</uiType>
 </EmailTemplate>
