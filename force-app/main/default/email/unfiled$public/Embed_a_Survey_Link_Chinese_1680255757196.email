@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<div style="font-size: 0.875rem; font-family: 'Salesforce Sans',Arial,sans-serif;">尊敬的 {{{Recipient.Name}}},<br />
+<br />
+在 IMERYS，我们致力于不断改进我们的服务。 我们真诚期望了解您对与我们公司团队的互动的感受和想法。 请参加这个几分钟的调查，来帮助我们改进与&nbsp;{{{Recipient.Tech_Account_Name__c}}}. 您的反馈将推进我们的持续改进。<br />
+<br />
+谢谢！<br />
+客户体验团队.<br />
+<br />
+<br />
+&nbsp;
+<p style="text-align: center;"><span><a href="[[SURVEY_INVITATION_URL]]" style="[[DISABLE_LINK]] vertical-align: middle; border: 1px solid rgb(221, 219, 218); transition: border .15s linear; background-color: rgb(0, 75,79); border-color: rgb(0, 112, 210); color: rgb(255, 255, 255); display: inline-block; background-clip: border-box; border: 1px solid transparent; border-radius: .25rem; line-height: 1.875rem; text-decoration: none; -webkit-appearance: none; white-space: normal; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; padding: 0 1rem;" target="_blank">打开调查</a></span></p>
+<br />
+&nbsp;</div>
+</body>
+</html>
