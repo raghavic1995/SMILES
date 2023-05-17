@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>JDE_Mode_of_Transport__c</fullName>
+    <externalId>false</externalId>
+    <label>JDE Mode of Transport</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AIRFREIGHT</fullName>
+                <default>false</default>
+                <label>AIRFREIGHT</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER AIR FREIGHT</fullName>
+                <default>false</default>
+                <label>CUSTOMER AIR FREIGHT</label>
+            </value>
+            <value>
+                <fullName>FCL 20&apos;</fullName>
+                <default>false</default>
+                <label>FCL 20&apos;</label>
+            </value>
+            <value>
+                <fullName>FCL 40&apos;</fullName>
+                <default>false</default>
+                <label>FCL 40&apos;</label>
+            </value>
+            <value>
+                <fullName>Sea Bulk Vessel</fullName>
+                <default>false</default>
+                <label>Sea Bulk Vessel</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER FCL 20&apos; CONTAINER</fullName>
+                <default>false</default>
+                <label>CUSTOMER FCL 20&apos; CONTAINER</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER FCL 40&apos; CONTAINER</fullName>
+                <default>false</default>
+                <label>CUSTOMER FCL 40&apos; CONTAINER</label>
+            </value>
+            <value>
+                <fullName>FCL 45&apos;</fullName>
+                <default>false</default>
+                <label>FCL 45&apos;</label>
+            </value>
+            <value>
+                <fullName>FCL 40&apos; HIGH CUBE</fullName>
+                <default>false</default>
+                <label>FCL 40&apos; HIGH CUBE</label>
+            </value>
+            <value>
+                <fullName>Customer FCL 40&apos; Pallet Wide</fullName>
+                <default>false</default>
+                <label>Customer FCL 40&apos; Pallet Wide</label>
+            </value>
+            <value>
+                <fullName>LCL PARTIAL SEA CONTAINER</fullName>
+                <default>false</default>
+                <label>LCL PARTIAL SEA CONTAINER</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER LCL CONTAINER</fullName>
+                <default>false</default>
+                <label>CUSTOMER LCL CONTAINER</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER FCL 40&apos; HIGH CUBE CO</fullName>
+                <default>false</default>
+                <label>CUSTOMER FCL 40&apos; HIGH CUBE CO</label>
+            </value>
+            <value>
+                <fullName>SILO CONTAINER INTERMODAL</fullName>
+                <default>false</default>
+                <label>SILO CONTAINER INTERMODAL</label>
+            </value>
+            <value>
+                <fullName>FOB COSTS</fullName>
+                <default>false</default>
+                <label>FOB COSTS</label>
+            </value>
+            <value>
+                <fullName>TRANSPORT FOR EXPRESS SAMPLES</fullName>
+                <default>false</default>
+                <label>TRANSPORT FOR EXPRESS SAMPLES</label>
+            </value>
+            <value>
+                <fullName>Transport for Samples</fullName>
+                <default>false</default>
+                <label>Transport for Samples</label>
+            </value>
+            <value>
+                <fullName>TRANSPORT FOR SAMPLES EXW</fullName>
+                <default>false</default>
+                <label>TRANSPORT FOR SAMPLES EXW</label>
+            </value>
+            <value>
+                <fullName>Rail Wagon Crude</fullName>
+                <default>false</default>
+                <label>Rail Wagon Crude</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER RAIL WAGON PACKED</fullName>
+                <default>false</default>
+                <label>CUSTOMER RAIL WAGON PACKED</label>
+            </value>
+            <value>
+                <fullName>SEA CONSOLIDATION</fullName>
+                <default>false</default>
+                <label>SEA CONSOLIDATION</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER BULK VESSEL</fullName>
+                <default>false</default>
+                <label>CUSTOMER BULK VESSEL</label>
+            </value>
+            <value>
+                <fullName>GENERAL CARGO FTL</fullName>
+                <default>false</default>
+                <label>GENERAL CARGO FTL</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER GENERAL CARGO FTL</fullName>
+                <default>false</default>
+                <label>CUSTOMER GENERAL CARGO FTL</label>
+            </value>
+            <value>
+                <fullName>PARTIAL LOADED TRUCK LTL</fullName>
+                <default>false</default>
+                <label>PARTIAL LOADED TRUCK LTL</label>
+            </value>
+            <value>
+                <fullName>Silo truck for slurry</fullName>
+                <default>false</default>
+                <label>Silo truck for slurry</label>
+            </value>
+            <value>
+                <fullName>SILO TRUCK</fullName>
+                <default>false</default>
+                <label>SILO TRUCK</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER SILO TRUCK</fullName>
+                <default>false</default>
+                <label>CUSTOMER SILO TRUCK</label>
+            </value>
+            <value>
+                <fullName>Tipper Truck</fullName>
+                <default>false</default>
+                <label>Tipper Truck</label>
+            </value>
+            <value>
+                <fullName>Customer Tipper Truck</fullName>
+                <default>false</default>
+                <label>Customer Tipper Truck</label>
+            </value>
+            <value>
+                <fullName>2 BP General cargo FTL</fullName>
+                <default>false</default>
+                <label>2 BP General cargo FTL</label>
+            </value>
+            <value>
+                <fullName>2 BP General cargo LTL</fullName>
+                <default>false</default>
+                <label>2 BP General cargo LTL</label>
+            </value>
+            <value>
+                <fullName>GENERAL CARGO FTL INTERMODAL</fullName>
+                <default>false</default>
+                <label>GENERAL CARGO FTL INTERMODAL</label>
+            </value>
+            <value>
+                <fullName>44T - SILO TRUCK</fullName>
+                <default>false</default>
+                <label>44T - SILO TRUCK</label>
+            </value>
+            <value>
+                <fullName>44T - GENERAL CARGO FULL TRUCK</fullName>
+                <default>false</default>
+                <label>44T - GENERAL CARGO FULL TRUCK</label>
+            </value>
+            <value>
+                <fullName>44T - Tipper Truck</fullName>
+                <default>false</default>
+                <label>44T - Tipper Truck</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER 44T - SILO TRUCK</fullName>
+                <default>false</default>
+                <label>CUSTOMER 44T - SILO TRUCK</label>
+            </value>
+            <value>
+                <fullName>Customer 44T - General cargo</fullName>
+                <default>false</default>
+                <label>Customer 44T - General cargo</label>
+            </value>
+            <value>
+                <fullName>Customer 44T - Tipper Truck</fullName>
+                <default>false</default>
+                <label>Customer 44T - Tipper Truck</label>
+            </value>
+            <value>
+                <fullName>30&apos; Silo Container</fullName>
+                <default>false</default>
+                <label>30&apos; Silo Container</label>
+            </value>
+            <value>
+                <fullName>Stock consignation</fullName>
+                <default>false</default>
+                <label>Stock consignation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

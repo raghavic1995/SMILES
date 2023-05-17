@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Freight_Condition_Unit__c</fullName>
+    <externalId>false</externalId>
+    <label>Freight Condition Unit</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>lot</fullName>
+                <default>false</default>
+                <label>lot</label>
+            </value>
+            <value>
+                <fullName>Per Container</fullName>
+                <default>false</default>
+                <label>Per Container</label>
+            </value>
+            <value>
+                <fullName>Per MT</fullName>
+                <default>false</default>
+                <label>Per MT</label>
+            </value>
+            <value>
+                <fullName>Per T</fullName>
+                <default>false</default>
+                <label>Per T</label>
+            </value>
+            <value>
+                <fullName>t</fullName>
+                <default>false</default>
+                <label>t</label>
+            </value>
+            <value>
+                <fullName>BAG</fullName>
+                <default>false</default>
+                <label>BAG</label>
+            </value>
+            <value>
+                <fullName>BB</fullName>
+                <default>false</default>
+                <label>BB</label>
+            </value>
+            <value>
+                <fullName>BCK</fullName>
+                <default>false</default>
+                <label>BCK</label>
+            </value>
+            <value>
+                <fullName>DTO</fullName>
+                <default>false</default>
+                <label>DTO</label>
+            </value>
+            <value>
+                <fullName>EA</fullName>
+                <default>false</default>
+                <label>EA</label>
+            </value>
+            <value>
+                <fullName>KAN</fullName>
+                <default>false</default>
+                <label>KAN</label>
+            </value>
+            <value>
+                <fullName>KAR</fullName>
+                <default>false</default>
+                <label>KAR</label>
+            </value>
+            <value>
+                <fullName>TO</fullName>
+                <default>false</default>
+                <label>TO</label>
+            </value>
+            <value>
+                <fullName>No fee</fullName>
+                <default>false</default>
+                <label>No fee</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
