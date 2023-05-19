@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PIS_COFINS__c</fullName>
     <externalId>false</externalId>
-    <label>PIS/COFINS</label>
+    <label>PIS/COFINS (PM A)</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
