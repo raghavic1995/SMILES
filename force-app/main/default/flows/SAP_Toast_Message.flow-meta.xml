@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Toast_Message</name>
         <label>Toast Message</label>
-        <locationX>176</locationX>
-        <locationY>134</locationY>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
         <actionName>c:showToast</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -17,7 +17,7 @@
         <inputParameters>
             <name>message</name>
             <value>
-                <stringValue> There are additional SAP please look at the Second part of the Table</stringValue>
+                <stringValue>Please go to the next page to see additional SAP</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -31,6 +31,44 @@
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Count</name>
+        <label>Count</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <assignmentItems>
+            <assignToReference>RecordCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>SAP_Record</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Record_Count</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_If</name>
+        <label>Check If Number of Record Is Greater than 5 or Not</label>
+        <locationX>182</locationX>
+        <locationY>458</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Greater_then_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Countss</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>5.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Toast_Message</targetReference>
+            </connector>
+            <label>If Greater than 5</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <interviewLabel>SAP Toast Message {!$Flow.CurrentDateTime}</interviewLabel>
     <label>SAP Toast Message</label>
@@ -53,12 +91,61 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordLookups>
+        <name>SAP_Record</name>
+        <label>SAP Record</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>SalesAgreementProduct</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>Record_Count</name>
+        <label>Record Count</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Check_If</targetReference>
+        </connector>
+        <fields>
+            <name>Countss</name>
+            <dataType>Number</dataType>
+            <defaultValue>
+                <elementReference>RecordCount</elementReference>
+            </defaultValue>
+            <fieldText>Countss</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Toast_Message</targetReference>
+            <targetReference>SAP_Record</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>RecordCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
 </Flow>
