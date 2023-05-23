@@ -6,7 +6,7 @@
     <name>Embed_a_Survey_Link_French</name>
     <relatedEntityType>SurveyQuestion</relatedEntityType>
     <style>none</style>
-    <subject>Vos commentaires sont importants. Aidez-nous à nous améliorer en répondant à cette enquête.</subject>
+    <subject>Votre avis est important. Aidez-nous à s&apos;améliorer en répondant à ce questionnaire.</subject>
     <type>custom</type>
     <uiType>SFX</uiType>
 </EmailTemplate>

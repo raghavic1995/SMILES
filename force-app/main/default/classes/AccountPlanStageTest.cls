@@ -59,12 +59,14 @@ public class AccountPlanStageTest {
     @isTest static void saveAccountPlanPrioritiesListTest(){  
         list<Account_Plan_Priorities__c> APPriority = [select id from Account_Plan_Priorities__c where Name = 'Test'];   
         AccountPlanStages.saveAccountPlanPrioritiesList(APPriority);   
+        AccountPlanStages.deletePriorities(APPriority);
     }
     
     @isTest static void InsertAccountPlanPrioritiesListTest(){  
         
         Id AccountPlanId = [select id from Account_Plan__c where Year__c = '2021'].id;
         AccountPlanStages.InsertAccountPlanPrioritiesList(AccountPlanId,'Test','Test','Test','Test'); 
+        
     }
     
 }
