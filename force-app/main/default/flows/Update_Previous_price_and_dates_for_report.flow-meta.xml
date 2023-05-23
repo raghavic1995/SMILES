@@ -4,7 +4,7 @@
     <assignments>
         <name>assign</name>
         <label>assign</label>
-        <locationX>264</locationX>
+        <locationX>270</locationX>
         <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>id</assignToReference>
@@ -17,14 +17,14 @@
             <assignToReference>VarSAP.IFSOldStartDate__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.IFS_Old_Start_Date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_From__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>VarSAP.IFSOldEndDate__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.IFS_Old_End_Date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_To__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -52,14 +52,14 @@
             <assignToReference>VarSAP.Opera_Old_Start_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.Opera_Old_Start_Date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_From__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>VarSAP.Opera_Old_End_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.Opera_Old_End_Date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_To__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -94,7 +94,7 @@
             <assignToReference>VarSAP.JDEOldStartDate__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.JDE_Old_Start_Date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_From__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -108,7 +108,7 @@
             <assignToReference>VarSAP.JDEOldEndDate__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.JDE_Old_End_Date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_To__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -122,28 +122,21 @@
             <assignToReference>VarSAP.JDE_Previous_Freight_Start_date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.JDE_Previous_Freight_Start_date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_From__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>VarSAP.JDE_Previous_Freight_Expiry_date__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.JDE_Previous_Freight_Expiry_date__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Price_To__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>VarSAP.Previous_ESC_Date_Effet__c</assignToReference>
+            <assignToReference>VarSAP.Old_Full_delivered_Price__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Lopp_All_SAPPs.Previous_ESC_Date_Effet__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>VarSAP.Previous_ESC_Date_Expir__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Lopp_All_SAPPs.Previous_ESC_Date_Expir__c</elementReference>
+                <elementReference>Lopp_All_SAPPs.Full_delivered_Price_inc_surcharge__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -154,7 +147,7 @@
         <name>Get_latest_2_records</name>
         <elementSubtype>SortCollectionProcessor</elementSubtype>
         <label>Get latest 2 records</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>539</locationY>
         <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
         <collectionReference>get_all_related_SAPPs</collectionReference>
@@ -169,9 +162,38 @@
         </sortOptions>
     </collectionProcessors>
     <decisions>
+        <name>Check_SAP_Status</name>
+        <label>Check SAP Status</label>
+        <locationX>182</locationX>
+        <locationY>1139</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_not_hold_Obsolete</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>get_related_SAP.Negotiation_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>get_related_SAP.Negotiation_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Obsolete</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SAP</targetReference>
+            </connector>
+            <label>If not hold / Obsolete</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>If_not_latest_record</name>
         <label>If not latest record</label>
-        <locationX>396</locationX>
+        <locationX>402</locationX>
         <locationY>755</locationY>
         <defaultConnector>
             <targetReference>Lopp_All_SAPPs</targetReference>
@@ -199,7 +221,7 @@
     <loops>
         <name>Lopp_All_SAPPs</name>
         <label>Lopp All SAPPs</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>647</locationY>
         <collectionReference>get_all_related_SAPPs</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -207,7 +229,7 @@
             <targetReference>If_not_latest_record</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Update_SAP</targetReference>
+            <targetReference>Check_SAP_Status</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -232,7 +254,7 @@
     <recordLookups>
         <name>get_all_related_SAPPs</name>
         <label>get all related SAPPs</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -255,7 +277,7 @@
     <recordLookups>
         <name>get_related_SAP</name>
         <label>get related SAP</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -276,8 +298,8 @@
     <recordUpdates>
         <name>Update_SAP</name>
         <label>Update SAP</label>
-        <locationX>176</locationX>
-        <locationY>1139</locationY>
+        <locationX>50</locationX>
+        <locationY>1247</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -296,6 +318,36 @@
             <field>IFSOldStartDate__c</field>
             <value>
                 <elementReference>VarSAP.IFSOldStartDate__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>JDEOldEndDate__c</field>
+            <value>
+                <elementReference>VarSAP.JDEOldEndDate__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>JDEOldStartDate__c</field>
+            <value>
+                <elementReference>VarSAP.JDEOldStartDate__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>JDE_Previous_Freight_Expiry_date__c</field>
+            <value>
+                <elementReference>VarSAP.JDE_Previous_Freight_Expiry_date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>JDE_Previous_Freight_Start_date__c</field>
+            <value>
+                <elementReference>VarSAP.JDE_Previous_Freight_Start_date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Old_Full_delivered_Price__c</field>
+            <value>
+                <elementReference>VarSAP.Old_Full_delivered_Price__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -341,6 +393,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Previous_Product_Unit_Price__c</field>
+            <value>
+                <elementReference>VarSAP.Previous_Product_Unit_Price__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Previous_Total_transport_price__c</field>
             <value>
                 <elementReference>VarSAP.Previous_Total_transport_price__c</elementReference>
@@ -361,7 +419,7 @@
         <object>SalesAgreementProduct</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>get_all_related_SAPPs</targetReference>
@@ -370,7 +428,7 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <triggerOrder>2</triggerOrder>
     <variables>
         <name>id</name>
