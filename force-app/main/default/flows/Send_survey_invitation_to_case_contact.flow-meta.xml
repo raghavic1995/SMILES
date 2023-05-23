@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>CFS2</name>
-        <label>CFS2</label>
-        <locationX>182</locationX>
-        <locationY>269</locationY>
-        <actionName>cfs</actionName>
+        <name>CFS_Chinese</name>
+        <label>CFS_Chinese</label>
+        <locationX>37</locationX>
+        <locationY>389</locationY>
+        <actionName>cfs_chinese</actionName>
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>isUnauthenticatedResponse</name>
             <value>
-                <booleanValue>false</booleanValue>
+                <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -32,6 +32,43 @@
                 <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>cfs_chinese</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>CFS_English</name>
+        <label>CFS English</label>
+        <locationX>158</locationX>
+        <locationY>236</locationY>
+        <actionName>customer_feedback_survey_template</actionName>
+        <actionType>dynamicSendSurveyInvitation</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipient</name>
+            <value>
+                <elementReference>CaseContact</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientType</name>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>surveySubjectEntity</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customer_feedback_survey_template</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>CFS_French</name>
@@ -42,9 +79,15 @@
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>isUnauthenticatedResponse</name>
+            <name>personalInvitation</name>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -65,19 +108,27 @@
                 <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>cfs_french</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>cfs_german</name>
         <label>cfs german</label>
-        <locationX>186</locationX>
-        <locationY>501</locationY>
+        <locationX>105</locationX>
+        <locationY>518</locationY>
         <actionName>cfs_german</actionName>
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>isUnauthenticatedResponse</name>
+            <name>personalInvitation</name>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -94,7 +145,12 @@
         </inputParameters>
         <inputParameters>
             <name>surveySubjectEntity</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
         </inputParameters>
+        <nameSegment>cfs_german</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>CFS_Italian</name>
@@ -105,12 +161,18 @@
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>isUnauthenticatedResponse</name>
+            <name>personalInvitation</name>
             <value>
                 <booleanValue>false</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
             <name>recipient</name>
             <value>
                 <elementReference>CaseContact</elementReference>
@@ -128,16 +190,24 @@
                 <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>cfs_italian</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
-        <name>customer_feedback_survey</name>
-        <label>customer feedback survey</label>
-        <locationX>87</locationX>
-        <locationY>392</locationY>
-        <actionName>customer_feedback_survey</actionName>
+        <name>CFS_Spanish</name>
+        <label>CFS Spanish</label>
+        <locationX>189</locationX>
+        <locationY>622</locationY>
+        <actionName>cfs_spanish</actionName>
         <actionType>dynamicSendSurveyInvitation</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
+            <name>isUnauthenticatedResponse</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
             <name>recipient</name>
             <value>
                 <elementReference>CaseContact</elementReference>
@@ -155,6 +225,8 @@
                 <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>cfs_spanish</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <decisions>
@@ -174,7 +246,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>CFS2</targetReference>
+                <targetReference>CFS_English</targetReference>
             </connector>
             <label>English</label>
         </rules>
@@ -223,12 +295,42 @@
             </connector>
             <label>French</label>
         </rules>
+        <rules>
+            <name>Chinese</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Language__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Chinese (Mandarin)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CFS_Chinese</targetReference>
+            </connector>
+            <label>Chinese</label>
+        </rules>
+        <rules>
+            <name>Spanish</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Language__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Spanish</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CFS_Spanish</targetReference>
+            </connector>
+            <label>Spanish</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Contact_null_check</name>
         <label>Contact null check</label>
-        <locationX>580</locationX>
-        <locationY>403</locationY>
+        <locationX>584</locationX>
+        <locationY>421</locationY>
         <defaultConnectorLabel>Rec not available</defaultConnectorLabel>
         <rules>
             <name>Rec_available</name>
@@ -280,84 +382,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>get_first_invitation</name>
-        <label>Get first invitation</label>
-        <locationX>1228</locationX>
-        <locationY>749</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>update_Case_Id_in_Invitations</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>CreatedDate</field>
-            <operator>GreaterThanOrEqualTo</operator>
-            <value>
-                <elementReference>$Flow.CurrentDate</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>SurveyId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Survey.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>SurveyInvitation</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Survey</name>
-        <label>Get Survey</label>
-        <locationX>1232</locationX>
-        <locationY>624</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>get_first_invitation</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Name</field>
-            <operator>Contains</operator>
-            <value>
-                <stringValue>Customer Feedback Survey</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Survey</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordUpdates>
-        <name>update_Case_Id_in_Invitations</name>
-        <label>update Case Id in Invitations</label>
-        <locationX>1212</locationX>
-        <locationY>856</locationY>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>SurveyId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Survey.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>CaseId__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Request_Complaint__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <object>SurveyInvitation</object>
-    </recordUpdates>
     <start>
         <locationX>458</locationX>
         <locationY>48</locationY>
