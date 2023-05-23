@@ -47,7 +47,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Ex_works_Product_price_per_unitforReport__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Ex_works_Product_price_per_unit__c</field>
     </columns>
     <columns>
         <field>SalesAgreement$CurrencyIsoCode</field>
@@ -60,11 +60,11 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Transport_Price_per_unit_reports__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Transport_Price_per_unit__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Total_transport_price_opera__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Transport_Price_Per_Container__c</field>
     </columns>
     <columns>
         <field>SalesAgreement.SalesAgreementProduct$Opera_KONWA_Condition_currency_reports__c</field>
@@ -80,11 +80,14 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Energy_Surcharge_Reports__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Energy_Surcharge__c</field>
+    </columns>
+    <columns>
+        <field>SalesAgreement.SalesAgreementProduct$Energy_Surcharge_Condition_Type__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Freight_Surcharge_opera__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Freight_Surcharge_per_uom__c</field>
     </columns>
     <columns>
         <field>SalesAgreement.SalesAgreementProduct$Opera_KONWA_Condition_currency1__c</field>
@@ -97,7 +100,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Full_delivered_Priceincsurcharge_reports__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Full_delivered_Price_inc__c</field>
     </columns>
     <columns>
         <field>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r$Price_From__c</field>
@@ -141,6 +144,9 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r$New_Energy_Surcharge_per_uom__c</field>
+    </columns>
+    <columns>
+        <field>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r$Energy_Surcharge_Condition_Type__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>

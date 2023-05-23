@@ -551,6 +551,21 @@
             <field>Validity_End_Date__c</field>
             <table>SalesAgreement</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Standard_Terms_Conditions_of_Sales__c</field>
+            <table>SalesAgreement</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test__c</field>
+            <table>SalesAgreement</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_Richtext__c</field>
+            <table>SalesAgreement</table>
+        </columns>
         <masterLabel>Sales Agreements</masterLabel>
     </sections>
     <sections>
@@ -1731,6 +1746,21 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Product_Unit_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SalesAgreement</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Rebates__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>C_B__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1851,6 +1881,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Transport_Price_Per_Container__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>To_be_Printed__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1951,6 +1986,21 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Minimum_Order_Quantity__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>MaterialGroup5__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Packaging_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>N_art_Syst__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1962,6 +2012,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Actual_YTD_volume_dry__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Total_transport_price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Transport_Price_per_unit__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
         <columns>
@@ -2027,6 +2087,41 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Freight_Surcharge_opera__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Energy_Surcharge__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Ex_works_Product_price_per_unit__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Energy_Surcharge_Condition_Type__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Freight_Surcharge_per_uom__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Previous_Full_delivered_Price_inc__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Old_Full_delivered_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Market_Segment_L1__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
         <masterLabel>Sales Agreement Products</masterLabel>
@@ -2575,6 +2670,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>New_Freight_Surcharge_per_uom_opera__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Change__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Energy_Surcharge_Condition_Type__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
         <masterLabel>Sales Agreement Product Prices</masterLabel>

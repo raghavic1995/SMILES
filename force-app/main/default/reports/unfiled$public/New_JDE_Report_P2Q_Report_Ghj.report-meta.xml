@@ -34,6 +34,9 @@
         <field>SalesAgreement$Ship_To__c</field>
     </columns>
     <columns>
+        <field>SalesAgreement.SalesAgreementProduct$Market_Segment_L1__c</field>
+    </columns>
+    <columns>
         <field>SalesAgreement.SalesAgreementProduct$N_art_Syst__c</field>
     </columns>
     <columns>
@@ -44,10 +47,10 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Product_Unit_Price__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Product_Unit_Price__c</field>
     </columns>
     <columns>
-        <field>SalesAgreement.SalesAgreementProduct$Unit__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$uom__c</field>
     </columns>
     <columns>
         <field>SalesAgreement$CurrencyIsoCode</field>
@@ -60,7 +63,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Energy_Surcharge__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Energy_Surcharge__c</field>
     </columns>
     <columns>
         <field>SalesAgreement.SalesAgreementProduct$JDEUoM__c</field>
@@ -80,7 +83,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r$Transport_Price_per_unit_reports__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Previous_Transport_Price_per_unit__c</field>
     </columns>
     <columns>
         <field>SalesAgreement.SalesAgreementProduct$Previous_Freight_UM__c</field>
@@ -96,7 +99,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SalesAgreement.SalesAgreementProduct$Full_delivered_Price_inc_surcharge__c</field>
+        <field>SalesAgreement.SalesAgreementProduct$Old_Full_delivered_Price__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>

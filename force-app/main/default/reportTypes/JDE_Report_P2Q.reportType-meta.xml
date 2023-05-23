@@ -560,6 +560,21 @@
             <field>Validity_End_Date__c</field>
             <table>SalesAgreement</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Standard_Terms_Conditions_of_Sales__c</field>
+            <table>SalesAgreement</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test__c</field>
+            <table>SalesAgreement</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_Richtext__c</field>
+            <table>SalesAgreement</table>
+        </columns>
         <masterLabel>Sales Agreements</masterLabel>
     </sections>
     <sections>
@@ -676,6 +691,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Base Price Per</displayNameOverride>
             <field>Customer_Ex_works_price__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1208,7 +1224,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Previous Base - Price UM</displayNameOverride>
             <field>Unit__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1589,6 +1604,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Base - Price UM</displayNameOverride>
             <field>uom__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -2109,7 +2125,18 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Base - Price Val. coeff. Numérique</displayNameOverride>
             <field>Previous_Product_Unit_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Old_Full_delivered_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Market_Segment_L1__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
         <masterLabel>Sales Agreement Products</masterLabel>
