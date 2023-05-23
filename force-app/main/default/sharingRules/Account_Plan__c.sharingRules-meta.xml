@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Plan_with_Super_Smilers_HTS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Account Plan with Super Smilers HTS</label>
+        <sharedTo>
+            <group>Super_Gatekeeper_HTS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Business_Area__c</field>
+            <operation>equals</operation>
+            <value>HTS</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Plan_with_Super_Smilers_PM</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Account Plan with Super Smilers PM</label>
+        <sharedTo>
+            <group>Super_Gatekeeper_PM</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Business_Area__c</field>
+            <operation>equals</operation>
+            <value>PM EMEA,PM AMERICAS,PM APAC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Plan_with_Super_Smilers_PMA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Account Plan with Super Smilers PMA</label>
+        <sharedTo>
+            <group>Super_Gatekeeper_PMA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Business_Area__c</field>
+            <operation>equals</operation>
+            <value>PM AMERICAS</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Plan_with_Super_Smilers_RAC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Account Plan with Super Smilers RAC</label>
+        <sharedTo>
+            <group>Super_Gatekeeper_RAC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Business_Area__c</field>
+            <operation>equals</operation>
+            <value>RAC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>
