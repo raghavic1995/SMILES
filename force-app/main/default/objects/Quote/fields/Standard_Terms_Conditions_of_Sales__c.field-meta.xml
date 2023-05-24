@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_Terms_Conditions_of_Sales__c</fullName>
+    <externalId>false</externalId>
+    <formula>ImerysSellingEntity1__r.Standard_Terms_Conditions_of_Sales_L__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>General Terms of Supply and Delivery</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
