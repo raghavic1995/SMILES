@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Quote</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Quote After Creation</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Build a first price proposal and fill in corresponding fields&lt;/p&gt;&lt;p&gt;If relevant, request a freight price to the logistic team&lt;/p&gt;&lt;p&gt;Notify relevant stakeholders to engage the validation of the quote.&lt;/p&gt;&lt;p&gt;Make sure that you are at least at the &amp;quot;Finalize agreement&amp;quot; stage in the opportunity process to be able to move to the &amp;quot;Finalize quote&amp;quot; stage&lt;/p&gt;&lt;p&gt;Finalize and send quote to customer&lt;/p&gt;&lt;p&gt;Optional : Send Custom Service Request&lt;/p&gt;&lt;p&gt;Enter customer answer to quote and specify main explanations ( as Reason for Closing)&lt;/p&gt;</info>
+        <picklistValueName>Quote finalization</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Understand customer needs (in the opportunity process)&lt;/p&gt;&lt;p&gt;Complete missing mandatory information with quote and quote line item, e.g. surcharge,...&lt;/p&gt;&lt;p&gt;Understand supply situation (product availability) and plant&amp;#39;s product mix priority&lt;/p&gt;&lt;p&gt;Build a first price proposal and fill in corresponding fields&lt;/p&gt;&lt;p&gt;If relevant, request a freight price to the logistic team&lt;/p&gt;&lt;p&gt;Notify relevant stakeholders to engage the validation of the quote i.e. submit for approval (optional)&lt;/p&gt;&lt;p&gt;Make sure that you are at least at the &amp;quot;Finalize agreement&amp;quot; stage in the opportunity process to be able to move to the &amp;quot;Quote finalization” stage&lt;/p&gt;</info>
+        <picklistValueName>Quote initialization</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Quote_After_Creation</recordTypeName>
+</PathAssistant>
