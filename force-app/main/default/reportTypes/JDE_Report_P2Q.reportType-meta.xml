@@ -560,6 +560,21 @@
             <field>Validity_End_Date__c</field>
             <table>SalesAgreement</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Standard_Terms_Conditions_of_Sales__c</field>
+            <table>SalesAgreement</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test__c</field>
+            <table>SalesAgreement</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Test_Richtext__c</field>
+            <table>SalesAgreement</table>
+        </columns>
         <masterLabel>Sales Agreements</masterLabel>
     </sections>
     <sections>
@@ -676,6 +691,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Base Price Per</displayNameOverride>
             <field>Customer_Ex_works_price__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -997,7 +1013,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Previous freight lump</displayNameOverride>
             <field>Transportpricelumpsum__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1208,7 +1223,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Previous Base - Price UM</displayNameOverride>
             <field>Unit__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1589,6 +1603,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Base - Price UM</displayNameOverride>
             <field>uom__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1609,6 +1624,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous ESC - Val. coeff. Numérique</displayNameOverride>
             <field>Energy_Surcharge_Reports__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -1805,7 +1821,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>New Freight - UM</displayNameOverride>
             <field>Freight_UoM_JDE__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -2052,6 +2067,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous freight lump</displayNameOverride>
             <field>Total_transport_price_opera__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -2083,7 +2099,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Previous ESC - Val. coeff. Numérique</displayNameOverride>
+            <displayNameOverride>Previous energy surcharge</displayNameOverride>
             <field>Previous_Energy_Surcharge__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
@@ -2110,6 +2126,28 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Previous_Product_Unit_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Old_Full_delivered_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Market_Segment_L1__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Base - Price Val. coeff. Numérique</displayNameOverride>
+            <field>Previous_Product_Unit_Price_number__c</field>
+            <table>SalesAgreement.SalesAgreementProduct</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Old Full Delivered Price</displayNameOverride>
+            <field>Old_Full_Delivered_Price_Number__c</field>
             <table>SalesAgreement.SalesAgreementProduct</table>
         </columns>
         <masterLabel>Sales Agreement Products</masterLabel>
@@ -2189,7 +2227,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>New ESC - Val. coeff. Numérique</displayNameOverride>
             <field>Energy_Surcharge__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
@@ -2280,7 +2317,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>New freight lump</displayNameOverride>
             <field>Trasport_price_lumpsum__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
@@ -2341,13 +2377,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>New Base - Price Val. coeff. Numérique</displayNameOverride>
             <field>ProductUnitPrice__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>New Freight - Val. coeff. Numérique</displayNameOverride>
+            <displayNameOverride>Trasnport Price (per unit)</displayNameOverride>
             <field>TransportPricePerUnit__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
@@ -2368,7 +2403,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>New Full delivered Price</displayNameOverride>
             <field>Full_delivered_Price_inc_surcharge__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
@@ -2509,12 +2543,13 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New ESC - Val. coeff. Numérique</displayNameOverride>
             <field>Energy_Surcharge_per_uom_reports__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Previous Freight unit- Val. coeff. Numérique</displayNameOverride>
+            <displayNameOverride>New Freight - Val. coeff. Numérique</displayNameOverride>
             <field>Transport_Price_per_unit_reports__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
@@ -2525,6 +2560,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Base - Price Val. coeff. Numérique</displayNameOverride>
             <field>New_Product_Unit_Price_reports__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
@@ -2535,6 +2571,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Full delivered Price</displayNameOverride>
             <field>Full_delivered_Price_inc_surcharge_repor__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
@@ -2730,6 +2767,17 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Energy_Surcharge_Condition_Type__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New freight lump</displayNameOverride>
+            <field>Total_Transport_Price__c</field>
+            <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Freight_UM__c</field>
             <table>SalesAgreement.SalesAgreementProduct.Sales_Agreement_Product_Prices__r</table>
         </columns>
         <masterLabel>Sales Agreement Product Prices</masterLabel>

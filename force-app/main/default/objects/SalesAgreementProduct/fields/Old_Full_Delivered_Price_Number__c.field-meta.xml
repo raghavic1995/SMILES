@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Unit_reports1__c</fullName>
+    <fullName>Old_Full_Delivered_Price_Number__c</fullName>
     <externalId>false</externalId>
-    <formula>uom__c</formula>
+    <formula>Old_Full_delivered_Price__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Unit 1</label>
+    <label>Old Full Delivered Price Number</label>
+    <precision>18</precision>
     <required>false</required>
+    <scale>2</scale>
     <trackHistory>false</trackHistory>
-    <type>Text</type>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>
