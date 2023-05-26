@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total_transport_price_opera__c</fullName>
     <externalId>false</externalId>
-    <formula>Transportpricelumpsum__c</formula>
+    <formula>Previous_Transport_Price_Per_Container__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Total transport price</label>
+    <label>Transport price per container</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
