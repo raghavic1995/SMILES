@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Their_is_a_problem_with_the_product_info</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL( Issue_Type__c , &quot;Their is a problem with the product information listed on the record (P2Q)&quot;),
+OR(
+LEN( Extra_information__c )= 0,
+ISBLANK(  Related_Sales_Agreement_Product_Number__c  )
+
+)
+)</errorConditionFormula>
+    <errorMessage>Please fill in all the mandatory Fields.
+-Extra information
+-Related Sales Agreement Product Number</errorMessage>
+</ValidationRule>
