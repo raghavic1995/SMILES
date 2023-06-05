@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>I_do_not_see_all_acco_as_part_of_my_KAS</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL( Issue_Type__c , &quot;I do not see all accounts as part of my Key Account Scope&quot;),
+OR(
+LEN( Extra_information__c )= 0,
+ISBLANK(  Missing_PRISM_Account_and_code__c  ),
+ISBLANK(  Related_CRM_Account_and_code__c  ),
+ISBLANK(  Key_Account_this_account_belong_to__c  )
+)
+)</errorConditionFormula>
+    <errorMessage>Please fill in all the mandatory Fields.
+-Extra information
+-Missing Prism Account (and Code)
+-Related CRM Account (and Code)
+-Key Account this account belong to</errorMessage>
+</ValidationRule>
