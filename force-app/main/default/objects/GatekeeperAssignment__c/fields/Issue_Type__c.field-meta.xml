@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Issue Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I do not see all my accounts</fullName>
+                <default>false</default>
+                <label>I do not see all my accounts</label>
+            </value>
+            <value>
+                <fullName>I see accounts that are not mine</fullName>
+                <default>false</default>
+                <label>I see accounts that are not mine</label>
+            </value>
+            <value>
+                <fullName>The customer grouping is incorrect</fullName>
+                <default>false</default>
+                <label>The customer grouping is incorrect</label>
+            </value>
+            <value>
+                <fullName>The customer group/parent account is missing</fullName>
+                <default>false</default>
+                <label>The customer group/parent account is missing</label>
+            </value>
+            <value>
+                <fullName>I do not see all accounts as part of my Key Account Scope</fullName>
+                <default>false</default>
+                <label>I do not see all accounts as part of my Key Account Scope</label>
+            </value>
+            <value>
+                <fullName>The ERP listed on the record is incorrect (P2Q)</fullName>
+                <default>false</default>
+                <label>The ERP listed on the record is incorrect (P2Q)</label>
+            </value>
+            <value>
+                <fullName>There is a problem with the product information listed on the record (P2Q)</fullName>
+                <default>false</default>
+                <label>There is a problem with the product information listed on the record (P2Q)</label>
+            </value>
+            <value>
+                <fullName>Missing / Wrong data in my accounts</fullName>
+                <default>false</default>
+                <label>Missing / Wrong data in my accounts</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
