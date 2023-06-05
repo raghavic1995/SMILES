@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Send_Email_to_Creator_when_status_is_closed</name>
         <label>Send Email to Creator when status is closed</label>
-        <locationX>314</locationX>
+        <locationX>490</locationX>
         <locationY>431</locationY>
         <actionName>Data_Feedback_Loop__c.Notification_to_Creator_when_closed</actionName>
         <actionType>emailAlert</actionType>
@@ -21,7 +21,7 @@
         <name>Send_Email_To_Gatekeeper</name>
         <label>Send Email To Gatekeeper</label>
         <locationX>50</locationX>
-        <locationY>647</locationY>
+        <locationY>755</locationY>
         <actionName>Data_Feedback_Loop__c.Notification_to_Gatekeeper</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -38,7 +38,7 @@
     <decisions>
         <name>is_Status_New_or_Closed</name>
         <label>is Status New or Closed?</label>
-        <locationX>314</locationX>
+        <locationX>468</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -72,6 +72,28 @@
             <label>If Status is Closed</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>null_check</name>
+        <label>null check</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Verify_the_Business_Area_and_Issue_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Change_the_owner_to_Gatekeeper</targetReference>
+            </connector>
+            <label>available</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <interviewLabel>Email Alert Data feedback loop flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Email Alert Data feedback loop flow</label>
@@ -97,11 +119,11 @@
     <recordLookups>
         <name>Verify_the_Business_Area_and_Issue_Type</name>
         <label>Verify the Business Area and Issue Type</label>
-        <locationX>50</locationX>
+        <locationX>182</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Change_the_owner_to_Gatekeeper</targetReference>
+            <targetReference>null_check</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -133,7 +155,7 @@
         <name>Change_the_owner_to_Gatekeeper</name>
         <label>Change the owner to Gatekeeper</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <connector>
             <targetReference>Send_Email_To_Gatekeeper</targetReference>
         </connector>
@@ -146,7 +168,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>188</locationX>
+        <locationX>342</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>is_Status_New_or_Closed</targetReference>
