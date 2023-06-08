@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Lead</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Default</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;At Investigation, the objective is to assess if there is an opportunity and convert the lead into a contact, an account and/or an opportunity.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;• The lead is not mature enough/ right time to present an opportunity to Imerys. Convert into an account and a contact and continue monitoring for potential/future opportunities.&lt;/p&gt;&lt;p&gt;• There is an opportunity however due to the scale, it will be handled by a distributor and only a contact and account will be created.&lt;/p&gt;&lt;p&gt;• There is an opportunity, the lead will be converted into a contact, account and opportunity. A sale manager to be the opportunity owner.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Note that to convert the lead into an opportunity, the account manager has to be a sales person. In addition, to convert to an existing opportunity, request read and write access from the relevant opportunity owner before proceeding.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Click on the &amp;quot;&amp;quot;Convert&amp;quot;&amp;quot; button to progress the lead.&lt;/p&gt;</info>
+        <picklistValueName>Investigation</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;A lead may have been created from a trade show, webinar, website, etc. Basic information on the lead have been collected. At &amp;quot;New&amp;quot; stage, the objective is to assess if the lead is applicable/relevant to Imerys. If relevant, to continuing collecting information on the contact/account.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;If applicable/relevant to imerys:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;• Verify the information provided. If the information collected is inaccurate, if the lead is uncontactable or is a competitor, discard the lead.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;• Check for duplicates. If a duplicate is found, assess if the record should be merged. To merge, please contact smiles.support@imerys.com.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;• Continue to collect information on the lead through market research / call to the contact, fill in the input fields with additional information about the company and the contact.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;• [If relevant] Assign leads to the right Sales / Marketing people.&lt;/p&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>
