@@ -4,7 +4,7 @@
         <name>Send_email_to_Owner</name>
         <label>Send email to Owner</label>
         <locationX>578</locationX>
-        <locationY>528</locationY>
+        <locationY>492</locationY>
         <actionName>Lead.W2L_Not_Processed_for_4_days</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -14,13 +14,15 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>Lead.W2L_Not_Processed_for_4_days</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <decisions>
         <name>Check_Status</name>
         <label>Check Status</label>
         <locationX>182</locationX>
-        <locationY>288</locationY>
+        <locationY>276</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_Not_Exploration</name>
@@ -29,7 +31,7 @@
                 <leftValueReference>$Record.Status</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <stringValue>Exploration</stringValue>
+                    <stringValue>New</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -42,7 +44,7 @@
         <name>Null_check</name>
         <label>Null check</label>
         <locationX>710</locationX>
-        <locationY>288</locationY>
+        <locationY>276</locationY>
         <defaultConnectorLabel>Lead Rec Not Available</defaultConnectorLabel>
         <rules>
             <name>Lead_Rec_Available</name>
@@ -104,7 +106,7 @@
         <name>Create_Task</name>
         <label>Create Task</label>
         <locationX>578</locationX>
-        <locationY>408</locationY>
+        <locationY>384</locationY>
         <connector>
             <targetReference>Send_email_to_Owner</targetReference>
         </connector>
@@ -157,7 +159,7 @@
         <name>Set_Action_DateTime_Blank</name>
         <label>Set Action DateTime Blank</label>
         <locationX>50</locationX>
-        <locationY>408</locationY>
+        <locationY>384</locationY>
         <inputAssignments>
             <field>Action_DateTime__c</field>
         </inputAssignments>
