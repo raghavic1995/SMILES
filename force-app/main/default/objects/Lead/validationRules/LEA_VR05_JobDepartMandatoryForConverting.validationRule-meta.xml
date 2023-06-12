@@ -4,5 +4,5 @@
     <active>true</active>
     <errorConditionFormula>(ISPICKVAL(Status,&apos;Investigation&apos;)) &amp;&amp; ISPICKVAL(JobDepartment__c,&apos;&apos;) &amp;&amp; $User.ByPassValidationRule__c = FALSE</errorConditionFormula>
     <errorDisplayField>JobDepartment__c</errorDisplayField>
-    <errorMessage>Job department is mandatory in order to convert your lead</errorMessage>
+    <errorMessage>Job department is mandatory in order to reach &apos;Investigation&apos; status.</errorMessage>
 </ValidationRule>

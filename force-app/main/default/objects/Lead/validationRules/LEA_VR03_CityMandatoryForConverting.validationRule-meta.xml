@@ -5,5 +5,5 @@
     <errorConditionFormula>ISBLANK(City) &amp;&amp; $User.ByPassValidationRule__c = FALSE &amp;&amp;
 ISPICKVAL(Status,&apos;Investigation&apos;)</errorConditionFormula>
     <errorDisplayField>City</errorDisplayField>
-    <errorMessage>City is mandatory in order to reach &apos;Qualification&apos; status</errorMessage>
+    <errorMessage>City is mandatory in order to reach &apos;Investigation&apos; status</errorMessage>
 </ValidationRule>
