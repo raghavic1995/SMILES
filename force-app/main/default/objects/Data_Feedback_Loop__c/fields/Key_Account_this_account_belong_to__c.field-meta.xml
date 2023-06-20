@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Key_Account_this_account_belong_to__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>Please tell me the name of the Key Account they belong to</inlineHelpText>
+    <label>Key Account this account belong to</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Data Feedback Loops (Key Account this account belong to)</relationshipLabel>
+    <relationshipName>Data_Feedback_Loops2</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
