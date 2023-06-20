@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Missing_information__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please explain in as much detail as possible what your data issue is (the more you are able to give, the easier and quicker the issue will be resolved)</inlineHelpText>
+    <label>Missing information</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>
