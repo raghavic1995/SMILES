@@ -18,14 +18,24 @@
                 <label>New</label>
             </value>
             <value>
+                <fullName>Under BA review</fullName>
+                <default>false</default>
+                <label>Under BA review</label>
+            </value>
+            <value>
                 <fullName>In Progress</fullName>
                 <default>false</default>
                 <label>In Progress</label>
             </value>
             <value>
-                <fullName>Closed</fullName>
+                <fullName>Done</fullName>
                 <default>false</default>
-                <label>Closed</label>
+                <label>Done</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
             </value>
         </valueSetDefinition>
     </valueSet>
