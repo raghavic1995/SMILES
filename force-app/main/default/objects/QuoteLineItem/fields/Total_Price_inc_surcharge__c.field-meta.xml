@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Inflation_Surcharge_per_uom__c</fullName>
+    <fullName>Total_Price_inc_surcharge__c</fullName>
     <externalId>false</externalId>
-    <label>Inflation Surcharge (per uom)</label>
+    <formula>Total_Price_exc_surcharge__c +  Surcharges1__c +  ICMS__c +  PIS_COFINS__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Price - inc surcharge</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

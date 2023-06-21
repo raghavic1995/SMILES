@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Steric_Acid_Surcharge_per_uom__c</fullName>
     <externalId>false</externalId>
-    <label>Steric Acid Surcharge  (per uom, PM A)</label>
+    <label>Steric Acid Surcharge (per uom)</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
