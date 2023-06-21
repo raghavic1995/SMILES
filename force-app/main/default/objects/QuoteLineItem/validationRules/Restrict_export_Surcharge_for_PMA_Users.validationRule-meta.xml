@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_export_Surcharge_for_PMA_Users</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL($User.NewBusinessArea__c, &apos;PM EMEA&apos;), ISCHANGED(  Export_Container_Surcharge_per_uom__c  ) , NOT(ISBLANK(  Export_Container_Surcharge_per_uom__c  )))</errorConditionFormula>
+    <errorDisplayField>Export_Container_Surcharge_per_uom__c</errorDisplayField>
+    <errorMessage>This is a PM A specific field, please avoid entering any inputs</errorMessage>
+</ValidationRule>
