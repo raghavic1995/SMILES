@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Export_Container_Surcharge_per_uom__c</fullName>
     <externalId>false</externalId>
-    <label>Export Container Surcharge (per uom,PMA)</label>
+    <label>Export Container Surcharge (per uom)</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

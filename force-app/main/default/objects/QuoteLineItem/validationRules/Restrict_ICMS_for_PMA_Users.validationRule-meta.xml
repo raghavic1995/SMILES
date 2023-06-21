@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_ICMS_for_PMA_Users</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL($User.NewBusinessArea__c, &apos;PM EMEA&apos;), ISCHANGED(  ICMS__c  ) , NOT(ISBLANK( ICMS__c )))</errorConditionFormula>
+    <errorDisplayField>ICMS__c</errorDisplayField>
+    <errorMessage>This is a PM A specific field, please avoid entering any inputs</errorMessage>
+</ValidationRule>
