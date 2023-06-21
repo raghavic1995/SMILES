@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Drayge_Surcharge_for_PMA_Users</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( Business_Area__c  &lt;&gt;  &apos;PM EMEA&apos;, ISCHANGED(  Drayage_Surcharge_per_uom__c  ) , NOT(ISBLANK(  Drayage_Surcharge_per_uom__c  )))</errorConditionFormula>
+    <errorDisplayField>Drayage_Surcharge_per_uom__c</errorDisplayField>
+    <errorMessage>This is a PM A specific field, please avoid entering any inputs</errorMessage>
+</ValidationRule>
