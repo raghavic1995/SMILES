@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <apiVersion>57.0</apiVersion>
+    <dynamicChoiceSets>
+        <name>Rating1</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Rating__c</picklistField>
+        <picklistObject>User_Feedback__c</picklistObject>
+    </dynamicChoiceSets>
     <environments>Default</environments>
     <interviewLabel>Feedback Form {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Feedback Form</label>
@@ -44,6 +52,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Parent_Record__c</field>
+            <value>
+                <elementReference>get_Case.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Product_Feature__c</field>
             <value>
                 <elementReference>get_Case.RecordType.Name</elementReference>
@@ -52,7 +66,7 @@
         <inputAssignments>
             <field>Rating__c</field>
             <value>
-                <elementReference>Rating.value</elementReference>
+                <elementReference>Ratings</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -91,8 +105,8 @@
     <recordLookups>
         <name>get_Case</name>
         <label>get Case</label>
-        <locationX>688</locationX>
-        <locationY>246</locationY>
+        <locationX>653</locationX>
+        <locationY>172</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>get_Queue</targetReference>
@@ -133,8 +147,8 @@
     <screens>
         <name>Feedback_Form</name>
         <label>Your Feedback</label>
-        <locationX>417</locationX>
-        <locationY>187</locationY>
+        <locationX>414</locationX>
+        <locationY>181</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -148,30 +162,12 @@
             <isRequired>false</isRequired>
         </fields>
         <fields>
-            <name>Rating</name>
-            <extensionName>flowruntime:slider</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>How important is this for you?</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>max</name>
-                <value>
-                    <numberValue>5.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>min</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <name>Ratings</name>
+            <choiceReferences>Rating1</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>How important is this for you ?</fieldText>
+            <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <nextOrFinishButtonLabel>Submit</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
