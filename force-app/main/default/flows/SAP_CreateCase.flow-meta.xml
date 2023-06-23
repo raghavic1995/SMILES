@@ -2,10 +2,35 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <decisions>
+        <name>check_business_area</name>
+        <label>check business area</label>
+        <locationX>610</locationX>
+        <locationY>702</locationY>
+        <defaultConnector>
+            <targetReference>get_Gatekeeper_assg</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>BA is RAC</defaultConnectorLabel>
+        <rules>
+            <name>BA_is_PM_Americas</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_SA_record.Business_Area__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PM AMERICAS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Gatekeeper_assg_PMA</targetReference>
+            </connector>
+            <label>BA is PM Americas</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_Case</name>
         <label>Check Case</label>
-        <locationX>182</locationX>
-        <locationY>575</locationY>
+        <locationX>616</locationX>
+        <locationY>587</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Not_Found</name>
@@ -17,17 +42,54 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>check_business_area</targetReference>
+            </connector>
+            <label>Not Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>null_check_GK</name>
+        <label>null check GK</label>
+        <locationX>873</locationX>
+        <locationY>917</locationY>
+        <defaultConnectorLabel>GK not found</defaultConnectorLabel>
+        <rules>
+            <name>GK_found</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.SalesAgreement.Business_Area__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>get_Gatekeeper_assg</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <stringValue>PM EMEA</stringValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_QueueId_RAC</targetReference>
+            </connector>
+            <label>GK found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>null_check_GK_PMA</name>
+        <label>null check GK PMA</label>
+        <locationX>390</locationX>
+        <locationY>931</locationY>
+        <defaultConnectorLabel>GK not found</defaultConnectorLabel>
+        <rules>
+            <name>GK_found_PMA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Gatekeeper_assg_PMA</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>get_QueueId</targetReference>
             </connector>
-            <label>Not Found</label>
+            <label>GK found PMA</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -42,7 +104,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -55,8 +117,100 @@
     <recordCreates>
         <name>Create_Case</name>
         <label>Create Case</label>
-        <locationX>50</locationX>
-        <locationY>815</locationY>
+        <locationX>400</locationX>
+        <locationY>1101</locationY>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>get_SA_record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>get_SA_record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BusinessArea__c</field>
+            <value>
+                <elementReference>get_SA_record.Business_Area__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSAccountManager__c</field>
+            <value>
+                <elementReference>get_SA_record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Price Update</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Email Automated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>varQueueId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>$Setup.RecordTypeIds__c.Case_Price_Update__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SAP_ImerysSellingEntity__c</field>
+            <value>
+                <elementReference>$Record.Imerys_Selling_Entity__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sales_Agreement_Product__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sales_Agreement__c</field>
+            <value>
+                <elementReference>get_SA_record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Tech_RelationshipInformation__c</field>
+            <value>
+                <elementReference>get_SA_record.Relationship_Information__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Others</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Case_0</name>
+        <label>Create Case</label>
+        <locationX>881</locationX>
+        <locationY>1086</locationY>
         <inputAssignments>
             <field>AccountId</field>
             <value>
@@ -147,8 +301,8 @@
     <recordLookups>
         <name>get_Existing_Case</name>
         <label>get Existing Case</label>
-        <locationX>182</locationX>
-        <locationY>455</locationY>
+        <locationX>616</locationX>
+        <locationY>479</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Case</targetReference>
@@ -180,10 +334,73 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_Gatekeeper_assg</name>
+        <label>get Gatekeeper assg</label>
+        <locationX>879</locationX>
+        <locationY>790</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>null_check_GK</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Object__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Price Update</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BusinessArea__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>RAC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Imerys_Site__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Imerys_Selling_Entity__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>GatekeeperAssignment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Gatekeeper_assg_PMA</name>
+        <label>get Gatekeeper assg PMA</label>
+        <locationX>398</locationX>
+        <locationY>785</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>null_check_GK_PMA</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Object__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Price Update</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BusinessArea__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PM AMERICAS</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>GatekeeperAssignment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>get_QueueId</name>
         <label>get QueueId</label>
-        <locationX>50</locationX>
-        <locationY>695</locationY>
+        <locationX>258</locationX>
+        <locationY>1006</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_Case</targetReference>
@@ -197,10 +414,40 @@
             </value>
         </filters>
         <filters>
-            <field>DeveloperName</field>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>get_Gatekeeper_assg_PMA.Price_Update_Queue__c</elementReference>
+            </value>
+        </filters>
+        <object>Group</object>
+        <outputAssignments>
+            <assignToReference>varQueueId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>get_QueueId_RAC</name>
+        <label>get QueueId RAC</label>
+        <locationX>1022</locationX>
+        <locationY>1004</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Case_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>PMEMEA_Price_Mass_Update_Team</stringValue>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>get_Gatekeeper_assg_PMA.Price_Update_Queue__c</elementReference>
             </value>
         </filters>
         <object>Group</object>
@@ -212,8 +459,8 @@
     <recordLookups>
         <name>get_SA_record</name>
         <label>get SA record</label>
-        <locationX>182</locationX>
-        <locationY>335</locationY>
+        <locationX>616</locationX>
+        <locationY>371</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>get_Existing_Case</targetReference>
@@ -231,8 +478,8 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>56</locationX>
-        <locationY>0</locationY>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>get_SA_record</targetReference>
         </connector>
