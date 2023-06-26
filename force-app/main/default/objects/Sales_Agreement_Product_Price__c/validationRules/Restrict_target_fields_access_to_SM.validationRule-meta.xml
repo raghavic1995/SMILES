@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_target_fields_access_to_SM</fullName>
+    <active>true</active>
+    <description>2711</description>
+    <errorConditionFormula>($User.Id =  Sales_Agreement_Product__r.SalesAgreement.OwnerId ) &amp;&amp;
+(ISCHANGED(Customer_ex_works_price_target_c__c ) ||
+ISCHANGED(Packaging_Price_Target__c ) ||
+ISCHANGED(Transport_price_unit_base_target__c ) ||
+ISCHANGED(Transport_Price_Per_Container_Target__c ) ||
+ISCHANGED( Energy_surcharge_Target_per_uom__c ) ||
+ISCHANGED( Freight_surcharge_Target_per_uom__c )||
+ISCHANGED( Steric_Acid_Surcharge_Target_per_uom__c)||
+ISCHANGED( Export_Container_Surcharge_Target_pe__c) ||
+ISCHANGED( Drayage_Surcharge_Target_per_uom__c ) ||
+ISCHANGED( Inflation_Surcharge_Target_per_uom__c ) ||
+ISCHANGED( Fuel_Surcharge_Target_per_uom__c) ||
+ISCHANGED( ICMS_target__c )||
+ISCHANGED( PIS_COFINS_target__c )
+)&amp;&amp;
+$User.ByPassValidationRule__c = FALSE</errorConditionFormula>
+    <errorMessage>Target fields cannot be edited by the Sales Manager</errorMessage>
+</ValidationRule>
