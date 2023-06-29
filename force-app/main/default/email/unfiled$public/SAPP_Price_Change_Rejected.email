@@ -1,0 +1,10 @@
+Dear {!Sales_Agreement_Product_Price__c.OwnerFullName},
+
+Your Price Change Request {!Sales_Agreement_Product_Price__c.Name} has been rejected.
+
+Please click on the the link below to see the rejection details.
+{!ApprovalRequest.Internal_URL}
+
+Regards,
+
+{!ApprovalRequest.Process_Approver}
