@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sent_to_Customer_Service_Completion__c</fullName>
+    <externalId>false</externalId>
+    <formula>Customer_Service_Formula__c/IF(LineItemCount &gt; 0,(LineItemCount),1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Represents the completion rate of sending the pricing information per product to customer service through the price update button</inlineHelpText>
+    <label>Sent to Customer Service Completion</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>
