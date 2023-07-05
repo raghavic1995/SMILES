@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Open</fullName>
+                <default>false</default>
+                <label>Open</label>
+            </value>
+            <value>
+                <fullName>Working</fullName>
+                <default>false</default>
+                <label>Working</label>
+            </value>
+            <value>
+                <fullName>Waiting For Customer</fullName>
+                <default>false</default>
+                <label>Waiting For Customer</label>
+            </value>
+            <value>
+                <fullName>Closed(Closed)</fullName>
+                <default>false</default>
+                <label>Closed(Closed)</label>
+            </value>
+            <value>
+                <fullName>I do not see all accounts as part of my Key Account Scope</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I do not see all accounts as part of my Key Account Scope</label>
+            </value>
+            <value>
+                <fullName>I do not see all my accounts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I do not see all my accounts</label>
+            </value>
+            <value>
+                <fullName>I see accounts that are not mine</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I see accounts that are not mine</label>
+            </value>
+            <value>
+                <fullName>Missing / Wrong data in my accounts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Missing / Wrong data in my accounts</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>The ERP listed on the record is incorrect (P2Q)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>The ERP listed on the record is incorrect (P2Q)</label>
+            </value>
+            <value>
+                <fullName>The customer group/parent account is missing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>The customer group/parent account is missing</label>
+            </value>
+            <value>
+                <fullName>The customer grouping is incorrect</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>The customer grouping is incorrect</label>
+            </value>
+            <value>
+                <fullName>Their is a problem with the product information listed on the record (P2Q)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Their is a problem with the product information listed on the record (P2Q)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
