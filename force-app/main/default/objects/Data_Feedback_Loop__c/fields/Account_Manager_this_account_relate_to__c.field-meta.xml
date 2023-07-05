@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Manager_this_account_relate_to__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>Please tell me the Sales Manager you believe this account belongs to</inlineHelpText>
+    <label>Account Manager this account relate to</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Data_Feedback_Loops</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
