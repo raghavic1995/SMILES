@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LEA_VR06_MarketL1MandatoryForConverting</fullName>
+    <active>true</active>
+    <errorConditionFormula>(ISPICKVAL(Status,&apos;Investigation&apos;)) &amp;&amp; ISPICKVAL(MarketL1__c,&apos;&apos;) &amp;&amp; $User.ByPassValidationRule__c = FALSE</errorConditionFormula>
+    <errorDisplayField>MarketL1__c</errorDisplayField>
+    <errorMessage>Market Segment L1 is mandatory in order to reach &apos;Qualification&apos; status</errorMessage>
+</ValidationRule>
