@@ -4,7 +4,7 @@
         <name>Dedupe</name>
         <label>Dedupe</label>
         <locationX>50</locationX>
-        <locationY>2531</locationY>
+        <locationY>2639</locationY>
         <actionName>DedupeRecordCollection</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -42,7 +42,7 @@
     <assignments>
         <name>Assign_it_to_a_collection</name>
         <label>Assign it to a collection</label>
-        <locationX>2492</locationX>
+        <locationX>2624</locationX>
         <locationY>1379</locationY>
         <assignmentItems>
             <assignToReference>SATeamDeleteList</assignToReference>
@@ -58,7 +58,7 @@
     <assignments>
         <name>Assign_to_collection_variable</name>
         <label>Assign to collection variable</label>
-        <locationX>1744</locationX>
+        <locationX>1876</locationX>
         <locationY>2255</locationY>
         <assignmentItems>
             <assignToReference>SATeamList</assignToReference>
@@ -74,7 +74,7 @@
     <assignments>
         <name>Assign_TT_as_SA_team_member</name>
         <label>Assign TT as SA team member</label>
-        <locationX>1744</locationX>
+        <locationX>1876</locationX>
         <locationY>2147</locationY>
         <assignmentItems>
             <assignToReference>SATeamSingleVar.Access__c</assignToReference>
@@ -111,7 +111,7 @@
     <decisions>
         <name>check_access</name>
         <label>check access</label>
-        <locationX>2030</locationX>
+        <locationX>2162</locationX>
         <locationY>1379</locationY>
         <defaultConnector>
             <targetReference>Update_Access</targetReference>
@@ -136,7 +136,7 @@
     <decisions>
         <name>Check_if_member_already_exist</name>
         <label>Check if member already exist</label>
-        <locationX>2393</locationX>
+        <locationX>2525</locationX>
         <locationY>1271</locationY>
         <defaultConnector>
             <targetReference>Loop_Sales_Agreement_Team</targetReference>
@@ -183,7 +183,7 @@
     <decisions>
         <name>Check_if_SA_team_got_updated</name>
         <label>Check if SA team got updated</label>
-        <locationX>1612</locationX>
+        <locationX>1744</locationX>
         <locationY>2039</locationY>
         <defaultConnector>
             <targetReference>Assign_TT_as_SA_team_member</targetReference>
@@ -212,7 +212,7 @@
     <decisions>
         <name>Check_Role</name>
         <label>Check Role</label>
-        <locationX>1832</locationX>
+        <locationX>1964</locationX>
         <locationY>1487</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_Update_Access</targetReference>
@@ -234,7 +234,7 @@
     <decisions>
         <name>null_check</name>
         <label>null check</label>
-        <locationX>380</locationX>
+        <locationX>611</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>not available</defaultConnectorLabel>
         <rules>
@@ -254,9 +254,34 @@
         </rules>
     </decisions>
     <decisions>
+        <name>null_check_deletion_list</name>
+        <label>null check deletion list</label>
+        <locationX>182</locationX>
+        <locationY>2531</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Create_SA_Team_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>rec not available</defaultConnectorLabel>
+        <rules>
+            <name>rec_available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>SATeamDeleteList</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Dedupe</targetReference>
+            </connector>
+            <label>rec available</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Null_check_for_SA_Team</name>
         <label>Null check for SA Team</label>
-        <locationX>1612</locationX>
+        <locationX>1744</locationX>
         <locationY>971</locationY>
         <defaultConnector>
             <targetReference>Loop_Sales_Agreement_Team</targetReference>
@@ -281,7 +306,7 @@
     <decisions>
         <name>Null_check_for_TT</name>
         <label>Null check for TT</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>755</locationY>
         <defaultConnectorLabel>Not available</defaultConnectorLabel>
         <rules>
@@ -306,7 +331,7 @@
     <loops>
         <name>Loop_Sales_Agreement_Team</name>
         <label>Loop Sales Agreement Team</label>
-        <locationX>1612</locationX>
+        <locationX>1744</locationX>
         <locationY>1163</locationY>
         <collectionReference>Get_SA_team_member</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -320,7 +345,7 @@
     <loops>
         <name>LoopTerritoryTeam</name>
         <label>LoopTerritoryTeam</label>
-        <locationX>50</locationX>
+        <locationX>182</locationX>
         <locationY>863</locationY>
         <collectionReference>Get_Territory_Team_members</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -328,7 +353,7 @@
             <targetReference>Null_check_for_SA_Team</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Dedupe</targetReference>
+            <targetReference>null_check_deletion_list</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -351,17 +376,24 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
+        <name>Copy_1_of_Create_SA_Team_Record</name>
+        <label>Copy 1 of Create SA Team Record</label>
+        <locationX>314</locationX>
+        <locationY>2639</locationY>
+        <inputReference>SATeamList</inputReference>
+    </recordCreates>
+    <recordCreates>
         <name>Create_SA_Team_Record</name>
         <label>Create SA Team Record</label>
         <locationX>50</locationX>
-        <locationY>2747</locationY>
+        <locationY>2855</locationY>
         <inputReference>SATeamList</inputReference>
     </recordCreates>
     <recordDeletes>
         <name>Copy_1_of_Delete_Existing_SA_Team</name>
         <label>Copy 1 of Delete Existing SA Team</label>
         <locationX>50</locationX>
-        <locationY>2639</locationY>
+        <locationY>2747</locationY>
         <connector>
             <targetReference>Create_SA_Team_Record</targetReference>
         </connector>
@@ -370,7 +402,7 @@
     <recordLookups>
         <name>Get_related_Territory</name>
         <label>Get related Territory</label>
-        <locationX>380</locationX>
+        <locationX>611</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -391,7 +423,7 @@
     <recordLookups>
         <name>Get_SA_team_member</name>
         <label>Get SA team member</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -412,7 +444,7 @@
     <recordLookups>
         <name>Get_Territory_Team_members</name>
         <label>Get Territory Team members</label>
-        <locationX>182</locationX>
+        <locationX>380</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -433,7 +465,7 @@
     <recordUpdates>
         <name>Copy_1_of_Update_Access</name>
         <label>Copy 1 of Update Access</label>
-        <locationX>1964</locationX>
+        <locationX>2096</locationX>
         <locationY>1595</locationY>
         <connector>
             <targetReference>Loop_Sales_Agreement_Team</targetReference>
@@ -463,7 +495,7 @@
     <recordUpdates>
         <name>Update_Access</name>
         <label>Update Access</label>
-        <locationX>2228</locationX>
+        <locationX>2360</locationX>
         <locationY>1487</locationY>
         <connector>
             <targetReference>Loop_Sales_Agreement_Team</targetReference>
@@ -491,7 +523,7 @@
         <object>Sales_Agreement_Team__c</object>
     </recordUpdates>
     <start>
-        <locationX>254</locationX>
+        <locationX>485</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_related_Territory</targetReference>
