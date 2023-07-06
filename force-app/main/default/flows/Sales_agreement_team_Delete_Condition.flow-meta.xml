@@ -1,65 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>dedupe_SAPP_share</name>
+        <label>dedupe SAPP share</label>
+        <locationX>182</locationX>
+        <locationY>2303</locationY>
+        <actionName>DedupeRecordCollection</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>null_check_after_dedupe</targetReference>
+        </connector>
+        <dataTypeMappings>
+            <typeName>T__inputRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__Share</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>U__outputRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__Share</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>fieldToDedupeOn</name>
+            <value>
+                <stringValue>Id</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>inputRecordCollection</name>
+            <value>
+                <elementReference>ShareIDSList</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>DedupeRecordCollection</nameSegment>
+        <outputParameters>
+            <assignToReference>UpdatedShareList</assignToReference>
+            <name>outputRecordCollection</name>
+        </outputParameters>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
     <apiVersion>58.0</apiVersion>
     <assignments>
-        <name>assign_value</name>
-        <label>assign value</label>
-        <locationX>270</locationX>
-        <locationY>1043</locationY>
+        <name>Add_share_record_to_collection</name>
+        <label>Add share record to collection</label>
+        <locationX>600</locationX>
+        <locationY>1643</locationY>
         <assignmentItems>
-            <assignToReference>SAPPDeleteList</assignToReference>
+            <assignToReference>ShareSingleVar.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>TextIDSAPPShare</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>add_to_list</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>add_to_list</name>
+        <label>add to list</label>
+        <locationX>600</locationX>
+        <locationY>1751</locationY>
+        <assignmentItems>
+            <assignToReference>ShareIDSList</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>Get_SAPP_share_record</elementReference>
+                <elementReference>ShareSingleVar</elementReference>
             </value>
         </assignmentItems>
         <connector>
             <targetReference>Loop_SAPP</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Assignmentcounter</name>
+        <label>Assignment counter</label>
+        <locationX>820</locationX>
+        <locationY>1259</locationY>
+        <assignmentItems>
+            <assignToReference>CounterVar</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TextIDSAPPShare</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_SAPP_share.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_SAPP_share</targetReference>
+        </connector>
+    </assignments>
     <decisions>
-        <name>Check_if_the_member_and_SA_matches</name>
-        <label>Check if the member and SA matches</label>
-        <locationX>402</locationX>
-        <locationY>935</locationY>
+        <name>check_List</name>
+        <label>check List</label>
+        <locationX>336</locationX>
+        <locationY>2195</locationY>
         <defaultConnector>
-            <targetReference>Loop_SAPP</targetReference>
+            <targetReference>check_owner_id</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>match</name>
+            <name>rec_available</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Loop_SAPP.Tech_SA__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>ShareIDSList</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <elementReference>$Record.Sales_Agreement__c</elementReference>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>dedupe_SAPP_share</targetReference>
+            </connector>
+            <label>rec available</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_owner_id</name>
+        <label>check owner id</label>
+        <locationX>336</locationX>
+        <locationY>2795</locationY>
+        <defaultConnector>
+            <targetReference>Delete_the_SA_share</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>owner_equals_current_user</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_SAPP_share_record.ParentId</leftValueReference>
+                <leftValueReference>$Record.Member__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Sales_Agreement__r.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <label>owner equals current user</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_parent_id</name>
+        <label>check parent id</label>
+        <locationX>952</locationX>
+        <locationY>1151</locationY>
+        <defaultConnector>
+            <targetReference>Loop_SAPP_share</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>parent_id_matches</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_SAPP_share.ParentId</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>Loop_SAPP.Id</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Get_SAPP_share_record.UserOrGroupId</leftValueReference>
+                <leftValueReference>Loop_SAPP_share.UserOrGroupId</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>$Record.Member__c</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>Loop_SAPP_share.AccessLevel</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Edit</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
-                <targetReference>assign_value</targetReference>
+                <targetReference>Assignmentcounter</targetReference>
             </connector>
-            <label>match</label>
+            <label>parent id matches</label>
         </rules>
     </decisions>
     <decisions>
         <name>check_SA_share_record</name>
         <label>check SA share record</label>
-        <locationX>336</locationX>
+        <locationX>512</locationX>
         <locationY>395</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -73,22 +197,57 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Delete_the_SA_share</targetReference>
+                <targetReference>Get_SAPP</targetReference>
             </connector>
             <label>rec found</label>
         </rules>
     </decisions>
     <decisions>
-        <name>null_check_SAPP_share</name>
-        <label>null check SAPP share</label>
-        <locationX>182</locationX>
-        <locationY>1319</locationY>
+        <name>check_SAPP_share_condition</name>
+        <label>check SAPP share condition</label>
+        <locationX>732</locationX>
+        <locationY>1535</locationY>
+        <defaultConnector>
+            <targetReference>Loop_SAPP</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>SAPP_share_found</name>
+            <name>yes</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>SAPPDeleteList</leftValueReference>
+                <leftValueReference>Loop_SAPP.Tech_SA__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Sales_Agreement__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>TextIDSAPPShare</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_share_record_to_collection</targetReference>
+            </connector>
+            <label>yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>null_check_after_dedupe</name>
+        <label>null check after dedupe</label>
+        <locationX>182</locationX>
+        <locationY>2411</locationY>
+        <defaultConnector>
+            <targetReference>check_owner_id</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>rec_found1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>UpdatedShareList</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -96,6 +255,56 @@
             </conditions>
             <connector>
                 <targetReference>Delete_SAPP_share</targetReference>
+            </connector>
+            <label>rec found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>null_check_SAPP</name>
+        <label>null check SAPP</label>
+        <locationX>336</locationX>
+        <locationY>719</locationY>
+        <defaultConnector>
+            <targetReference>check_List</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>SAPP not found</defaultConnectorLabel>
+        <rules>
+            <name>SAPP_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_SAPP</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_SAPP</targetReference>
+            </connector>
+            <label>SAPP found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>null_check_SAPP_share</name>
+        <label>null check SAPP share</label>
+        <locationX>886</locationX>
+        <locationY>935</locationY>
+        <defaultConnector>
+            <targetReference>Loop_SAPP</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>SAPP share not found</defaultConnectorLabel>
+        <rules>
+            <name>SAPP_share_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_SAPP_share</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_SAPP_share</targetReference>
             </connector>
             <label>SAPP share found</label>
         </rules>
@@ -106,15 +315,29 @@
     <loops>
         <name>Loop_SAPP</name>
         <label>Loop SAPP</label>
-        <locationX>182</locationX>
+        <locationX>292</locationX>
         <locationY>827</locationY>
         <collectionReference>Get_SAPP</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Check_if_the_member_and_SA_matches</targetReference>
+            <targetReference>null_check_SAPP_share</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>null_check_SAPP_share</targetReference>
+            <targetReference>check_List</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_SAPP_share</name>
+        <label>Loop SAPP share</label>
+        <locationX>732</locationX>
+        <locationY>1043</locationY>
+        <collectionReference>Get_SAPP_share</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>check_parent_id</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>check_SAPP_share_condition</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -140,25 +363,17 @@
         <name>Delete_SAPP_share</name>
         <label>Delete SAPP share</label>
         <locationX>50</locationX>
-        <locationY>1427</locationY>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>UserOrGroupId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Member__c</elementReference>
-            </value>
-        </filters>
-        <object>Sales_Agreement_Product_Price__Share</object>
+        <locationY>2519</locationY>
+        <connector>
+            <targetReference>check_owner_id</targetReference>
+        </connector>
+        <inputReference>UpdatedShareList</inputReference>
     </recordDeletes>
     <recordDeletes>
         <name>Delete_the_SA_share</name>
         <label>Delete the SA share</label>
-        <locationX>182</locationX>
-        <locationY>503</locationY>
-        <connector>
-            <targetReference>Get_SAPP</targetReference>
-        </connector>
+        <locationX>424</locationX>
+        <locationY>2903</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>ParentId</field>
@@ -179,7 +394,7 @@
     <recordLookups>
         <name>Get_SA_share</name>
         <label>Get SA share</label>
-        <locationX>336</locationX>
+        <locationX>512</locationX>
         <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -207,11 +422,11 @@
     <recordLookups>
         <name>Get_SAPP</name>
         <label>Get SAPP</label>
-        <locationX>182</locationX>
-        <locationY>611</locationY>
+        <locationX>336</locationX>
+        <locationY>503</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_SAPP_share_record</targetReference>
+            <targetReference>Get_SAPP_share</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -226,15 +441,22 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_SAPP_share_record</name>
-        <label>Get SAPP share record</label>
-        <locationX>182</locationX>
-        <locationY>719</locationY>
+        <name>Get_SAPP_share</name>
+        <label>Get SAPP share</label>
+        <locationX>336</locationX>
+        <locationY>611</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Loop_SAPP</targetReference>
+            <targetReference>null_check_SAPP</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccessLevel</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Edit</stringValue>
+            </value>
+        </filters>
         <filters>
             <field>UserOrGroupId</field>
             <operator>EqualTo</operator>
@@ -242,12 +464,12 @@
                 <elementReference>$Record.Member__c</elementReference>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Sales_Agreement_Product_Price__Share</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>210</locationX>
+        <locationX>386</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_SA_share</targetReference>
@@ -258,7 +480,38 @@
     </start>
     <status>Active</status>
     <variables>
-        <name>SAPPDeleteList</name>
+        <name>CounterVar</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>ShareIDSList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Sales_Agreement_Product_Price__Share</objectType>
+    </variables>
+    <variables>
+        <name>ShareSingleVar</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Sales_Agreement_Product_Price__Share</objectType>
+    </variables>
+    <variables>
+        <name>TextIDSAPPShare</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>UpdatedShareList</name>
         <dataType>SObject</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>
