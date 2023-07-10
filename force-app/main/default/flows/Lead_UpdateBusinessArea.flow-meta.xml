@@ -2,34 +2,34 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>55.0</apiVersion>
     <decisions>
-        <name>check_BA_field</name>
-        <label>check BA field</label>
-        <locationX>176</locationX>
-        <locationY>287</locationY>
-        <defaultConnector>
-            <targetReference>check_market_segment_field_on_lead</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>BA null</defaultConnectorLabel>
+        <name>check_BA</name>
+        <label>check BA</label>
+        <locationX>1170</locationX>
+        <locationY>444</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>BA_not_null</name>
+            <name>BA_null</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Business_Area__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <label>BA not null</label>
+            <connector>
+                <targetReference>Update_Business_Area</targetReference>
+            </connector>
+            <label>BA null</label>
         </rules>
     </decisions>
     <decisions>
         <name>check_market_segment_field_on_lead</name>
         <label>check market segment field on lead</label>
-        <locationX>473</locationX>
-        <locationY>395</locationY>
+        <locationX>913</locationX>
+        <locationY>443</locationY>
         <defaultConnector>
-            <targetReference>Update_Business_Area</targetReference>
+            <targetReference>check_BA</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>market segment l1 is not empty</defaultConnectorLabel>
         <rules>
@@ -58,8 +58,8 @@
     <decisions>
         <name>null_check_gk</name>
         <label>null check gk</label>
-        <locationX>275</locationX>
-        <locationY>611</locationY>
+        <locationX>715</locationX>
+        <locationY>659</locationY>
         <defaultConnectorLabel>gk rec not found</defaultConnectorLabel>
         <rules>
             <name>gk_rec_found</name>
@@ -89,7 +89,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -102,8 +102,8 @@
     <recordLookups>
         <name>Get_GK_record</name>
         <label>Get GK record</label>
-        <locationX>275</locationX>
-        <locationY>503</locationY>
+        <locationX>715</locationX>
+        <locationY>551</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>null_check_gk</targetReference>
@@ -137,8 +137,8 @@
     <recordUpdates>
         <name>Update_Business_Area</name>
         <label>Update Business Area</label>
-        <locationX>671</locationX>
-        <locationY>503</locationY>
+        <locationX>1111</locationX>
+        <locationY>551</locationY>
         <inputAssignments>
             <field>Business_Area__c</field>
             <value>
@@ -150,8 +150,8 @@
     <recordUpdates>
         <name>Update_Lead</name>
         <label>Update Lead</label>
-        <locationX>143</locationX>
-        <locationY>719</locationY>
+        <locationX>583</locationX>
+        <locationY>767</locationY>
         <inputAssignments>
             <field>Business_Area__c</field>
             <value>
@@ -167,10 +167,10 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
         <connector>
-            <targetReference>check_BA_field</targetReference>
+            <targetReference>check_market_segment_field_on_lead</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
