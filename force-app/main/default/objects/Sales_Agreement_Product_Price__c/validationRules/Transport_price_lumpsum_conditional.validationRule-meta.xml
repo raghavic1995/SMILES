@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transport_price_lumpsum_conditional</fullName>
+    <active>true</active>
+    <description>23-00002823</description>
+    <errorConditionFormula>ISPICKVAL(Sales_Agreement_Product__r.JDE_picklist__c,&apos;SAP S/4 (Opera)&apos;)
+&amp;&amp;
+NOT(ISPICKVAL(Sales_Agreement_Product__r.Invoicing_Type__c,&apos;Prices combined into one price excluding ESC and Transport price, which should each be shown separately&apos; ))
+&amp;&amp;
+NOT(ISPICKVAL(Sales_Agreement_Product__r.Invoicing_Type__c,&apos;All prices shown separately&apos; ))
+&amp;&amp;
+NOT(ISPICKVAL(Sales_Agreement_Product__r.Invoicing_Type__c,&apos;Prices combined into one price excluding transport price, which should be shown separately&apos; ))
+&amp;&amp;
+ISBLANK( Trasport_price_lumpsum__c ) = false
+&amp;&amp;
+$User.ByPassValidationRule__c = FALSE</errorConditionFormula>
+    <errorDisplayField>Trasport_price_lumpsum__c</errorDisplayField>
+    <errorMessage>Transport Price Lump Sum is a condition that is always shown on the invoice. Please change your &apos;invoice type&apos; to reflect this</errorMessage>
+</ValidationRule>

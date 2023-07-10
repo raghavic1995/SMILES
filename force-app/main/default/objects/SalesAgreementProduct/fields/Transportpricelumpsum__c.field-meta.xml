@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Previous_Transport_Price_Per_Container__c</fullName>
+    <fullName>Transportpricelumpsum__c</fullName>
     <externalId>false</externalId>
     <label>Transport Price Lump Sum</label>
     <precision>18</precision>

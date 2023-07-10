@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>Freight_Surcharge__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>New Freight Surcharge (per uom)</label>
+    <label>New Freight Surcharge Lump Sum</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

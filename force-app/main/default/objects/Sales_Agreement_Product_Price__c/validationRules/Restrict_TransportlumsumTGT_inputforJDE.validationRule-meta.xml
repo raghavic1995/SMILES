@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_TransportlumsumTGT_inputforJDE</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL(Sales_Agreement_Product__r.JDE_picklist__c,&apos;JDE&apos;)
+&amp;&amp;
+ISCHANGED(Transport_Price_Per_Container_Target__c) = true
+&amp;&amp;
+ISNULL(Transport_Price_Per_Container_Target__c) = FALSE   
+&amp;&amp; 
+$User.ByPassValidationRule__c = FALSE</errorConditionFormula>
+    <errorDisplayField>Transport_Price_Per_Container_Target__c</errorDisplayField>
+    <errorMessage>This is a JDE ERP sale. The JDE ERP does not have an input field for freight surcharge. Please choose another price condition to apply this charge</errorMessage>
+</ValidationRule>

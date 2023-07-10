@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Transport_lumpsum_input_for_JDE</fullName>
+    <active>true</active>
+    <description>23-00002823</description>
+    <errorConditionFormula>ISPICKVAL(Sales_Agreement_Product__r.JDE_picklist__c,&apos;JDE&apos;)
+&amp;&amp;
+ISCHANGED(Trasport_price_lumpsum__c) = true
+&amp;&amp;
+ISNULL(Trasport_price_lumpsum__c) = FALSE   
+&amp;&amp; 
+$User.ByPassValidationRule__c = FALSE</errorConditionFormula>
+    <errorDisplayField>Trasport_price_lumpsum__c</errorDisplayField>
+    <errorMessage>This is a JDE ERP sale. The JDE ERP does not have an input field for freight surcharge. Please choose another price condition to apply this charge</errorMessage>
+</ValidationRule>
