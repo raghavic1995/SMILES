@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LEA_VR12_SalesOwner</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Status,&apos;Conversion&apos;) &amp;&amp; 
+Owner_Profile__c  &lt;&gt; &apos;Sales – Full&apos; &amp;&amp; ISPICKVAL(LeadOutcome__c,&apos;Opportunity will be created&apos;) &amp;&amp;
+$User.ByPassValidationRule__c = FALSE</errorConditionFormula>
+    <errorMessage>As the lead outcome chosen is &quot;Opportunity will be created&quot;, to move to &quot;Conversion&quot;, lead owner needs to be from sales. Move back to &quot;Qualification&quot;, to change the lead owner. After the reassignment, you will still be able to convert the lead.</errorMessage>
+</ValidationRule>
