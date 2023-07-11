@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Price_Update_Queue__c</fullName>
+    <externalId>false</externalId>
+    <label>Price Update Queue</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Glomel Back-Office</fullName>
+                <default>false</default>
+                <label>Glomel Back-Office</label>
+            </value>
+            <value>
+                <fullName>PriceStorageQueue1</fullName>
+                <default>false</default>
+                <label>PriceStorageQueue1</label>
+            </value>
+            <value>
+                <fullName>PriceStorageQueue2</fullName>
+                <default>false</default>
+                <label>PriceStorageQueue2</label>
+            </value>
+            <value>
+                <fullName>ManosTest1</fullName>
+                <default>false</default>
+                <label>ManosTest1</label>
+            </value>
+            <value>
+                <fullName>Irshaad</fullName>
+                <default>false</default>
+                <label>Irshaad</label>
+            </value>
+            <value>
+                <fullName>Default Queue</fullName>
+                <default>false</default>
+                <label>Default Queue</label>
+            </value>
+            <value>
+                <fullName>AR_Imerys_Minerales_Argentina</fullName>
+                <default>false</default>
+                <label>AR_Imerys_Minerales_Argentina</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
