@@ -442,7 +442,7 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>QuoteListVar.ImerysSellingEntityAddress1__c</assignToReference>
+            <assignToReference>QuoteListVar.ImerysSellingEntityAddress__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Imerys_Selling_Entity_Address_0</elementReference>
@@ -495,13 +495,6 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>AccountName.recordId</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>QuoteListVar.ContactId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>ContactId1.recordId</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -567,6 +560,13 @@
                 <elementReference>Special_Terms_And_Conditions_0</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>QuoteListVar.CustomerContactName__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CustomerContact.recordId</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_quote</targetReference>
         </connector>
@@ -591,6 +591,31 @@
                 <targetReference>assign</targetReference>
             </connector>
             <label>values found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Null_Check</name>
+        <label>Null Check</label>
+        <locationX>544</locationX>
+        <locationY>406</locationY>
+        <defaultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opp_Available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Oppo_Share</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Assignment</targetReference>
+            </connector>
+            <label>Opp Available</label>
         </rules>
     </decisions>
     <dynamicChoiceSets>
@@ -804,6 +829,55 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Get_Oppo_Share</name>
+        <label>Get Oppo Share</label>
+        <locationX>671</locationX>
+        <locationY>230</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Null_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>UserOrGroupId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityShare</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>551</locationX>
+        <locationY>288</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Oppo_Share</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>OpportunityName.recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Pricebook_entry</name>
         <label>Get Pricebook entry</label>
         <locationX>1005</locationX>
@@ -908,7 +982,7 @@
         <locationY>799</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
             <targetReference>Check_qli_values</targetReference>
         </connector>
@@ -953,7 +1027,7 @@
             <inputParameters>
                 <name>columns</name>
                 <value>
-                    <stringValue>[{&quot;apiName&quot;:&quot;LineNumber&quot;,&quot;guid&quot;:&quot;column-0159&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Line Item Number&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;&quot;,&quot;guid&quot;:&quot;column-d375&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1}]</stringValue>
+                    <stringValue>[{&quot;apiName&quot;:&quot;ItemReference__c&quot;,&quot;guid&quot;:&quot;column-5bf8&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Product Item Reference&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;LineNumber&quot;,&quot;guid&quot;:&quot;column-0159&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Line Item Number&quot;,&quot;type&quot;:&quot;text&quot;}]</stringValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -962,6 +1036,22 @@
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>535</locationX>
+        <locationY>567</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>ErrorMessage</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;An unhandled fault has occurred in this flow&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Please check that you are the owner of the related opportunity linked to the cloned lead. If unresolved, contact your system administrator for more information.&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>Final_Screen</name>
@@ -991,7 +1081,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Quote_Assignment</targetReference>
+            <targetReference>Get_Opportunity</targetReference>
         </connector>
         <fields>
             <name>GeneralInfo_0</name>
@@ -1046,7 +1136,7 @@
                     <inputParameters>
                         <name>recordId</name>
                         <value>
-                            <elementReference>Get_Quote.Opportunity.Id</elementReference>
+                            <elementReference>Get_Quote.OpportunityId</elementReference>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -1132,7 +1222,7 @@
                     <choiceReferences>Status</choiceReferences>
                     <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>Get_Quote.Status</elementReference>
+                        <stringValue>Quote initialization</stringValue>
                     </defaultValue>
                     <fieldText>Status</fieldText>
                     <fieldType>DropdownBox</fieldType>
@@ -1195,7 +1285,7 @@
                     <name>Bill_To_Legal_Entity_Name_0</name>
                     <dataType>String</dataType>
                     <defaultValue>
-                        <elementReference>Get_Quote.BillToLegalEntityName__c</elementReference>
+                        <elementReference>Get_Quote.Bill_To_Legal_Entity_Name__c</elementReference>
                     </defaultValue>
                     <fieldText>Bill To - Legal Entity Name</fieldText>
                     <fieldType>InputField</fieldType>
@@ -1415,38 +1505,6 @@
                         <name>recordId</name>
                         <value>
                             <elementReference>Get_Quote.CustomerContactName__r.Id</elementReference>
-                        </value>
-                    </inputParameters>
-                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-                    <isRequired>true</isRequired>
-                    <storeOutputAutomatically>true</storeOutputAutomatically>
-                </fields>
-                <fields>
-                    <name>ContactId1</name>
-                    <extensionName>flowruntime:lookup</extensionName>
-                    <fieldType>ComponentInstance</fieldType>
-                    <inputParameters>
-                        <name>fieldApiName</name>
-                        <value>
-                            <stringValue>ContactId</stringValue>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>label</name>
-                        <value>
-                            <stringValue>Contact</stringValue>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>objectApiName</name>
-                        <value>
-                            <stringValue>Quote</stringValue>
-                        </value>
-                    </inputParameters>
-                    <inputParameters>
-                        <name>recordId</name>
-                        <value>
-                            <elementReference>Get_Quote.ContactId</elementReference>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
