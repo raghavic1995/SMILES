@@ -354,10 +354,6 @@
         <fields>OWNER_NAME</fields>
         <relatedList>RelatedChildCaseList</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Customer_Onboarding__c.Request_Complaint__c</relatedList>
-    </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>true</showEmailCheckbox>
