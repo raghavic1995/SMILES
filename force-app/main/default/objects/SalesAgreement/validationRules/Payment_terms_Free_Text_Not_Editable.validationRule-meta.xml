@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_terms_Free_Text_Not_Editable</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( ISPICKVAL( $User.NewBusinessArea__c, &quot;RAC&quot;)) &amp;&amp;  ISCHANGED(Payment_terms_1__c)</errorConditionFormula>
+    <errorDisplayField>Payment_terms_1__c</errorDisplayField>
+    <errorMessage>This is a RAC specific field, please avoid entering any inputs.</errorMessage>
+</ValidationRule>

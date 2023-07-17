@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Payment_Terms_For_RAC_Users</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( $User.NewBusinessArea__c,&quot;RAC&quot;) &amp;&amp; ISCHANGED(Payment_Terms__c)</errorConditionFormula>
+    <errorDisplayField>Payment_Terms__c</errorDisplayField>
+    <errorMessage>For RAC users, please use the &quot;Payment terms (free text)</errorMessage>
+</ValidationRule>
