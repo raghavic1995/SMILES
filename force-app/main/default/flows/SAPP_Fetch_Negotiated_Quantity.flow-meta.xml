@@ -4,8 +4,8 @@
     <assignments>
         <name>Assign_1</name>
         <label>Assign 1</label>
-        <locationX>358</locationX>
-        <locationY>719</locationY>
+        <locationX>622</locationX>
+        <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>$Record.Negtd_Qty__c</assignToReference>
             <operator>Assign</operator>
@@ -14,14 +14,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Compare_Full_inc_sruch</targetReference>
+            <targetReference>Copy_1_of_Compare_Full_inc_surch</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_Negotiated_Quantity</name>
         <label>Assign Negotiated Quantity</label>
-        <locationX>94</locationX>
-        <locationY>719</locationY>
+        <locationX>358</locationX>
+        <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>$Record.Negtd_Qty__c</assignToReference>
             <operator>Assign</operator>
@@ -30,14 +30,273 @@
             </value>
         </assignmentItems>
         <connector>
+            <targetReference>Copy_1_of_Compare_Full_inc_surch</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Target_to_Sales</name>
+        <label>Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>2939</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Customer_ex_works_price__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Customer_ex_works_price_target_c__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Packaging_Price</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Total_Prices</name>
+        <label>Assign Total Prices</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>FDPExcSurcharge</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Customer_ex_works_price__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>FDPExcSurcharge</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.TransportPricePerUnit__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>FDPExcSurcharge</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Packaging_Price__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>FDPIncSurcharge</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>FDPExcSurcharge</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>FDPIncSurcharge</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Energy_Surcharge__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>FDPIncSurcharge</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Freight_Surcharge__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_SAPP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_10_of_Assign_Target_to_Sales</name>
+        <label>Copy 10 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>5939</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Fuel_Surcharge_per_uom__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Fuel_Surcharge_Target_per_uom__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ICMS_tgt</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_11_of_Assign_Target_to_Sales</name>
+        <label>Copy 11 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>6239</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.ICMS__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.ICMS_target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>PIS_COFINS_tgt</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_12_of_Assign_Target_to_Sales</name>
+        <label>Copy 12 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>6539</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PIS_COFINS__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.PIS_COFINS_target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
             <targetReference>Compare_Full_inc_sruch</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>Copy_1_of_Ignore_Transport_Price</name>
-        <label>Copy 1 of Ignore Transport Price</label>
-        <locationX>446</locationX>
-        <locationY>2159</locationY>
+        <name>Copy_1_of_Assign_Target_to_Sales</name>
+        <label>Copy 1 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>3239</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Packaging_Price__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Packaging_Price_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Transport_price_unit_base</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_2_of_Assign_Target_to_Sales</name>
+        <label>Copy 2 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>3539</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Transport_price_unit_base__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Transport_price_unit_base_target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Transport_price_per_container</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_3_of_Assign_Target_to_Sales</name>
+        <label>Copy 3 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>3839</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Trasport_price_lumpsum__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Transport_Price_Per_Container_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Energy_Surcharge_target</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_4_of_Assign_Target_to_Sales</name>
+        <label>Copy 4 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>4139</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Energy_Surcharge__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Energy_surcharge_Target_per_uom__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Freight_Surcharge_target_changed</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_5_of_Assign_Target_to_Sales</name>
+        <label>Copy 5 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>4439</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Freight_Surcharge__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Freight_surcharge_Target_per_uom__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Steric_Acid_Surcharge_Target_per_uom_changed</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_6_of_Assign_Target_to_Sales</name>
+        <label>Copy 6 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>4739</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Steric_Acid_Surcharge_per_uom__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Steric_Acid_Surcharge_Target_per_uom__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Export_Container_Surcharge_Target_per_uom</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_7_of_Assign_Target_to_Sales</name>
+        <label>Copy 7 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>5039</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Export_Container_Surcharge_per_uom__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Export_Container_Surcharge_Target_pe__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Drayage_Surcharge_Target_per_uom</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_8_of_Assign_Target_to_Sales</name>
+        <label>Copy 8 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>5339</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Drayage_Surcharge_per_uom__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Drayage_Surcharge_Target_per_uom__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Inflation_Surcharge_Target_per_uom</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_9_of_Assign_Target_to_Sales</name>
+        <label>Copy 9 of Assign Target to Sales</label>
+        <locationX>710</locationX>
+        <locationY>5639</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Inflation_Surcharge_per_uom__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Inflation_Surcharge_Target_per_uom__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Fuel_Surcharge_Target_per_uom</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Ignore_Energy_Surcharge</name>
+        <label>Ignore Energy Surcharge</label>
+        <locationX>556</locationX>
+        <locationY>7955</locationY>
         <assignmentItems>
             <assignToReference>ignoreEnergySurcharge</assignToReference>
             <operator>Assign</operator>
@@ -50,10 +309,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Ignore_Energy_Surcharge_Target</name>
+        <label>Ignore Energy Surcharge Target</label>
+        <locationX>556</locationX>
+        <locationY>2255</locationY>
+        <assignmentItems>
+            <assignToReference>ignoreEnergySurchargeTarget</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Including_surcharges_Target</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Ignore_Transport_Price</name>
         <label>Ignore Transport Price</label>
-        <locationX>292</locationX>
-        <locationY>1607</locationY>
+        <locationX>556</locationX>
+        <locationY>7247</locationY>
         <assignmentItems>
             <assignToReference>IgnoreTransportPrice</assignToReference>
             <operator>Assign</operator>
@@ -65,6 +340,54 @@
             <targetReference>Update_fdp_prices</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Ignore_Transport_Price_target</name>
+        <label>Ignore Transport Price target</label>
+        <locationX>556</locationX>
+        <locationY>1547</locationY>
+        <assignmentItems>
+            <assignToReference>ignoreTransportPriceTarget</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_target_fdp_prices</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ignoreFreightSurcharge_for_OPERA</name>
+        <label>ignoreFreightSurcharge(for OPERA)</label>
+        <locationX>688</locationX>
+        <locationY>7739</locationY>
+        <assignmentItems>
+            <assignToReference>ignoreFreightSurcharge</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>conditions_on_SAP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ignoreFreightSurchargeTgt</name>
+        <label>ignoreFreightSurchargeTgt</label>
+        <locationX>688</locationX>
+        <locationY>2039</locationY>
+        <assignmentItems>
+            <assignToReference>ignoreFreightSurchargeTarget</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>condition_check</targetReference>
+        </connector>
+    </assignments>
     <constants>
         <name>numberone</name>
         <dataType>Number</dataType>
@@ -73,10 +396,54 @@
         </value>
     </constants>
     <decisions>
+        <name>check_changes_for_Sales_Target_price</name>
+        <label>check changes for Sales/Target price</label>
+        <locationX>842</locationX>
+        <locationY>8531</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Target_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TargetPriceChanged</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SAP_neg_status_with_S1</targetReference>
+            </connector>
+            <label>Target changed</label>
+        </rules>
+        <rules>
+            <name>Only_Sales_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>SalesPriceChanged</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>TargetPriceChanged</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SAP_neg_status_with_S2</targetReference>
+            </connector>
+            <label>Only Sales changed</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Compare_Full_inc_sruch</name>
         <label>Compare Full inc surch</label>
-        <locationX>578</locationX>
-        <locationY>1031</locationY>
+        <locationX>842</locationX>
+        <locationY>6731</locationY>
         <defaultConnector>
             <targetReference>Excluding_surcharges</targetReference>
         </defaultConnector>
@@ -88,12 +455,22 @@
                 <leftValueReference>$Record.Full_delivered_Price_inc_surcharge__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>$Record__Prior.FulldeliveredPriceIncludeSurcharge__c</elementReference>
+                    <elementReference>$Record__Prior.Full_delivered_Price_inc_surcharge__c</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record__Prior.Full_delivered_Price_inc_surcharge_repor__c</leftValueReference>
+                <leftValueReference>$Record__Prior.Full_delivered_Price_inc_surcharge__c</leftValueReference>
                 <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>blank</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>FullIncAdjust</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
             </conditions>
             <connector>
                 <targetReference>Update_Exworks</targetReference>
@@ -102,24 +479,17 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Energy_Surcharge_Exclusion_Condition</name>
-        <label>Energy Surcharge Exclusion Condition</label>
-        <locationX>578</locationX>
-        <locationY>2039</locationY>
+        <name>condition_check</name>
+        <label>condition check</label>
+        <locationX>688</locationX>
+        <locationY>2147</locationY>
         <defaultConnector>
-            <targetReference>Including_surcharges</targetReference>
+            <targetReference>Including_surcharges_Target</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Copy_1_of_Match</name>
-            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Sales_Agreement_Product__r.JDE_picklist__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>SAP S/4 (Opera)</stringValue>
-                </rightValue>
-            </conditions>
+            <name>true</name>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Sales_Agreement_Product__r.Invoicing_Type__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -135,16 +505,180 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Copy_1_of_Ignore_Transport_Price</targetReference>
+                <targetReference>Ignore_Energy_Surcharge_Target</targetReference>
+            </connector>
+            <label>true</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>conditions_on_SAP</name>
+        <label>conditions on SAP</label>
+        <locationX>688</locationX>
+        <locationY>7847</locationY>
+        <defaultConnector>
+            <targetReference>Including_surcharges</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>check</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sales_Agreement_Product__r.Invoicing_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Prices combined into one price excluding transport price, which should be shown separately</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sales_Agreement_Product__r.Invoicing_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Full delivered Price Shown Only</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ignore_Energy_Surcharge</targetReference>
+            </connector>
+            <label>check</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_1_of_Compare_Full_inc_surch</name>
+        <label>Copy 1 of Compare Full inc surch</label>
+        <locationX>842</locationX>
+        <locationY>1031</locationY>
+        <defaultConnector>
+            <targetReference>Excluding_surcharges_target</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Prior_current</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Total_Price_inc_surcharge_Target__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Total_Price_inc_surcharge_Target__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Total_Price_inc_surcharge_Target__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>blank</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Exworks_target</targetReference>
+            </connector>
+            <label>Copy 1 of Prior != current</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Drayage_Surcharge_Target_per_uom</name>
+        <label>Drayage Surcharge  (Target - per uom)</label>
+        <locationX>842</locationX>
+        <locationY>5231</locationY>
+        <defaultConnector>
+            <targetReference>Inflation_Surcharge_Target_per_uom</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>DS_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Drayage_Surcharge_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_8_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>DS changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Energy_Surcharge_Exclusion_Condition</name>
+        <label>Energy Surcharge Exclusion Condition</label>
+        <locationX>842</locationX>
+        <locationY>7631</locationY>
+        <defaultConnector>
+            <targetReference>Including_surcharges</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sales_Agreement_Product__r.JDE_picklist__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SAP S/4 (Opera)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ignoreFreightSurcharge_for_OPERA</targetReference>
             </connector>
             <label>Copy 1 of Match</label>
         </rules>
     </decisions>
     <decisions>
+        <name>Energy_Surcharge_target</name>
+        <label>Energy Surcharge target</label>
+        <locationX>842</locationX>
+        <locationY>4031</locationY>
+        <defaultConnector>
+            <targetReference>Freight_Surcharge_target_changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>est_changes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Energy_Surcharge__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_4_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>est changes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Energy_Surcharge_Target_Exclusion_Condition</name>
+        <label>Energy Surcharge Target Exclusion Condition</label>
+        <locationX>842</locationX>
+        <locationY>1931</locationY>
+        <defaultConnector>
+            <targetReference>Including_surcharges_Target</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Copy_1_of_Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sales_Agreement_Product__r.JDE_picklist__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SAP S/4 (Opera)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ignoreFreightSurchargeTgt</targetReference>
+            </connector>
+            <label>Copy 1 of Copy 1 of Match</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Excluding_surcharges</name>
         <label>Excluding surcharges</label>
-        <locationX>578</locationX>
-        <locationY>1367</locationY>
+        <locationX>842</locationX>
+        <locationY>7031</locationY>
         <defaultConnector>
             <targetReference>Energy_Surcharge_Exclusion_Condition</targetReference>
         </defaultConnector>
@@ -187,12 +721,83 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Excluding_surcharges_target</name>
+        <label>Excluding surcharges target</label>
+        <locationX>842</locationX>
+        <locationY>1331</locationY>
+        <defaultConnector>
+            <targetReference>Energy_Surcharge_Target_Exclusion_Condition</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_2_of_Null_check</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Customer_ex_works_price_target_c__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Packaging_Price_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transport_price_unit_base_target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transport_Price_Per_Container_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Transport_Price_Target_Exclusion_Condition</targetReference>
+            </connector>
+            <label>Copy 2 of Null check</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Export_Container_Surcharge_Target_per_uom</name>
+        <label>Export Container Surcharge  (Target - per uom)</label>
+        <locationX>842</locationX>
+        <locationY>4931</locationY>
+        <defaultConnector>
+            <targetReference>Drayage_Surcharge_Target_per_uom</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ECS_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Export_Container_Surcharge_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_7_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>ECS changed</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Found</name>
         <label>Found?</label>
-        <locationX>578</locationX>
-        <locationY>479</locationY>
+        <locationX>842</locationX>
+        <locationY>539</locationY>
         <defaultConnector>
-            <targetReference>Compare_Full_inc_sruch</targetReference>
+            <targetReference>Copy_1_of_Compare_Full_inc_surch</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -212,12 +817,112 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Freight_Surcharge_target_changed</name>
+        <label>Freight Surcharge target changed</label>
+        <locationX>842</locationX>
+        <locationY>4331</locationY>
+        <defaultConnector>
+            <targetReference>Steric_Acid_Surcharge_Target_per_uom_changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>fst_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Freight_Surcharge__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_5_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>fst changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Fuel_Surcharge_Target_per_uom</name>
+        <label>Fuel Surcharge (Target - per uom)</label>
+        <locationX>842</locationX>
+        <locationY>5831</locationY>
+        <defaultConnector>
+            <targetReference>ICMS_tgt</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>FS_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Fuel_Surcharge_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_10_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>FS changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>ICMS_tgt</name>
+        <label>ICMS tgt</label>
+        <locationX>842</locationX>
+        <locationY>6131</locationY>
+        <defaultConnector>
+            <targetReference>PIS_COFINS_tgt</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ICMS_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ICMS__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_11_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>ICMS changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Mass_Updated</name>
+        <label>If Mass Updated</label>
+        <locationX>446</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Get_Schedule_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Action_DateTime__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>NOWMinus5Mins</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Total_Prices</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>If_Negotiated_Quantity_not_Null</name>
         <label>If Negotiated Quantity not Null</label>
-        <locationX>358</locationX>
-        <locationY>599</locationY>
+        <locationX>622</locationX>
+        <locationY>647</locationY>
         <defaultConnector>
-            <targetReference>Compare_Full_inc_sruch</targetReference>
+            <targetReference>Copy_1_of_Compare_Full_inc_surch</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -268,8 +973,11 @@
     <decisions>
         <name>Including_surcharges</name>
         <label>Including surcharges</label>
-        <locationX>578</locationX>
-        <locationY>2375</locationY>
+        <locationX>842</locationX>
+        <locationY>8231</locationY>
+        <defaultConnector>
+            <targetReference>check_changes_for_Sales_Target_price</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Copy_1_of_Null_check</name>
@@ -427,6 +1135,9 @@
             <conditions>
                 <leftValueReference>$Record__Prior.Full_delivered_Price_inc_surcharge__c</leftValueReference>
                 <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>blank</elementReference>
+                </rightValue>
             </conditions>
             <connector>
                 <targetReference>Copy_2_of_Copy_1_of_Copy_1_of_Update_fdp_prices</targetReference>
@@ -435,10 +1146,310 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Including_surcharges_Target</name>
+        <label>Including surcharges Target</label>
+        <locationX>842</locationX>
+        <locationY>2531</locationY>
+        <defaultConnector>
+            <targetReference>Product_price_per_unit_target</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Copy_1_of_Null_check</name>
+            <conditionLogic>(1 OR 2 ) AND (3 OR 4 OR 5 OR 6)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Energy_surcharge_Target_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Freight_surcharge_Target_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_ex_works_price_target_c__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Packaging_Price_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transport_Price_Per_Container_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Transport_price_unit_base_target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_fdp_prices_target</targetReference>
+            </connector>
+            <label>Copy 1 of Copy 1 of Null check</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_If_Exc_is_null</name>
+            <conditionLogic>1 AND  ( 2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Total_Price_exc_surcharge_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Energy_surcharge_Target_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Freight_surcharge_Target_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_fdp_prices_tgt</targetReference>
+            </connector>
+            <label>Copy 1 of If Exc is null</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_If_not_condition_1_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Copy_1_of_Copy_1_of_Null_check</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Copy_1_of_If_Exc_is_null</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_Price_exc_surcharge_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_Price_inc_surcharge_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_fdp_prices_trgt</targetReference>
+            </connector>
+            <label>Copy 1 of If not condition 1&amp;2</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_If_not_1_2_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Copy_1_of_Copy_1_of_Null_check</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Copy_1_of_If_Exc_is_null</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Copy_1_of_If_not_condition_1_2</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_Price_exc_surcharge_Target__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Total_Price_inc_surcharge_Target__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Total_Price_inc_surcharge_Target__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>blank</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_fdp_prices_targt</targetReference>
+            </connector>
+            <label>Copy 1 of If not 1,2&amp;3</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Inflation_Surcharge_Target_per_uom</name>
+        <label>Inflation Surcharge (Target - per uom)</label>
+        <locationX>842</locationX>
+        <locationY>5531</locationY>
+        <defaultConnector>
+            <targetReference>Fuel_Surcharge_Target_per_uom</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IS_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Inflation_Surcharge_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_9_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>IS changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Packaging_Price</name>
+        <label>Packaging Price</label>
+        <locationX>842</locationX>
+        <locationY>3131</locationY>
+        <defaultConnector>
+            <targetReference>Transport_price_unit_base</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Packaging_Price__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>If changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>PIS_COFINS_tgt</name>
+        <label>PIS/COFINS tgt</label>
+        <locationX>842</locationX>
+        <locationY>6431</locationY>
+        <defaultConnector>
+            <targetReference>Compare_Full_inc_sruch</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PIS_COFINS_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PIS_COFINS__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_12_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>PIS/COFINS changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Product_price_per_unit_target</name>
+        <label>Product price per unit target</label>
+        <locationX>842</locationX>
+        <locationY>2831</locationY>
+        <defaultConnector>
+            <targetReference>Packaging_Price</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_is_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Customer_ex_works_price__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>If is changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Steric_Acid_Surcharge_Target_per_uom_changed</name>
+        <label>Steric Acid Surcharge  (Target - per uom) changed</label>
+        <locationX>842</locationX>
+        <locationY>4631</locationY>
+        <defaultConnector>
+            <targetReference>Export_Container_Surcharge_Target_per_uom</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SAS_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Steric_Acid_Surcharge_per_uom__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_6_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>SAS changed</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Transport_Price_Exclusion_Condition</name>
         <label>Transport Price Exclusion Condition</label>
-        <locationX>424</locationX>
-        <locationY>1487</locationY>
+        <locationX>688</locationX>
+        <locationY>7139</locationY>
         <defaultConnector>
             <targetReference>Update_fdp_prices</targetReference>
         </defaultConnector>
@@ -473,7 +1484,102 @@
             <label>Match</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Transport_price_per_container</name>
+        <label>Transport price per container</label>
+        <locationX>842</locationX>
+        <locationY>3731</locationY>
+        <defaultConnector>
+            <targetReference>Energy_Surcharge_target</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>tppc_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Trasport_price_lumpsum__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_3_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>tppc changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Transport_Price_Target_Exclusion_Condition</name>
+        <label>Transport Price Target Exclusion Condition</label>
+        <locationX>688</locationX>
+        <locationY>1439</locationY>
+        <defaultConnector>
+            <targetReference>Update_target_fdp_prices</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_2_of_Match</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sales_Agreement_Product__r.JDE_picklist__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SAP S/4 (Opera)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sales_Agreement_Product__r.Invoicing_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Price components combined into one price excluding ESC which should be shown separately</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sales_Agreement_Product__r.Invoicing_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Full delivered Price Shown Only</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ignore_Transport_Price_target</targetReference>
+            </connector>
+            <label>Copy 2 of Match</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Transport_price_unit_base</name>
+        <label>Transport price unit base</label>
+        <locationX>842</locationX>
+        <locationY>3431</locationY>
+        <defaultConnector>
+            <targetReference>Transport_price_per_container</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_tp_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Transport_price_unit_base__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Assign_Target_to_Sales</targetReference>
+            </connector>
+            <label>If tp changed</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>ExcSurcharegTargetFormula</name>
+        <dataType>Currency</dataType>
+        <expression>IF(ISBLANK({!$Record.Customer_ex_works_price_target_c__c}), 0, {!$Record.Customer_ex_works_price_target_c__c}) +  IF(ISBLANK({!$Record.Packaging_Price_Target__c} ), 0, {!$Record.Packaging_Price_Target__c} ) + IF({!ignoreTransportPriceTarget}=True,0,IF(ISBLANK({!TransportPriceTargetFormula} ), 0, {!TransportPriceTargetFormula} ))</expression>
+        <scale>2</scale>
+    </formulas>
     <formulas>
         <name>ExcSurchargeFormula</name>
         <dataType>Currency</dataType>
@@ -487,6 +1593,12 @@
         <scale>2</scale>
     </formulas>
     <formulas>
+        <name>FullIncAdjTarget</name>
+        <dataType>Currency</dataType>
+        <expression>({!$Record.Total_Price_inc_surcharge_Target__c} - {!$Record__Prior.Total_Price_inc_surcharge_Target__c})+{!$Record.Customer_ex_works_price_target_c__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
         <name>FullIncAdjust</name>
         <dataType>Currency</dataType>
         <expression>({!$Record.Full_delivered_Price_inc_surcharge__c} - {!$Record__Prior.Full_delivered_Price_inc_surcharge__c})+{!$Record.Customer_ex_works_price__c}</expression>
@@ -495,19 +1607,119 @@
     <formulas>
         <name>IncSurchargeFormula</name>
         <dataType>Currency</dataType>
-        <expression>IF(ISBLANK({!ExcSurchargeFormula}), 0, {!ExcSurchargeFormula}) +  IF({!ignoreEnergySurcharge}=True,0,IF(ISBLANK({!$Record.Energy_Surcharge__c} ), 0, {!$Record.Energy_Surcharge__c} )) + IF(ISBLANK({!$Record.Freight_Surcharge__c} ), 0, {!$Record.Freight_Surcharge__c} )</expression>
+        <expression>IF(ISBLANK({!ExcSurchargeFormula}), 0, {!ExcSurchargeFormula}) +  IF({!ignoreEnergySurcharge}=True,0,IF(ISBLANK({!$Record.Energy_Surcharge__c} ), 0, {!$Record.Energy_Surcharge__c} )) + IF({!ignoreFreightSurcharge}=True,0,IF(ISBLANK({!$Record.Freight_Surcharge__c} ), 0, {!$Record.Freight_Surcharge__c} ))  + IF(ISBLANK({!$Record.Steric_Acid_Surcharge_per_uom__c} ), 0, {!$Record.Steric_Acid_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Export_Container_Surcharge_per_uom__c} ), 0, {!$Record.Export_Container_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Drayage_Surcharge_per_uom__c} ), 0, {!$Record.Drayage_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Inflation_Surcharge_per_uom__c} ), 0, {!$Record.Inflation_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Fuel_Surcharge_per_uom__c} ), 0, {!$Record.Fuel_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.ICMS__c}), 0, {!$Record.ICMS__c}) +
+IF(ISBLANK({!$Record.PIS_COFINS__c} ), 0, {!$Record.PIS_COFINS__c} )</expression>
         <scale>2</scale>
     </formulas>
     <formulas>
         <name>IncSurchargeFormula2</name>
         <dataType>Currency</dataType>
-        <expression>{!$Record.Full_delivered_Price_exc_surcharge__c} + IF({!ignoreEnergySurcharge}=True,0,IF(ISBLANK({!$Record.Energy_Surcharge__c} ), 0, {!$Record.Energy_Surcharge__c} )) + IF(ISBLANK({!$Record.Freight_Surcharge__c} ), 0, {!$Record.Freight_Surcharge__c} )</expression>
+        <expression>{!$Record.Full_delivered_Price_exc_surcharge__c} + IF({!ignoreEnergySurcharge}=True,0,IF(ISBLANK({!$Record.Energy_Surcharge__c} ), 0, {!$Record.Energy_Surcharge__c} )) + IF({!ignoreFreightSurcharge}=True,0,IF(ISBLANK({!$Record.Freight_Surcharge__c} ), 0, {!$Record.Freight_Surcharge__c} ))+ IF(ISBLANK({!$Record.Steric_Acid_Surcharge_per_uom__c} ), 0, {!$Record.Steric_Acid_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Export_Container_Surcharge_per_uom__c} ), 0, {!$Record.Export_Container_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Drayage_Surcharge_per_uom__c} ), 0, {!$Record.Drayage_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Inflation_Surcharge_per_uom__c} ), 0, {!$Record.Inflation_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.Fuel_Surcharge_per_uom__c} ), 0, {!$Record.Fuel_Surcharge_per_uom__c} )+
+IF(ISBLANK({!$Record.ICMS__c}), 0, {!$Record.ICMS__c}) +
+IF(ISBLANK({!$Record.PIS_COFINS__c} ), 0, {!$Record.PIS_COFINS__c} )</expression>
         <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>IncSurchargeTargetFormula</name>
+        <dataType>Currency</dataType>
+        <expression>IF(ISBLANK({!ExcSurcharegTargetFormula}), 0, {!ExcSurcharegTargetFormula}) +  IF({!ignoreEnergySurchargeTarget}=True,0,IF(ISBLANK({!$Record.Energy_surcharge_Target_per_uom__c} ), 0, {!$Record.Energy_surcharge_Target_per_uom__c} )) + IF({!ignoreFreightSurchargeTarget}=True,0,IF(ISBLANK({!$Record.Freight_surcharge_Target_per_uom__c} ), 0, {!$Record.Freight_surcharge_Target_per_uom__c} ))+
+IF(ISBLANK({!$Record.Steric_Acid_Surcharge_Target_per_uom__c} ), 0, {!$Record.Steric_Acid_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.Export_Container_Surcharge_Target_pe__c} ), 0, {!$Record.Export_Container_Surcharge_Target_pe__c} )+
+IF(ISBLANK({!$Record.Drayage_Surcharge_Target_per_uom__c} ), 0, {!$Record.Drayage_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.Inflation_Surcharge_Target_per_uom__c} ), 0, {!$Record.Inflation_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.Fuel_Surcharge_Target_per_uom__c} ), 0, {!$Record.Fuel_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.ICMS_target__c} ), 0, {!$Record.ICMS_target__c} )+
+IF(ISBLANK({!$Record.PIS_COFINS_target__c} ), 0, {!$Record.PIS_COFINS_target__c} )</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>IncSurchargeTargetFormula2</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Total_Price_exc_surcharge_Target__c} + IF({!ignoreEnergySurchargeTarget}=True,0,IF(ISBLANK({!$Record.Energy_surcharge_Target_per_uom__c} ), 0, {!$Record.Energy_surcharge_Target_per_uom__c} )) + IF({!ignoreFreightSurchargeTarget}=True,0,IF(ISBLANK({!$Record.Freight_surcharge_Target_per_uom__c} ), 0, {!$Record.Freight_surcharge_Target_per_uom__c} ))+
+IF(ISBLANK({!$Record.Steric_Acid_Surcharge_Target_per_uom__c} ), 0, {!$Record.Steric_Acid_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.Export_Container_Surcharge_Target_pe__c} ), 0, {!$Record.Export_Container_Surcharge_Target_pe__c} )+
+IF(ISBLANK({!$Record.Drayage_Surcharge_Target_per_uom__c} ), 0, {!$Record.Drayage_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.Inflation_Surcharge_Target_per_uom__c} ), 0, {!$Record.Inflation_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.Fuel_Surcharge_Target_per_uom__c} ), 0, {!$Record.Fuel_Surcharge_Target_per_uom__c} )+
+IF(ISBLANK({!$Record.ICMS_target__c} ), 0, {!$Record.ICMS_target__c} )+
+IF(ISBLANK({!$Record.PIS_COFINS_target__c} ), 0, {!$Record.PIS_COFINS_target__c} )</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>NOWMinus5Mins</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()-(5/1440)</expression>
+    </formulas>
+    <formulas>
+        <name>SalesPriceChanged</name>
+        <dataType>Boolean</dataType>
+        <expression>((ISNEW() &amp;&amp; (NOT(ISBLANK({!$Record.Customer_ex_works_price__c})) ||
+NOT(ISBLANK({!$Record.Packaging_Price__c}))  ||
+NOT(ISBLANK({!$Record.Transport_price_unit_base__c})) ||
+NOT(ISBLANK({!$Record.Energy_Surcharge__c}))  ||
+NOT(ISBLANK({!$Record.Steric_Acid_Surcharge_per_uom__c}))  ||
+NOT(ISBLANK({!$Record.Export_Container_Surcharge_per_uom__c}))  ||
+NOT(ISBLANK({!$Record.Drayage_Surcharge_per_uom__c})) ||
+NOT(ISBLANK({!$Record.Inflation_Surcharge_per_uom__c})) ||
+NOT(ISBLANK({!$Record.Fuel_Surcharge_per_uom__c})) ||
+NOT(ISBLANK({!$Record.ICMS__c})) ||
+NOT(ISBLANK({!$Record.PIS_COFINS__c}))  ||
+NOT(ISBLANK({!$Record.Freight_Surcharge__c}))  ||
+NOT(ISBLANK({!$Record.Trasport_price_lumpsum__c}) )))
+||
+(ISCHANGED({!$Record.Customer_ex_works_price__c}) ||  ISCHANGED({!$Record.Packaging_Price__c}) ||  ISCHANGED({!$Record.Transport_price_unit_base__c}) ||  ISCHANGED({!$Record.Energy_Surcharge__c}) ||  ISCHANGED({!$Record.Steric_Acid_Surcharge_per_uom__c})  ||  ISCHANGED({!$Record.Export_Container_Surcharge_per_uom__c})  ||  ISCHANGED({!$Record.Drayage_Surcharge_per_uom__c})  ||  ISCHANGED({!$Record.Inflation_Surcharge_per_uom__c}) ||  ISCHANGED({!$Record.Fuel_Surcharge_per_uom__c}) ||  ISCHANGED({!$Record.ICMS__c}) ||  ISCHANGED({!$Record.PIS_COFINS__c}) ||  ISCHANGED({!$Record.Trasport_price_lumpsum__c}) ||  ISCHANGED({!$Record.Freight_Surcharge__c})) )
+&amp;&amp;
+(NOT(ISCHANGED({!$Record.Customer_ex_works_price_target_c__c})) &amp;&amp;
+NOT(ISCHANGED({!$Record.Packaging_Price_Target__c}) ) &amp;&amp;
+NOT(ISCHANGED({!$Record.Transport_price_unit_base_target__c})) &amp;&amp;
+NOT(ISCHANGED({!$Record.Energy_surcharge_Target_per_uom__c}))  &amp;&amp;
+NOT(ISCHANGED({!$Record.Steric_Acid_Surcharge_Target_per_uom__c}))  &amp;&amp;
+NOT(ISCHANGED({!$Record.Export_Container_Surcharge_Target_pe__c}))  &amp;&amp;
+NOT(ISCHANGED({!$Record.Drayage_Surcharge_Target_per_uom__c})) &amp;&amp;
+NOT(ISCHANGED({!$Record.Inflation_Surcharge_Target_per_uom__c})) &amp;&amp;
+NOT(ISCHANGED({!$Record.Fuel_Surcharge_Target_per_uom__c})) &amp;&amp;
+NOT(ISCHANGED({!$Record.ICMS_target__c})) &amp;&amp;
+NOT(ISCHANGED({!$Record.PIS_COFINS_target__c}))  &amp;&amp;
+NOT(ISCHANGED({!$Record.Freight_surcharge_Target_per_uom__c}))  &amp;&amp;
+NOT(ISCHANGED({!$Record.Transport_Price_Per_Container_Target__c}) )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>TargetPriceChanged</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW() &amp;&amp; (NOT(ISBLANK({!$Record.Customer_ex_works_price_target_c__c})) ||
+NOT(ISBLANK({!$Record.Packaging_Price_Target__c}))  ||
+NOT(ISBLANK({!$Record.Transport_price_unit_base_target__c})) ||
+NOT(ISBLANK({!$Record.Energy_surcharge_Target_per_uom__c}))  ||
+NOT(ISBLANK({!$Record.Steric_Acid_Surcharge_Target_per_uom__c}))  ||
+NOT(ISBLANK({!$Record.Export_Container_Surcharge_Target_pe__c}))  ||
+NOT(ISBLANK({!$Record.Drayage_Surcharge_Target_per_uom__c})) ||
+NOT(ISBLANK({!$Record.Inflation_Surcharge_Target_per_uom__c})) ||
+NOT(ISBLANK({!$Record.Fuel_Surcharge_Target_per_uom__c})) ||
+NOT(ISBLANK({!$Record.ICMS_target__c})) ||
+NOT(ISBLANK({!$Record.PIS_COFINS_target__c}))  ||
+NOT(ISBLANK({!$Record.Freight_surcharge_Target_per_uom__c}))  ||
+NOT(ISBLANK({!$Record.Transport_Price_Per_Container_Target__c}) ))</expression>
     </formulas>
     <formulas>
         <name>TransportPriceFormula</name>
         <dataType>Currency</dataType>
-        <expression>IF( NOT(ISBLANK( {!$Record.Transport_price_unit_base__c})), {!$Record.Transport_price_unit_base__c}, {!$Record.Trasport_price_lumpsum__c}/ 20)</expression>
+        <expression>IF( NOT(ISBLANK( {!$Record.Transport_price_unit_base__c})), {!$Record.Transport_price_unit_base__c}, 0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>TransportPriceTargetFormula</name>
+        <dataType>Currency</dataType>
+        <expression>IF( NOT(ISBLANK( {!$Record.Transport_price_unit_base_target__c})), {!$Record.Transport_price_unit_base_target__c}, 0)</expression>
         <scale>2</scale>
     </formulas>
     <interviewLabel>SAPP_Fetch Negotiated Quantity {!$Flow.CurrentDateTime}</interviewLabel>
@@ -521,7 +1733,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -534,8 +1746,8 @@
     <recordLookups>
         <name>Get_Schedule_Records</name>
         <label>Get Schedule Records</label>
-        <locationX>578</locationX>
-        <locationY>359</locationY>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Found</targetReference>
@@ -569,8 +1781,11 @@
     <recordUpdates>
         <name>Copy_1_of_Copy_1_of_Copy_1_of_Update_fdp_prices</name>
         <label>Copy 1 of Copy 1 of Copy 1 of Update fdp prices</label>
-        <locationX>314</locationX>
-        <locationY>2495</locationY>
+        <locationX>578</locationX>
+        <locationY>8339</locationY>
+        <connector>
+            <targetReference>check_changes_for_Sales_Target_price</targetReference>
+        </connector>
         <inputAssignments>
             <field>Full_delivered_Price_inc_surcharge__c</field>
             <value>
@@ -582,8 +1797,11 @@
     <recordUpdates>
         <name>Copy_1_of_Copy_1_of_Update_fdp_prices</name>
         <label>Copy 1 of Copy 1 of Update fdp prices</label>
-        <locationX>578</locationX>
-        <locationY>2495</locationY>
+        <locationX>842</locationX>
+        <locationY>8339</locationY>
+        <connector>
+            <targetReference>check_changes_for_Sales_Target_price</targetReference>
+        </connector>
         <inputAssignments>
             <field>Full_delivered_Price_inc_surcharge__c</field>
             <value>
@@ -595,8 +1813,11 @@
     <recordUpdates>
         <name>Copy_1_of_Update_fdp_prices</name>
         <label>Copy 1 of Update fdp prices</label>
-        <locationX>50</locationX>
-        <locationY>2495</locationY>
+        <locationX>314</locationX>
+        <locationY>8339</locationY>
+        <connector>
+            <targetReference>check_changes_for_Sales_Target_price</targetReference>
+        </connector>
         <inputAssignments>
             <field>Full_delivered_Price_inc_surcharge__c</field>
             <value>
@@ -608,8 +1829,11 @@
     <recordUpdates>
         <name>Copy_2_of_Copy_1_of_Copy_1_of_Update_fdp_prices</name>
         <label>Copy 2 of Copy 1 of Copy 1 of Update fdp prices</label>
-        <locationX>842</locationX>
-        <locationY>2495</locationY>
+        <locationX>1106</locationX>
+        <locationY>8339</locationY>
+        <connector>
+            <targetReference>check_changes_for_Sales_Target_price</targetReference>
+        </connector>
         <inputAssignments>
             <field>Full_delivered_Price_inc_surcharge__c</field>
             <value>
@@ -621,8 +1845,8 @@
     <recordUpdates>
         <name>Update_Exworks</name>
         <label>Update Exworks</label>
-        <locationX>446</locationX>
-        <locationY>1151</locationY>
+        <locationX>710</locationX>
+        <locationY>6839</locationY>
         <connector>
             <targetReference>Excluding_surcharges</targetReference>
         </connector>
@@ -635,10 +1859,26 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
+        <name>Update_Exworks_target</name>
+        <label>Update Exworks target</label>
+        <locationX>710</locationX>
+        <locationY>1139</locationY>
+        <connector>
+            <targetReference>Excluding_surcharges_target</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Customer_ex_works_price_target_c__c</field>
+            <value>
+                <elementReference>FullIncAdjTarget</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_fdp_prices</name>
         <label>Update fdp prices</label>
-        <locationX>424</locationX>
-        <locationY>1823</locationY>
+        <locationX>688</locationX>
+        <locationY>7439</locationY>
         <connector>
             <targetReference>Energy_Surcharge_Exclusion_Condition</targetReference>
         </connector>
@@ -650,18 +1890,191 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
-    <start>
-        <locationX>452</locationX>
-        <locationY>48</locationY>
+    <recordUpdates>
+        <name>Update_fdp_prices_target</name>
+        <label>Update fdp prices target</label>
+        <locationX>314</locationX>
+        <locationY>2639</locationY>
         <connector>
-            <targetReference>Get_Schedule_Records</targetReference>
+            <targetReference>Product_price_per_unit_target</targetReference>
         </connector>
+        <inputAssignments>
+            <field>Total_Price_inc_surcharge_Target__c</field>
+            <value>
+                <elementReference>IncSurchargeTargetFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_fdp_prices_targt</name>
+        <label>Update fdp prices targt</label>
+        <locationX>1106</locationX>
+        <locationY>2639</locationY>
+        <connector>
+            <targetReference>Product_price_per_unit_target</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Total_Price_inc_surcharge_Target__c</field>
+            <value>
+                <elementReference>IncSurchargeTargetFormula2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_fdp_prices_tgt</name>
+        <label>Update fdp prices tgt</label>
+        <locationX>578</locationX>
+        <locationY>2639</locationY>
+        <connector>
+            <targetReference>Product_price_per_unit_target</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Total_Price_inc_surcharge_Target__c</field>
+            <value>
+                <elementReference>IncSurchargeTargetFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_fdp_prices_trgt</name>
+        <label>Update fdp prices trgt</label>
+        <locationX>842</locationX>
+        <locationY>2639</locationY>
+        <connector>
+            <targetReference>Product_price_per_unit_target</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Total_Price_inc_surcharge_Target__c</field>
+            <value>
+                <elementReference>IncSurchargeTargetFormula2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SAP_neg_status_with_S1</name>
+        <label>Update SAP neg status with S1</label>
+        <locationX>578</locationX>
+        <locationY>8639</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Sales_Agreement_Product__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Negotiation_Status__c</field>
+            <value>
+                <stringValue>S1-Negotiation Starting Soon</stringValue>
+            </value>
+        </inputAssignments>
+        <object>SalesAgreementProduct</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SAP_neg_status_with_S2</name>
+        <label>Update SAP neg status with S2</label>
+        <locationX>842</locationX>
+        <locationY>8639</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Sales_Agreement_Product__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Negotiation_Status__c</field>
+            <value>
+                <stringValue>S2-Negotiation Ongoing</stringValue>
+            </value>
+        </inputAssignments>
+        <object>SalesAgreementProduct</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SAPP</name>
+        <label>Update SAPP</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Full_delivered_Price_exc_surcharge__c</field>
+            <value>
+                <elementReference>FDPExcSurcharge</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Full_delivered_Price_inc_surcharge__c</field>
+            <value>
+                <elementReference>FDPIncSurcharge</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_target_fdp_prices</name>
+        <label>Update target fdp prices</label>
+        <locationX>688</locationX>
+        <locationY>1739</locationY>
+        <connector>
+            <targetReference>Energy_Surcharge_Target_Exclusion_Condition</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Total_Price_exc_surcharge_Target__c</field>
+            <value>
+                <elementReference>ExcSurcharegTargetFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>If_Mass_Updated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Sent_to_CS__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <object>Sales_Agreement_Product_Price__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <triggerOrder>1400</triggerOrder>
+    <triggerOrder>1300</triggerOrder>
+    <variables>
+        <name>blank</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>FDPExcSurcharge</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>FDPIncSurcharge</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
     <variables>
         <name>idverify</name>
         <dataType>String</dataType>
@@ -680,7 +2093,38 @@
         </value>
     </variables>
     <variables>
+        <name>ignoreEnergySurchargeTarget</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ignoreFreightSurcharge</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ignoreFreightSurchargeTarget</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>IgnoreTransportPrice</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>ignoreTransportPriceTarget</name>
         <dataType>Boolean</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
