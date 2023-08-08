@@ -1,42 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>E2C_Automatic_Mail</name>
-        <label>E2C Automatic Mail</label>
-        <locationX>314</locationX>
-        <locationY>455</locationY>
-        <actionName>Case.DocumentRequest_EmailtoCaseAutomatic_Case_Creation_Notification</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-    </actionCalls>
-    <actionCalls>
-        <name>E2C_Manual_Mail</name>
-        <label>E2C Manual Mail</label>
-        <locationX>50</locationX>
-        <locationY>455</locationY>
-        <actionName>Case.DocumentRequest_EmailtoCaseManual_Case_Creation_Notification</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-    </actionCalls>
-    <actionCalls>
         <name>W2C_Mail</name>
         <label>W2C Mail</label>
-        <locationX>578</locationX>
-        <locationY>455</locationY>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
         <actionName>Case.WebtoCase_Case_Creation_Notification</actionName>
         <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>update_case</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
@@ -44,44 +17,16 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>Case.WebtoCase_Case_Creation_Notification</nameSegment>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <decisions>
         <name>case_origin</name>
         <label>case origin</label>
-        <locationX>446</locationX>
-        <locationY>335</locationY>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Isemail</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Origin</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Email</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>E2C_Manual_Mail</targetReference>
-            </connector>
-            <label>Isemail</label>
-        </rules>
-        <rules>
-            <name>Is_email_Automated</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Origin</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Email Automated</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>E2C_Automatic_Mail</targetReference>
-            </connector>
-            <label>Is email Automated</label>
-        </rules>
         <rules>
             <name>Is_Web2Case</name>
             <conditionLogic>and</conditionLogic>
@@ -89,7 +34,14 @@
                 <leftValueReference>$Record.Origin</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Web</stringValue>
+                    <stringValue>Imerys Website</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Request</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -120,20 +72,33 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>update_case</name>
+        <label>update case</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Documents</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
-        <locationX>320</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>case_origin</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>RecordTypeId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>0121q0000001wgbAAA</stringValue>
-            </value>
-        </filters>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
