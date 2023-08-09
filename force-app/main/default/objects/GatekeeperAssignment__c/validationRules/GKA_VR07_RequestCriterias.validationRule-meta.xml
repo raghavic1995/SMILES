@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GKA_VR07_RequestCriterias</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( Process__c  , &quot;Request&quot;)
+
+&amp;&amp;
+
+(ISBLANK(TEXT(CSTeamInCharge__c)) &amp;&amp; ISBLANK(GatekeeperAccount__c))
+
+&amp;&amp;
+
+$User.ByPassValidationRule__c = FALSE</errorConditionFormula>
+    <errorMessage>You need to select a Gatekeeper Account or a CS Team in Charge to proceed</errorMessage>
+</ValidationRule>
