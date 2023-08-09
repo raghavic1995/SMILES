@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Abrasives</fullName>
+        <default>false</default>
+        <label>Abrasives</label>
+    </customValue>
+    <customValue>
+        <fullName>Adhesives, caulks &amp; sealants</fullName>
+        <default>false</default>
+        <label>Adhesives, caulks &amp; sealants</label>
+    </customValue>
+    <customValue>
+        <fullName>Advanced ceramics</fullName>
+        <default>false</default>
+        <label>Advanced ceramics</label>
+    </customValue>
+    <customValue>
+        <fullName>Animal care</fullName>
+        <default>false</default>
+        <label>Animal care</label>
+    </customValue>
+    <customValue>
+        <fullName>Batteries &amp; fuel cells</fullName>
+        <default>false</default>
+        <label>Batteries &amp; fuel cells</label>
+    </customValue>
+    <customValue>
+        <fullName>Board, paper, packaging &amp; pulp</fullName>
+        <default>false</default>
+        <label>Board, paper, packaging &amp; pulp</label>
+    </customValue>
+    <customValue>
+        <fullName>Building materials</fullName>
+        <default>false</default>
+        <label>Building materials</label>
+    </customValue>
+    <customValue>
+        <fullName>Ceramics</fullName>
+        <default>false</default>
+        <label>Ceramics</label>
+    </customValue>
+    <customValue>
+        <fullName>Component manufacturing</fullName>
+        <default>false</default>
+        <label>Component manufacturing</label>
+    </customValue>
+    <customValue>
+        <fullName>Cosmetics &amp; personal care</fullName>
+        <default>false</default>
+        <label>Cosmetics &amp; personal care</label>
+    </customValue>
+    <customValue>
+        <fullName>Crop production</fullName>
+        <default>false</default>
+        <label>Crop production</label>
+    </customValue>
+    <customValue>
+        <fullName>Energy &amp; environment</fullName>
+        <default>false</default>
+        <label>Energy &amp; environment</label>
+    </customValue>
+    <customValue>
+        <fullName>Food &amp; beverage</fullName>
+        <default>false</default>
+        <label>Food &amp; beverage</label>
+    </customValue>
+    <customValue>
+        <fullName>Friction materials</fullName>
+        <default>false</default>
+        <label>Friction materials</label>
+    </customValue>
+    <customValue>
+        <fullName>Health, pharma &amp; biotechnology</fullName>
+        <default>false</default>
+        <label>Health, pharma &amp; biotechnology</label>
+    </customValue>
+    <customValue>
+        <fullName>Home care</fullName>
+        <default>false</default>
+        <label>Home care</label>
+    </customValue>
+    <customValue>
+        <fullName>Infrastructure &amp; utilities</fullName>
+        <default>false</default>
+        <label>Infrastructure &amp; utilities</label>
+    </customValue>
+    <customValue>
+        <fullName>Investment casting</fullName>
+        <default>false</default>
+        <label>Investment casting</label>
+    </customValue>
+    <customValue>
+        <fullName>Lubricants</fullName>
+        <default>false</default>
+        <label>Lubricants</label>
+    </customValue>
+    <customValue>
+        <fullName>Paints &amp; coatings</fullName>
+        <default>false</default>
+        <label>Paints &amp; coatings</label>
+    </customValue>
+    <customValue>
+        <fullName>Pet care</fullName>
+        <default>false</default>
+        <label>Pet care</label>
+    </customValue>
+    <customValue>
+        <fullName>Plastics</fullName>
+        <default>false</default>
+        <label>Plastics</label>
+    </customValue>
+    <customValue>
+        <fullName>Refractory producers</fullName>
+        <default>false</default>
+        <label>Refractory producers</label>
+    </customValue>
+    <customValue>
+        <fullName>Rubber</fullName>
+        <default>false</default>
+        <label>Rubber</label>
+    </customValue>
+    <masterLabel>Your Market</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
