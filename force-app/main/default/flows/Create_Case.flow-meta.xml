@@ -2,9 +2,46 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>58.0</apiVersion>
     <decisions>
+        <name>Check_BA</name>
+        <label>Check BA</label>
+        <locationX>809</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>If_PMA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_Record.BusinessArea__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PM AMERICAS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_gatekeeper_PMA</targetReference>
+            </connector>
+            <label>If PMA</label>
+        </rules>
+        <rules>
+            <name>If_RAC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_Record.BusinessArea__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>RAC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_gatekeeper_RAC</targetReference>
+            </connector>
+            <label>If RAC</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_Case</name>
         <label>Check Case</label>
-        <locationX>611</locationX>
+        <locationX>1177</locationX>
         <locationY>539</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -17,15 +54,8 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>Get_Quote_Record.Status</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Quote initialization</stringValue>
-                </rightValue>
-            </conditions>
             <connector>
-                <targetReference>Get_gatekeeper</targetReference>
+                <targetReference>Check_BA</targetReference>
             </connector>
             <label>Not Found</label>
         </rules>
@@ -33,8 +63,8 @@
     <decisions>
         <name>Check_gatekeeper</name>
         <label>Check gatekeeper</label>
-        <locationX>380</locationX>
-        <locationY>755</locationY>
+        <locationX>336</locationX>
+        <locationY>863</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_Create_Case</targetReference>
         </defaultConnector>
@@ -43,7 +73,7 @@
             <name>Found</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_gatekeeper</leftValueReference>
+                <leftValueReference>Get_gatekeeper_PMA</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -59,9 +89,8 @@
         <name>Check_Queue</name>
         <label>Check Queue</label>
         <locationX>182</locationX>
-        <locationY>971</locationY>
+        <locationY>1079</locationY>
         <defaultConnector>
-            <isGoTo>true</isGoTo>
             <targetReference>Copy_1_of_Create_Case</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -79,6 +108,56 @@
                 <targetReference>Create_Case</targetReference>
             </connector>
             <label>If Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_1_of_Check_gatekeeper</name>
+        <label>Check gatekeeper</label>
+        <locationX>952</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Create_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_gatekeeper_RAC</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Get_Queue</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_1_of_Check_Queue</name>
+        <label>Copy 1 of Check Queue</label>
+        <locationX>798</locationX>
+        <locationY>1079</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Create_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_If_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Copy_1_of_Get_Queue</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Create_Case</targetReference>
+            </connector>
+            <label>Copy 1 of If Found</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -106,8 +185,8 @@
     <recordCreates>
         <name>Copy_1_of_Create_Case</name>
         <label>Copy 1 of Create Case</label>
-        <locationX>578</locationX>
-        <locationY>863</locationY>
+        <locationX>809</locationX>
+        <locationY>1655</locationY>
         <inputAssignments>
             <field>AccountId</field>
             <value>
@@ -166,10 +245,78 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
+        <name>Copy_2_of_Create_Case</name>
+        <label>Copy 2 of Create Case</label>
+        <locationX>666</locationX>
+        <locationY>1187</locationY>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>Get_Quote_Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>Get_Quote_Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BusinessArea__c</field>
+            <value>
+                <elementReference>Get_Quote_Record.BusinessArea__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Price Update</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Opportunity__c</field>
+            <value>
+                <elementReference>Get_Quote_Record.OpportunityId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Copy_1_of_Get_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Quote_Line_Item__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Quote__c</field>
+            <value>
+                <elementReference>Get_Quote_Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>$Setup.RecordTypeIds__c.Case_Price_Update__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
         <name>Create_Case</name>
         <label>Create Case</label>
         <locationX>50</locationX>
-        <locationY>1079</locationY>
+        <locationY>1187</locationY>
         <inputAssignments>
             <field>AccountId</field>
             <value>
@@ -234,9 +381,30 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
+        <name>Copy_1_of_Get_Queue</name>
+        <label>Copy 1 of Get Queue</label>
+        <locationX>798</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Check_Queue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_gatekeeper_RAC.Price_Update_Queue__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Existing_Case</name>
         <label>Get Existing Case</label>
-        <locationX>611</locationX>
+        <locationX>1177</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -269,10 +437,10 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_gatekeeper</name>
-        <label>Get gatekeeper</label>
-        <locationX>380</locationX>
-        <locationY>647</locationY>
+        <name>Get_gatekeeper_PMA</name>
+        <label>Get gatekeeper PMA</label>
+        <locationX>336</locationX>
+        <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_gatekeeper</targetReference>
@@ -282,14 +450,42 @@
             <field>Object__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Price Storage</stringValue>
+                <stringValue>Price Update</stringValue>
             </value>
         </filters>
         <filters>
             <field>BusinessArea__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>Get_Quote_Record.BusinessArea__c</elementReference>
+                <stringValue>PM AMERICAS</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>GatekeeperAssignment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_gatekeeper_RAC</name>
+        <label>Get gatekeeper RAC</label>
+        <locationX>952</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Check_gatekeeper</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Object__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Price Update</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BusinessArea__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>RAC</stringValue>
             </value>
         </filters>
         <filters>
@@ -307,7 +503,7 @@
         <name>Get_Queue</name>
         <label>Get Queue</label>
         <locationX>182</locationX>
-        <locationY>863</locationY>
+        <locationY>971</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Queue</targetReference>
@@ -317,7 +513,7 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>Get_gatekeeper.PriceStorageQueue__c</elementReference>
+                <elementReference>Get_gatekeeper_PMA.Price_Update_Queue__c</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -327,7 +523,7 @@
     <recordLookups>
         <name>Get_Quote_Record</name>
         <label>Get Quote Record</label>
-        <locationX>611</locationX>
+        <locationX>1177</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -346,7 +542,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>485</locationX>
+        <locationX>1051</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Quote_Record</targetReference>

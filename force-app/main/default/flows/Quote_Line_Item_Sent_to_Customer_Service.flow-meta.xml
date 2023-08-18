@@ -5,7 +5,7 @@
         <name>Assign_Records_To_Variable</name>
         <label>Assign Records To Variable</label>
         <locationX>754</locationX>
-        <locationY>890</locationY>
+        <locationY>1106</locationY>
         <assignmentItems>
             <assignToReference>SelectedQLIRecords</assignToReference>
             <operator>Add</operator>
@@ -21,7 +21,7 @@
         <name>Update_Checkbox_Field</name>
         <label>Update Checkbox Field</label>
         <locationX>754</locationX>
-        <locationY>782</locationY>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>All_Selected_Quote_Line_Items.Sent_to_customer_service__c</assignToReference>
             <operator>Assign</operator>
@@ -53,7 +53,7 @@
         <name>check_Choice</name>
         <label>check Choice</label>
         <locationX>490</locationX>
-        <locationY>566</locationY>
+        <locationY>782</locationY>
         <defaultConnector>
             <targetReference>All_Selected_Quote_Line_Items</targetReference>
         </defaultConnector>
@@ -75,12 +75,37 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_Quote_Status</name>
+        <label>Check Quote Status</label>
+        <locationX>710</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Move_Quote_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_finalization</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quote finalization</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Quote_line_Items_Records</targetReference>
+            </connector>
+            <label>If finalization</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>check_Selection</name>
         <label>check Selection</label>
-        <locationX>270</locationX>
+        <locationX>380</locationX>
         <locationY>134</locationY>
         <defaultConnector>
-            <targetReference>Get_Quote_line_Items_Records</targetReference>
+            <targetReference>Get_Quote</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -106,7 +131,7 @@
         <name>All_Selected_Quote_Line_Items</name>
         <label>All Selected Quote Line Items</label>
         <locationX>666</locationX>
-        <locationY>674</locationY>
+        <locationY>890</locationY>
         <collectionReference>ProductRecords.outputSelectedRows</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -136,10 +161,31 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
+        <name>Get_Quote</name>
+        <label>Get Quote</label>
+        <locationX>710</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Quote_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Quote</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Quote_line_Items_Records</name>
         <label>Get Quote line Items Records</label>
         <locationX>490</locationX>
-        <locationY>242</locationY>
+        <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Product_Selection</targetReference>
@@ -160,17 +206,33 @@
         <name>Update_Records</name>
         <label>Update Records</label>
         <locationX>666</locationX>
-        <locationY>1082</locationY>
+        <locationY>1298</locationY>
         <connector>
             <targetReference>sentToCustomerService</targetReference>
         </connector>
         <inputReference>SelectedQLIRecords</inputReference>
     </recordUpdates>
     <screens>
+        <name>Move_Quote_Status</name>
+        <label>Move Quote Status</label>
+        <locationX>930</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>CheckStatus</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Quote Line Items can be send to Customer Service Only when the Quote Status is Quote Finalization&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>Product_Selection</name>
         <label>Product Selection</label>
         <locationX>490</locationX>
-        <locationY>350</locationY>
+        <locationY>566</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -273,7 +335,7 @@
         <name>scrConfirmation</name>
         <label>scrConfirmation</label>
         <locationX>490</locationX>
-        <locationY>458</locationY>
+        <locationY>674</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -286,7 +348,7 @@
             <choiceReferences>No</choiceReferences>
             <dataType>String</dataType>
             <defaultSelectedChoiceReference>No</defaultSelectedChoiceReference>
-            <fieldText>Are you sure you want to send the selected sales agreement Products to Customer Service ?</fieldText>
+            <fieldText>Are you sure you want to send the selected Quote Line Items to Customer Service ?</fieldText>
             <fieldType>RadioButtons</fieldType>
             <isRequired>true</isRequired>
         </fields>
@@ -314,7 +376,7 @@
         <name>scrNotSure</name>
         <label>scrNotSure</label>
         <locationX>314</locationX>
-        <locationY>674</locationY>
+        <locationY>890</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -330,7 +392,7 @@
         <name>sentToCustomerService</name>
         <label>sentToCustomerService</label>
         <locationX>666</locationX>
-        <locationY>1190</locationY>
+        <locationY>1406</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -344,7 +406,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>144</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>check_Selection</targetReference>
