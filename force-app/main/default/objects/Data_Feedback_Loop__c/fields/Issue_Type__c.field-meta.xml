@@ -51,6 +51,11 @@
                 <label>Missing / Wrong data in my accounts</label>
             </value>
             <value>
+                <fullName>Missing Freight Rate (ZPT3)</fullName>
+                <default>false</default>
+                <label>Missing Freight Rate (ZPT3)</label>
+            </value>
+            <value>
                 <fullName>Other</fullName>
                 <default>false</default>
                 <label>Other</label>
