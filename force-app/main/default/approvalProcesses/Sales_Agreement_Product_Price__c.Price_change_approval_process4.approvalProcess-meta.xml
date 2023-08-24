@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Sales_Agreement_Number__c</field>
+        <field>Sales_Agreement_Name__c</field>
+        <field>Name</field>
+        <field>Account_Name__c</field>
+        <field>Owner</field>
+        <field>Approval_Status__c</field>
+        <field>Full_delivered_Price_inc_surcharge__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Approval_step_PM</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>N_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Sales Director</label>
+        <name>Sales_Director</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>renato.giannotti@imerys.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17)</booleanFilter>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Approval_Step__c</field>
+                <operation>equals</operation>
+                <value>Product Manager</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>AR - Capitan Bermudez</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>AR - Tucuman</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Bras Cubas</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Cachoeiro 1</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Cachoeiro 2</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Cachoeiro 3</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Campinas</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Capim</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - ICB - Rio Claro</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Limeira</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Mogi das Cruzes</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Paulinia</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Pirai</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>BR - Suzano</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>CL - Arica</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>CL - Santiago</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Product Manager</label>
+        <name>Product_Manager</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>robin.mccann@imerys.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13)</booleanFilter>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Approval_Step__c</field>
+                <operation>equals</operation>
+                <value>Product Manager</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Antonito</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Escondido</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Green River</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Klamath Falls</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - La Porte</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Lake Wales</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Lakeview</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Lompoc Resale</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Quincy FL</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Superior</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Vicksburg</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Youngsville</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Product Manager</label>
+        <name>Product_Manager1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>morgan.frederick@imerys.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Approval_Step__c</field>
+                <operation>equals</operation>
+                <value>Product Manager</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Fernley</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Lompoc Celpure</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Lompoc Powder Mill</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Lompoc Silicates</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Lompoc Specialties</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Quincy WA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Urbana Fiber Cel</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Product Manager</label>
+        <name>Product_Manager2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>tyler.levis@imerys.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10)</booleanFilter>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Approval_Step__c</field>
+                <operation>equals</operation>
+                <value>Product Manager</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Kings Mountain</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Marble Hill</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Polycor</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Sahuarita</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Service First Warehouse</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Somerset</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Sylacauga</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Whitestone</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - Willsboro</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Product Manager</label>
+        <name>Product_Manager3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>niki.ginel@imerys.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10)</booleanFilter>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - TQC - Spruce Pine</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - KTC - CRN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - KTC - GLS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - KTC - LNG</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - KTC - SND</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - MGK - DRP</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - MGK - PP</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - MGK - Resale</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - MGK - SCP</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Imerys_Selling_Entity_Formula__c</field>
+                <operation>equals</operation>
+                <value>US - MGK - Tech</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Product Manager</label>
+        <name>Product_Manager4</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Business_Area_SA__c</field>
+                <operation>equals</operation>
+                <value>PM EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Sales_Agreement_Product_Price__c.Business_Area_SA__c</field>
+                <operation>equals</operation>
+                <value>RAC</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Sales Manager</label>
+        <name>Sales_Manager</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <emailTemplate>unfiled$public/Approval_for_Price_Change_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Sales_Agreement_Product_Price__c.Business_Area_SA__c</field>
+            <operation>equals</operation>
+            <value>PM AMERICAS</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>SAPP_Price_change_Approved_Email_alert</name>
+            <type>Alert</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>SAPP_Price_change_Rejected_Email_alert</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Pending</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Price change approval process</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>
