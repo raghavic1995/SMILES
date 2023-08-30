@@ -88,13 +88,16 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             
             Database.insert(gat3, true);
             
-            
+           
             Account accTest= new Account();
             accTest.Name = 'VRTEST';
             accTest.BillingCountry = 'United States';
             accTest.BillingCity = 'New York';
             accTest.BillingStreet = 'Test';
             accTest.SegmentL1__c = 'Abrasive';
+            accTest.ShippingCountry = 'United States';
+            accTest.ShippingCity = 'New York';
+            accTest.ShippingStreet = 'Test';
             accTest.Type = 'Head Office';
             Database.insert(accTest, true);
             
@@ -167,7 +170,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
                                                         ProductForm__c='Compacted',
                                                        	Quantity=4, 
                                                        	UnitPrice =50,
-                                                       	Incoterm__c = 'EXW - Ex Works');
+                                                       	Incoterm__c = 'Free Carrier');
             insert qliliner;
             
             test.startTest();
@@ -178,6 +181,19 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
                                     AND DeveloperName = 'TransloadRail'];  
                                     
             recordTypeTransloadRail = recordName.Id;
+            
+            Imerys_Site__c site = new Imerys_Site__c();
+            site.Name = 'AR - Imerys Minerales Argentina';
+            site.Active__c = true;
+            site.ImerysManufacturingPlant__c = true;
+            site.DispatchSite__c = true;
+            site.ImerysSellingEntity__c =true;
+            insert site;
+            
+            Manufacturing_Plant__c mtp = new Manufacturing_Plant__c();
+            mtp.Imerys_Product__c = pro.Id;
+            mtp.Imerys_Site__c = site.Id;
+            insert mtp;
             
             FreightRateRequest__c frr = new FreightRateRequest__c();
             frr.RecordTypeId = recordTypeTransloadRail;
@@ -194,6 +210,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             frr.DestinationRailroad__c = 'Mahebourg';
             frr.RailCarOwnership__c = 'Rail Road Owned';
             frr.RailCarType__c='Other';
+            frr.Manufacturing_Plant__c = mtp.Id;
             frrl.add(frr);
             
             RecordType recordName1 = [SELECT Id, DeveloperName 
@@ -218,6 +235,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             frr1.DestinationRailroad__c = 'Mahebourg';
             frr1.RailCarOwnership__c = 'Rail Road Owned';
             frr1.RailCarType__c='Other';
+            frr1.Manufacturing_Plant__c = mtp.Id;
             
             frrl.add(frr1);
             insert frrl;
@@ -311,6 +329,9 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             accTest.BillingStreet = 'Test';
             accTest.BillingCity = 'New York';
             accTest.SegmentL1__c = 'Abrasive';
+            accTest.ShippingCountry = 'United States';
+            accTest.ShippingCity = 'New York';
+            accTest.ShippingStreet = 'Test';
             accTest.Type = 'Head Office';
             Database.insert(accTest, true);
             
@@ -360,7 +381,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             system.debug('======Opportunity===========' + [select id, CurrencyIsoCode,pricebook2Id from Opportunity Where id=: o.Id]);
             
             Quote qt = new Quote
-                (Name='test quote',OpportunityId=o.id,pricebook2Id=stdPb);
+                (Name='test quote',OpportunityId=o.id,pricebook2Id=stdPb,ShipTo__c = accTest.Id,BillTo__c = accTest.Id);
             system.debug('status'+ qt.status);
             system.debug('prod pers:'+qt.Product_Percent_Completion__c);
             system.debug('bypass vR:'+users[0].ByPassValidationRule__c);
@@ -383,7 +404,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
                                                         ProductForm__c='Compacted',
                                                        	Quantity=4, 
                                                        	UnitPrice =50,
-                                                       	Incoterm__c = 'EXW - Ex Works');
+                                                       	Incoterm__c = 'Free Carrier');
             insert qliliner;
             
             test.startTest();
@@ -393,6 +414,20 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
                                     AND DeveloperName = 'TruckIntermodal'];  
                                     
             String recordTypeTruckIntermodal = recordName1.Id;
+            
+            Imerys_Site__c site = new Imerys_Site__c();
+            site.Name = 'AR - Imerys Minerales Argentina';
+            site.Active__c = true;
+            site.ImerysManufacturingPlant__c = true;
+            site.DispatchSite__c = true;
+            site.ImerysSellingEntity__c =true;
+            insert site;
+            
+            Manufacturing_Plant__c mtp = new Manufacturing_Plant__c();
+            mtp.Imerys_Product__c = pro.Id;
+            mtp.Imerys_Site__c = site.Id;
+            insert mtp;
+            
             FreightRateRequest__c frr1 = new FreightRateRequest__c();
             frr1.RecordTypeId = recordTypeTruckIntermodal;
             frr1.Quote_Line_Item__c = qliliner.id;
@@ -408,6 +443,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             frr1.DestinationRailroad__c = 'Mahebourg';
             frr1.RailCarOwnership__c = 'Rail Road Owned';
             frr1.RailCarType__c='Other';
+            frr1.Manufacturing_Plant__c = mtp.Id;
                         
             Database.Insert(frr1,true);
                 
@@ -500,6 +536,9 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             accTest.BillingCity = 'New York';
             accTest.SegmentL1__c = 'Abrasive';
             accTest.BillingStreet = 'Test';
+            accTest.ShippingCountry = 'United States';
+            accTest.ShippingCity = 'New York';
+            accTest.ShippingStreet = 'Test';
             accTest.Type = 'Head Office';
             Database.insert(accTest, true);
             
@@ -549,7 +588,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             system.debug('======Opportunity===========' + [select id, CurrencyIsoCode,pricebook2Id from Opportunity Where id=: o.Id]);
             
             Quote qt = new Quote
-                (Name='test quote',OpportunityId=o.id,pricebook2Id=stdPb);
+                (Name='test quote',OpportunityId=o.id,pricebook2Id=stdPb,BillTo__c = accTest.Id,ShipTo__c = accTest.Id);
             system.debug('status'+ qt.status);
             system.debug('prod pers:'+qt.Product_Percent_Completion__c);
             system.debug('bypass vR:'+users[0].ByPassValidationRule__c);
@@ -572,7 +611,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
                                                        CustomerService__c=user1Id,
                                                         ProductForm__c='Compacted',
                                                        	UnitPrice =50,
-                                                       	Incoterm__c = 'EXW - Ex Works');
+                                                       	Incoterm__c = 'Free Carrier');
             insert qliliner;
             
             test.startTest();
@@ -582,6 +621,20 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
                                     AND DeveloperName = 'OceanAir'];  
                                     
             String recordTypeOceanAir = recordName1.Id;
+            
+            Imerys_Site__c site = new Imerys_Site__c();
+            site.Name = 'AR - Imerys Minerales Argentina';
+            site.Active__c = true;
+            site.ImerysManufacturingPlant__c = true;
+            site.DispatchSite__c = true;
+            site.ImerysSellingEntity__c =true;
+            insert site;
+            
+            Manufacturing_Plant__c mtp = new Manufacturing_Plant__c();
+            mtp.Imerys_Product__c = pro.Id;
+            mtp.Imerys_Site__c = site.Id;
+            insert mtp;
+            
             FreightRateRequest__c frr2 = new FreightRateRequest__c();
             frr2.RecordTypeId = recordTypeOceanAir;
             frr2.Quote_Line_Item__c = qliliner.id;
@@ -597,6 +650,7 @@ public class AP01_FreightRateRequestTriggerHanderTEST {
             frr2.DestinationRailroad__c = 'Mahebourg';
             frr2.RailCarOwnership__c = 'Rail Road Owned';
             frr2.RailCarType__c='Other';
+            frr2.Manufacturing_Plant__c = mtp.Id;
                         
             Database.Insert(frr2,true);
                 
