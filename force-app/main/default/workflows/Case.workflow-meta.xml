@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>Notify_CS_on_negative_feedback_on_a_case</fullName>
-        <description>Notify CS on negative feedback on a case</description>
+        <fullName>Sustainabilty_Creation_PMA_BA</fullName>
+        <description>Sustainabilty Creation - PMA(BA)</description>
         <protected>false</protected>
         <recipients>
-            <recipient>raghavi.c@external.imerys.com</recipient>
+            <recipient>rishav.verma@external.imerys.com</recipient>
             <type>user</type>
         </recipients>
-        <recipients>
-            <field>CSAccountManager__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <recipients>
-            <field>CustomerService2__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <recipients>
-            <field>Gatekeeper__c</field>
-            <type>userLookup</type>
-        </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Notification_to_CS_on_negative_feedback_on_case</template>
+        <template>unfiled$public/Sustainabilty_Creation_PMA_BA</template>
     </alerts>
 </Workflow>
