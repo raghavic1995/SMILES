@@ -39,12 +39,12 @@
             <targetReference>Copy_1_of_MapSAPtoERP</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__sourceRecordCollection</typeName>
-            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
-        </dataTypeMappings>
-        <dataTypeMappings>
             <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__sourceRecordCollection</typeName>
+            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -825,11 +825,11 @@
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__targetUniqueRecordCollection</typeName>
-            <typeValue>Sales_Agreement_Product_Price__c</typeValue>
+            <typeName>U__sourceCommonRecordCollection</typeName>
+            <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__targetCommonRecordCollection</typeName>
+            <typeName>U__targetUniqueRecordCollection</typeName>
             <typeValue>Sales_Agreement_Product_Price__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
@@ -1310,11 +1310,11 @@
             <targetReference>Move_SAP_to_S3</targetReference>
         </connector>
         <dataTypeMappings>
-            <typeName>T__inputCollection</typeName>
+            <typeName>U__outputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
-            <typeName>U__outputCollection</typeName>
+            <typeName>T__inputCollection</typeName>
             <typeValue>SalesAgreementProduct</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>Automatic</flowTransactionModel>
