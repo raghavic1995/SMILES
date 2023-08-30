@@ -167,6 +167,38 @@
             <label>Not Null</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>If_Null1</name>
+        <label>If Null</label>
+        <locationX>611</locationX>
+        <locationY>575</locationY>
+        <defaultConnector>
+            <targetReference>Check_Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Copy_1_of_get_Existing_Team_Members</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CreatedBy.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Automated Process</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_Creator_as_Team_Member</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <interviewLabel>Complaint_AddCaseTeamMembers {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Complaint_AddCaseTeamMembers</label>

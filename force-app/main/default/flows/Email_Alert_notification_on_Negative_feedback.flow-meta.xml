@@ -22,16 +22,30 @@
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <decisions>
-        <name>null_check_for_customer_service</name>
-        <label>null check for customer service</label>
+        <name>null_check_for_CS_AM_and_GK</name>
+        <label>null check for CS,AM and GK</label>
         <locationX>182</locationX>
         <locationY>335</locationY>
         <defaultConnectorLabel>null</defaultConnectorLabel>
         <rules>
             <name>not_null</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.CustomerService2__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CSAccountManager__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Gatekeeper__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -79,7 +93,7 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>Tech_EmailCounter__c</field>
+            <field>TECH_Response_complete__c</field>
             <value>
                 <booleanValue>false</booleanValue>
             </value>
@@ -90,32 +104,18 @@
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>null_check_for_customer_service</targetReference>
+            <targetReference>null_check_for_CS_AM_and_GK</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>ParentId</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Subject</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Negative Feedback</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Tech_EmailCounter__c</field>
+            <field>TECH_Response_complete__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
         <object>Case</object>
-        <recordTriggerType>Create</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
