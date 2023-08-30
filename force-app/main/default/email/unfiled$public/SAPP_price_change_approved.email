@@ -1,0 +1,8 @@
+Dear {!Sales_Agreement_Product_Price__c.OwnerFullName},
+ 
+Your Price Change Request {!Sales_Agreement_Product_Price__c.Name} has been approved.
+
+Please find below a link to the related Price Change Request page:  
+{!Sales_Agreement_Product_Price__c.Link}
+
+Thanks

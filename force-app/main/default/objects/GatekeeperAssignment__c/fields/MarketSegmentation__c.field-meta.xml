@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MarketSegmentation__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Market Segmentation</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Market_Segmentation__c.Record_Level_1__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.MarketSegmentL1__c</field>
+            <operation>equals</operation>
+            <valueField>Market_Segmentation__c.MArket_L1__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Market_Segmentation__c</referenceTo>
+    <relationshipLabel>Gatekeeper Assignments</relationshipLabel>
+    <relationshipName>Gatekeeper_Assignments</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
