@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Energy_Surcharge__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>As per Opera, Energy Surcharges can be shown or not on the invoice. This is determined by &apos;Invoice Type&apos; of the sale. When ESG are not shown to the customer, and are considered included in the product / base price it is requested that the ESG element is provided for internal reporting. This is known as ZPE1 in Opera. When an ESG is ZPE1, the ESG per unit price WILL NOT be added to the product price as it is assumed the price is already included in the product element</inlineHelpText>
+    <label>Energy Surcharge (per unit)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>
