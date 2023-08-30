@@ -4,12 +4,9 @@
     <decisions>
         <name>check_business_area</name>
         <label>check business area</label>
-        <locationX>610</locationX>
-        <locationY>702</locationY>
-        <defaultConnector>
-            <targetReference>get_Gatekeeper_assg</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>BA is RAC</defaultConnectorLabel>
+        <locationX>618</locationX>
+        <locationY>740</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>BA_is_PM_Americas</name>
             <conditionLogic>and</conditionLogic>
@@ -24,6 +21,36 @@
                 <targetReference>get_Gatekeeper_assg_PMA</targetReference>
             </connector>
             <label>BA is PM Americas</label>
+        </rules>
+        <rules>
+            <name>BA_is_PMEA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_SA_record.Business_Area__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PM EMEA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Gatekeeper_assg_PM_EMEA</targetReference>
+            </connector>
+            <label>BA is PMEA</label>
+        </rules>
+        <rules>
+            <name>BA_is_RAC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_SA_record.Business_Area__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>RAC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Gatekeeper_assg</targetReference>
+            </connector>
+            <label>BA is RAC</label>
         </rules>
     </decisions>
     <decisions>
@@ -68,6 +95,28 @@
                 <targetReference>get_QueueId_RAC</targetReference>
             </connector>
             <label>GK found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>null_check_GK_PM_EMEA</name>
+        <label>null check GK PM EMEA</label>
+        <locationX>619</locationX>
+        <locationY>1111</locationY>
+        <defaultConnectorLabel>GK not found</defaultConnectorLabel>
+        <rules>
+            <name>GK_found_PMEA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Gatekeeper_assg_PM_EMEA</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_QueueId_0</targetReference>
+            </connector>
+            <label>GK found PMEA</label>
         </rules>
     </decisions>
     <decisions>
@@ -298,6 +347,98 @@
         <object>Case</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
+    <recordCreates>
+        <name>Create_Case_0_0</name>
+        <label>Create Case</label>
+        <locationX>631</locationX>
+        <locationY>1375</locationY>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>get_SA_record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>get_SA_record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BusinessArea__c</field>
+            <value>
+                <elementReference>get_SA_record.Business_Area__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSAccountManager__c</field>
+            <value>
+                <elementReference>get_SA_record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Price Update</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Email Automated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>varQueueId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>$Setup.RecordTypeIds__c.Case_Price_Update__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SAP_ImerysSellingEntity__c</field>
+            <value>
+                <elementReference>$Record.Imerys_Selling_Entity__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sales_Agreement_Product__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sales_Agreement__c</field>
+            <value>
+                <elementReference>get_SA_record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Tech_RelationshipInformation__c</field>
+            <value>
+                <elementReference>get_SA_record.Relationship_Information__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Others</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>get_Existing_Case</name>
         <label>get Existing Case</label>
@@ -369,6 +510,34 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_Gatekeeper_assg_PM_EMEA</name>
+        <label>get Gatekeeper assg PM EMEA</label>
+        <locationX>625</locationX>
+        <locationY>938</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>null_check_GK_PM_EMEA</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Object__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Price Update</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BusinessArea__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PM EMEA</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>GatekeeperAssignment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>get_Gatekeeper_assg_PMA</name>
         <label>get Gatekeeper assg PMA</label>
         <locationX>398</locationX>
@@ -427,6 +596,36 @@
         </outputAssignments>
     </recordLookups>
     <recordLookups>
+        <name>get_QueueId_0</name>
+        <label>get QueueId</label>
+        <locationX>441</locationX>
+        <locationY>1255</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Case_0_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>get_Gatekeeper_assg_PM_EMEA.Price_Update_Queue__c</elementReference>
+            </value>
+        </filters>
+        <object>Group</object>
+        <outputAssignments>
+            <assignToReference>varQueueId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
         <name>get_QueueId_RAC</name>
         <label>get QueueId RAC</label>
         <locationX>1022</locationX>
@@ -447,7 +646,7 @@
             <field>Name</field>
             <operator>Contains</operator>
             <value>
-                <elementReference>get_Gatekeeper_assg_PMA.Price_Update_Queue__c</elementReference>
+                <elementReference>get_Gatekeeper_assg.Price_Update_Queue__c</elementReference>
             </value>
         </filters>
         <object>Group</object>
