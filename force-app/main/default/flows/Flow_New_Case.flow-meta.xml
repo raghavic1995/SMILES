@@ -4,8 +4,8 @@
     <assignments>
         <name>assign_collections_0_0</name>
         <label>assign collections</label>
-        <locationX>630</locationX>
-        <locationY>237</locationY>
+        <locationX>974</locationX>
+        <locationY>650</locationY>
         <assignmentItems>
             <assignToReference>colTextIcons</assignToReference>
             <operator>Add</operator>
@@ -76,8 +76,8 @@
     <assignments>
         <name>assign_collections_descriptions</name>
         <label>assign collections descriptions</label>
-        <locationX>430</locationX>
-        <locationY>250</locationY>
+        <locationX>974</locationX>
+        <locationY>758</locationY>
         <assignmentItems>
             <assignToReference>colTextDescriptions</assignToReference>
             <operator>Add</operator>
@@ -148,8 +148,8 @@
     <assignments>
         <name>assign_collections_labels</name>
         <label>assign collections labels</label>
-        <locationX>857</locationX>
-        <locationY>236</locationY>
+        <locationX>974</locationX>
+        <locationY>542</locationY>
         <assignmentItems>
             <assignToReference>colTextLabels</assignToReference>
             <operator>Add</operator>
@@ -300,8 +300,8 @@
     <decisions>
         <name>check_If_Account</name>
         <label>check If Account</label>
-        <locationX>1010</locationX>
-        <locationY>515</locationY>
+        <locationX>974</locationX>
+        <locationY>866</locationY>
         <defaultConnector>
             <targetReference>getCurrentAccount</targetReference>
         </defaultConnector>
@@ -325,8 +325,8 @@
     <decisions>
         <name>Check_if_user_is_assigned_to_logistic_permission_set</name>
         <label>Check if user is assigned to logistic permission set</label>
-        <locationX>853</locationX>
-        <locationY>50</locationY>
+        <locationX>974</locationX>
+        <locationY>350</locationY>
         <defaultConnector>
             <targetReference>assign_collections_labels</targetReference>
         </defaultConnector>
@@ -350,8 +350,8 @@
     <decisions>
         <name>check_Request_Type</name>
         <label>check Request Type</label>
-        <locationX>520</locationX>
-        <locationY>591</locationY>
+        <locationX>974</locationX>
+        <locationY>1382</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>IsSustainability</name>
@@ -434,21 +434,6 @@
                 <targetReference>Shipping_Log</targetReference>
             </connector>
             <label>IsLogistic</label>
-        </rules>
-        <rules>
-            <name>IsWeb2case</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>frmSelectedCaseType</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Document Request</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Document_Request</targetReference>
-            </connector>
-            <label>IsWeb2case</label>
         </rules>
         <rules>
             <name>IsEmailtoCase</name>
@@ -568,8 +553,8 @@
     <recordLookups>
         <name>get_permission_set</name>
         <label>get permission set</label>
-        <locationX>1191</locationX>
-        <locationY>203</locationY>
+        <locationX>974</locationX>
+        <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_permission_set_assignment</targetReference>
@@ -589,8 +574,8 @@
     <recordLookups>
         <name>Get_permission_set_assignment</name>
         <label>Get permission set assignment</label>
-        <locationX>1082</locationX>
-        <locationY>80</locationY>
+        <locationX>974</locationX>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_if_user_is_assigned_to_logistic_permission_set</targetReference>
@@ -617,8 +602,8 @@
     <recordLookups>
         <name>getCurrentAccount</name>
         <label>getCurrentAccount</label>
-        <locationX>1438</locationX>
-        <locationY>698</locationY>
+        <locationX>974</locationX>
+        <locationY>1166</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>scrNewSustainabilityCase_0_0_0</targetReference>
@@ -639,8 +624,8 @@
     <screens>
         <name>scrNewSustainabilityCase_0_0_0</name>
         <label>scrNewSustainabilityCase</label>
-        <locationX>1072</locationX>
-        <locationY>749</locationY>
+        <locationX>974</locationX>
+        <locationY>1274</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -943,8 +928,8 @@
     <screens>
         <name>scrNewSustainabilityCase_0_0_0_0</name>
         <label>scrNewSustainabilityCase</label>
-        <locationX>1380</locationX>
-        <locationY>460</locationY>
+        <locationX>842</locationX>
+        <locationY>974</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1106,8 +1091,8 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>970</locationX>
-        <locationY>330</locationY>
+        <locationX>848</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>get_permission_set</targetReference>
         </connector>
@@ -1116,8 +1101,8 @@
     <subflows>
         <name>Create_Request</name>
         <label>Create Request</label>
-        <locationX>533</locationX>
-        <locationY>806</locationY>
+        <locationX>578</locationX>
+        <locationY>1490</locationY>
         <flowName>Flow_Create_Request</flowName>
         <inputAssignments>
             <name>recordId</name>
@@ -1129,8 +1114,8 @@
     <subflows>
         <name>Customer_Onboarding_Case</name>
         <label>Customer Onboarding Case</label>
-        <locationX>49</locationX>
-        <locationY>538</locationY>
+        <locationX>1634</locationX>
+        <locationY>1490</locationY>
         <flowName>Customer_Onboarding_Case</flowName>
         <inputAssignments>
             <name>recordId</name>
@@ -1140,24 +1125,10 @@
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Create Web2case manually</description>
-        <name>Document_Request</name>
-        <label>Document Request</label>
-        <locationX>691</locationX>
-        <locationY>786</locationY>
-        <flowName>Web2case_Document_Request</flowName>
-        <inputAssignments>
-            <name>RecordId</name>
-            <value>
-                <elementReference>recordId</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <subflows>
         <name>Email_to_case</name>
         <label>Email to case</label>
-        <locationX>988</locationX>
-        <locationY>870</locationY>
+        <locationX>1370</locationX>
+        <locationY>1490</locationY>
         <flowName>Flow_Email_to_Case</flowName>
         <inputAssignments>
             <name>recordId</name>
@@ -1169,8 +1140,8 @@
     <subflows>
         <name>Flow_Create_Complaint</name>
         <label>Flow - Create Complaint</label>
-        <locationX>242</locationX>
-        <locationY>775</locationY>
+        <locationX>314</locationX>
+        <locationY>1490</locationY>
         <flowName>Flow_Create_Complaint</flowName>
         <inputAssignments>
             <name>recordId</name>
@@ -1182,8 +1153,8 @@
     <subflows>
         <name>Flow_Create_Customer_Issuex</name>
         <label>Flow - Create Customer Issue</label>
-        <locationX>144</locationX>
-        <locationY>668</locationY>
+        <locationX>842</locationX>
+        <locationY>1490</locationY>
         <flowName>Flow_Create_Customer_Issue</flowName>
         <inputAssignments>
             <name>recordId</name>
@@ -1195,8 +1166,8 @@
     <subflows>
         <name>Shipping_Log</name>
         <label>Shipping Log</label>
-        <locationX>570</locationX>
-        <locationY>413</locationY>
+        <locationX>1106</locationX>
+        <locationY>1490</locationY>
         <flowName>New_Shipping_Log_Case</flowName>
         <inputAssignments>
             <name>recordId</name>
@@ -1208,8 +1179,8 @@
     <subflows>
         <name>Sustainability</name>
         <label>Sustainability</label>
-        <locationX>232</locationX>
-        <locationY>450</locationY>
+        <locationX>50</locationX>
+        <locationY>1490</locationY>
         <flowName>Flow_Sustainability_Create</flowName>
         <inputAssignments>
             <name>recordId</name>
