@@ -4,7 +4,7 @@
         <name>Credit_Note_Queue_Member_Notify</name>
         <label>Credit Note Queue Member Notify</label>
         <locationX>182</locationX>
-        <locationY>2006</locationY>
+        <locationY>2222</locationY>
         <actionName>Case.Credit_Note_Queue_Member_Notify</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -22,7 +22,7 @@
         <name>list_view</name>
         <label>list view</label>
         <locationX>182</locationX>
-        <locationY>2366</locationY>
+        <locationY>2582</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -44,7 +44,7 @@
         <name>Open_Case</name>
         <label>Open Case</label>
         <locationX>182</locationX>
-        <locationY>2246</locationY>
+        <locationY>2462</locationY>
         <actionName>c:navigateEverywhereLFA</actionName>
         <actionType>component</actionType>
         <connector>
@@ -75,7 +75,7 @@
         <name>postToChatter</name>
         <label>postToChatter</label>
         <locationX>182</locationX>
-        <locationY>2126</locationY>
+        <locationY>2342</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -122,10 +122,35 @@
         </value>
     </choices>
     <decisions>
+        <name>Check_Case_Business_Area</name>
+        <label>Check Case Business Area</label>
+        <locationX>182</locationX>
+        <locationY>1214</locationY>
+        <defaultConnector>
+            <targetReference>Create_Case_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_PM_EMEA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getCase.BusinessArea__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PM EMEA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Create_Case</targetReference>
+            </connector>
+            <label>If PM EMEA</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>compare_input_with_fields_on_credit_issue</name>
         <label>compare input with fields on credit issue</label>
         <locationX>182</locationX>
-        <locationY>1670</locationY>
+        <locationY>1886</locationY>
         <defaultConnector>
             <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
         </defaultConnector>
@@ -157,7 +182,7 @@
         <name>creator_is_user</name>
         <label>creator is user</label>
         <locationX>182</locationX>
-        <locationY>1334</locationY>
+        <locationY>1550</locationY>
         <defaultConnector>
             <targetReference>compare_input_with_fields_on_credit_issue</targetReference>
         </defaultConnector>
@@ -184,7 +209,7 @@
         <locationX>182</locationX>
         <locationY>878</locationY>
         <defaultConnector>
-            <targetReference>Create_Case_0</targetReference>
+            <targetReference>Check_Case_Business_Area</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -363,10 +388,219 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
+        <name>Copy_1_of_Create_Case</name>
+        <label>Copy 1 of Create Case</label>
+        <locationX>50</locationX>
+        <locationY>1334</locationY>
+        <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
+        <connector>
+            <targetReference>creator_is_user</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>getCase.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>getCase.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BusinessArea__c</field>
+            <value>
+                <elementReference>getCase.BusinessArea__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSAccountManager__c</field>
+            <value>
+                <elementReference>frmUserOrAccountManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ClaimedAmount__c</field>
+            <value>
+                <elementReference>Requested_Credit_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Comments</field>
+            <value>
+                <elementReference>Description</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>getCase.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Criticality_Assessment__c</field>
+            <value>
+                <elementReference>getCase.Criticality_Assessment__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>DeclarationToInsurance__c</field>
+            <value>
+                <elementReference>getCase.DeclarationToInsurance__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>frmRichTextValue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description__c</field>
+            <value>
+                <elementReference>frmRichTextValue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>InformContact__c</field>
+            <value>
+                <elementReference>Inform_Customer</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>InvoiceNumber__c</field>
+            <value>
+                <elementReference>Invoice_Number</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Liability_Amount__c</field>
+            <value>
+                <elementReference>getCase.Liability_Amount__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>N_1__c</field>
+            <value>
+                <elementReference>getUser.ManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>N_2__c</field>
+            <value>
+                <elementReference>MarketVP</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <elementReference>getCase.Origin</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ParentId</field>
+            <value>
+                <elementReference>getCase.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Parent_Request__c</field>
+            <value>
+                <elementReference>getCase.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Potential_Liability__c</field>
+            <value>
+                <elementReference>getCase.Potential_Liability__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <elementReference>getCase.Priority</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ProductName__c</field>
+            <value>
+                <elementReference>getCase.ProductName__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Reason_for_Credit__c</field>
+            <value>
+                <elementReference>getCase.Reason_for_Credit__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Rebill_Amount__c</field>
+            <value>
+                <elementReference>Rebill_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Rebill_Needed__c</field>
+            <value>
+                <elementReference>Is_Rebill</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>$Setup.RecordTypeIds__c.Case_Credit_Note__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Requested_Credit_amount__c</field>
+            <value>
+                <elementReference>Requested_Credit_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SalesOrderNumber__c</field>
+            <value>
+                <elementReference>Sales_Order_Number</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sub_Type__c</field>
+            <value>
+                <elementReference>getTypeAndSubType.Slave__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Credit Note</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Tech_RelationshipInformation__c</field>
+            <value>
+                <elementReference>getCase.Tech_RelationshipInformation__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <elementReference>getTypeAndSubType.Master__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordCreates>
         <name>Create_Case_0</name>
         <label>Create Case</label>
-        <locationX>182</locationX>
-        <locationY>1214</locationY>
+        <locationX>314</locationX>
+        <locationY>1334</locationY>
         <assignRecordIdToReference>varNewCaseId</assignRecordIdToReference>
         <connector>
             <targetReference>creator_is_user</targetReference>
@@ -709,7 +943,7 @@
         <name>update_parent_customer_issue</name>
         <label>update parent customer issue</label>
         <locationX>50</locationX>
-        <locationY>1790</locationY>
+        <locationY>2006</locationY>
         <connector>
             <targetReference>Credit_Note_Queue_Member_Notify</targetReference>
         </connector>
@@ -974,7 +1208,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Create_Case_0</targetReference>
+            <targetReference>Check_Case_Business_Area</targetReference>
         </connector>
         <fields>
             <name>WarningText</name>
@@ -988,7 +1222,7 @@
         <name>xyz</name>
         <label>xyz</label>
         <locationX>50</locationX>
-        <locationY>1454</locationY>
+        <locationY>1670</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>

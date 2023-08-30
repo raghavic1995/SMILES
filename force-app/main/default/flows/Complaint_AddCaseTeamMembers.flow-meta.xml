@@ -4,8 +4,8 @@
     <decisions>
         <name>Check_CS</name>
         <label>Check CS</label>
-        <locationX>336</locationX>
-        <locationY>1487</locationY>
+        <locationX>380</locationX>
+        <locationY>1943</locationY>
         <defaultConnector>
             <targetReference>Check_GK</targetReference>
         </defaultConnector>
@@ -29,8 +29,8 @@
     <decisions>
         <name>Check_GK</name>
         <label>Check GK</label>
-        <locationX>336</locationX>
-        <locationY>2159</locationY>
+        <locationX>380</locationX>
+        <locationY>2615</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_Not_Null1</name>
@@ -51,8 +51,8 @@
     <decisions>
         <name>Check_Null</name>
         <label>Check Null</label>
-        <locationX>182</locationX>
-        <locationY>1055</locationY>
+        <locationX>226</locationX>
+        <locationY>1511</locationY>
         <defaultConnector>
             <targetReference>Check_CS</targetReference>
         </defaultConnector>
@@ -76,8 +76,8 @@
     <decisions>
         <name>Check_Record_Type</name>
         <label>Check Record Type</label>
-        <locationX>501</locationX>
-        <locationY>335</locationY>
+        <locationX>611</locationX>
+        <locationY>911</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_Complaint</name>
@@ -98,8 +98,8 @@
     <decisions>
         <name>Copy_1_of_Check_Null</name>
         <label>Copy 1 of Check Null</label>
-        <locationX>182</locationX>
-        <locationY>1727</locationY>
+        <locationX>226</locationX>
+        <locationY>2183</locationY>
         <defaultConnector>
             <targetReference>Check_GK</targetReference>
         </defaultConnector>
@@ -124,7 +124,7 @@
         <name>Copy_1_of_Copy_1_of_Check_Null</name>
         <label>Copy 1 of Copy 1 of Check Null</label>
         <locationX>182</locationX>
-        <locationY>2399</locationY>
+        <locationY>2855</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Copy_1_of_Copy_1_of_If_Null</name>
@@ -145,8 +145,8 @@
     <decisions>
         <name>If_Account_Manager_Not_Null</name>
         <label>If Account Manager Not Null</label>
-        <locationX>336</locationX>
-        <locationY>815</locationY>
+        <locationX>380</locationX>
+        <locationY>1271</locationY>
         <defaultConnector>
             <targetReference>Check_CS</targetReference>
         </defaultConnector>
@@ -165,6 +165,31 @@
                 <targetReference>get_Existing_Team_Members</targetReference>
             </connector>
             <label>Not Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Null1</name>
+        <label>If Null</label>
+        <locationX>611</locationX>
+        <locationY>575</locationY>
+        <defaultConnector>
+            <targetReference>Check_Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Copy_1_of_get_Existing_Team_Members</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_Creator_as_Team_Member</targetReference>
+            </connector>
+            <label>Yes</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -192,8 +217,8 @@
     <recordCreates>
         <name>Add_AM_as_Team_Member</name>
         <label>Add AM as Team Member</label>
-        <locationX>50</locationX>
-        <locationY>1175</locationY>
+        <locationX>94</locationX>
+        <locationY>1631</locationY>
         <connector>
             <targetReference>Check_CS</targetReference>
         </connector>
@@ -219,10 +244,39 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
+        <name>Add_Creator_as_Team_Member</name>
+        <label>Add Creator as Team Member</label>
+        <locationX>479</locationX>
+        <locationY>695</locationY>
+        <connector>
+            <targetReference>Check_Record_Type</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>MemberId</field>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ParentId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TeamRoleId</field>
+            <value>
+                <elementReference>get_GK_role.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CaseTeamMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
         <name>Add_CS_as_Team_Member</name>
         <label>Add CS as Team Member</label>
-        <locationX>50</locationX>
-        <locationY>1847</locationY>
+        <locationX>94</locationX>
+        <locationY>2303</locationY>
         <connector>
             <targetReference>Check_GK</targetReference>
         </connector>
@@ -251,7 +305,7 @@
         <name>Add_GK_as_Team_Member</name>
         <label>Add GK as Team Member</label>
         <locationX>50</locationX>
-        <locationY>2519</locationY>
+        <locationY>2975</locationY>
         <inputAssignments>
             <field>MemberId</field>
             <value>
@@ -274,13 +328,41 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
-        <name>get_AM_role</name>
-        <label>get AM role</label>
-        <locationX>336</locationX>
+        <name>Copy_1_of_get_Existing_Team_Members</name>
+        <label>Copy 1 of get Existing Team Members</label>
+        <locationX>611</locationX>
         <locationY>455</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>get_GK_role</targetReference>
+            <targetReference>If_Null1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>MemberId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CaseTeamMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_AM_role</name>
+        <label>get AM role</label>
+        <locationX>380</locationX>
+        <locationY>1031</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_CS_role</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -297,8 +379,8 @@
     <recordLookups>
         <name>get_CS_role</name>
         <label>get CS role</label>
-        <locationX>336</locationX>
-        <locationY>695</locationY>
+        <locationX>380</locationX>
+        <locationY>1151</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_Account_Manager_Not_Null</targetReference>
@@ -318,8 +400,8 @@
     <recordLookups>
         <name>get_Existing_CS_Team_Members</name>
         <label>get Existing CS Team Members</label>
-        <locationX>182</locationX>
-        <locationY>1607</locationY>
+        <locationX>226</locationX>
+        <locationY>2063</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_1_of_Check_Null</targetReference>
@@ -347,7 +429,7 @@
         <name>get_Existing_GK_Team_Members</name>
         <label>get Existing GK Team Members</label>
         <locationX>182</locationX>
-        <locationY>2279</locationY>
+        <locationY>2735</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_1_of_Copy_1_of_Check_Null</targetReference>
@@ -374,8 +456,8 @@
     <recordLookups>
         <name>get_Existing_Team_Members</name>
         <label>get Existing Team Members</label>
-        <locationX>182</locationX>
-        <locationY>935</locationY>
+        <locationX>226</locationX>
+        <locationY>1391</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Null</targetReference>
@@ -402,11 +484,11 @@
     <recordLookups>
         <name>get_GK_role</name>
         <label>get GK role</label>
-        <locationX>336</locationX>
-        <locationY>575</locationY>
+        <locationX>611</locationX>
+        <locationY>335</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>get_CS_role</targetReference>
+            <targetReference>Copy_1_of_get_Existing_Team_Members</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -421,10 +503,10 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>375</locationX>
+        <locationX>485</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_Record_Type</targetReference>
+            <targetReference>get_GK_role</targetReference>
         </connector>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
