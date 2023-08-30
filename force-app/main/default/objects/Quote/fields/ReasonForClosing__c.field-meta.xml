@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReasonForClosing__c</fullName>
+    <externalId>false</externalId>
+    <label>Close Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Quote accepted</fullName>
+                <default>false</default>
+                <label>Quote accepted</label>
+            </value>
+            <value>
+                <fullName>Quote rejected</fullName>
+                <default>false</default>
+                <label>Quote rejected</label>
+            </value>
+            <value>
+                <fullName>Quote canceled</fullName>
+                <default>false</default>
+                <label>Quote canceled</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Closed</controllingFieldValue>
+            <valueName>Quote accepted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed</controllingFieldValue>
+            <valueName>Quote rejected</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed</controllingFieldValue>
+            <valueName>Quote canceled</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>
