@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manufacturing_Plant_Mandatory</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(frmRecordType__c = &apos;Customer_Issue&apos; ,NOT(ISBLANK( ProductName__c )),ISBLANK( Manufacturing_Plant__c ))</errorConditionFormula>
+    <errorDisplayField>Manufacturing_Plant__c</errorDisplayField>
+    <errorMessage>Manufacturing Plant is mandatory</errorMessage>
+</ValidationRule>
