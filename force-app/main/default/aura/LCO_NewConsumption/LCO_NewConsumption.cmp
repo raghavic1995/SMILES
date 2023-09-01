@@ -1,0 +1,18 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,lightning:hasPageReference" access ="global" 
+                controller="getCurrentUserInfo">
+    
+    <!--Declare Attributes-->
+    <aura:attribute name="selectedRecordId" type="Id" />
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="parentId" type="Id"/>
+    <aura:attribute name="oppoId" type="string"/>
+    <aura:attribute name="accId" type="string"/>
+    <aura:attribute name="conId" type="string"/>
+    <aura:attribute name="BusinessArea" type="String"/>
+    
+    <!--Declare Handler-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.reInit}" />
+    <lightning:navigation aura:id="navId"/>
+	
+</aura:component>
