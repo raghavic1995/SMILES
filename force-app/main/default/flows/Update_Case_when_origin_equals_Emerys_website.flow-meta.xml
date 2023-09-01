@@ -5,7 +5,7 @@
         <name>Assign_Case_owner</name>
         <label>Assign Case owner</label>
         <locationX>578</locationX>
-        <locationY>1079</locationY>
+        <locationY>1187</locationY>
         <assignmentItems>
             <assignToReference>CaseRecords.OwnerId</assignToReference>
             <operator>Assign</operator>
@@ -20,6 +20,13 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CaseRecords.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SubjectFormula</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Loop_over_all_queues</targetReference>
         </connector>
@@ -28,7 +35,7 @@
         <name>Assign_Market_Segmentations</name>
         <label>Assign Market Segmentations</label>
         <locationX>618</locationX>
-        <locationY>863</locationY>
+        <locationY>971</locationY>
         <assignmentItems>
             <assignToReference>CaseRecords.MarketSegmentationNew__c</assignToReference>
             <operator>Assign</operator>
@@ -43,15 +50,45 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CaseRecords.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SubjectFormula</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>GK_Records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_subject_attributes</name>
+        <label>Assign subject attributes</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>TypeText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Case_Type__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>YourMarketText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Your_market__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Records_Found</targetReference>
         </connector>
     </assignments>
     <decisions>
         <name>Find_the_correct_queue</name>
         <label>Find the correct queue</label>
         <locationX>710</locationX>
-        <locationY>971</locationY>
+        <locationY>1079</locationY>
         <defaultConnector>
             <targetReference>Loop_over_all_queues</targetReference>
         </defaultConnector>
@@ -76,7 +113,10 @@
         <name>Records_Found</name>
         <label>Records Found</label>
         <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Update_Case_Record_sub</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
@@ -98,7 +138,7 @@
         <name>web_to_case_OR_Document_Request_Or_both</name>
         <label>web-to-case OR Document Request Or both</label>
         <locationX>686</locationX>
-        <locationY>755</locationY>
+        <locationY>863</locationY>
         <defaultConnector>
             <targetReference>GK_Records</targetReference>
         </defaultConnector>
@@ -149,13 +189,18 @@
         </rules>
     </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>SubjectFormula</name>
+        <dataType>String</dataType>
+        <expression>{!TypeText}+ &apos; &apos; +{!YourMarketText}</expression>
+    </formulas>
     <interviewLabel>Update Case when origin equals Emerys website {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Case when origin equals Emerys website</label>
     <loops>
         <name>GK_Records</name>
         <label>GK Records</label>
         <locationX>50</locationX>
-        <locationY>647</locationY>
+        <locationY>755</locationY>
         <collectionReference>Get_Gatekeeper_Ass_sub_process_equals_web_to_case_DR</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -169,7 +214,7 @@
         <name>Loop_over_all_queues</name>
         <label>Loop over all queues</label>
         <locationX>490</locationX>
-        <locationY>863</locationY>
+        <locationY>971</locationY>
         <collectionReference>Get_all_Queue_records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -202,7 +247,7 @@
         <name>Get_all_Queue_records</name>
         <label>Get all Queue records</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>GK_Records</targetReference>
@@ -226,7 +271,7 @@
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Records_Found</targetReference>
+            <targetReference>Assign_subject_attributes</targetReference>
         </connector>
         <filterLogic>(1 AND 2 AND 3 AND 4 AND 5) OR (1 AND 6 AND 5 )</filterLogic>
         <filters>
@@ -279,8 +324,21 @@
         <name>Update_case_record</name>
         <label>Update case record</label>
         <locationX>50</locationX>
-        <locationY>1523</locationY>
+        <locationY>1631</locationY>
         <inputReference>CaseRecords</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Case_Record_sub</name>
+        <label>Update Case Record sub</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>SubjectFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
         <locationX>56</locationX>
@@ -334,5 +392,19 @@ TEXT({!$Record.Origin}) = &apos;Imerys Website&apos;)</filterFormula>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>TypeText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>YourMarketText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
 </Flow>
