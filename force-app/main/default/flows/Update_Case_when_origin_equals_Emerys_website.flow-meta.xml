@@ -4,24 +4,31 @@
     <assignments>
         <name>Assign_Case_owner</name>
         <label>Assign Case owner</label>
-        <locationX>138</locationX>
-        <locationY>1187</locationY>
+        <locationX>578</locationX>
+        <locationY>1079</locationY>
         <assignmentItems>
             <assignToReference>CaseRecords.OwnerId</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Queue.Id</elementReference>
+                <elementReference>Loop_over_all_queues.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CaseRecords.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>GK_Records</targetReference>
+            <targetReference>Loop_over_all_queues</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_Market_Segmentations</name>
         <label>Assign Market Segmentations</label>
-        <locationX>402</locationX>
-        <locationY>1079</locationY>
+        <locationX>618</locationX>
+        <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>CaseRecords.MarketSegmentationNew__c</assignToReference>
             <operator>Assign</operator>
@@ -29,59 +36,47 @@
                 <elementReference>GK_Records.MarketSegmentation__c</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CaseRecords.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>GK_Records</targetReference>
         </connector>
     </assignments>
     <decisions>
-        <name>Case_Origin</name>
-        <label>Case Origin</label>
-        <locationX>380</locationX>
-        <locationY>539</locationY>
-        <defaultConnectorLabel>Others</defaultConnectorLabel>
+        <name>Find_the_correct_queue</name>
+        <label>Find the correct queue</label>
+        <locationX>710</locationX>
+        <locationY>971</locationY>
+        <defaultConnector>
+            <targetReference>Loop_over_all_queues</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Incorrect Queue</defaultConnectorLabel>
         <rules>
-            <name>Imerys_Websites</name>
+            <name>Correct_Queue</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Origin</leftValueReference>
+                <leftValueReference>GK_Records.Document_Request_Form_Queue__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Imerys Website</stringValue>
+                    <elementReference>Loop_over_all_queues.DeveloperName</elementReference>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Gatekeeper_Ass_sub_process_equals_web_to_case_DR</targetReference>
+                <targetReference>Assign_Case_owner</targetReference>
             </connector>
-            <label>Imerys Websites</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Record_Found</name>
-        <label>Record Found</label>
-        <locationX>611</locationX>
-        <locationY>431</locationY>
-        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
-        <rules>
-            <name>Yes_Found</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Request_Record_type</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Case_Origin</targetReference>
-            </connector>
-            <label>Yes Found</label>
+            <label>Correct Queue</label>
         </rules>
     </decisions>
     <decisions>
         <name>Records_Found</name>
         <label>Records Found</label>
         <locationX>182</locationX>
-        <locationY>755</locationY>
+        <locationY>431</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
@@ -94,22 +89,22 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>GK_Records</targetReference>
+                <targetReference>Get_all_Queue_records</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
     <decisions>
-        <name>web_to_case_OR_Document_Request</name>
-        <label>web-to-case OR Document Request</label>
-        <locationX>402</locationX>
-        <locationY>971</locationY>
+        <name>web_to_case_OR_Document_Request_Or_both</name>
+        <label>web-to-case OR Document Request Or both</label>
+        <locationX>686</locationX>
+        <locationY>755</locationY>
         <defaultConnector>
             <targetReference>GK_Records</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>web_to_case1</name>
+            <name>web_to_case1_Only</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>GK_Records.Process__c</leftValueReference>
@@ -118,13 +113,20 @@
                     <stringValue>Web-to-case</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>GK_Records.Process__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Document Request</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
-                <targetReference>Get_Queue</targetReference>
+                <targetReference>Loop_over_all_queues</targetReference>
             </connector>
-            <label>web-to-case1</label>
+            <label>web-to-case1 Only</label>
         </rules>
         <rules>
-            <name>Document_Request</name>
+            <name>Document_Request_Only</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>GK_Records.Process__c</leftValueReference>
@@ -133,10 +135,17 @@
                     <stringValue>Document Request</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>GK_Records.Process__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Web-to-case</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Assign_Market_Segmentations</targetReference>
             </connector>
-            <label>Document Request</label>
+            <label>Document Request Only</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -146,14 +155,28 @@
         <name>GK_Records</name>
         <label>GK Records</label>
         <locationX>50</locationX>
-        <locationY>863</locationY>
+        <locationY>647</locationY>
         <collectionReference>Get_Gatekeeper_Ass_sub_process_equals_web_to_case_DR</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>web_to_case_OR_Document_Request</targetReference>
+            <targetReference>web_to_case_OR_Document_Request_Or_both</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Update_Case</targetReference>
+            <targetReference>Update_case_record</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_over_all_queues</name>
+        <label>Loop over all queues</label>
+        <locationX>490</locationX>
+        <locationY>863</locationY>
+        <collectionReference>Get_all_Queue_records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Find_the_correct_queue</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>GK_Records</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -176,10 +199,31 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>Get_all_Queue_records</name>
+        <label>Get all Queue records</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GK_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Gatekeeper_Ass_sub_process_equals_web_to_case_DR</name>
         <label>Get Gatekeeper Ass. @ sub-process equals web-to-case /DR</label>
         <locationX>182</locationX>
-        <locationY>647</locationY>
+        <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Records_Found</targetReference>
@@ -231,89 +275,46 @@
         <object>GatekeeperAssignment__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordLookups>
-        <name>Get_Queue</name>
-        <label>Get Queue</label>
-        <locationX>138</locationX>
-        <locationY>1079</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Assign_Case_owner</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>GK_Records.Document_Request_Form_Queue__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Type</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Queue</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Group</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Request_Record_type</name>
-        <label>Get Request Record type</label>
-        <locationX>611</locationX>
-        <locationY>323</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Record_Found</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Request</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
-        <name>Update_Case</name>
-        <label>Update Case</label>
+        <name>Update_case_record</name>
+        <label>Update case record</label>
         <locationX>50</locationX>
-        <locationY>1463</locationY>
-        <inputAssignments>
-            <field>MarketSegmentationNew__c</field>
-            <value>
-                <elementReference>CaseRecords.MarketSegmentationNew__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>OwnerId</field>
-            <value>
-                <elementReference>CaseRecords.OwnerId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
+        <locationY>1523</locationY>
+        <inputReference>CaseRecords</inputReference>
     </recordUpdates>
     <start>
-        <locationX>485</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Request_Record_type</targetReference>
+            <targetReference>Get_Gatekeeper_Ass_sub_process_equals_web_to_case_DR</targetReference>
         </connector>
+        <filterFormula>AND({!$Record.RecordType.DeveloperName} = &apos;Request&apos;,
+TEXT({!$Record.Origin}) = &apos;Imerys Website&apos;)</filterFormula>
         <object>Case</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
     <variables>
+        <name>AssignCaseOwner</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
         <name>CaseRecords</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>CollectCaseVar</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Case</objectType>
@@ -325,5 +326,13 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <scale>2</scale>
+    </variables>
+    <variables>
+        <name>MarketSegmentation</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
     </variables>
 </Flow>
