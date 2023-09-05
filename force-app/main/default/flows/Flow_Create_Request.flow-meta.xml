@@ -26,7 +26,9 @@
                 <stringValue>Record</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>c:navigateEverywhereLFA</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>53.0</apiVersion>
     <assignments>
@@ -67,6 +69,14 @@
         <dataType>String</dataType>
         <value>
             <stringValue>New</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>sub</name>
+        <choiceText>sub</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>sub</stringValue>
         </value>
     </choices>
     <decisions>
@@ -208,6 +218,22 @@
         <displayField xsi:nil="true"/>
         <object xsi:nil="true"/>
         <picklistField>Type</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>SubTypeText</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Sub_Type__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>YourMarketSet</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Your_market__c</picklistField>
         <picklistObject>Case</picklistObject>
     </dynamicChoiceSets>
     <environments>Default</environments>
@@ -367,6 +393,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <elementReference>Origin</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>OwnerId</field>
             <value>
                 <elementReference>$User.Id</elementReference>
@@ -376,6 +408,12 @@
             <field>Priority</field>
             <value>
                 <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Product_Grade__c</field>
+            <value>
+                <elementReference>Product_Grade</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -412,6 +450,12 @@
             <field>Type</field>
             <value>
                 <elementReference>getTypeAndSubtype.Master__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Your_market__c</field>
+            <value>
+                <elementReference>Your_Market</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
@@ -456,6 +500,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <elementReference>Origin_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>OwnerId</field>
             <value>
                 <elementReference>$User.Id</elementReference>
@@ -465,6 +515,12 @@
             <field>Priority</field>
             <value>
                 <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Product_Grade__c</field>
+            <value>
+                <elementReference>Product_Grade_0</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -501,6 +557,12 @@
             <field>Type</field>
             <value>
                 <elementReference>getTypeAndSubtype.Master__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Your_market__c</field>
+            <value>
+                <elementReference>Your_Market_0</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
@@ -545,6 +607,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <elementReference>Origin_0_0</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>OwnerId</field>
             <value>
                 <elementReference>$User.Id</elementReference>
@@ -554,6 +622,12 @@
             <field>Priority</field>
             <value>
                 <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Product_Grade__c</field>
+            <value>
+                <elementReference>Product_Grade_0_0</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -590,6 +664,12 @@
             <field>Type</field>
             <value>
                 <elementReference>getTypeAndSubtype.Master__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Your_market__c</field>
+            <value>
+                <elementReference>Your_Market_0_0</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
@@ -908,6 +988,7 @@
                     <dataType>String</dataType>
                     <fieldText>How did this come about?</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
                 </fields>
                 <inputParameters>
@@ -1055,6 +1136,7 @@
                     <dataType>String</dataType>
                     <fieldText>How did this come about?</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
                 </fields>
                 <inputParameters>
@@ -1252,6 +1334,7 @@
                     <dataType>String</dataType>
                     <fieldText>Subject</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
@@ -1278,7 +1361,64 @@
                     <name>Internal_Comments</name>
                     <fieldText>Internal Comments</fieldText>
                     <fieldType>LargeTextArea</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>Sub_Type</name>
+                    <choiceReferences>SubTypeText</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Sub Type</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <fields>
+                    <name>Your_Market</name>
+                    <choiceReferences>YourMarketSet</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Your Market</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <fields>
+                    <name>Product_Grade</name>
+                    <dataType>String</dataType>
+                    <fieldText>Product Grade</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -1380,6 +1520,7 @@
                     <dataType>String</dataType>
                     <fieldText>Subject</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
@@ -1406,7 +1547,64 @@
                     <name>Internal_Comments_0</name>
                     <fieldText>Internal Comments</fieldText>
                     <fieldType>LargeTextArea</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>Sub_Type_0</name>
+                    <choiceReferences>SubTypeText</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Sub Type</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin_0</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <fields>
+                    <name>Your_Market_0</name>
+                    <choiceReferences>YourMarketSet</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Your Market</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin_0</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <fields>
+                    <name>Product_Grade_0</name>
+                    <dataType>String</dataType>
+                    <fieldText>Product Grade</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin_0</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -1553,6 +1751,7 @@
                     <dataType>String</dataType>
                     <fieldText>How did this come about?</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
                 </fields>
                 <inputParameters>
@@ -1645,16 +1844,17 @@
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <fields>
-            <name>scrComplaint_0_0_0_0_Section1_0</name>
+            <name>scrComplaint_0_0_0_0_0_0_Section1</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
-                <name>scrComplaint_0_0_0_0_Section1_Column1_0</name>
+                <name>scrComplaint_0_0_0_0_0_0_Section1_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>SubjectFirstScreen_0_0</name>
                     <dataType>String</dataType>
                     <fieldText>Subject</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                 </fields>
                 <fields>
@@ -1681,7 +1881,46 @@
                     <name>Internal_Comments_0_0</name>
                     <fieldText>Internal Comments</fieldText>
                     <fieldType>LargeTextArea</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>Sub_Type_0_0</name>
+                    <choiceReferences>SubTypeText</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Sub Type</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin_0_0</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <fields>
+                    <name>Your_Market_0_0</name>
+                    <choiceReferences>YourMarketSet</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Your Market</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Origin_0_0</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <stringValue>Imerys Website</stringValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -1693,6 +1932,24 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>Product_Grade_0_0</name>
+            <dataType>String</dataType>
+            <fieldText>Product Grade</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Origin_0_0</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Imerys Website</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
