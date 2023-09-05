@@ -2,10 +2,54 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>51.0</apiVersion>
     <decisions>
+        <name>Check_technical_status</name>
+        <label>Check technical status</label>
+        <locationX>2910</locationX>
+        <locationY>782</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_not_qualified</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getShortlistedImerysProductDetails.Technical_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Warning_Message</targetReference>
+            </connector>
+            <label>If not qualified</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_1_of_Check_technical_status</name>
+        <label>Copy 1 of Check technical status</label>
+        <locationX>3878</locationX>
+        <locationY>782</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_If_not_qualified</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getShortlistedImerysProductDetails.Technical_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Warning_Message</targetReference>
+            </connector>
+            <label>Copy 1 of If not qualified</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>ifNoProdSelected</name>
         <label>ifNoProdSelected</label>
-        <locationX>665</locationX>
-        <locationY>211</locationY>
+        <locationX>974</locationX>
+        <locationY>134</locationY>
         <defaultConnector>
             <targetReference>forEachSelectedprod</targetReference>
         </defaultConnector>
@@ -29,8 +73,8 @@
     <decisions>
         <name>Validation</name>
         <label>Validation</label>
-        <locationX>1580</locationX>
-        <locationY>347</locationY>
+        <locationX>2734</locationX>
+        <locationY>566</locationY>
         <defaultConnector>
             <targetReference>addSelectedProduct_0</targetReference>
         </defaultConnector>
@@ -134,8 +178,8 @@ V15.0</description>
     <loops>
         <name>forEachSelectedprod</name>
         <label>forEachSelectedprod</label>
-        <locationX>1034</locationX>
-        <locationY>216</locationY>
+        <locationX>1898</locationX>
+        <locationY>242</locationY>
         <collectionReference>LstSelectedProds</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -151,7 +195,7 @@ V15.0</description>
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -164,11 +208,14 @@ V15.0</description>
     <recordCreates>
         <name>addSelectedProduct_0</name>
         <label>addSelectedProduct</label>
-        <locationX>1441</locationX>
-        <locationY>745</locationY>
+        <locationX>3482</locationX>
+        <locationY>674</locationY>
         <connector>
             <targetReference>deleteShortlistedProduct</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Copy_1_of_Check_technical_status</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>BillOfMaterialURL__c</field>
             <value>
@@ -223,11 +270,14 @@ V15.0</description>
     <recordCreates>
         <name>addSelectedProduct_0_0</name>
         <label>addSelectedProductWithLineDescription</label>
-        <locationX>1598</locationX>
-        <locationY>875</locationY>
+        <locationX>2514</locationX>
+        <locationY>674</locationY>
         <connector>
             <targetReference>deleteShortlistedProduct</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Check_technical_status</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>BillOfMaterialURL__c</field>
             <value>
@@ -294,8 +344,8 @@ V15.0</description>
     <recordDeletes>
         <name>deleteShortlistedProduct</name>
         <label>deleteShortlistedProduct</label>
-        <locationX>783</locationX>
-        <locationY>794</locationY>
+        <locationX>2734</locationX>
+        <locationY>1298</locationY>
         <connector>
             <targetReference>forEachSelectedprod</targetReference>
         </connector>
@@ -312,8 +362,8 @@ V15.0</description>
     <recordLookups>
         <name>getPricebookEntryId</name>
         <label>getPricebookEntryId</label>
-        <locationX>1280</locationX>
-        <locationY>527</locationY>
+        <locationX>2734</locationX>
+        <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Validation</targetReference>
@@ -347,8 +397,8 @@ V15.0</description>
     <recordLookups>
         <name>getShortlistedImerysProductDetails</name>
         <label>getShortlistedImerysProductDetails</label>
-        <locationX>1125</locationX>
-        <locationY>400</locationY>
+        <locationX>2734</locationX>
+        <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getPricebookEntryId</targetReference>
@@ -366,10 +416,42 @@ V15.0</description>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
+        <name>Copy_1_of_Warning_Message</name>
+        <label>Warning Message</label>
+        <locationX>2778</locationX>
+        <locationY>890</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Copy_1_of_Warning_0_0</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(189, 14, 14);&quot;&gt;The technical status of  shortlisted products must be &apos;Qualified&apos; to be able to add to Imerys Products&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_2_of_Warning_Message</name>
+        <label>Copy 2 of Warning Message</label>
+        <locationX>3746</locationX>
+        <locationY>890</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Copy_1_of_Copy_1_of_Warning_0_0</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(189, 14, 14);&quot;&gt;The technical status of shortlisted products must be &apos;Qualified&apos; to be able to add to Imerys Products&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>NoProductSelected</name>
         <label>No Product Selected</label>
-        <locationX>433</locationX>
-        <locationY>205</locationY>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -384,8 +466,8 @@ V15.0</description>
     <screens>
         <name>Warning_Message_0</name>
         <label>Warning Message</label>
-        <locationX>1774</locationX>
-        <locationY>597</locationY>
+        <locationX>2250</locationX>
+        <locationY>674</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -400,8 +482,8 @@ V15.0</description>
     <screens>
         <name>Warning_Message_0_0</name>
         <label>Warning Message</label>
-        <locationX>1974</locationX>
-        <locationY>224</locationY>
+        <locationX>3218</locationX>
+        <locationY>674</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -416,8 +498,8 @@ V15.0</description>
     <screens>
         <name>Warning_Message_0_0_0</name>
         <label>Warning Message</label>
-        <locationX>1675</locationX>
-        <locationY>130</locationY>
+        <locationX>1986</locationX>
+        <locationY>674</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -430,8 +512,8 @@ V15.0</description>
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>548</locationX>
-        <locationY>48</locationY>
+        <locationX>848</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>ifNoProdSelected</targetReference>
         </connector>
